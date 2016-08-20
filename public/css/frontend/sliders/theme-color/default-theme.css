@@ -1,0 +1,27 @@
+
+.aa-products-tab li a:hover, .aa-products-tab li a:focus {  
+  border-bottom: 1px solid #fff;
+}
+.aa-products-tab li.active a {
+  border-bottom: 2px solid #00AEEF !important;  
+}
+.aa-products-tab li.active a:hover, .aa-products-tab li.active a:focus {  
+  border-bottom: 2px solid #00AEEF;
+}
+.aa-product-catg li figure .aa-add-card-btn:hover {
+  color: #fff;
+}
+.aa-product-catg li .aa-product-title a:hover, .aa-product-catg li .aa-product-title a:focus {
+  color: #00AEEF;
+}
+.aa-product-catg li .aa-product-price {
+  color: #00AEEF;  
+}
+.aa-product-catg li .aa-product-hvr-content a:hover, .aa-product-catg li .aa-product-hvr-content a:focus {
+  color: #00AEEF;
+}
+
+.slick-prev,
+.slick-next {
+  background-color: #00AEEF;
+}

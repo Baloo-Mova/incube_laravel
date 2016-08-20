@@ -10,7 +10,8 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace' => 'Frontend'], function() {
+    Route::get('/', ['uses' => 'SiteController@index', 'as' => 'site.index']);
 });
+
+Route::auth();
