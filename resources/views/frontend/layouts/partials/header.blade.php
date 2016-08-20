@@ -37,11 +37,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{url('/site/index')}}"><img src="../img/logo.png" alt=""></a>
+                <a class="navbar-brand" href="{{url('/')}}"><img src="../img/logo.png" alt=""></a>
             </div>
 
-            @if(Auth::check())
-                @include('frontend.layouts.partials.regButtons')
+            @if(!Auth::check())
+                @include('frontend.layouts.partials.registered_buttons')
             @endif
 
             <div class="collapse navbar-collapse js-navbar-collapse" id="bs-example-navbar-collapse-1">
