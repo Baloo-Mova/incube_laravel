@@ -495,7 +495,7 @@ min-width: 480px) and (max-width: 767px){
     }
     @media (min-width: 768px){
         .homeSection-categories{
-            padding-top:60px
+          //  padding-top:60px
         }
     }
     .homeSection-categories .homeSection-categories-seeMoreDivider{

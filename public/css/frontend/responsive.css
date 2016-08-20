@@ -87,7 +87,7 @@
 .slider .owl-pagination {
   bottom: 165px;
   right: 0;
-  width: 30px;
+  
 }
 .page-title{
 	padding-top: 50px;
@@ -326,7 +326,7 @@
 .slider .owl-pagination {
   bottom: 165px;
   right: 0;
-  width: 30px;
+  
 }
 .page-title{
 	padding-top: 50px;
@@ -534,10 +534,10 @@
 .slider .owl-pagination {
   bottom: 165px;
   right: 0;
-  width: 30px;
+  
 }
 .page-title{
-	padding-top: 50px;
+	//padding-top: 50px;
 }
 .page-title h2 {
   font-size: 20px;
