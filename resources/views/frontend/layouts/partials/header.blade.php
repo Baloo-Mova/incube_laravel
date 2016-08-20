@@ -27,8 +27,6 @@
     </div>
 
     <nav class="navbar navbar-default">  <!--navbar-fixed-top-->
-        <div class="container-fuild">
-
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -131,19 +129,18 @@
                     @endif
                 </div>
             </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
     </nav>
 </div>
-<div id="myModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">x</button>
-                <div class="row-fluid user-row">
-                    <img src="../img/logo.png" class="img-responsive" alt="log"/>
-                </div>
-                <h3 style="text-align: center;">Реєстрація</h3>
-            </div>
-        </div>
-    </div>
-</div>
+{{--<div id="myModal" class="modal fade">--}}
+    {{--<div class="modal-dialog">--}}
+        {{--<div class="modal-content">--}}
+            {{--<div class="modal-header">--}}
+                {{--<button type="button" class="close" data-dismiss="modal">x</button>--}}
+                {{--<div class="row-fluid user-row">--}}
+                    {{--<img src="../img/logo.png" class="img-responsive" alt="log"/>--}}
+                {{--</div>--}}
+                {{--<h3 style="text-align: center;">Реєстрація</h3>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</div>--}}
