@@ -61,11 +61,8 @@
                                     </div><!-- /.carousel -->
                                     <li class="divider"></li>
                                     <li><a href="{{url('/project-viewer/index')}}">Усі проекти</a></li>
-
                                 </ul>
-
                             </li>
-
                             <li class="col-sm-3">
                                 <ul>
                                     <li>

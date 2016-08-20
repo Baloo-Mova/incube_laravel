@@ -1,7 +1,10 @@
 @extends('frontend.layouts.template')
 
 @section('content')
- asd
+ @include('frontend.layouts.partials.slider')
+ <div class="big">
+
+ </div>
 @stop
 
 @section('css')

@@ -117,14 +117,18 @@ body{
     padding-top: 15px
 }
 
+.big{
+    height:10000px;
+}
+
 .slider-area{
     position: relative;
     width:100%;
-    //height: 630px
+    height: 630px
 }
 #bg-slider .item img{
     width: 100%;
-    height: 100% //630px
+
 }
 
 .slider-content{
@@ -153,10 +157,9 @@ body{
     text-align: center;
 }
 .slider .owl-pagination {
-    bottom: 280px;
-    position: absolute;
-    right: 10px;
-    width: 40px;
+    bottom:100%;
+    margin: 0 auto;
+    margin-top: -30px;
 }
 
 .slider .owl-theme .owl-controls .owl-page span {
