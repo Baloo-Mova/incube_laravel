@@ -486,7 +486,11 @@
   padding-right: 6px;
 }
 .main-nav {
-  padding-top: 4px;
+  padding-top: 14px;
+}
+.button.navbar-right {
+    padding-top: 16px;
+    padding-right: 25px;
 }
 .navbar-default .navbar-nav > li > a.active::after {
   //bottom: -15px;

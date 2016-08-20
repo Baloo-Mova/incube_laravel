@@ -71,14 +71,14 @@ body{
     margin-right: 20px
 }
 .navbar-brand {
-    padding-top: 10px;
+    //padding-top: 10px;
 }
 .main-nav {
-    padding-top: 10px;
+    padding-top: 30px;
 }
 .button.navbar-right {
-    padding-top: 10px;
-    padding-right: 25px;
+    padding-top: 28px;
+    padding-right: 10px;
 }
 .nav-button {
     background-color: #c2c2c2;
@@ -899,8 +899,8 @@ a {
 .btn-custom.active,
 .open{
      color: #428BCA;
-    background-color: #BF0068;
-    border-color: #800046;
+    //background-color: #BF0068;
+   // border-color: #800046;
     
 }
 .board{
