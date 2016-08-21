@@ -12,9 +12,12 @@
 <link href="{{ asset("css/frontend/sliders/slick.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/frontend/sliders/theme-color/default-theme.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/frontend/sliders/style.css") }}" rel="stylesheet" type="text/css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <link href="{{ asset("css/frontend/site.css") }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset("css/bootstrap-datetimepicker.css") }}" rel="stylesheet" type="text/css"/>
 <!-- Theme style -->
 <link href="{{ asset("css/toastr.min.css") }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset("css/fileinput.min.css") }}" rel="stylesheet" type="text/css"/>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>

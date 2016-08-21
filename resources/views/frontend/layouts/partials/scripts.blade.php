@@ -8,6 +8,10 @@
 <script src="{{ asset("js/frontend/sliders/jquery.simpleGallery.js") }}" type="text/javascript"></script>
 <script src="{{ asset("js/frontend/sliders/slick.js") }}" type="text/javascript"></script>
 <script src="{{ asset("js/frontend/sliders/custom.js") }}" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <script src="{{ asset("js/toastr.min.js") }}" type="text/javascript"></script>
+<script src="{{ asset("js/moment.js") }}" type="text/javascript"></script>
+<script src="{{ asset("js/bootstrap-datetimepicker.min.js") }}" type="text/javascript"></script>
+<script src="{{ asset("js/fileinput.min.js") }}" type="text/javascript"></script>
 {!! Toastr::render() !!}
 @yield('js')

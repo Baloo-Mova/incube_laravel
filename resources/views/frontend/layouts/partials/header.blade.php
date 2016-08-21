@@ -58,7 +58,7 @@
                                     </div><!-- End Carousel Inner -->
                                 </div><!-- /.carousel -->
                                 <li class="divider"></li>
-                                <li><a href="{{url('/project-viewer/index')}}">Усі проекти</a></li>
+                                <li><a href="{{url('/project-viewer')}}">Усі проекти</a></li>
                             </ul>
                         </li>
                         <li class="col-sm-3">
@@ -114,10 +114,10 @@
                     </ul>
                 </li>
 
-                <li class="" data-wow-delay="0.2s"><a href="{{url('/investor/index')}}">Інвестору</a></li>
-                <li class="" data-wow-delay="0.2s"><a href="{{url('/customer/index')}}">Замовнику</a></li>
-                <li class="" data-wow-delay="0.2s"><a href="{{url('/designer/index')}}">Проектанту</a></li>
-                <li class="" data-wow-delay="0.3s"><a href="{{url('/executor/index')}}">Виконавцю</a></li>
+                <li class="" data-wow-delay="0.2s"><a href="{{url('/investor')}}">Інвестору</a></li>
+                <li class="" data-wow-delay="0.2s"><a href="{{url('/customer')}}">Замовнику</a></li>
+                <li class="" data-wow-delay="0.2s"><a href="{{url('/designer')}}">Проектанту</a></li>
+                <li class="" data-wow-delay="0.3s"><a href="{{url('/executor')}}">Виконавцю</a></li>
                 <li class="" data-wow-delay="0.4s"><a href="{{url('/site/contact')}}">Контакти</a></li>
 
             </ul>

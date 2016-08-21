@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
 Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/', ['uses' => 'SiteController@index', 'as' => 'site.index']);
     Route::get('site/about', ['uses' => 'AboutController@index', 'as' => 'about.index']);
@@ -23,6 +24,17 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/edit/{id}',['uses'=> 'InvestorController@edit', 'as' => 'investor.edit']);
         Route::post('/edit/{id}',['uses'=> 'InvestorController@update', 'as' => 'investor.update']);
     });
+
+    Route::group(['prefix'=>'personal-area'], function (){
+        Route::get('/',['uses'=>'PersonalAreaController@index', 'as'=>'personal_area.index']);
+    });
+});
+
+
+Route::get('/investor/image/{filename}', function($filename)
+{
+    $img = Image::make(storage_path('app/investor/images/'.$filename))->resize(300, 300);
+    return $img->response('jpg');
 });
 
 Route::auth();

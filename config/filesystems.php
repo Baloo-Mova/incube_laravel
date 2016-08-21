@@ -48,6 +48,11 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'investor_images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/investor/images'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
