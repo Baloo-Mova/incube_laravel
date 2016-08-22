@@ -1,7 +1,7 @@
 @extends('frontend.layouts.template')
 
 @section('content')
-<div class="row page-title text-center">
+<div class="page-title text-center">
     <h2>ПОДАЧА ЗАЯВКИ НА ІНВЕСТУВАННЯ</h2>
 </div>
 <hr/>
@@ -150,9 +150,9 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-success">Подати</button>
-        </div>
+        
+            <input value="Подати" type="submit" class="btn btn-success col-md-offset-2">
+       
     </form>
 </div>
 @stop
