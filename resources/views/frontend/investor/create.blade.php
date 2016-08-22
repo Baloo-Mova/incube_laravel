@@ -60,20 +60,13 @@
         <div class="form-group">
             <label class="col-md-2 control-label" for="Галузь">Галузь:</label>
             <div class="col-md-10">
-                <div class="input-group">
-                    <div class="input-group-addon">
-                        <i class="glyphicon glyphicon-hand-up">
-                        </i>
-                    </div>
-                    <select class="selectpickerjs-example-basic-single selectpicker form-control" style="display: none;"  name="economic_activities_id">
+                    <select class="form-control"  name="economic_activities_id">
                         @foreach($economicActivities as $i => $item)
-
                         <option value="{{ $i }}" {{ ( old("economic_activities_id") == $i ? "selected":"") }}>{{ $item }}</option>
                         @endforeach
                     </select>
-                </div>
-            </div>
         </div>
+            </div>
         
         <div class="form-group">
             <label class="col-md-2 control-label" for="region">Регіон інвестування:</label>
@@ -172,10 +165,11 @@
 @stop
 @section('js')
 <script type="text/javascript">
-    $('select').select2({
-        placeholder: "Выберите регион",
-        allowClear: true
-    });
+//    $('select').select2({
+//        placeholder: "Выберите регион",
+//        allowClear: true,
+//        width: 'resolve'
+//    });
     $("#file_up").fileinput({
         'showUpload': false,
         'previewFileType': 'any',

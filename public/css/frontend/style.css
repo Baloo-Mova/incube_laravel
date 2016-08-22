@@ -2,7 +2,18 @@ body{
     font-family: 'Open Sans', sans-serif;
     min-height: 700px;
 }
-
+.float-right{
+    float:right;
+}
+.one-row-pannel{
+    height: 100px;
+}
+.input-group-addon{
+    min-width: 40px;
+}
+.two-row-pannel{
+    height:220px;
+}
 .header-connect{
     padding-top: 10px;
     background-color: #00AEEF;
