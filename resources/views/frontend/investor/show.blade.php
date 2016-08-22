@@ -16,34 +16,38 @@
 
     <div class="row show-grid">
         <div class="col-md-6">
-            <div class="product">
-                <table class="table table-striped">
-                    <tbody>
-                        <tr class="col-md-12">
-                            <td class="col-md-10"> <a href="{{url('/investor/image/'.$model["logo"]) }}"> {{$model["logo"]}}</a></td>
-                            <td class="col-md-1 text-center">
-                                <a href="#"><i class="fa fa-edit"></i> </a>
-                            </td>
-                            <td class="col-md-1 text-center">
-                                <input type="checkbox"> 
-                            </td>
-                        </tr>
-                        <tr class="col-md-12">
-                            <td class="col-md-10"> <a href="##">Present.ptt</a></td>
-                            <td class="col-md-1 text-center">
-                                <a href="#"><i class="fa fa-edit"></i> </a>
-                            </td>
-                            <td class="col-md-1 text-center">
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center">Файли</div>
+                
+                
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr class="col-md-12">
+                                <td class="col-md-10"> <a href="{{url('/investor/image/'.$model["logo"]) }}"> {{$model["logo"]}}</a></td>
+                                <td class="col-md-1 text-center">
+                                    <a href="#"><i class="fa fa-edit"></i> </a>
+                                </td>
+                                <td class="col-md-1 text-center">
+                                    <input type="checkbox"> 
+                                </td>
+                            </tr>
+                            <tr class="col-md-12">
+                                <td class="col-md-10"> <a href="##">Present.ptt</a></td>
+                                <td class="col-md-1 text-center">
+                                    <a href="#"><i class="fa fa-edit"></i> </a>
+                                </td>
+                                <td class="col-md-1 text-center">
 
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
 
 
-                    </tbody>
+                        </tbody>
 
-                </table>
+                    </table>
 
-
+                </div>
             </div>
         </div>
 
@@ -92,22 +96,22 @@
                     <section class="container product-info">
 
 
-                        <h3 class="text-center">Назва інвестування</h3>
+                        <h4 class="text-center">Назва інвестування</h4>
                         <p>{{$model["investor_name"]}}</p>
                         <!--<h3>Контактні дані:</h3>
                         <p>{{ $model["investor_contacts"] }}</p>-->
-                        <h3 class="text-center">Етап проекту</h3>
+                        <h4 class="text-center">Етап проекту</h4>
                         <p>{{ $model["stage_project"]}}</p>
 
-                        <h3 class="text-center">Регіон інвестування</h3>
+                        <h4 class="text-center">Регіон інвестування</h4>
                         <p>{{ $model["region"] }} </p>
-                        <h3 class="text-center">Період реалізації інвестиційного проекту(у міс.)</h3>
+                        <h4 class="text-center">Період реалізації інвестиційного проекту(у міс.)</h4>
                         <p>{{ $model["duration_project"] }} </p>
-                        <h3 class="text-center">Термін повернення вкладених коштів(у міс.)</h3>
+                        <h4 class="text-center">Термін повернення вкладених коштів(у міс.)</h4>
                         <p> {{ $model["term_refund"]}} </p>
-                        <h3 class="text-center">Планова рентабельність проекту</h3>
+                        <h4 class="text-center">Планова рентабельність проекту</h4>
                         <p> {{ $model["plan_rent"] }} </p>
-                        <h3 class="text-center">Інше</h3>
+                        <h4 class="text-center">Інше</h4>
                         <p> {{ $model["other"] }} </p>
 
 
