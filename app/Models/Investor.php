@@ -40,4 +40,8 @@ class Investor extends Model
         'plan_rent',
         'economic_activities_id',
     ];
+
+    public function economicActivities(){
+        return $this->belongsTo('App\Models\EconomicActivities');
+    }
 }

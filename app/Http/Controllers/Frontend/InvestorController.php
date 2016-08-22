@@ -55,4 +55,9 @@ class InvestorController extends Controller
     public function update($id){
 
     }
+
+    public function show($id){
+        $model = Investor::findOrFail($id);
+        return view('frontend.investor.show', compact('model'));
+    }
 }
