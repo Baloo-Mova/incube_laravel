@@ -4,7 +4,7 @@
                 <div class="row footer ">
                     <div class="col-md-4 col-md-offset-4 text-center">
                         <div class="single-footer">
-                            <img src="../img/footer-logo.png" alt="" class="wow pulse" data-wow-delay="1s">
+                           <img src="{{url('/img/'.'footer-logo.png')}}" alt="" class="wow pulse" data-wow-delay="1s">
                             <p>Відкрита регіональна платформа науково виробничого партнерства.</p>
                         </div>
                     </div>
