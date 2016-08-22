@@ -17,6 +17,7 @@
     @endif
     <form method="POST" enctype="multipart/form-data" class="form-horizontal">
         {{ csrf_field() }}
+
         <div class="form-group">
             <label class="col-md-2 control-label" for="Назва інвестування">Назва інвестування:</label>
             <div class="col-md-10">
@@ -150,9 +151,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-success">Подати</button>
-        </div>
+            <button type="submit" class="btn btn-success col-md-offset-2">Подати</button>
     </form>
 </div>
 @stop

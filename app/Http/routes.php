@@ -23,6 +23,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::post('/create', ['uses'=> 'InvestorController@store', 'as' => 'investor.store']);
         Route::get('/edit/{id}',['uses'=> 'InvestorController@edit', 'as' => 'investor.edit']);
         Route::post('/edit/{id}',['uses'=> 'InvestorController@update', 'as' => 'investor.update']);
+        Route::get('/show/{id}',['uses'=>'InvestorController@show', 'as'=>'investor.show']);
     });
 
     Route::group(['prefix'=>'personal-area'], function (){
