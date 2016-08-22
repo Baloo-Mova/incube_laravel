@@ -35,7 +35,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{url('/')}}"><img src="../img/logo.png" alt=""></a>
+            <a class="navbar-brand" href="{{url('/')}}"><img src="{{url('/img/'.'logo.png')}}" alt=""></a>
         </div>
 
         @if(!Auth::check())

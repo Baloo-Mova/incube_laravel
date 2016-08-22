@@ -58,11 +58,11 @@
         </div>
 
         <div class="form-group">
-            <label class="col-md-2 control-label" for="region">Регіон інвестування:</label>
+            <label class="col-md-2 control-label" for="Галузь">Галузь:</label>
             <div class="col-md-10">
                 <div class="input-group">
                     <div class="input-group-addon">
-                        <i class="fa fa-crosshairs">
+                        <i class="glyphicon glyphicon-hand-up">
                         </i>
                     </div>
                     <select class="selectpickerjs-example-basic-single selectpicker form-control" style="display: none;"  name="economic_activities_id">
@@ -71,6 +71,19 @@
                         <option value="{{ $i }}" {{ ( old("economic_activities_id") == $i ? "selected":"") }}>{{ $item }}</option>
                         @endforeach
                     </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="region">Регіон інвестування:</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-crosshairs">
+                        </i>
+                    </div>
+                    <input type="text" value="{{ old('region') }}" name="region" class="form-control" id="text">
                 </div>
             </div>
         </div>

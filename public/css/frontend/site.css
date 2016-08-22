@@ -495,7 +495,7 @@ min-width: 480px) and (max-width: 767px){
     }
     @media (min-width: 768px){
         .homeSection-categories{
-          //  padding-top:60px
+            //  padding-top:60px
         }
     }
     .homeSection-categories .homeSection-categories-seeMoreDivider{
@@ -603,50 +603,50 @@ min-width: 480px) and (max-width: 767px){
         top:-50px;
         height:0px;
     }
-    
+
     .pic
-{
-     margin-top:50px; 
-     width:120px;
-     margin-left:50px;
-     margin-bottom:-60px;
-     
-}
+    {
+        margin-top:50px; 
+        width:120px;
+        margin-left:50px;
+        margin-bottom:-60px;
 
-.panel
-{
-    background-image:url("http://autoimagesize.com/wp-content/uploads/2014/01/rainbow-aurora-background-wallpaper-colour-images-rainbow-background.jpg"); 
-}
+    }
 
-.name
-{
-    position:absolute;
-    padding-left:200px;
-    font-size:30px;
-}
+    .panel
+    {
+        background-image:url("http://autoimagesize.com/wp-content/uploads/2014/01/rainbow-aurora-background-wallpaper-colour-images-rainbow-background.jpg"); 
+    }
 
-.dropdown
-{
-    position:absolute;
-}
+    .name
+    {
+        position:absolute;
+        padding-left:200px;
+        font-size:30px;
+    }
 
-.change
-{
- position:relative; 
- bottom:20px;
- padding:1px;
- color:white;
- text-decoration:none;
-}
+    .dropdown
+    {
+        position:absolute;
+    }
+
+    .change
+    {
+        position:relative; 
+        bottom:20px;
+        padding:1px;
+        color:white;
+        text-decoration:none;
+    }
 
 
-.change:hover
-{
- text-decoration:none;
- background-color:black;
- color:white;
-}
- .form-signin input[type="text"] {
+    .change:hover
+    {
+        text-decoration:none;
+        background-color:black;
+        color:white;
+    }
+    .form-signin input[type="text"] {
         margin-bottom: 5px;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
@@ -670,20 +670,21 @@ min-width: 480px) and (max-width: 767px){
         padding-top: 100px;
     }
     .img-responsive {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: auto;
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: auto;
     }
     .panel {
-    margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.75);
-    border: 1px solid transparent;
-    border-radius: 4px;
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+        margin-bottom: 20px;
+        background-color: rgba(255, 255, 255, 0.75);
+        //border: 1px solid transparent;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
     }
-    
- .reset-col {
-     width: 100% !important;
- }
+
+    .reset-col {
+        width: 100% !important;
+    }
+}
