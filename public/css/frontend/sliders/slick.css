@@ -89,7 +89,8 @@
 .slick-slide img
 {
     display: block;
-    width:250px;
+    width: 250px;
+    height: 300px;
 }
 .slick-slide.slick-loading img
 {
@@ -151,7 +152,7 @@
 
     width: 20px;
     height: 20px;
-    margin-top: -10px;
+    margin-top: 6px;
     padding: 0;
 
     cursor: pointer;

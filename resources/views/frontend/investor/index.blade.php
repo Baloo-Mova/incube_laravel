@@ -14,7 +14,7 @@
 
         <p>Якщо ви хочете виступити інвестором - заповніть наступну форму: </p>
         <div class="text-center">
-            <a href="{{ route('investor.create') }}" class="btn btn-lg btn-danger center">Заявка на инвестирование(перевести)
+            <a href="{{ route('investor.create') }}" class="btn btn-lg btn-danger center">Подати заявку
                 <span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
     </div>
@@ -48,12 +48,14 @@
                         <div class="row">
                             <div class="aa-popular-category-area">
                                 <!-- start prduct navigation -->
-                                <ul class="nav nav-tabs aa-products-tab">
+                                <div class="row" >
+                                <ul class="nav aa-products-tab">
                                     <li class="active">
                                         <a href="#popular" data-toggle="tab">Питання(проблеми) для вирішення</a></li>
                                     <li><a href="#featured" data-toggle="tab">Запроновані проекти</a></li>
 
                                 </ul>
+                                </div>
                                 <!-- Tab panes -->
                                 <div class="tab-content">
                                     <!-- Start popular problems -->

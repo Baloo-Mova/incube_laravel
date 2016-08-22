@@ -299,7 +299,7 @@ body{
 }
 
 .tab-content ul li {
-    margin-right: 14px;
+    margin: 0 20px;
     overflow: hidden;
 }
 .tab-content ul li:last-child{
@@ -1072,6 +1072,8 @@ li.active span.round-tabs.five{
 }
 
 .tab-content{
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .tab-pane{
     position: relative;
@@ -1101,7 +1103,7 @@ li.active span.round-tabs.five{
 @media (max-width : 585px){
 
     .board {
-        width: 90%;
+        //width: 90%;
         height:auto !important;
     }
     span.round-tabs {

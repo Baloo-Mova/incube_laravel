@@ -8,10 +8,10 @@
 
 <div class="content-area">
     <div class="container">
-        <div class="page-title text-center wow zoomInLeft" data-wow-delay="1s">
+        <div class="row page-title text-center wow zoomInLeft" data-wow-delay="1s">
             <h2>Про нас</h2>
         </div>
-        <div class="how-it-work">
+        <div class="row how-it-work">
 
 
             <div class="board"> 
@@ -173,7 +173,7 @@
 
                                         <!-- Tab panes -->
                                         <div class="tab-content">
-                                            <!-- Start popular problems -->
+                                            <!-- Start popular projects -->
                                             <div class="tab-pane fade in active" id="popular">
                                                 <ul class="aa-product-catg aa-popular-slider">
                                                     <!-- start single product item -->
@@ -186,7 +186,7 @@
                                                                 <a class="aa-product-img" href="#"><img src="../img/250n300.png" alt="polo shirt img"></a>
                                                                 <a class="aa-add-card-btn"href="#"><span class="glyphicon glyphicon-arrow-right"></span>Продивитись</a>
                                                                 <figcaption>
-                                                                    <h4 class="aa-product-title">Project </h4>
+                                                                    <h4 class="aa-product-title">Projects </h4>
                                                                     <!--<span class="aa-product-price">$<?= number_format(rand(60, 662000), 0, '.', '.') ?></span><span class="aa-product-price"><del>$65.50</del></span>-->
                                                                 </figcaption>
                                                             </figure>                     
@@ -196,9 +196,9 @@
                                                         </li>
                                                     <?php } ?>                                
                                                 </ul>
-                                                <a class="btn btn-success btn-lg" href="#">Усі проекти <span class="fa fa-long-arrow-right"></span></a>
+                                                <a class="btn btn-success btn-lg" href="#">Усі проекты <span class="fa fa-long-arrow-right"></span></a>
                                             </div>
-                                            <!-- / popular problem category -->
+                                            <!-- / popular projects category -->
                                         </div>
                                     </div>
                                 </div> 
@@ -267,37 +267,37 @@
                 <div class="homeSection-categories homeSection-subSection">
 
 
-    <div class="row page-title text-center wow bounce animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: bounce;">
+                    <div class="row page-title text-center wow bounce animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: bounce;">
 
-        <h2>Оберіть сферу діяльності</h2>
-    </div>
-
-
-
-    <div class="container odd wow fadeInLeft" data-wow-delay="1s">    
-        <div class="row">
-
-            <?php
-             for ($i=1;$i<14;$i++) {
-                //if($key->pid==NULL){
-                ?>
-
-                <a class="homeTile ng-isolate-scope" href="#" ga-event-on="click" ga-event-category="Homepage" ga-event-action="Explore" ga-event-label="Technology">
-                    <div class="homeTile-content" style="background-image: url('../img/eco_category/e<?= $i ?>.png')">
-                        <div class="homeTile-background"></div>
-                        <div class="homeTile-icon">    <svg class=""><use xmlns:xlink="" xlink:href="#icon-icon-technology"></use></svg>
-                        </div>
-                        <div class="homeTile-title">
-                            name
-                        </div>
+                        <h2>Оберіть сферу діяльності</h2>
                     </div>
-                </a>
-                <?php    }   ?> 
-        </div>
 
-    </div>
-</div>
-                
+
+
+                    <div class="container odd wow fadeInLeft" data-wow-delay="1s">    
+                        <div class="row">
+
+                            <?php
+                            for ($i = 1; $i < 14; $i++) {
+                                //if($key->pid==NULL){
+                                ?>
+
+                                <a class="homeTile ng-isolate-scope" href="#" ga-event-on="click" ga-event-category="Homepage" ga-event-action="Explore" ga-event-label="Technology">
+                                    <div class="homeTile-content" style="background-image: url('../img/eco_category/e<?= $i ?>.png')">
+                                        <div class="homeTile-background"></div>
+                                        <div class="homeTile-icon">    <svg class=""><use xmlns:xlink="" xlink:href="#icon-icon-technology"></use></svg>
+                                        </div>
+                                        <div class="homeTile-title">
+                                            name
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php } ?> 
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
 
         </div>
