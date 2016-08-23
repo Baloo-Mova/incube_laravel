@@ -494,11 +494,15 @@
         padding-right: 6px;
     }
     .main-nav {
-        padding-top: 14px;
+        //padding-top: 14px;
+    }
+    .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+        padding: 15px 6%;
+        
     }
     .button.navbar-right {
         padding-top: 16px;
-        padding-right: 25px;
+        padding-right: 15px;
     }
     .navbar-default .navbar-nav > li > a.active::after {
         //bottom: -15px;
@@ -645,6 +649,7 @@
         font-size: 13px;
     }
 
+    
 }
 
 @media (min-width: 969px) and (max-width: 1169px){

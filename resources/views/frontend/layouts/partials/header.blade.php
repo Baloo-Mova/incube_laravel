@@ -1,4 +1,4 @@
-<div class="navbar-fixed-top">
+<div class="navbar-fixed-top" role="navigation">
     <div class="header-connect">
         <div class="container-fluid">
             <div class="row">
@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-default">  <!--navbar-fixed-top-->
+    <div class="navbar navbar-default">  <!--navbar-fixed-top-->
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -42,7 +42,7 @@
         @include('frontend.layouts.partials.registered_buttons')
         @endif
 
-        <div class="collapse navbar-collapse js-navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
             <ul class="main-nav nav navbar-nav navbar-center">
                 <li class="" data-wow-delay="0s">
                     <a class="{{ (Request::is('/') ? 'active' : '') }}" href="{{url('/')}}">Головна</a></li>
@@ -118,6 +118,7 @@
                 <li class="" data-wow-delay="0.2s"><a href="{{url('/customer')}}">Замовнику</a></li>
                 <li class="" data-wow-delay="0.2s"><a href="{{url('/designer')}}">Проектанту</a></li>
                 <li class="" data-wow-delay="0.3s"><a href="{{url('/executor')}}">Виконавцю</a></li>
+                <li class="" data-wow-delay="0.3s"><a href="{{url('/employer')}}">Підприємцю</a></li>
                 <li class="" data-wow-delay="0.4s"><a href="{{url('/site/contact')}}">Контакти</a></li>
 
             </ul>
@@ -129,7 +130,7 @@
                 @endif
             </div>
         </div><!-- /.navbar-collapse -->
-    </nav>
+    </div>
 </div>
 {{--<div id="myModal" class="modal fade">--}}
 {{--<div class="modal-dialog">--}}

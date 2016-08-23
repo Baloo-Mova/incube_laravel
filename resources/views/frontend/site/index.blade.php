@@ -185,7 +185,7 @@
                                                             <figure>
                                                                 <a class="aa-product-img" href="#"><img src="../img/250n300.png" alt="polo shirt img"></a>
                                                                 <a class="aa-add-card-btn"href="#"><span class="glyphicon glyphicon-arrow-right"></span>Продивитись</a>
-                                                                <figcaption>
+                                                                <figcaption class="aa-content">
                                                                     <h4 class="aa-product-title">Projects </h4>
                                                                     <!--<span class="aa-product-price">$<?= number_format(rand(60, 662000), 0, '.', '.') ?></span><span class="aa-product-price"><del>$65.50</del></span>-->
                                                                 </figcaption>
@@ -238,7 +238,7 @@
                                                                 <figure>
                                                                     <a class="aa-product-img" href="#"><img src="../img/250n300.png" alt="polo shirt img"></a>
                                                                     <a class="aa-add-card-btn"href="#"><span class="glyphicon glyphicon-arrow-right"></span>Продивитись</a>
-                                                                    <figcaption>
+                                                                    <figcaption class="aa-content">
                                                                         <h4 class="aa-product-title">Питання </h4>
                                                                         <!--<span class="aa-product-price">$<?= number_format(rand(60, 662000), 0, '.', '.') ?></span><span class="aa-product-price"><del>$65.50</del></span>-->
                                                                     </figcaption>
