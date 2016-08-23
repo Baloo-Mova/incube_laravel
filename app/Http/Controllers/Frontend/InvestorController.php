@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
@@ -49,11 +50,31 @@ class InvestorController extends Controller
 
     }
     public function edit($id){
-//        $investor = Investor::findOrFail($id);
-
+        $investor = Investor::findOrFail($id);
+        $economicActivities = EconomicActivities::pluck('name', 'id');
+        return view('frontend.investor.edit', compact('investor','economicActivities'));
     }
-    public function update($id){
+    public function update(Request $request,$id){
+        $this->validate($request,[
+            'investor_name' => 'required',
+            'investor_contacts'=>'required',
+            'investor_cost' => 'numeric',
+        ],[
+            'investor_name.required' => 'Поле инвестора обязательно к заполнению;',
+            'investor_contacts.required' => 'Поле контактов инвестора обязательно к заполнению;',
+            'investor_cost.numeric' => 'Поле суммы инвестиций должно быть числом;',
+        ]);
 
+        $investor = Investor::findOrFail($id);
+        $investor->fill($request->all());
+// нужно удалять файл
+        if($request->file('logo_img_file')){
+            $filename       = uniqid().'.'.$request->file('logo_img_file')->getClientOriginalExtension();
+            $image          = Image::make($request->file('logo_img_file'))->resize(250, 300)->save(storage_path('app/investor/images/'.$filename));
+            $investor->logo = $filename;
+        }
+        $investor->save();
+        return back()->with(['message'=>'Edit successful']);
     }
 
     public function show($id){

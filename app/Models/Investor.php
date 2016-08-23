@@ -39,6 +39,8 @@ class Investor extends Model
         'term_refund',
         'plan_rent',
         'economic_activities_id',
+        'other',
+        'status',
     ];
 
     public function economicActivities(){
