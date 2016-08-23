@@ -651,7 +651,12 @@
 
     
 }
-
+@media (min-width: 986px) and (max-width: 1021px){
+    
+    .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    padding: 31px 6% 0px 6%;
+}
+}
 @media (min-width: 969px) and (max-width: 1169px){
 body {
     padding-top: 200px;

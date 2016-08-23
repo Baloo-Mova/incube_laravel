@@ -13,5 +13,13 @@ class SiteController extends Controller
         return view('frontend.site.index');
     }
 
-    
+     public function contacts(){
+        return view('frontend.site.contacts');
+    }
+    public function about(){
+        return view('frontend.site.about');
+    }
+    public function ourrules(){
+        return view('frontend.site.rules');
+    }
 }

@@ -13,9 +13,9 @@
 
 Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/', ['uses' => 'SiteController@index', 'as' => 'site.index']);
-    Route::get('site/about', ['uses' => 'AboutController@index', 'as' => 'about.index']);
-    Route::get('site/contacts', ['uses' => 'ContactsController@index', 'as' => 'contacts.index']);
-    Route::get('site/rules', ['uses' => 'OurRulesController@index', 'as' => 'ourrules.index']);
+    Route::get('/about', ['uses' => 'SiteController@about', 'as' => 'site.about']);
+    Route::get('/contacts', ['uses' => 'SiteController@contacts', 'as' => 'site.contacts']);
+    Route::get('/rules', ['uses' => 'SiteController@ourrules', 'as' => 'site.ourrules']);
 
     Route::group(['prefix' => 'investor'], function () {
         Route::get('/', ['uses' => 'InvestorController@index', 'as' => 'investor.index']);
