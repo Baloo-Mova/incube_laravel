@@ -8,9 +8,9 @@ $(document).ready(function() {
  
   $("#bg-slider").owlCarousel({
       navigation : false, // Show next and prev buttons
-      slideSpeed : 100,
-      autoPlay: 5000,
-      paginationSpeed : 100,
+      slideSpeed : 1000,
+      autoPlay: 10000,
+      paginationSpeed : 1000,
       singleItem:true,
       mouseDrag: false,
       transitionStyle : "fade"
@@ -25,9 +25,9 @@ $(document).ready(function() {
 
   $("#testimonial-slider").owlCarousel({
       navigation : false, // Show next and prev buttons
-      slideSpeed : 100,
+      slideSpeed : 1000,
       pagination : true,
-      paginationSpeed : 100,
+      paginationSpeed : 1000,
       singleItem:true,
       mouseDrag: false,
       transitionStyle : "goDown"

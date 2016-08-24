@@ -37,10 +37,7 @@
             </button>
             <a class="navbar-brand" href="{{url('/')}}"><img src="{{url('/img/'.'logo.png')}}" alt=""></a>
         </div>
-
-        @if(!Auth::check())
-        @include('frontend.layouts.partials.registered_buttons')
-        @endif
+            @include('frontend.layouts.partials.registered_buttons')
 
         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
             <ul class="main-nav nav navbar-nav navbar-center">
@@ -122,26 +119,6 @@
                 <li class="" data-wow-delay="0.4s"><a href="{{url('/site/contact')}}">Контакти</a></li>
 
             </ul>
-            <div class="button navbar-right">
-                @if(Auth::check())
-                <a href="{{url('/personal-area')}}" class="btn navbar-btn nav-button wow bounceInRight login">
-                    <span class="glyphicon glyphicon-home"></span> Особистий кабінет
-                </a>
-                @endif
-            </div>
         </div><!-- /.navbar-collapse -->
     </div>
 </div>
-{{--<div id="myModal" class="modal fade">--}}
-{{--<div class="modal-dialog">--}}
-{{--<div class="modal-content">--}}
-{{--<div class="modal-header">--}}
-{{--<button type="button" class="close" data-dismiss="modal">x</button>--}}
-{{--<div class="row-fluid user-row">--}}
-{{--<img src="../img/logo.png" class="img-responsive" alt="log"/>--}}
-{{--</div>--}}
-{{--<h3 style="text-align: center;">Реєстрація</h3>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}

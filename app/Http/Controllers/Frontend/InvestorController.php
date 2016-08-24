@@ -6,11 +6,8 @@ use App\Models\EconomicActivities;
 use App\Models\Investor;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class InvestorController extends Controller

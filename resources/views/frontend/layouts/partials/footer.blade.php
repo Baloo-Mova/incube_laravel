@@ -1,4 +1,4 @@
-<div class="navbar-bottom row-fluid">
+<div class="navbar-bottom row-fluid this-is-my-footer">
         <div class="footer-area">
             <div class="container">
                 <div class="row footer ">

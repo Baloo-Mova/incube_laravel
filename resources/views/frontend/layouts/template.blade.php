@@ -13,9 +13,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <body>
 
 @include('frontend.layouts.partials.header')
-
+<div class="page-content">
     @yield('content')
-
+</div>
 
 @include('frontend.layouts.partials.footer')
 <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
