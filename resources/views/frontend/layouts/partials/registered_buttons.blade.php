@@ -1,4 +1,9 @@
 <div class="button navbar-right">
-    <a href="" class="btn navbar-btn nav-button" data-wow-delay="0.8s" data-toggle="modal" data-target="#myModal">Реєстрація</a>
-    <a href="{{url('/')}}" class="btn navbar-btn nav-button login" data-wow-delay="0.6s">Вхід</a>
+    @if(!Auth::check())
+    <a href="{{ url('/register') }}" class="btn navbar-btn nav-button">Реєстрація</a>
+    <a href="{{url('/login')}}" class="btn navbar-btn nav-button login">Вхід</a>
+        @else
+        <a href="{{ url('/personal-area') }}" class="btn navbar-btn nav-button">Личный кабинет</a>
+        <a href="{{url('/logout')}}" class="btn navbar-btn nav-button login">Выход</a>
+    @endif
 </div>
