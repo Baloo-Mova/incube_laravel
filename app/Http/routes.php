@@ -11,6 +11,8 @@
 |
 */
 
+use App\User;
+
 Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/', ['uses' => 'SiteController@index', 'as' => 'site.index']);
     Route::get('/about', ['uses' => 'SiteController@about', 'as' => 'site.about']);
@@ -30,7 +32,6 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/',['uses'=>'PersonalAreaController@index', 'as'=>'personal_area.index']);
     });
 });
-
 
 Route::get('/investor/image/{filename}', function($filename)
 {
