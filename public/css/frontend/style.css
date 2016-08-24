@@ -1,7 +1,7 @@
 html, body {
     font-family: 'Open Sans', sans-serif;
     //min-height: 700px;
-    margin-bottom: 100px;
+   // margin-bottom: 100px;
     height:100%;
 }
 .btn-toolbar .title {
@@ -624,7 +624,7 @@ blockquote {
     font-weight: 800;
 }
 body {
-    padding-top: 170px;
+    padding-top: 150px;
     overflow: hidden;
 }
 
