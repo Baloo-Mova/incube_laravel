@@ -73,7 +73,11 @@ class InvestorController extends Controller
         $model->author_id = Auth::check() ? Auth::user()->id : $user->id;
         $model->save();
 
-        return redirect(route('personal_area.index'));
+        if (!Auth::check() && Auth::attempt(['email' => $email, 'password' => $pass])) {
+            return redirect(route('personal_area.index'));
+        }
+
+        return redirect(route('investor.index'));
     }
 
     public function edit($id)

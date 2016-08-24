@@ -176,7 +176,7 @@
         //    });
         $("#file_up").fileinput({
             'showUpload'          : false,
-            'previewFileType'     : 'any',
+            'previewFileType'     : 'image',
             'allowedFileTypes'    : ['image'],
             'initialPreview'      : [
                @if(!empty($investor->logo)) '{{url('/investor/image/'.$investor->logo)}}' @endif,
