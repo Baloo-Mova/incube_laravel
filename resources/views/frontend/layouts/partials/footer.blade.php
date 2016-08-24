@@ -1,5 +1,5 @@
-<div class="navbar-bottom row-fluid">
-        <div class="footer-area">
+
+        <div class="footer-area" id="footer">
             <div class="container">
                 <div class="row footer ">
                     <div class="col-md-4 col-md-offset-4 text-center">
@@ -30,4 +30,3 @@
                 </div>
             </div>
         </div>
-</div>
