@@ -6,7 +6,7 @@
         <h2>Заявка інвестора. Ідентифікаційний номер: {{ $model->id }}</h2>
     </div>
 
-    <div id="content" class="project-viewer-content">
+    <div class="project-viewer-content">
         <div class="panel panel-primary">
             <div class="panel-body"><h3 class="text-center" style="color: #00aeef">{{ $model["investor_name"]}}</h3>
             </div>
