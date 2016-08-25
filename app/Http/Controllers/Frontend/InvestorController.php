@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Mail;
 
 class InvestorController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('owner:investor', ['only' => ['edit', 'update']]);
+    }
+
     public function index()
     {
         $investProjects = Investor::orderBy('id', 'desc')->take(10)->get();
@@ -80,15 +86,13 @@ class InvestorController extends Controller
         return redirect(route('investor.index'));
     }
 
-    public function edit($id)
+    public function edit(Investor $investor)
     {
-        $investor           = Investor::findOrFail($id);
         $economicActivities = EconomicActivities::pluck('name', 'id');
-
         return view('frontend.investor.edit', compact('investor', 'economicActivities'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Investor $investor)
     {
         $this->validate($request, [
             'investor_name'     => 'required',
@@ -100,7 +104,6 @@ class InvestorController extends Controller
             'investor_cost.numeric'      => 'Поле суммы инвестиций должно быть числом;',
         ]);
 
-        $investor = Investor::findOrFail($id);
         $investor->fill($request->all());
         // Нужно удалять файл
         if ($request->file('logo_img_file')) {
@@ -114,10 +117,8 @@ class InvestorController extends Controller
         return back()->with(['message' => 'Edit successful']);
     }
 
-    public function show($id)
+    public function show(Investor $investor)
     {
-        $model = Investor::findOrFail($id);
-
-        return view('frontend.investor.show', compact('model'));
+        return view('frontend.investor.show', compact('investor'));
     }
 }

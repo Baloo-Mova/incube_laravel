@@ -19,23 +19,6 @@
         </div>
     </div>
     <hr/>
-    {{--<div class="row">--}}
-    {{--<div class="well well-sm">--}}
-
-    {{--<div class="btn-group">--}}
-
-    {{--</div>--}}
-
-    {{--<div class="col-xs-4 col-sm-4 col-md-4">--}}
-
-    {{--<select>--}}
-    {{--<option>Filter</option>--}}
-    {{--</select>--}}
-
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--<hr/>--}}
     <div class="row page-title text-center">
         <h2>Інвестор може вкласти кошти у наступне</h2>
     </div>

@@ -3,27 +3,28 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
-class PostOwner
+class AbortIfNotOwner
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure                 $next
+     *
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $project)
     {
+        if (!Auth::check()) {
+            abort(401, 'Вы не авторизованы...');
+        }
 
+        if (Auth::user()->id != $request->$project->author_id) {
+            abort('401','Вы не создатель...');
+        }
 
-
-        dd();
-
-        $n = $next($request);
-
-
-
-        return $n;
+        return $next($request);
     }
 }

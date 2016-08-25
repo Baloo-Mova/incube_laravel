@@ -23,9 +23,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/', ['uses' => 'InvestorController@index', 'as' => 'investor.index']);
         Route::get('/create', ['uses' => 'InvestorController@create', 'as' => 'investor.create']);
         Route::post('/create', ['uses'=> 'InvestorController@store', 'as' => 'investor.store']);
-        Route::get('/edit/{id}',['uses'=> 'InvestorController@edit', 'as' => 'investor.edit']);
-        Route::post('/edit/{id}',['uses'=> 'InvestorController@update', 'as' => 'investor.update']);
-        Route::get('/show/{id}',['uses'=>'InvestorController@show', 'as'=>'investor.show']);
+        Route::get('/edit/{investor}',['uses'=> 'InvestorController@edit', 'as' => 'investor.edit']);
+        Route::post('/edit/{investor}',['uses'=> 'InvestorController@update', 'as' => 'investor.update']);
+        Route::get('/show/{investor}',['uses'=>'InvestorController@show', 'as'=>'investor.show']);
     });
     
     Route::group(['prefix' => 'customer'], function () {
