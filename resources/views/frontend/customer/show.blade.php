@@ -73,11 +73,11 @@
 
 
             <div class="btn-group pull-right">
-                <a href="#" class="btn btn-primary"> <span><i class="fa fa-dollar"></i> Запропонувати проект</span> </a>
+                <a href="#" class="btn btn-primary"> <span><i class="fa fa-dollar"></i> Інвестувати </span> </a>
             </div>
 
             <div class="btn-group pull-right">
-                <a href="#" class="btn btn-primary"> <span><i class="fa fa-user"></i> Прийняти участь</span> </a>
+                <a href="#" class="btn btn-primary"> <span><i class="fa fa-user"></i> Запропонувати проект</span> </a>
             </div>
 
         </div>

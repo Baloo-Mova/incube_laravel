@@ -91,7 +91,7 @@ class CustomerController extends Controller {
         ]);
         
 
-        $customer = Custumer::findOrFail($id);
+        $customer = Customer::findOrFail($id);
         $customer->fill($request->all());
         // Нужно удалять файл
         if ($request->file('logo_img_file')) {
