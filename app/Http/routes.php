@@ -27,6 +27,15 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::post('/edit/{id}',['uses'=> 'InvestorController@update', 'as' => 'investor.update']);
         Route::get('/show/{id}',['uses'=>'InvestorController@show', 'as'=>'investor.show']);
     });
+    
+    Route::group(['prefix' => 'customer'], function () {
+        Route::get('/', ['uses' => 'CustomerController@index', 'as' => 'customer.index']);
+        Route::get('/create', ['uses' => 'CustomerController@create', 'as' => 'customer.create']);
+        Route::post('/create', ['uses'=> 'CustomerController@store', 'as' => 'customer.store']);
+        Route::get('/edit/{id}',['uses'=> 'CustomerController@edit', 'as' => 'customer.edit']);
+        Route::post('/edit/{id}',['uses'=> 'CustomerController@update', 'as' => 'customer.update']);
+        Route::get('/show/{id}',['uses'=>'CustomerController@show', 'as'=>'customer.show']);
+    });
 
     Route::group(['prefix'=>'personal-area'], function (){
         Route::get('/',['uses'=>'PersonalAreaController@index', 'as'=>'personal_area.index']);

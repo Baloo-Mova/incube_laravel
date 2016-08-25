@@ -3,12 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row page-title text-center">
-        <h2>Заявка інвестора. Ідентифікаційний номер: {{ $model->id }}</h2>
+        <h2>Заявка на вирішення питання(проблеми). Ідентифікаційний номер: {{ $model->id }}</h2>
     </div>
 
     <div class="project-viewer-content">
         <div class="panel panel-primary">
-            <div class="panel-body"><h3 class="text-center" style="color: #00aeef">{{ $model["investor_name"]}}</h3>
+            <div class="panel-body"><h3 class="text-center" style="color: #00aeef">{{ $model["problem_name"]}}</h3>
             </div>
         </div>
     </div>
@@ -23,50 +23,20 @@
         </div> 
         <div class="col-md-6">
             <div class="panel panel-primary one-row-pannel">
-                <div class="panel-heading text-center">Регіон інвестування</div>
+                <div class="panel-heading text-center">Регіон</div>
                 <div class="panel-body text-center">{{ $model->region }}
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="panel panel-primary one-row-pannel">
-                <div class="panel-heading text-center">Етап проекту</div>
+                <div class="panel-heading text-center">Опис питання</div>
                 <div class="panel-body text-center">
-                    {{ $model->stage_project }}
+                    {{$model->problem_description}}
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="panel panel-primary one-row-pannel">
-                <div class="panel-heading text-center">Планова рентабельність проекту</div>
-                <div class="panel-body text-center">{{ $model->plan_rent }}
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-primary one-row-pannel">
-                <div class="panel-heading text-center">Сума, яку готові інвестувати</div>
-                <div class="panel-body text-center">
-                    <?= number_format($model["investor_cost"], 0, '.', ' ') ?> $
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="panel panel-primary one-row-pannel">
-                <div class="panel-heading text-center">Період реалізації інвестиційного проекту</div>
-                <div class="panel-body text-center">{{$model->duration_project}}
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="panel panel-primary one-row-pannel">
-                <div class="panel-heading text-center">Термін повернення вкладених коштів</div>
-                <div class="panel-body text-center">{{ $model->term_refund }}
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     <!--<div class="row">
