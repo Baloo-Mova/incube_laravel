@@ -47,5 +47,9 @@ Route::get('/investor/image/{filename}', function($filename)
     $img = Image::make(storage_path('app/investor/images/'.$filename))->resize(300, 300);
     return $img->response('jpg');
 });
-
+Route::get('/customer/image/{filename}', function($filename)
+{
+    $img = Image::make(storage_path('app/customer/images/'.$filename))->resize(300, 300);
+    return $img->response('jpg');
+});
 Route::auth();
