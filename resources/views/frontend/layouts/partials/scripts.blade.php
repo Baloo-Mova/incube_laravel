@@ -1,3 +1,4 @@
+<script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
 <script src="{{ asset("js/frontend/vendor/modernizr-2.6.2.min.js") }}" type="text/javascript"></script>
 <script src="{{ asset("js/frontend/bootstrap.min.js") }}" type="text/javascript"></script>
 <script src="{{ asset("js/frontend/wow.js") }}" type="text/javascript"></script>

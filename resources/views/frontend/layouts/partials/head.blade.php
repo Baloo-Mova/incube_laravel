@@ -3,13 +3,12 @@
 <link href="{{ asset("css/frontend/fontello.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/frontend/animate.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/frontend/bootstrap.min.css") }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset("css/frontend/bootstrap.theme.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/frontend/font-awesome.min.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/frontend/owl.carousel.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/frontend/owl.theme.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/frontend/owl.transitions.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/frontend/style.css") }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset("css/frontend/responsive.css") }}" rel="stylesheet" type="text/css"/>
+{{--<link href="{{ asset("css/frontend/responsive.css") }}" rel="stylesheet" type="text/css"/>--}}
 <link href="{{ asset("css/frontend/sliders/slick.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/frontend/sliders/theme-color/default-theme.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/frontend/sliders/style.css") }}" rel="stylesheet" type="text/css"/>

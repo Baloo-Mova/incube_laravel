@@ -21,7 +21,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             @include('frontend.layouts.partials.footer')
 
         </div>
-        <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
         @include('frontend.layouts.partials.scripts')
     </body>
 </html>

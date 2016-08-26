@@ -1,16 +1,14 @@
-<div class="navbar-fixed-top" role="navigation">
+<div id="header" class="navbar-fixed-top navbar-fixed-top-size" role="navigation">
     <div class="header-connect">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-5 col-sm-8 col-xs-8">
-                    <div class="header-half header-call">
-                        <p>
-                            <i class="fa fa-phone"></i><span>  +777 7777 7777</span>
-                            <i class="fa fa-envelope-o"></i><span> incube.zp@gmail.com</span>
-                        </p>
+                <div class="col-md-5 col-sm-8 col-xs-12 text-center">
+                    <div class="header-call">
+                        <i class="fa fa-phone"></i><span>  +777 7777 7777</span>
+                        <i class="fa fa-envelope-o"></i><span> incube.zp@gmail.com</span>
                     </div>
                 </div>
-                <div class="col-md-2 col-md-offset-5  col-sm-3 col-sm-offset-1  col-xs-3  col-xs-offset-1">
+                <div class="col-md-2 col-md-offset-5  col-sm-3 col-sm-offset-1 hidden-xs">
                     <div class="header-half header-social">
                         <ul class="list-inline">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -25,27 +23,29 @@
             </div>
         </div>
     </div>
-
-    <div class="navbar navbar-default">  <!--navbar-fixed-top-->
-        <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar navbar-default">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{url('/')}}"><img src="{{url('/img/'.'logo.png')}}" alt=""></a>
+            <div class="nav-logo">
+                 <a class="navbar-brand" href="{{url('/')}}"><img src="{{url('/img/'.'logo.png')}}" alt=""> &nbsp;</a>
+            </div>
+            <div class="nav-toggle">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
         </div>
-            @include('frontend.layouts.partials.registered_buttons')
-
-        <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="main-nav nav navbar-nav navbar-center">
                 <li class="" data-wow-delay="0s">
-                    <a class="{{ (Request::is('/') ? 'active' : '') }}" href="{{url('/')}}">Головна</a></li>
-                <li class=" dropdown mega-dropdown">
-                    <a href="#" class="dropdown-toggle  {{ (Request::is('/projects') ? 'active' : '') }}" data-wow-delay="0s" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Проекти
-                        <span class="caret"></span></a>
+                    <a class="{{ (Request::is('/') ? 'active' : '') }}" href="{{url('/')}}">Головна</a>
+                </li>
+                <li class="dropdown mega-dropdown">
+                    <a href="#" class="dropdown-toggle  {{ (Request::is('/projects') ? 'active' : '') }}" data-wow-delay="0s" data-toggle="dropdown">
+                        Проекти <b class="caret"></b>
+                    </a>
                     <ul class="dropdown-menu mega-dropdown-menu">
                         <li class="col-sm-2">
                             <ul>
@@ -107,18 +107,34 @@
                                 <li class="divider"></li>
                             </ul>
                         </li>
-
                     </ul>
                 </li>
-
-                <li class="" data-wow-delay="0.2s"><a href="{{url('/investor')}}">Інвестору</a></li>
-                <li class="" data-wow-delay="0.2s"><a href="{{url('/customer')}}">Замовнику</a></li>
-                <li class="" data-wow-delay="0.2s"><a href="{{url('/designer')}}">Проектанту</a></li>
-                <li class="" data-wow-delay="0.3s"><a href="{{url('/executor')}}">Виконавцю</a></li>
-                <li class="" data-wow-delay="0.3s"><a href="{{url('/employer')}}">Підприємцю</a></li>
-                <li class="" data-wow-delay="0.4s"><a href="{{url('/site/contact')}}">Контакти</a></li>
-
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle  {{ (Request::is('/projects') ? 'active' : '') }}" data-wow-delay="0s" data-toggle="dropdown">
+                        Роли<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="" data-wow-delay="0.2s"><a href="{{url('/investor')}}">Інвестору</a></li>
+                        <li class="" data-wow-delay="0.2s"><a href="{{url('/customer')}}">Замовнику</a></li>
+                        <li class="" data-wow-delay="0.2s"><a href="{{url('/designer')}}">Проектанту</a></li>
+                        <li class="" data-wow-delay="0.3s"><a href="{{url('/executor')}}">Виконавцю</a></li>
+                        <li class="" data-wow-delay="0.3s"><a href="{{url('/employer')}}">Підприємцю</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{url('/contacts')}}">Контакти</a></li>
+                <li><a href="{{url('/about')}}">О нас</a></li>
+                <li><a href="{{url('/rules')}}">Правила</a></li>
+            </ul>
+            <ul class="main-nav nav navbar-nav navbar-right">
+                @if(!Auth::check())
+                    <li class="" data-wow-delay="0.2s"><a href="{{ url('/register') }}">Реєстрація</a></li>
+                    <li class="" data-wow-delay="0.2s"><a href="{{url('/login')}}">Вхід</a></li>
+                @else
+                    <li class="" data-wow-delay="0.2s"><a href="{{ url('/personal-area') }}">Личный кабинет</a></li>
+                    <li class="" data-wow-delay="0.2s"><a href="{{url('/logout')}}">Выход</a></li>
+                @endif
             </ul>
         </div><!-- /.navbar-collapse -->
     </div>
 </div>
+<div class="navbar-delimiter"></div>
