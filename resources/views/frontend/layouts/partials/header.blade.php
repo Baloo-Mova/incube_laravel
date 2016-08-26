@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="col-md-5 col-sm-8 col-xs-12 text-center">
                     <div class="header-call">
-                        <i class="fa fa-phone"></i><span>  +777 7777 7777</span>
-                        <i class="fa fa-envelope-o"></i><span> incube.zp@gmail.com</span>
+                        <i class="glyphicon glyphicon-earphone"></i><span>  +777 7777 7777</span>
+                        <i class="glyphicon glyphicon-envelope"></i><span> incube.zp@gmail.com</span>
                     </div>
                 </div>
                 <div class="col-md-2 col-md-offset-5  col-sm-3 col-sm-offset-1 hidden-xs">
@@ -26,7 +26,7 @@
     <div class="navbar navbar-default">
         <div class="navbar-header">
             <div class="nav-logo">
-                 <a class="navbar-brand" href="{{url('/')}}"><img src="{{url('/img/'.'logo.png')}}" alt=""> &nbsp;</a>
+                <a class="navbar-brand" href="{{url('/')}}"><img src="{{url('/img/'.'logo.png')}}" alt=""> &nbsp;</a>
             </div>
             <div class="nav-toggle">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -109,29 +109,45 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown mega-dropdown">
                     <a href="#" class="dropdown-toggle  {{ (Request::is('/projects') ? 'active' : '') }}" data-wow-delay="0s" data-toggle="dropdown">
-                        Роли<b class="caret"></b>
+                        Користувачу<b class="caret"></b>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li class="" data-wow-delay="0.2s"><a href="{{url('/investor')}}">Інвестору</a></li>
-                        <li class="" data-wow-delay="0.2s"><a href="{{url('/customer')}}">Замовнику</a></li>
-                        <li class="" data-wow-delay="0.2s"><a href="{{url('/designer')}}">Проектанту</a></li>
-                        <li class="" data-wow-delay="0.3s"><a href="{{url('/executor')}}">Виконавцю</a></li>
-                        <li class="" data-wow-delay="0.3s"><a href="{{url('/employer')}}">Підприємцю</a></li>
+                   
+                    <ul class="dropdown-menu mega-dropdown-menu">
+                        
+                        <li class="col-sm-2 col-sm-offset-1">
+
+                            <a href="{{url('/investor')}}" class="dropdown-header">Інвестору</a>
+
+                        </li>
+                        <li class="col-sm-2">
+                            <a href="{{url('/customer')}}" class="dropdown-header">Замовнику</a>
+                        </li>
+                        <li class="col-sm-2">
+                            <a href="{{url('/designer')}}" class="dropdown-header">Проектанту</a>
+                        </li>
+                        <li class="col-sm-2">
+                            <a href="{{url('/executor')}}" class="dropdown-header">Виконавцю</a>
+                        </li>
+                        <li class="col-sm-2">
+                            <a href="{{url('/employer')}}" class="dropdown-header">Підприємцю</a>
+                        </li>
+
                     </ul>
+                    
                 </li>
                 <li><a href="{{url('/contacts')}}">Контакти</a></li>
-                <li><a href="{{url('/about')}}">О нас</a></li>
+                <li><a href="{{url('/about')}}">Про нас</a></li>
                 <li><a href="{{url('/rules')}}">Правила</a></li>
             </ul>
             <ul class="main-nav nav navbar-nav navbar-right">
                 @if(!Auth::check())
-                    <li class="" data-wow-delay="0.2s"><a href="{{ url('/register') }}">Реєстрація</a></li>
-                    <li class="" data-wow-delay="0.2s"><a href="{{url('/login')}}">Вхід</a></li>
+                <li class=""><a href="{{ url('/register') }}">Реєстрація</a></li>
+                <li class=""><a href="{{url('/login')}}">Вхід</a></li>
                 @else
-                    <li class="" data-wow-delay="0.2s"><a href="{{ url('/personal-area') }}">Личный кабинет</a></li>
-                    <li class="" data-wow-delay="0.2s"><a href="{{url('/logout')}}">Выход</a></li>
+                <li class=""><a href="{{ url('/personal-area') }}">Особистий кабінет</a></li>
+                <li class=""><a href="{{url('/logout')}}">Вихід</a></li>
                 @endif
             </ul>
         </div><!-- /.navbar-collapse -->
