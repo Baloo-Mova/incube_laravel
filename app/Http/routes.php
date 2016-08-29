@@ -36,6 +36,15 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::post('/edit/{id}',['uses'=> 'CustomerController@update', 'as' => 'customer.update']);
         Route::get('/show/{id}',['uses'=>'CustomerController@show', 'as'=>'customer.show']);
     });
+    
+    Route::group(['prefix' => 'executor'], function () {
+        Route::get('/', ['uses' => 'ExecutorController@index', 'as' => 'executor.index']);
+        Route::get('/create', ['uses' => 'ExecutorController@create', 'as' => 'executor.create']);
+        Route::post('/create', ['uses'=> 'ExecutorController@store', 'as' => 'executor.store']);
+        Route::get('/edit/{id}',['uses'=> 'ExecutorController@edit', 'as' => 'executor.edit']);
+        Route::post('/edit/{id}',['uses'=> 'ExecutorController@update', 'as' => 'executor.update']);
+        Route::get('/show/{id}',['uses'=>'ExecutorController@show', 'as'=>'executor.show']);
+    });
 
     Route::group(['prefix'=>'personal-area'], function (){
         Route::get('/',['uses'=>'PersonalAreaController@index', 'as'=>'personal_area.index']);
@@ -54,6 +63,12 @@ Route::get('/investor/image/{filename}', function($filename)
 Route::get('/customer/image/{filename}', function($filename)
 {
     $img = Image::make(storage_path('app/customer/images/'.$filename))->resize(300, 300);
+    return $img->response('jpg');
+});
+
+Route::get('/executor/image/{filename}', function($filename)
+{
+    $img = Image::make(storage_path('app/executor/images/'.$filename))->resize(300, 300);
     return $img->response('jpg');
 });
 Route::auth();
