@@ -6,15 +6,9 @@
         <div class="row page-title text-center">
             <h2>Про Нас</h2>
         </div>
-        <div>
-            <p> Text</p>
-            <h1> Txt</h1>
-            
+        <div id="slider1" data-name="Investor">
+
         </div>
-
-
-
-        
     </div>
     <!-- end container-->
 </div> 
@@ -25,4 +19,22 @@
 @stop
 
 @section('js')
+    <script>
+        $(document).ready(function() {
+            $("#slider1").owlCarousel({
+                jsonPath : '{{ url('api/json') }}/'+$("#slider1").data('name'),
+                jsonSuccess : customDataSuccess
+            });
+
+            function customDataSuccess(data){
+                var content = "";
+                console.log(data);
+                for(var i in data["items"]){
+                    content += "<img src=\"" +img+ "\" alt=\"" +alt+ "\">"
+                }
+                $("#slider1").html(content);
+            }
+
+        });
+    </script>
 @stop

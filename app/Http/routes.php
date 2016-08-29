@@ -42,6 +42,10 @@ Route::group(['namespace' => 'Frontend'], function () {
     });
 });
 
+Route::group(['namespace'=>'Api', 'prefix'=>'api'],function(){
+    Route::get('/json/{model}',['uses'=>'JsonController@index', 'as'=>'json.get']);
+});
+
 Route::get('/investor/image/{filename}', function($filename)
 {
     $img = Image::make(storage_path('app/investor/images/'.$filename))->resize(300, 300);

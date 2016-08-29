@@ -9,7 +9,12 @@ use App\Http\Controllers\Controller;
 
 class PersonalAreaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
-        return "ВЫ В ЛИЧНОМ КАБИНЕТЕ !!!!";
+        return view('frontend.personal_area.index');
     }
 }

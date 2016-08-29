@@ -22,7 +22,7 @@
         @endif
         <form method="POST" enctype="multipart/form-data" class="form-horizontal">
             {{ csrf_field() }}
-            <div class="form-group">
+            <div class="form-group {{ $errors->has('investor_name')?'has-error':'' }}">
                 <label class="col-md-2 control-label" for="Назва інвестування">Назва інвестування:</label>
                 <div class="col-md-10">
                     <div class="input-group">
@@ -31,6 +31,9 @@
                             </i>
                         </div>
                         <input type="text" value="{{ $investor->investor_name }}" name="investor_name" class="form-control" id="text">
+                        @if($errors->has('investor_name'))
+                            <span class="control-label"> {{ $errors->first('investor_name') }}</span>
+                            @endif
                     </div>
                 </div>
             </div>

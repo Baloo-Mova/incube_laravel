@@ -33,7 +33,7 @@
                 </div>
             @endif
 
-            <div class="form-group">
+            <div class="form-group {{ $errors->has('investor_name')?'has-error':'' }}">
                 <label class="col-md-2 control-label" for="Назва інвестування">Назва інвестування:</label>
                 <div class="col-md-10">
                     <div class="input-group">
@@ -43,6 +43,9 @@
                         </div>
                         <input type="text" value="{{ old('investor_name') }}" name="investor_name" class="form-control" id="text">
                     </div>
+                    @if($errors->has('investor_name'))
+                        <span class="control-label"> {{ $errors->first('investor_name') }}</span>
+                    @endif
                 </div>
             </div>
 
