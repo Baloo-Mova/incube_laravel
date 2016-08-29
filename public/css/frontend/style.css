@@ -302,13 +302,14 @@ blockquote {
 }
 
 .single-work {
-    padding: 50px 0 20px;
+    padding: 20px 5px;
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
     -ms-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
-    border-bottom: 3px solid #00AEEF
+    border-bottom: 3px solid #00AEEF;
+    margin-top: 15px;
 }
 
 .single-work h3 {
@@ -327,13 +328,13 @@ blockquote {
     font-weight: 300;
     line-height: 26px;
     margin-top: 25px;
-    padding: 0 37px;
+    //padding: 0 37px;
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
     -ms-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
-    height: 100px;
+    //height: 100px;
     overflow: hidden;
 }
 .how-it-work a:hover, a:focus{
@@ -953,10 +954,14 @@ blockquote {
 
 .mega-dropdown-menu .dropdown-header {
     color: #428bca;
-    padding: 5px 60px 5px 5px;
+    //padding: 5px 60px 5px 5px;
     font-weight: bold;
     white-space: inherit;
-    text-align: left;
+    //text-align: left;
+}
+.mega-dropdown-menu img{
+    margin-bottom: 10px;
+    
 }
 
 .carousel-control {
