@@ -6,7 +6,6 @@
 </div>
 <hr/>
 <div class="container">
-
     @if(Session::has('message'))
     <p class="alert alert-info col-md-offset-2 col-md-10">{{ Session::get('message') }}</p>
     @endif
@@ -24,13 +23,16 @@
         {{ csrf_field() }}
         <div class="">
             <div class='col-xs-4 col-sm-4 col-md-4'>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('executor_fname')?'has-error':'' }}">
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class="fa fa-user">
                             </i>
                         </div>
                         <input type="text" value="{{ $executor->executor_fname }}" name="executor_fname" class="form-control" id="text" placeholder="Ім'я">
+                        @if($errors->has('executor_fname'))
+                        <span class="control-label"> {{ $errors->first('executor_fname') }}</span>
+                        @endif
                     </div>
                 </div>
             </div> 
@@ -197,7 +199,7 @@
             'previewFileType'     : 'image',
             'allowedFileTypes'    : ['image'],
             'initialPreview'      : [
-                    @if (!empty($executor - > logo)) '{{url(' / executor / image / '.$executor->logo)}}' @endif,
+                    @if (!empty($executor -> logo)) '{{url(' / executor / image / '.$executor->logo)}}' @endif,
             ],
             'initialPreviewAsData': true,
     });</script>
@@ -205,6 +207,6 @@
             $(function () {
             $('#datetimepicker1').datetimepicker({
             });
-                    });
+            });
 </script>
 @stop

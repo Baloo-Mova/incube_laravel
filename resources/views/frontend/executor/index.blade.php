@@ -117,7 +117,7 @@
                                             @foreach($executorProjects as $item)
                                                 <li>
                                                     <figure>
-                                                        <a class="aa-product-img" href="#"><img src="{{ empty($item->logo)? 'http://placehold.it/250x300' : url('/investor/image/'.$item->logo) }}" alt="polo shirt img"></a>
+                                                        <a class="aa-product-img" href="#"><img src="{{ empty($item->logo)? 'http://placehold.it/250x300' : url('/executor/image/'.$item->logo) }}" alt="polo shirt img"></a>
                                                         <a class="aa-add-card-btn" href="#"><span class="glyphicon glyphicon-arrow-right"></span>Продивитись</a>
                                                         <figcaption class="aa-content">
                                                             <h4 class="aa-product-title">{{ $item->executor_fname }} {{ $item->executor_fname }} {{ $item->executor_sname }}{{ $item->executor_thname }}</h4>
