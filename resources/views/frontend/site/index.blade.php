@@ -178,7 +178,16 @@
                                 <div class="single-work wow fadeInUp" data-wow-delay="1s">
                                     <img src="../img/how-work2.png" alt="">
                                     <h3>Виконавець</h3>
-                                    <p>Фахівець певної галузі, який бажає взяти участь у проекті</p>
+                                    <p>Фахівець у певній галузі, що хоче прийняти участь у проекті або знайти роботу</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="/business/index">
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="single-work wow fadeInUp" data-wow-delay="1s">
+                                    <img src="../img/how-work5.png" alt="">
+                                    <h3>Підприємець</h3>
+                                    <p>Пропонує вакансії на роботу</p>
                                 </div>
                             </div>
                         </a>

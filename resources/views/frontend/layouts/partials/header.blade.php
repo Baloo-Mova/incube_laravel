@@ -113,29 +113,61 @@
                     <a href="#" class="dropdown-toggle  {{ (Request::is('/projects') ? 'active' : '') }}" data-wow-delay="0s" data-toggle="dropdown">
                         Користувачу<b class="caret"></b>
                     </a>
-                   
+
                     <ul class="dropdown-menu mega-dropdown-menu">
-                        
-                        <li class="col-sm-2 col-sm-offset-1">
 
-                            <a href="{{url('/investor')}}" class="dropdown-header">Інвестору</a>
 
+                        <li class="col-sm-2 col-sm-offset-1 text-center">
+                            <a href="{{url('/customer')}}" class="dropdown-header">
+                                <div class="hidden-xs"> 
+                                    <img src="{{url('/img/'.'how-work3.png')}}" alt="" >
+                                    
+                                </div>
+                                Замовнику
+                            </a>
                         </li>
-                        <li class="col-sm-2">
-                            <a href="{{url('/customer')}}" class="dropdown-header">Замовнику</a>
+                        <li class="col-sm-2 text-center">
+                            <a href="{{url('/investor')}}" class="dropdown-header">
+                                <div class="hidden-xs"> 
+                                    <img src="{{url('/img/'.'investor_desc_logo.png')}}" alt="" >
+                                    
+                                </div>
+                                Інвестору
+                            </a>
                         </li>
-                        <li class="col-sm-2">
-                            <a href="{{url('/designer')}}" class="dropdown-header">Проектанту</a>
+                        <li class="col-sm-2 text-center">
+                            <a href="{{url('/designer')}}" class="dropdown-header">
+                               <div class="hidden-xs"> 
+                                    <img src="{{url('/img/'.'how-work1.png')}}" alt="" >
+                                    
+                                </div>
+                                
+                                Проектанту
+                            </a>
                         </li>
-                        <li class="col-sm-2">
-                            <a href="{{url('/executor')}}" class="dropdown-header">Виконавцю</a>
+                        <li class="col-sm-2 text-center">
+                            <a href="{{url('/executor')}}" class="dropdown-header">
+                                <div class="hidden-xs"> 
+                                    <img src="{{url('/img/'.'how-work2.png')}}" alt="" >
+                                    
+                                </div>
+                                Виконавцю
+                            
+                            </a>
                         </li>
-                        <li class="col-sm-2">
-                            <a href="{{url('/employer')}}" class="dropdown-header">Підприємцю</a>
+                        <li class="col-sm-2 text-center">
+                            <a href="{{url('/employer')}}" class="dropdown-header">
+                            
+                                 <div class="hidden-xs"> 
+                                    <img src="{{url('/img/'.'how-work5.png')}}" alt="" >
+                                    
+                                </div>
+                                Підприємцю
+                            </a>
                         </li>
 
                     </ul>
-                    
+
                 </li>
                 <li><a href="{{url('/contacts')}}">Контакти</a></li>
                 <li><a href="{{url('/about')}}">Про нас</a></li>
