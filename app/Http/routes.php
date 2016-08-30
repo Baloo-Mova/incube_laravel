@@ -28,22 +28,22 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/show/{investor}',['uses'=>'InvestorController@show', 'as'=>'investor.show']);
     });
     
-    Route::group(['prefix' => 'customer'], function () {
-        Route::get('/', ['uses' => 'CustomerController@index', 'as' => 'customer.index']);
-        Route::get('/create', ['uses' => 'CustomerController@create', 'as' => 'customer.create']);
-        Route::post('/create', ['uses'=> 'CustomerController@store', 'as' => 'customer.store']);
-        Route::get('/edit/{id}',['uses'=> 'CustomerController@edit', 'as' => 'customer.edit']);
-        Route::post('/edit/{id}',['uses'=> 'CustomerController@update', 'as' => 'customer.update']);
-        Route::get('/show/{id}',['uses'=>'CustomerController@show', 'as'=>'customer.show']);
+    Route::group(['prefix' => 'problem'], function () {
+        Route::get('/', ['uses' => 'ProblemController@index', 'as' => 'customer.index']);
+        Route::get('/create', ['uses' => 'ProblemController@create', 'as' => 'customer.create']);
+        Route::post('/create', ['uses'=> 'ProblemController@store', 'as' => 'customer.store']);
+        Route::get('/edit/{problem}',['uses'=> 'ProblemController@edit', 'as' => 'customer.edit']);
+        Route::post('/edit/{problem}',['uses'=> 'ProblemController@update', 'as' => 'customer.update']);
+        Route::get('/show/{problem}',['uses'=>'ProblemController@show', 'as'=>'customer.show']);
     });
     
     Route::group(['prefix' => 'executor'], function () {
         Route::get('/', ['uses' => 'ExecutorController@index', 'as' => 'executor.index']);
         Route::get('/create', ['uses' => 'ExecutorController@create', 'as' => 'executor.create']);
         Route::post('/create', ['uses'=> 'ExecutorController@store', 'as' => 'executor.store']);
-        Route::get('/edit/{id}',['uses'=> 'ExecutorController@edit', 'as' => 'executor.edit']);
-        Route::post('/edit/{id}',['uses'=> 'ExecutorController@update', 'as' => 'executor.update']);
-        Route::get('/show/{id}',['uses'=>'ExecutorController@show', 'as'=>'executor.show']);
+        Route::get('/edit/{executor}',['uses'=> 'ExecutorController@edit', 'as' => 'executor.edit']);
+        Route::post('/edit/{executor}',['uses'=> 'ExecutorController@update', 'as' => 'executor.update']);
+        Route::get('/show/{executor}',['uses'=>'ExecutorController@show', 'as'=>'executor.show']);
     });
 
     Route::group(['prefix'=>'personal-area'], function (){

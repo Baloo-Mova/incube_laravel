@@ -11,7 +11,7 @@ use Intervention\Image\Facades\Image;
 use App\User;
 use Illuminate\Support\Facades\Mail;
 
-class CustomerController extends Controller {
+class ProblemController extends Controller {
 
     public function index() {
         $customerProblems = Customer::orderBy('id', 'desc')->take(10)->get();

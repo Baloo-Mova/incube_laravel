@@ -39,38 +39,17 @@
         
     </div>
 
-    <!--<div class="row">
-        <div class="col-md-4 col-sm-4 ">
-            <div class="btn-group">   
-                <a href="#" class="btn-primary btn">Оновити</a>
-            </div>
-            <div class="btn-group">
-                <a href="#" class="btn-danger btn">Видалити</a>
-            </div>
-        </div>
-        <div class="col-md-8 col-sm-8 text-right">
-            <div class="btn-group">
-                <a href="#" class="btn btn-primary"> <span><i class="fa fa-dollar"></i> Запропонувати проект</span> </a>
-            </div>
-
-            <div class="btn-group">
-                <a href="#" class="btn btn-primary"> <span><i class="fa fa-user"></i> Прийняти участь</span> </a>
-            </div>
-        </div>
-    </div>
-</div>
-<br/>-->
     <div class="container">
         <div class="btn-toolbar">
 
-            <div class="btn-group pull-lef">         
-                <a href="#" class="btn-primary btn">Оновити</a>
-            </div>
-            <div class="btn-group pull-lef">
-                <a href="#" class="btn-danger btn">Видалити</a>
-            </div>
-
-
+            @if(Auth::check() && Auth::user()->id == $model->author_id)
+                <div class="btn-group pull-lef">
+                    <a href="{{ route('edit') }}" class="btn-primary btn">Оновити</a>
+                </div>
+                <div class="btn-group pull-lef">
+                    <a href="#" class="btn-danger btn">Видалити</a>
+                </div>
+            @endif
 
             <div class="btn-group pull-right">
                 <a href="#" class="btn btn-primary"> <span><i class="fa fa-dollar"></i> Інвестувати </span> </a>
@@ -83,21 +62,14 @@
         </div>
     </div>
     <div class="product-info">
-
         <div class="tab-pane fade in active" id="service-one">
             <section class="product-info">
-
                 <h4>Інше</h4>
                 <blockquote>
-
-
                     <p><em> {{ $model["other"] }}</em> </p>
                 </blockquote>
             </section>
-            
         </div>
-
-
         <hr/>
     </div>
 
