@@ -79,13 +79,15 @@ blockquote {
     color: #202020;
     font-size: 16px;
     font-weight: 400;
-    // text-transform: capitalize;
+/ / text-transform: capitalize;
     position: relative;
 
 }
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus{
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     color: white;
-    background-color: #D10073;//#00aeef;
+    background-color: #D10073;
+/ / #00aeef;
 
 }
 
@@ -153,7 +155,7 @@ blockquote {
 
 .nav-button.login {
     background-color: #00AEEF;
-    // margin-right: 5 px;
+/ / margin-right: 5 px;
 }
 
 .nav-button:hover {
@@ -166,13 +168,15 @@ blockquote {
     clear: both;
 }
 
-.navbar-toggle{
+.navbar-toggle {
     float: none;
 }
+
 .navbar-header {
     min-height: 100px;
     text-align: center;
 }
+
 .navbar-default {
     background-image: none;
     background-color: #fff;
@@ -302,16 +306,16 @@ blockquote {
 }
 
 .single-work {
-    padding: 20px 5px ;
+    padding: 20px 5px;
     border-bottom: 3px solid #00AEEF;
     margin-top: 15px;
-    height:300px;
+    height: 300px;
 }
 
-.single-work img{
+.single-work img {
     display: inline-block !important;
-    width:90px !important;
-    height:90px;
+    width: 90px !important;
+    height: 90px;
 }
 
 .single-work h3 {
@@ -324,12 +328,13 @@ blockquote {
     color: #666666;
     font-weight: 300;
     line-height: 26px;
-    position:  absolute;
-    bottom:20px;
+    position: absolute;
+    bottom: 20px;
     overflow: hidden;
-    width:100%;
+    width: 100%;
     height: 100px;
 }
+
 .single-work.active {
     background: #00AEEF;
 }
@@ -355,7 +360,7 @@ blockquote {
     color: #eeeeee
 }
 
-.how-it-work a:hover, a:focus{
+.how-it-work a:hover, a:focus {
     text-decoration: none;
 }
 
@@ -497,7 +502,7 @@ blockquote {
 
 .table tr td h4 {
     font-weight: 700;
-    // text-transform: capitalize;
+/ / text-transform: capitalize;
 }
 
 .table tr td {
@@ -514,10 +519,10 @@ blockquote {
 }
 
 .table tr td a {
-    // color: #fff;
-    // background: #00AEEF;
-    // padding: 12 px 15 px;
-    // border-radius: 5 px;
+/ / color: #fff;
+/ / background: #00AEEF;
+/ / padding: 12 px 15 px;
+/ / border-radius: 5 px;
     font-size: 13px;
     text-decoration: none;
 
@@ -529,19 +534,19 @@ blockquote {
 }
 
 .table tr:hover td a {
-    // background: #0486B7
+/ / background: #0486B7
 }
 
 .table tr:hover td a:hover {
-    // background: #fff;
-    // color: #00AEEF
+/ / background: #fff;
+/ / color: #00AEEF
 }
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
     border-top: 0px;
     vertical-align: middle;
     padding: 15px;
-    // color: black;
+/ / color: black;
 }
 
 .table > tbody > tr > td.tbl-logo {
@@ -654,9 +659,6 @@ blockquote {
 .footer-area {
     background: #000;
     border-top: 4px solid #00AEEF;
-    padding-bottom: 20px;
-    margin-top: 100px;
-
 }
 
 .footer {
@@ -736,7 +738,7 @@ blockquote {
 
 @media (min-width: 768px) {
     .i-tools {
-        // padding: 10 px 0
+    / / padding: 10 px 0
     }
 
     #custom_carousel .item {
@@ -744,8 +746,8 @@ blockquote {
         color: #000;
         background-color: #dbf3ff;
         padding: 20px 0;
-        // min-height: 300 px;
-        // max-height: 300 px;
+    / / min-height: 300 px;
+    / / max-height: 300 px;
     }
 }
 
@@ -830,8 +832,8 @@ blockquote {
         color: #000;
         background-color: #dbf3ff;
         padding: 20px 0;
-        // min-height: 300 px;
-        // max-height: 300 px;
+    / / min-height: 300 px;
+    / / max-height: 300 px;
     }
 
     .img-responsive {
@@ -906,9 +908,10 @@ blockquote {
 
 }
 
- #dropdown-header {
+#dropdown-header {
     color: #428bca;
 }
+
 .mega-dropdown {
     position: static !important;
 }
@@ -936,8 +939,8 @@ blockquote {
     padding: 3px 5px;
 }
 
-.mega-dropdown-menu > li  a:hover,
-.mega-dropdown-menu > li  a:focus {
+.mega-dropdown-menu > li a:hover,
+.mega-dropdown-menu > li a:focus {
 
     text-decoration: none;
     color: #00aeef;
@@ -947,14 +950,15 @@ blockquote {
 
 .mega-dropdown-menu .dropdown-header {
     color: #428bca;
-    //padding: 5px 60px 5px 5px;
+/ / padding: 5 px 60 px 5 px 5 px;
     font-weight: bold;
     white-space: inherit;
-    //text-align: left;
+/ / text-align: left;
 }
-.mega-dropdown-menu img{
+
+.mega-dropdown-menu img {
     margin-bottom: 10px;
-    
+
 }
 
 .carousel-control {
@@ -979,8 +983,9 @@ blockquote {
     border: 1px solid #ddd;
 }
 
-//bootstrap
-
+/
+/
+bootstrap
 .well {
     min-height: 20px;
     padding: 19px;
@@ -1060,12 +1065,12 @@ a {
 .btn-custom:active,
 .btn-custom.active,
 .open {
-    background: white//#00aeef;
+    background: white / / #00aeef;
 }
 
 .board {
-    // width: 100%;
-    // margin: 60px auto;
+/ / width: 100 %;
+/ / margin: 60 px auto;
     height: 500px;
     background: #dbf3ff;
     /*box-shadow: 10px 10px #ccc,-10px 20px #ddd;*/
@@ -1190,7 +1195,7 @@ span.round-tabs.five {
 .board-inner .nav-tabs > li.active:after {
     content: " ";
     position: absolute;
-    // left: 0%;
+/ / left: 0 %;
     opacity: 1;
     margin: 0 auto;
     bottom: 0px;
@@ -1223,7 +1228,7 @@ span.round-tabs.five {
 
 .tab-pane {
     position: relative;
-    // padding-top: 50 px;
+/ / padding-top: 50 px;
 }
 
 .tab-content .head {
@@ -1252,7 +1257,7 @@ a:visited, a:active {
 @media (max-width: 585px) {
 
     .board {
-        // width: 90 %;
+    / / width: 90 %;
         height: auto !important;
     }
 
@@ -1294,8 +1299,8 @@ a:visited, a:active {
         color: #000;
         background-color: #dbf3ff;
         padding: 20px 0;
-        // min-height: 300 px;
-        // max-height: 300 px;
+    / / min-height: 300 px;
+    / / max-height: 300 px;
     }
 
     .img-responsive {
@@ -1309,8 +1314,8 @@ a:visited, a:active {
     color: #000;
     background-color: #dbf3ff;
     padding: 20px 0;
-    // min-height: 300 px;
-    // max-height: 300 px;
+/ / min-height: 300 px;
+/ / max-height: 300 px;
 }
 
 #custom_carousel .controls {
@@ -1407,7 +1412,9 @@ a:visited, a:active {
 
 }
 
-//Grid or list projects type
+/
+/
+Grid or list projects type
 .glyphicon {
     margin-right: 5px;
 }
@@ -1475,7 +1482,7 @@ a:visited, a:active {
     height: 150px;
     min-width: 100px;
     margin: 0 0 11px;
-    // text-overflow: ellipsis;
+/ / text-overflow: ellipsis;
 
 }
 
@@ -1513,7 +1520,7 @@ a:visited, a:active {
 
 .product {
     border: 1px solid #428BCA;
-    // height: 321 px;
+/ / height: 321 px;
     margin-bottom: 20px;
 }
 
@@ -1600,9 +1607,9 @@ a:visited, a:active {
     float: left;
     position: relative;
     padding-right: 20px;
-    // border-right: 1 px solid #DDD;
-    // border-top: 1 px solid #DDD;
-    // border-bottom: 1 px solid #DDD;
+/ / border-right: 1 px solid #DDD;
+/ / border-top: 1 px solid #DDD;
+/ / border-bottom: 1 px solid #DDD;
     border: 1px solid #428BCA;
 }
 
@@ -1639,20 +1646,79 @@ a:visited, a:active {
 }
 
 #content {
+    padding-top: 142px;
+}
 
-    padding-bottom: 341px
+.content-area{
+    padding-bottom: 30px;
 }
 
 #footer {
     background: #000;
     border-top: 4px solid #00AEEF;
-    // position: absolute;
+/ / position: absolute;
     bottom: 0;
     width: 100%;
-    // height: 60 px; /* Height of the footer */
-    // background: #6cf;
+/ / height: 60 px; /* Height of the footer */
+/ / background: #6cf;
 }
 
 .align-middle {
     vertical-align: middle;
+}
+
+.margin-auto {
+    margin: 0 auto;
+}
+
+.carusel-block {
+    display: block;
+    float: left;
+    text-align: center;
+    width: 250px;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.carusel-block-content {
+    position: relative;
+    margin: 0;
+    text-decoration: none;
+}
+
+.carusel-badge {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 15px;
+    background-color: #AFCB09;
+}
+
+.carusel-block-content-description {
+    overflow: auto;
+    height: 50px;
+}
+
+.carusel-block .show-btn {
+    background: #D10072 none repeat scroll 0 0;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 10px;
+    text-align: center;
+    height: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    display: none;
+}
+
+.carusel-block:hover .show-btn {
+    display: block;
 }

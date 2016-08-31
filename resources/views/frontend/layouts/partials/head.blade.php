@@ -6,13 +6,10 @@
 <link href="{{ asset("css/frontend/font-awesome.min.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/frontend/owl.carousel.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/frontend/owl.theme.default.css") }}" rel="stylesheet" type="text/css"/>
-{{--<link href="{{ asset("css/frontend/responsive.css") }}" rel="stylesheet" type="text/css"/>--}}
-<link href="{{ asset("css/frontend/sliders/slick.css") }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset("css/frontend/sliders/theme-color/default-theme.css") }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset("css/frontend/sliders/style.css") }}" rel="stylesheet" type="text/css"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <link href="{{ asset("css/frontend/site.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/bootstrap-datetimepicker.css") }}" rel="stylesheet" type="text/css"/>
+<link href="{{asset("css/hover.css")}}" rel="stylesheet" type="text/css">
 <!-- Theme style -->
 <link href="{{ asset("css/toastr.min.css") }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset("css/fileinput.min.css") }}" rel="stylesheet" type="text/css"/>

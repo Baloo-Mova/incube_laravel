@@ -185,4 +185,3 @@
         </div><!-- /.navbar-collapse -->
     </div>
 </div>
-<div class="navbar-delimiter"></div>

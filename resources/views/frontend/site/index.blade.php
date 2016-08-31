@@ -9,11 +9,11 @@
             <!-- About us panel -->
             <div class="about-us">
                 <div class="row">
-                    <div class="page-title text-center wow zoomInLeft" data-wow-duration="2s">
+                    <div class="page-title text-center wow zoomInLeft" data-wow-duration="1s">
                         <h2>Про нас</h2>
                     </div>
                 </div>
-                <div class="how-it-work wow bounceInUp" data-wow-duration="2s">
+                <div class="how-it-work wow bounceInUp" data-wow-duration="1s">
                     <div class="board">
                         <div class="board-header">
                             <div class="board-inner">
@@ -140,145 +140,80 @@
             <!-- Role users panel -->
             <div class="user-roles">
                 <div class="row">
-                    <div class="page-title text-center wow zoomInRight" data-wow-duration="2s">
+                    <div class="page-title text-center wow zoomInRight" data-wow-duration="1s">
                         <h2>Оберіть вашу роль</h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="how-it-work text-center owl-carousel owl-theme" id="how-it-work">
                         <a href="/customer/index">
-                                <div class="single-work wow fadeInUp" data-wow-delay="0.8s">
-                                    <img src="../img/how-work3.png" alt="">
-                                    <h3>Замовник</h3>
-                                    <p>Подає питання, що потрібно вирішити</p>
-                                </div>
+                            <div class="single-work wow fadeInUp" data-wow-delay="0.3s">
+                                <img src="../img/how-work3.png" alt="">
+                                <h3>Замовник</h3>
+                                <p>Подає питання, що потрібно вирішити</p>
+                            </div>
                         </a>
                         <a href="investor/index">
-                                <div class="single-work  wow fadeInUp" data-wow-delay="0.9s">
-                                    <img src="../img/investor_desc_logo.png" alt="">
-                                    <h3>Інвестор</h3>
-                                    <p>Юридичні та фізичні особи, які можуть вкладувати кошти у інноваційний проект</p>
-                                </div>
+                            <div class="single-work  wow fadeInUp" data-wow-delay="0.6s">
+                                <img src="../img/investor_desc_logo.png" alt="">
+                                <h3>Інвестор</h3>
+                                <p>Юридичні та фізичні особи, які можуть вкладувати кошти у інноваційний проект</p>
+                            </div>
                         </a>
                         <a href="/designer/index">
-                                <div class="single-work wow fadeInUp" data-wow-delay="1s">
-                                    <img src="../img/how-work1.png" alt="">
-                                    <h3>Проектант</h3>
-                                    <p>Розробник інноваційного проекту</p>
-                                </div>
+                            <div class="single-work wow fadeInUp" data-wow-delay="0.9s">
+                                <img src="../img/how-work1.png" alt="">
+                                <h3>Проектант</h3>
+                                <p>Розробник інноваційного проекту</p>
+                            </div>
                         </a>
                         <a href="/executor/index">
-                                <div class="single-work wow fadeInUp" data-wow-delay="1s">
-                                    <img src="../img/how-work2.png" alt="">
-                                    <h3>Виконавець</h3>
-                                    <p>Фахівець у певній галузі, що хоче прийняти участь у проекті або знайти роботу</p>
-                                </div>
+                            <div class="single-work wow fadeInUp" data-wow-delay="1.2s">
+                                <img src="../img/how-work2.png" alt="">
+                                <h3>Виконавець</h3>
+                                <p>Фахівець у певній галузі, що хоче прийняти участь у проекті або знайти роботу</p>
+                            </div>
                         </a>
                         <a href="/business/index">
-                                <div class="single-work wow fadeInUp" data-wow-delay="1s">
-                                    <img src="../img/how-work5.png" alt="">
-                                    <h3>Підприємець</h3>
-                                    <p>Пропонує вакансії на роботу</p>
-                                </div>
+                            <div class="single-work wow fadeInUp" data-wow-delay="1.5s">
+                                <img src="../img/how-work5.png" alt="">
+                                <h3>Підприємець</h3>
+                                <p>Пропонує вакансії на роботу</p>
+                            </div>
                         </a>
                     </div>
                 </div>
             </div>
             <!-- end Role-->
             <hr>
-        {{--<!--sliders for problems -->--}}
-        {{--<div class="projects">--}}
-        {{--<div class="page-title text-center wow bounceInUp" data-wow-duration="1s">--}}
-        {{--<h5>Дійсні проекти</h5>--}}
-        {{--<h2><span>10</span> новейших проэктов</h2>--}}
-        {{--</div>--}}
-
-        {{--<div class="owl-carousel-my" data-form-name="investor"></div>--}}
-
-        {{--<div class="problems-content">--}}
-        {{--<div id="aa-popular-category">--}}
-        {{--<div class="aa-popular-category-area">--}}
-        {{--<!-- Start popular projects -->--}}
-        {{--<div class="tab-pane fade in active" id="popular">--}}
-        {{--<ul class="aa-product-catg aa-popular-slider">--}}
-        {{--<!-- start single product item -->--}}
-        {{--@for($i = 0;$i<10;$i++)--}}
-        {{--<li>--}}
-        {{--<figure>--}}
-        {{--<a class="aa-product-img" href="#"><img src="../img/250n300.png" alt="polo shirt img"></a>--}}
-        {{--<a class="aa-add-card-btn" href="#"><span class="glyphicon glyphicon-arrow-right"></span>Продивитись</a>--}}
-        {{--<figcaption class="aa-content">--}}
-        {{--<h4 class="aa-product-title">Projects </h4>--}}
-        {{--</figcaption>--}}
-        {{--</figure>--}}
-        {{--<!-- product id -->--}}
-        {{--<span class="aa-badge aa-sale" href="#"></span>--}}
-        {{--</li>--}}
-        {{--@endfor--}}
-        {{--</ul>--}}
-        {{--<a class="btn btn-success btn-lg" href="#">Усі проекты--}}
-        {{--<span class="fa fa-long-arrow-right"></span></a>--}}
-        {{--</div>--}}
-        {{--<!-- / popular projects category -->--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--<!-- / popular section -->--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        <!-- end sliders for problems -->
-            <hr>
-            <!--sliders for projects -->
-            <div class="page-title text-center wow bounceInUp" data-wow-delay="2s">
-                <h5>Дійсні питання</h5>
-                <h2><span>10</span>-ТОП питань для вас</h2>
-            </div>
-
-            <div class="row">
-                <section id="aa-popular-category">
-                    <ul class="aa-product-catg aa-popular-slider">
-                        <li>
-                            <div class="figure">
-                                <a class="aa-product-img" href="#"><img src="../img/250n300.png" alt="polo shirt img"></a>
-                                <div class="aa-content">
-                                    <a class="aa-add-card-btn" href="#"><span class="glyphicon glyphicon-arrow-right"></span>Продивитись</a>
-                                    <h5 class="aa-product-title">Обновление экосистемы города запорожье и запорожской области</h5>
-                                </div>
-                            </div>
-                            <span class="aa-badge aa-sale" href="#">1</span>
-                        </li>
-                    </ul>
-                </section>
-                <a class="btn btn-success btn-lg" href="#">Усі питання
-                    <span class="fa fa-long-arrow-right"></span></a>
-                <!-- / popular section -->
-            </div>
-
-            <hr/>
-
-            <div class="homeSection-categories homeSection-subSection">
-                <div class="row page-title text-center wow bounce animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: bounce;">
-                    <h2>Оберіть сферу діяльності</h2>
+            <!--sliders for problems -->
+            <div class="problems">
+                <div class="page-title text-center wow bounceInUp" data-wow-duration="1s">
+                    <h5>Дійсні питання</h5>
+                    <h2><span>10</span> новейших материалов</h2>
                 </div>
-
-
-                <div class="container odd wow fadeInLeft" data-wow-delay="1s">
-                    <div class="row">
-                        <?php
-                        for ($i = 1; $i < 14; $i++) {
-                        //if($key->pid==NULL){
-                        ?>
-                        <a class="homeTile ng-isolate-scope" href="#" ga-event-on="click" ga-event-category="Homepage" ga-event-action="Explore" ga-event-label="Technology">
-                            <div class="homeTile-content" style="background-image: url('../img/eco_category/e<?= $i ?>.png')">
-                                <div class="homeTile-background"></div>
-                                <div class="homeTile-title">
-                                    name
+                <div class="carusel" id="problems">
+                    @for($i = 0;$i<10;$i++)
+                        <div class="carusel-block wow slideInUp" data-wow-duration="{{$i/10}}s">
+                            <div class="carusel-block-content">
+                                <a class="img-responsive" href="#">
+                                    <img src="{{ asset('img/250n300.png') }}" alt="polo shirt img">
+                                </a>
+                                <div class="carusel-block-content-description">
+                                    Обновление экосистемы города запорожье и запорожской области
                                 </div>
+                                <a class="show-btn hvr-rectangle-out" href="#">Продивитись</a>
                             </div>
-                        </a>
-                        <?php } ?>
-                    </div>
+                            <span class="carusel-badge" href="#">{{ $i }}</span>
+                        </div>
+                    @endfor
                 </div>
-            </div>
+                <div class="row text-center">
+                    <a class="btn btn-success btn-lg margin-auto" href="{{ route('material.index') }}">
+                        Усі питання
+                    </a>
+                </div>
+            </div> 
         </div>
         <!-- end container-->
     </div>
@@ -291,12 +226,55 @@
 @section('js')
     <script>
         $(function () {
-            $('.set-active-tab').on('click', function () {
 
+            window.scrollTo(0, 0);
+
+            $("#bg-slider").owlCarousel({
+                navigation        : false, // Show next and prev buttons
+                loop              : true,
+                items             : 1,
+                mouseDrag         : false,
+                autoplay          : true,
+                autoplayHoverPause: true,
+                animateIn         : 'bounceInRight',
+                animateOut        : 'bounceOutRight',
+                autoplayTimeout   : 8000,
+                autoplaySpeed     : 3000,
+                smartSpeed        : 3000
+            });
+
+            $('#how-it-work').owlCarousel({
+                loop              : true,
+                navigation        : false,
+                margin            : 30,
+                stagePadding      : 150,
+                dots              : false,
+                autoplay          : true,
+                autoplayHoverPause: true,
+                autoplayTimeout   : 3000,
+                smartSpeed        : 3000
+            });
+
+            $('#problems').owlCarousel({
+                loop      : true,
+                navigation: false,
+                items     : 4,
+                center    : true,
+                dots      : false,
+            });
+
+            $('#projects').owlCarousel({
+                loop      : true,
+                navigation: false,
+                items     : 4,
+                center    : true,
+                dots      : false
+            });
+
+            $('.set-active-tab').on('click', function () {
                 $('.board li').each(function (item) {
                     $(this).removeClass('active');
                 });
-
                 $($(this).prop("hash") + '-li').addClass('active');
             });
         });

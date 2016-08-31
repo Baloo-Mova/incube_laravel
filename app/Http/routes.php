@@ -19,6 +19,11 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/contacts', ['uses' => 'SiteController@contacts', 'as' => 'site.contacts']);
     Route::get('/rules', ['uses' => 'SiteController@ourrules', 'as' => 'site.ourrules']);
 
+    Route::group(['prefix'=>'materials'],function(){
+        Route::get('/', ['uses'=>'MaterialsViewerController@index', 'as'=>'material.index']);
+        Route::post('/search', ['uses'=>'MaterialsViewerController@search', 'as'=>'material.search']);
+    });
+
     Route::group(['prefix' => 'investor'], function () {
         Route::get('/', ['uses' => 'InvestorController@index', 'as' => 'investor.index']);
         Route::get('/create', ['uses' => 'InvestorController@create', 'as' => 'investor.create']);

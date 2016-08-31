@@ -180,16 +180,13 @@
     border: none;
     background-color: inherit;
 }
-.aa-product-catg {
-    margin-left: -54px;
-}
+
 .aa-product-catg li {
     display: block;
     float: left;
-    //height-min: 380px;
     text-align: center;
-    margin: 0 0 20px 55px;
-    width: 20.5%;
+    width: 250px;
+    min-height: 300px;
     position: relative;
     overflow: hidden;
 }
