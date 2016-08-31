@@ -1,40 +1,29 @@
-$(document).ready(function() {
-  $("#bg-slider").owlCarousel({
-      navigation : false, // Show next and prev buttons
-      slideSpeed : 1000,
-      autoPlay: 10000,
-      paginationSpeed : 1000,
-      singleItem:true,
-      mouseDrag: false,
-      transitionStyle : "fade"
-  });
-    // $(window).scroll(function() {
-    //     if ($(this).scrollTop() > 1){
-    //         $('#header').addClass("navbar-fixed-top");
-    //     }
-    //     else{
-    //         $('#header').removeClass("navbar-fixed-top");
-    //     }
-    // });
+$(document).ready(function () {
+    $("#bg-slider").owlCarousel({
+        navigation     : false, // Show next and prev buttons
+        loop:true,
+        items: 1,
+        mouseDrag: false,
+        autoplay:true,
+        autoplayHoverPause:true,
+        animateIn: 'bounceInRight',
+        animateOut: 'bounceOutRight',
+        autoplayTimeout: 8000,
+        autoplaySpeed: 3000,
+        smartSpeed: 3000,
+    });
+
+    $('#how-it-work').owlCarousel({
+        loop:true,
+        navigation:false,
+        margin: 30,
+        stagePadding: 150,
+        dots:false,
+        autoplay:true,
+        autoplayHoverPause:true,
+        autoplayTimeout: 3000,
+        smartSpeed: 3000,
+    });
 });
 
- new WOW().init();
- 
- function setEqualHeight(columns)
-{
-var tallestcolumn = 0;
-columns.each(
-function()
-{
-currentHeight = $(this).height();
-if(currentHeight > tallestcolumn)
-{
-tallestcolumn = currentHeight;
-}
-}
-);
-columns.height(tallestcolumn);
-}
-$(document).ready(function() {
-setEqualHeight($(".how-it-work > a > div > div > p"));
-});
+new WOW().init();

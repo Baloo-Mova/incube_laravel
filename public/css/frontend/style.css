@@ -302,44 +302,33 @@ blockquote {
 }
 
 .single-work {
-    padding: 20px 5px;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+    padding: 20px 5px ;
     border-bottom: 3px solid #00AEEF;
     margin-top: 15px;
+    height:300px;
+}
+
+.single-work img{
+    display: inline-block !important;
+    width:90px !important;
+    height:90px;
 }
 
 .single-work h3 {
     color: #202020;
     font-size: 20px;
     font-weight: 500;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
 }
 
 .single-work p {
     color: #666666;
     font-weight: 300;
     line-height: 26px;
-    margin-top: 25px;
-    //padding: 0 37px;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-    //height: 100px;
+    position:  absolute;
+    bottom:20px;
     overflow: hidden;
-}
-.how-it-work a:hover, a:focus{
-    text-decoration: none;
-    
+    width:100%;
+    height: 100px;
 }
 .single-work.active {
     background: #00AEEF;
@@ -364,6 +353,10 @@ blockquote {
 
 .single-work:hover p {
     color: #eeeeee
+}
+
+.how-it-work a:hover, a:focus{
+    text-decoration: none;
 }
 
 .nav-tabs > li > a {
