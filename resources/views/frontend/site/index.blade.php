@@ -189,8 +189,8 @@
             <!--sliders for problems -->
             <div class="materials">
                 <div class="page-title text-center wow bounceInUp" data-wow-duration="1s">
-                    <h5>Дійсні питання</h5>
-                    <h2><span>10</span> новейших материалов</h2>
+                    
+                    <h2><span>10</span> нових матеріалів</h2>
                 </div>
                 <div class="carusel" id="materials">
                     @for($i = 0;$i<10;$i++)
