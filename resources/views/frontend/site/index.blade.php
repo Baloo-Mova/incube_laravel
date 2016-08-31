@@ -187,12 +187,12 @@
             <!-- end Role-->
             <hr>
             <!--sliders for problems -->
-            <div class="problems">
+            <div class="materials">
                 <div class="page-title text-center wow bounceInUp" data-wow-duration="1s">
                     <h5>Дійсні питання</h5>
                     <h2><span>10</span> новейших материалов</h2>
                 </div>
-                <div class="carusel" id="problems">
+                <div class="carusel" id="materials">
                     @for($i = 0;$i<10;$i++)
                         <div class="carusel-block wow slideInUp" data-wow-duration="{{$i/10}}s">
                             <div class="carusel-block-content">
@@ -255,20 +255,16 @@
                 smartSpeed        : 3000
             });
 
-            $('#problems').owlCarousel({
-                loop      : true,
-                navigation: false,
-                items     : 4,
-                center    : true,
-                dots      : false,
-            });
-
-            $('#projects').owlCarousel({
-                loop      : true,
-                navigation: false,
-                items     : 4,
-                center    : true,
-                dots      : false
+            $('#materials').owlCarousel({
+                loop              : true,
+                nav        : true,
+                items             : 4,
+                center            : true,
+                dots              : false,
+                autoplay          : true,
+                autoplayHoverPause: true,
+                autoplayTimeout   : 5000,
+                smartSpeed        : 1500
             });
 
             $('.set-active-tab').on('click', function () {
