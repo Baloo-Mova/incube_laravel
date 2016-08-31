@@ -983,9 +983,8 @@ blockquote {
     border: 1px solid #ddd;
 }
 
-/
-/
-bootstrap
+//bootstrap
+
 .well {
     min-height: 20px;
     padding: 19px;
@@ -1065,12 +1064,12 @@ a {
 .btn-custom:active,
 .btn-custom.active,
 .open {
-    background: white / / #00aeef;
+    background: white//#00aeef;
 }
 
 .board {
-/ / width: 100 %;
-/ / margin: 60 px auto;
+    // width: 100%;
+    // margin: 60px auto;
     height: 500px;
     background: #dbf3ff;
     /*box-shadow: 10px 10px #ccc,-10px 20px #ddd;*/
@@ -1195,7 +1194,7 @@ span.round-tabs.five {
 .board-inner .nav-tabs > li.active:after {
     content: " ";
     position: absolute;
-/ / left: 0 %;
+    // left: 0%;
     opacity: 1;
     margin: 0 auto;
     bottom: 0px;
@@ -1228,7 +1227,7 @@ span.round-tabs.five {
 
 .tab-pane {
     position: relative;
-/ / padding-top: 50 px;
+    // padding-top: 50 px;
 }
 
 .tab-content .head {
@@ -1257,7 +1256,7 @@ a:visited, a:active {
 @media (max-width: 585px) {
 
     .board {
-    / / width: 90 %;
+        // width: 90 %;
         height: auto !important;
     }
 
@@ -1299,8 +1298,8 @@ a:visited, a:active {
         color: #000;
         background-color: #dbf3ff;
         padding: 20px 0;
-    / / min-height: 300 px;
-    / / max-height: 300 px;
+        // min-height: 300 px;
+        // max-height: 300 px;
     }
 
     .img-responsive {
@@ -1314,8 +1313,8 @@ a:visited, a:active {
     color: #000;
     background-color: #dbf3ff;
     padding: 20px 0;
-/ / min-height: 300 px;
-/ / max-height: 300 px;
+    // min-height: 300 px;
+    // max-height: 300 px;
 }
 
 #custom_carousel .controls {
@@ -1412,9 +1411,7 @@ a:visited, a:active {
 
 }
 
-/
-/
-Grid or list projects type
+//Grid or list projects type
 .glyphicon {
     margin-right: 5px;
 }
@@ -1482,7 +1479,7 @@ Grid or list projects type
     height: 150px;
     min-width: 100px;
     margin: 0 0 11px;
-/ / text-overflow: ellipsis;
+    // text-overflow: ellipsis;
 
 }
 
@@ -1520,7 +1517,7 @@ Grid or list projects type
 
 .product {
     border: 1px solid #428BCA;
-/ / height: 321 px;
+    // height: 321 px;
     margin-bottom: 20px;
 }
 
@@ -1607,9 +1604,9 @@ Grid or list projects type
     float: left;
     position: relative;
     padding-right: 20px;
-/ / border-right: 1 px solid #DDD;
-/ / border-top: 1 px solid #DDD;
-/ / border-bottom: 1 px solid #DDD;
+    // border-right: 1 px solid #DDD;
+    // border-top: 1 px solid #DDD;
+    // border-bottom: 1 px solid #DDD;
     border: 1px solid #428BCA;
 }
 
@@ -1646,21 +1643,18 @@ Grid or list projects type
 }
 
 #content {
-    padding-top: 142px;
-}
 
-.content-area{
-    padding-bottom: 30px;
+    padding-bottom: 341px
 }
 
 #footer {
     background: #000;
     border-top: 4px solid #00AEEF;
-/ / position: absolute;
+    // position: absolute;
     bottom: 0;
     width: 100%;
-/ / height: 60 px; /* Height of the footer */
-/ / background: #6cf;
+    // height: 60 px; /* Height of the footer */
+    // background: #6cf;
 }
 
 .align-middle {

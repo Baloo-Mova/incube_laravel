@@ -213,7 +213,7 @@
                         Усі питання
                     </a>
                 </div>
-            </div> 
+            </div>
         </div>
         <!-- end container-->
     </div>

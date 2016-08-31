@@ -19,7 +19,7 @@ class CreateDesignerTable extends Migration
             $table->integer('publisher_id')->index()->nullable();
             $table->integer('economic_activities_id')->nullable();
             
-            $table->string('project_name', 100)->nullable();
+            $table->string('project_name', 255)->nullable();
             $table->text('project_manager')->nullable();
             $table->text('project_contacts')->nullable();
             $table->string('phone', 100)->nullable();
