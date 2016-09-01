@@ -1647,6 +1647,7 @@ Grid or list projects type
 
 #content {
     padding-top: 142px;
+    min-height: 729px;
 }
 
 .content-area {
