@@ -189,7 +189,6 @@
             <!--sliders for problems -->
             <div class="materials">
                 <div class="page-title text-center wow bounceInUp" data-wow-duration="1s">
-                    
                     <h2><span>10</span> нових матеріалів</h2>
                 </div>
                 <div class="carusel" id="materials">
