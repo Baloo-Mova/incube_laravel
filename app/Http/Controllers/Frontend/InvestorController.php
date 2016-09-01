@@ -43,11 +43,11 @@ class InvestorController extends Controller
             'investor_cost'     => 'numeric',
             'email'             => Auth::check() ? '' : 'required|email|unique:users',
         ], [
-            'investor_name.required'     => 'Поле инвестора обязательно к заполнению;',
-            'investor_contacts.required' => 'Поле контактов инвестора обязательно к заполнению;',
-            'investor_cost.numeric'      => 'Поле суммы инвестиций должно быть числом;',
-            'email'                      => 'Email обязателен для пользователей не прошедших авторизацию',
-            'unique' =>'Вы уже зарегестрированны, пожалуйста войдите используя свой логин и пароль',
+            'investor_name.required'     => "Поле Назва інвестування  обов'язкове для заповнення;",
+            'investor_contacts.required' => "Поле Контактні дані  обов'язкове для заповнення;",
+            "investor_cost.numeric"      => "Поле суми інвестицій повинно бути числов та обов'язково вказано;",
+            "email"                      => "Гості мають обовязково вказати свою пошту для рєстрації;",
+            'unique' =>"Ви вже зареєстровані. Спершу ви маєте авторизуватися за допомогою свого логіна і пароля;",
         ]);
 
         $model = new Investor();
@@ -99,9 +99,9 @@ class InvestorController extends Controller
             'investor_contacts' => 'required',
             'investor_cost'     => 'numeric',
         ], [
-            'investor_name.required'     => 'Поле инвестора обязательно к заполнению;',
-            'investor_contacts.required' => 'Поле контактов инвестора обязательно к заполнению;',
-            'investor_cost.numeric'      => 'Поле суммы инвестиций должно быть числом;',
+            'investor_name.required'     => "Поле Назва інвестування  обов'язкове для заповнення;",
+            'investor_contacts.required' => "Поле Контактні дані  обов'язкове для заповнення;",
+            "investor_cost.numeric"      => "Поле суми інвестицій повинно бути числов та обов'язково вказано;",
         ]);
 
         $investor->fill($request->all());

@@ -33,7 +33,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/show/{investor}',['uses'=>'InvestorController@show', 'as'=>'investor.show']);
     });
     
-    Route::group(['prefix' => 'problem'], function () {
+    Route::group(['prefix' => 'customer'], function () {
         Route::get('/', ['uses' => 'ProblemController@index', 'as' => 'customer.index']);
         Route::get('/create', ['uses' => 'ProblemController@create', 'as' => 'customer.create']);
         Route::post('/create', ['uses'=> 'ProblemController@store', 'as' => 'customer.store']);

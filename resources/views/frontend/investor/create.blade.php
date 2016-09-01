@@ -49,32 +49,37 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="col-md-2  control-label" for="Contacts">Контактні дані:</label>
-                <div class="col-md-10">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-book ">
-                            </i>
-                        </div>
-                        <textarea rows="6" type="text" name="investor_contacts" class="form-control" id="text">{{ old('investor_contacts') }}</textarea>
+            <div class="form-group {{ $errors->has('investor_contacts')?'has-error':'' }}">
+            <label class="col-md-2  control-label" for="Contacts">Контактні дані:</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-book ">
+                        </i>
                     </div>
+                    <textarea rows="6" type="text" name="investor_contacts" class="form-control" id="text">{{ old('investor_contacts') }}</textarea>
                 </div>
+                @if($errors->has('investor_contacts'))
+                <span class="control-label"> {{ $errors->first('investor_contacts') }}</span>
+                @endif
             </div>
+        </div>
 
-            <div class="form-group">
-                <label class="col-md-2 control-label" for="email">Етап проекту:</label>
-                <div class="col-md-10">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-flag">
-                            </i>
-                        </div>
-                        <input type="text" value="{{ old('stage_project') }}" name="stage_project" class="form-control" id="text">
+        <div class="form-group {{ $errors->has('stage_project')?'has-error':'' }}">
+            <label class="col-md-2 control-label" for="email">Етап проекту:</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-flag">
+                        </i>
                     </div>
+                    <input type="text" value="{{ old('stage_project') }}" name="stage_project" class="form-control" id="text">
                 </div>
+                 @if($errors->has('stage_project'))
+                <span class="control-label"> {{ $errors->first('stage_project') }}</span>
+                @endif
             </div>
-
+        </div>
             <div class="form-group">
                 <label class="col-md-2 control-label" for="Галузь">Галузь:</label>
                 <div class="col-md-10">
@@ -85,83 +90,100 @@
                     </select>
                 </div>
             </div>
+        <div class="form-group {{ $errors->has('region')?'has-error':'' }}">
+            <label class="col-md-2 control-label" for="region">Регіон інвестування:</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-crosshairs">
+                        </i>
+                    </div>
+                    <input type="text" value="{{ old('region') }}" name="region" class="form-control" id="text">
+                </div>
+                 @if($errors->has('region'))
+                <span class="control-label"> {{ $errors->first('region') }}</span>
+                @endif
+            </div>
+        </div>
+        <div class="form-group {{ $errors->has('investor_cost')?'has-error':'' }}">
+            <label class="col-md-2 control-label" for="investor_cost">Сума, яку готові інвестувати:</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-usd">
+                        </i>
+                    </div>
+                    <input type="number" value="{{ old('investor_cost') }}" name="investor_cost" class="form-control" id="text">
+                </div>
+                 @if($errors->has('investor_cost'))
+                <span class="control-label"> {{ $errors->first('investor_cost') }}</span>
+                @endif
+            </div>
+        </div>
 
-            <div class="form-group">
-                <label class="col-md-2 control-label" for="region">Регіон інвестування:</label>
-                <div class="col-md-10">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-crosshairs">
-                            </i>
-                        </div>
-                        <input type="text" value="{{ old('region') }}" name="region" class="form-control" id="text">
+        <div class="form-group {{ $errors->has('duration_project')?'has-error':'' }}">
+            <label class="col-md-2 control-label" for="email">Період реалізації інвестиційного проекту:</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar">
+                        </i>
                     </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-2 control-label" for="email">Сума, яку готові інвестувати:</label>
-                <div class="col-md-10">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-usd">
-                            </i>
-                        </div>
-                        <input type="number" value="{{ old('investor_cost') }}" name="investor_cost" class="form-control" id="text">
-                    </div>
-                </div>
-            </div>
+                    <input type="text" value="{{ old('duration_project') }}" name="duration_project" class="form-control" id="text">
 
-            <div class="form-group">
-                <label class="col-md-2 control-label" for="email">Період реалізації інвестиційного проекту:</label>
-                <div class="col-md-10">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-calendar">
-                            </i>
-                        </div>
-                        <input type="text" value="{{ old('duration_project') }}" name="duration_project" class="form-control" id="text">
+                </div>
+                 @if($errors->has('duration_project'))
+                <span class="control-label"> {{ $errors->first('duration_project') }}</span>
+                @endif
+            </div>
+        </div>
 
+        <div class="form-group {{ $errors->has('term_refund')?'has-error':'' }}">
+            <label class="col-md-2 control-label" for="email">Термін повернення вкладених коштів:</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar-o">
+                        </i>
                     </div>
+                    <input type="text" value="{{ old('term_refund') }}" name="term_refund" class="form-control" id="text">
                 </div>
+                 @if($errors->has('term_refund'))
+                <span class="control-label"> {{ $errors->first('term_refund') }}</span>
+                @endif
             </div>
+        </div>
 
-            <div class="form-group">
-                <label class="col-md-2 control-label" for="email">Термін повернення вкладених коштів:</label>
-                <div class="col-md-10">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-calendar-o">
-                            </i>
-                        </div>
-                        <input type="text" value="{{ old('term_refund') }}" name="term_refund" class="form-control" id="text">
+        <div class="form-group {{ $errors->has('plan_rent')?'has-error':'' }}">
+            <label class="col-md-2 control-label" for="email">Планована рентабельність проекту:</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-edit">
+                        </i>
                     </div>
+                    <input type="text" value="{{ old('plan_rent') }}" name="plan_rent" class="form-control" id="text">
                 </div>
+                 @if($errors->has('plan_rent'))
+                <span class="control-label"> {{ $errors->first('plan_rent') }}</span>
+                @endif
             </div>
-
-            <div class="form-group">
-                <label class="col-md-2 control-label" for="email">Планована рентабельність проекту:</label>
-                <div class="col-md-10">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-edit">
-                            </i>
-                        </div>
-                        <input type="text" value="{{ old('plan_rent') }}" name="plan_rent" class="form-control" id="text">
+        </div>
+        <div class="form-group {{ $errors->has('other')?'has-error':'' }}">
+            <label class="col-md-2 control-label" for="email">Інше:</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-info">
+                        </i>
                     </div>
+                    <textarea type="text" name="other" class="form-control" id="text" rows="6">{{ old('other') }}</textarea>
                 </div>
+                 @if($errors->has('other'))
+                <span class="control-label"> {{ $errors->first('other') }}</span>
+                @endif
             </div>
-            <div class="form-group">
-                <label class="col-md-2 control-label" for="email">Інше:</label>
-                <div class="col-md-10">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-info">
-                            </i>
-                        </div>
-                        <textarea type="text" name="other" class="form-control" id="text" rows="6">{{ old('other') }}</textarea>
-                    </div>
-                </div>
-            </div>
+        </div>
             <div class="form-group">
                 <label class="col-md-2 control-label" for="email">Логотип:</label>
                 <div class="col-md-10">
