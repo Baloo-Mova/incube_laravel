@@ -38,6 +38,17 @@
             </div>
         </div>
 
+        <div class="form-group {{ $errors->has('short_name')?'has-error':'' }}">
+            <label class="col-md-2 control-label" for="short_name">Коротка Назва проекту:</label>
+            <div class="col-md-10">
+
+                <input type="text" value="{{ $designer->short_name }}" name="short_name" class="form-control" id="text">
+                @if($errors->has('short_name'))
+                <span class="control-label"> {{ $errors->first('short_name') }}</span>
+                @endif
+            </div>
+        </div>
+        
         <div class="form-group {{ $errors->has('project_manager')?'has-error':'' }}">
             <label class="col-md-2  control-label" for="project_manager">Керівник проекту:</label>
             <div class="col-md-10">
@@ -61,7 +72,7 @@
                         <i class="fa fa-book ">
                         </i>
                     </div>
-                    <textarea rows="4" type="text" name="project_contacts" class="form-control" id="text">{{ $designer->investor_contacts }}</textarea>
+                    <textarea rows="4" type="text" name="project_contacts" class="form-control" id="text">{{ $designer->project_contacts }}</textarea>
                 </div>
                 @if($errors->has('project_contacts'))
                 <span class="control-label"> {{ $errors->first('project_contacts') }}</span>
@@ -310,4 +321,16 @@
             'initialPreviewAsData': true,
         });
     </script>
+    <script src="{{ asset('tinymce/js/tinymce/tinymce.min.js')}}"></script>
+<script>
+          tinymce.init({
+              selector: "textarea",
+              plugins: [
+                  "advlist autolink lists link image charmap print preview anchor",
+                  "searchreplace visualblocks code fullscreen",
+                  "insertdatetime media table contextmenu paste"
+              ],
+              toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+          });
+  </script>
 @stop

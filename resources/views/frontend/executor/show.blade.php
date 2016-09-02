@@ -44,28 +44,28 @@
                                     </tr>
                                     <tr>
                                         <td>Досвід роботи</td>
-                                        <td>{{$executor->experience}}</td>
+                                        <td>{!!$executor->experience!!}</td>
                                     </tr>
 
                                     <tr>
                                         <td>Освіта</td>
-                                        <td>{{$executor->education}}</td>
+                                        <td>{!!$executor->education!!}</td>
                                     </tr>
                                     <tr>
                                         <td>Практики та стажування</td>
-                                        <td> {{$executor->internship}} </td>
+                                        <td> {!!$executor->internship!!} </td>
                                     </tr>
                                     <tr>
                                         <td>Участь у проектах</td>
-                                        <td>{{ $executor->participation_projects}}</td>
+                                        <td>{!! $executor->participation_projects!!}</td>
                                     </tr>
                                     <tr>
                                         <td>Здібності та уміння</td>
-                                        <td>{{ $executor->description }}</td>
+                                        <td>{!! $executor->description !!}</td>
                                     </tr>
                                     <tr style="display:none">
                                         <td>Контактні дані(адреса, телефон,ел.пошта)</td>
-                                        <td>{{$executor->contacts}}</td>
+                                        <td>{!!$executor->contacts!!}</td>
                                     </tr>
 
 

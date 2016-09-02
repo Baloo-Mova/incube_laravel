@@ -38,6 +38,15 @@
                 @endif
             </div>
         </div>
+        <div class="form-group {{ $errors->has('short_name')?'has-error':'' }}">
+            <label class="col-md-2 control-label" for="short_name">Коротка Назва інвестування:</label>
+            <div class="col-md-10">
+
+                <input type="text" value="{{ $investor->short_name }}" name="short_name" class="form-control" id="text">
+                @if($errors->has('short_name'))
+                <span class="control-label"> {{ $errors->first('short_name') }}</span>
+                @endif
+            </div>
 
         <div class="form-group {{ $errors->has('investor_contacts')?'has-error':'' }}">
             <label class="col-md-2  control-label" for="Contacts">Контактні дані:</label>
@@ -212,4 +221,16 @@
             'initialPreviewAsData': true,
     });
 </script>
+  <script src="{{ asset('tinymce/js/tinymce/tinymce.min.js')}}"></script>
+<script>
+          tinymce.init({
+              selector: "textarea",
+              plugins: [
+                  "advlist autolink lists link image charmap print preview anchor",
+                  "searchreplace visualblocks code fullscreen",
+                  "insertdatetime media table contextmenu paste"
+              ],
+              toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+          });
+  </script>
 @stop

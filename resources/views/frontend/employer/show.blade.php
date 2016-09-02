@@ -39,7 +39,7 @@
             </div>
             <div class="panel panel-primary one-row-pannel">
                 <div class="panel-heading text-center">Коротка характеристика діяльності організації</div>
-                <div class="panel-body text-center">{{ $employer->org_info }}
+                <div class="panel-body text-center">{!! $employer->org_info !!}
                 </div>
             </div>
         </div>
@@ -71,17 +71,17 @@
             <section class="product-info">
                 <h4>Загальна інформація (звернення організації):</h4>
                 <blockquote>
-                    <p> {{ $employer->description }}</p>
+                    <p> {!! $employer->description !!}</p>
                 </blockquote>
                 
                 <h4>Адресса</h4>
                 <blockquote>
-                    <p> {{ $employer->adress }}</p>
+                    <p> {!! $employer->adress !!}</p>
                 </blockquote>
                 
                 <h4>Інше</h4>
                 <blockquote>
-                    <p><em> {{ $employer->other }}</em></p>
+                    <p><em> {!! $employer->other !!}</em></p>
                 </blockquote>
 
 

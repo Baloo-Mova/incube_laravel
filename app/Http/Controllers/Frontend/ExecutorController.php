@@ -94,11 +94,12 @@ class ExecutorController extends Controller
         return redirect(route('executor.index'));
     }
 
+   
     public function edit(Executor $executor)
     {
-        return view('frontend.executor.edit');
+        
+        return view('frontend.executor.edit', compact('executor'));
     }
-
     public function update(Request $request, Executor $executor)
     {
         $this->validate($request, [

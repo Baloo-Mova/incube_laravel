@@ -32,7 +32,7 @@
             <div class="panel panel-primary one-row-pannel">
                 <div class="panel-heading text-center">Опис питання</div>
                 <div class="panel-body text-center">
-                    {{$model->problem_description}}
+                    {!!$model->problem_description!!}
                 </div>
             </div>
         </div>

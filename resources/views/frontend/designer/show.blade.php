@@ -95,32 +95,32 @@
             <section class="product-info">
                 <h4>Стислий опис проекту</h4>
                 <blockquote>
-                    <p> {{ $designer->description }}</p>
+                    <p> {!! $designer->description !!}</p>
                 </blockquote>
                 
                 <h4>Мета проекту</h4>
                 <blockquote>
-                    <p> {{ $designer->project_goal }}</p>
+                    <p> {!! $designer->project_goal !!}</p>
                 </blockquote>
                 <h4>Іноваційні аспекти та переваги проекту</h4>
                 <blockquote>
-                    <p> {{ $designer->project_aspects }}</p>
+                    <p> {!! $designer->project_aspects !!}</p>
                 </blockquote>
                 <h4>Отримувачі вигоди</h4>
                 <blockquote>
-                    <p> {{ $designer->beneficaries }}</p>
+                    <p> {!! $designer->project_beneficaries !!}</p>
                 </blockquote>
                 <h4>Стадія проекту</h4>
                 <blockquote>
-                    <p> {{ $designer->project_stage }}</p>
+                    <p> {!! $designer->project_stage !!}</p>
                 </blockquote>
                 <h4>Джерела фінансування</h4>
                 <blockquote>
-                    <p> {{ $designer->available_funding }}</p>
+                    <p> {!! $designer->available_funding !!}</p>
                 </blockquote>
                 <h4>Інше</h4>
                 <blockquote>
-                    <p><em> {{ $designer->other }}</em></p>
+                    <p><em> {!! $designer->other !!}</em></p>
                 </blockquote>
 
 

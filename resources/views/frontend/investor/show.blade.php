@@ -33,14 +33,14 @@
                 <div class="panel panel-primary one-row-pannel">
                     <div class="panel-heading text-center">Етап проекту</div>
                     <div class="panel-body text-center">
-                        {{ $investor->stage_project }}
+                        {!! $investor->stage_project !!}
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-primary one-row-pannel">
                     <div class="panel-heading text-center">Планова рентабельність проекту</div>
-                    <div class="panel-body text-center">{{ $investor->plan_rent }}
+                    <div class="panel-body text-center">{!! $investor->plan_rent !!}
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
             <div class="col-md-4">
                 <div class="panel panel-primary one-row-pannel">
                     <div class="panel-heading text-center">Період реалізації інвестиційного проекту</div>
-                    <div class="panel-body text-center">{{$investor->duration_project}}
+                    <div class="panel-body text-center">{!!$investor->duration_project!!}
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
             <div class="col-md-4">
                 <div class="panel panel-primary one-row-pannel">
                     <div class="panel-heading text-center">Термін повернення вкладених коштів</div>
-                    <div class="panel-body text-center">{{ $investor->term_refund }}
+                    <div class="panel-body text-center">{!! $investor->term_refund !!}
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                 <section class="product-info">
                     <h4>Інше</h4>
                     <blockquote>
-                        <p><em> {{ $investor["other"] }}</em></p>
+                        <p><em> {!! $investor["other"] !!}</em></p>
                     </blockquote>
                 </section>
             </div>
