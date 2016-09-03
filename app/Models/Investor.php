@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $author_id
  * @property integer $publisher_id
  * @property string $investor_name
+ * @property string $short_name
  * @property string $investor_contacts
  * @property string $stage_project
  * @property integer $economic_activities_id
@@ -31,6 +32,7 @@ class Investor extends Model
     public $table = "investor_forms";
     public $fillable = [
         'investor_name',
+        'short_name',
         'investor_contacts',
         'stage_project',
         'region',

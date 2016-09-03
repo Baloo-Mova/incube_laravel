@@ -158,7 +158,7 @@
             <div class="col-md-offset-2">
                 <div class="col-md-10">
                     <div class="form-group">
-                        <input value="Подати" type="submit" class="btn btn-success col-md-offset-2">
+                        <input value="Подати" type="submit" class="btn btn-success">
                     </div>
                 </div>
             </div>
