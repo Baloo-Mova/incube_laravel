@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $email
  * @property string $web_site
  * @property string $project_name
+ * @property string $short_name
  * @property string $project_goal
  * @property string $project_aspects
  * @property string $project_beneficaries
@@ -44,6 +45,7 @@ class Designer extends Model {
         'email',
         'web_site',
         'project_name',
+        'short_name',
         'project_goal',
         'project_aspects',
         'project_beneficaries',

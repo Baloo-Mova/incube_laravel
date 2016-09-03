@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $publisher_id
  * @property integer $economic_activities_id
  * @property string $problem_name
+ * @property string $short_name
  * @property string $problem_description
  * @property string $region
  * @property string $other
@@ -25,6 +26,7 @@ class Customer extends Model
     public $table = "customer_forms";
     public $fillable = [
         'problem_name',
+        'short_name',
         'problem_description',
         'region',
         'economic_activities_id',

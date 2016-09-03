@@ -11,6 +11,7 @@ class Executor extends Model {
         'executor_fname',
         'executor_sname',
         'executor_thname',
+        'short_name',
         'date_birth',
         'experience',
         'education',

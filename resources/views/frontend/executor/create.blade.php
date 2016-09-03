@@ -19,25 +19,28 @@
         {{ csrf_field() }}
 
         @if(!Auth::check())
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="пошта">Email:</label>
+        <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="input-group">
-                    <div class="input-group-addon">
-                        <i class="fa fa-envelope-o">
-                        </i>
+                <div class="form-group">
+                    <label class="control-label" for="пошта">Email:</label>
+
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-envelope-o">
+                            </i>
+                        </div>
+                        <input type="email" value="{{ old('email') }}" name="email" class="form-control" id="text">
                     </div>
-                    <input type="email" value="{{ old('email') }}" name="email" class="form-control" id="text">
+                    @if($errors->has('email'))
+                    <span class="control-label"> {{ $errors->first('email') }}</span>
+                    @endif
                 </div>
-                @if($errors->has('email'))
-                <span class="control-label"> {{ $errors->first('email') }}</span>
-                @endif
             </div>
-        </div>
+        </div>  
         @endif
 
-        <div class="">
-            <div class='col-xs-4 col-sm-4 col-md-4'>
+        <div class="col-md-offset-2">
+            <div class='col-xs-4 col-sm-4 col-md-3'>
                 <div class="form-group {{ $errors->has('executor_fname')?'has-error':'' }}">
                     <div class="input-group">
                         <div class="input-group-addon">
@@ -67,7 +70,7 @@
                     @endif
                 </div>
             </div> 
-            <div class='col-xs-4 col-sm-4 col-md-4'>
+            <div class='col-xs-4 col-sm-4 col-md-3'>
                 <div class="form-group {{ $errors->has('executor_thname')?'has-error':'' }}">
 
                     <div class="input-group">
@@ -84,143 +87,166 @@
             </div> 
         </div>
         <hr/>
-        <div class="form-group">
-            <label class="col-md-2  control-label" for="date_birth">Дата народження:</label>
-            <div class="col-md-6">
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
                 <div class="form-group {{ $errors->has('date_birth')?'has-error':'' }}">
-                    <div class='input-group date' id='datetimepicker1'>
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                        <input type="text" value="{{ old('date_birth') }}" class="form-control" name="contacts">
+                    <label class="control-label" for="date_birth">Дата народження:</label>
+                        <div class='input-group date' id='datetimepicker1'>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            <input type="text" value="{{ old('date_birth') }}" class="form-control" name="contacts">
 
-                    </div>
-                    @if($errors->has('date_birth'))
-                    <span class="control-label"> {{ $errors->first('date_birth') }}</span>
+                        </div>
+                        @if($errors->has('date_birth'))
+                        <span class="control-label"> {{ $errors->first('date_birth') }}</span>
+                        @endif
+                   
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('experience')?'has-error':'' }}">
+                    <label class="control-label" for="experience">Досвід роботи:</label>
+
+
+                    <textarea rows="3" type="text" name="experience" class="form-control" id="text">{{ old('experience') }}</textarea>
+                    @if($errors->has('experience'))
+                    <span class="control-label"> {{ $errors->first('experience') }}</span>
                     @endif
                 </div>
             </div>
         </div>
-        <div class="form-group {{ $errors->has('experience')?'has-error':'' }}">
-            <label class="col-md-2  control-label" for="experience">Досвід роботи:</label>
+
+        <div class="col-md-offset-2">
             <div class="col-md-10">
+                <div class="form-group {{ $errors->has('education')?'has-error':'' }}">
+                    <label class="control-label" for="education">Освіта:</label>
 
-                <textarea rows="3" type="text" name="experience" class="form-control" id="text">{{ old('experience') }}</textarea>
-                @if($errors->has('experience'))
-                <span class="control-label"> {{ $errors->first('experience') }}</span>
-                @endif
+
+                    <textarea rows="3" type="text" name="education" class="form-control" id="text">{{ old('education') }}</textarea>
+                    @if($errors->has('education'))
+                    <span class="control-label"> {{ $errors->first('education') }}</span>
+                    @endif
+                </div>
             </div>
-
         </div>
-        <div class="form-group {{ $errors->has('education')?'has-error':'' }}">
-            <label class="col-md-2  control-label" for="education">Освіта:</label>
+
+        <div class="col-md-offset-2">
             <div class="col-md-10">
+                <div class="form-group {{ $errors->has('internship')?'has-error':'' }}">
+                    <label class="control-label" for="internship">Стажування та практика:</label>
 
-                <textarea rows="3" type="text" name="education" class="form-control" id="text">{{ old('education') }}</textarea>
-                @if($errors->has('education'))
-                <span class="control-label"> {{ $errors->first('education') }}</span>
-                @endif
+
+                    <textarea rows="3" type="text" name="internship" class="form-control" id="text">{{ old('internship') }}</textarea>
+                    @if($errors->has('internship'))
+                    <span class="control-label"> {{ $errors->first('internship') }}</span>
+                    @endif
+                </div>
             </div>
-
         </div>
-        <div class="form-group {{ $errors->has('internship')?'has-error':'' }}">
-            <label class="col-md-2  control-label" for="internship">Стажування та практика:</label>
+        <div class="col-md-offset-2">
             <div class="col-md-10">
-
-                <textarea rows="3" type="text" name="internship" class="form-control" id="text">{{ old('internship') }}</textarea>
-                @if($errors->has('internship'))
-                <span class="control-label"> {{ $errors->first('internship') }}</span>
-                @endif
+                <div class="form-group {{ $errors->has('participation_projects')?'has-error':'' }}">
+                    <label class="control-label" for="participation_projects">Участь у проектах:</label>
+                    <textarea rows="3" type="text" name="participation_projects" class="form-control" id="text">{{ old('participation_projects') }}</textarea>
+                    @if($errors->has('participation_projects'))
+                    <span class="control-label"> {{ $errors->first('participation_projects') }}</span>
+                    @endif
+                </div>
             </div>
-
         </div>
-        <div class="form-group {{ $errors->has('participation_projects')?'has-error':'' }}">
-            <label class="col-md-2  control-label" for="participation_projects">Участь у проектах:</label>
+
+        <div class="col-md-offset-2">
             <div class="col-md-10">
-
-                <textarea rows="3" type="text" name="participation_projects" class="form-control" id="text">{{ old('participation_projects') }}</textarea>
-                @if($errors->has('participation_projects'))
-                <span class="control-label"> {{ $errors->first('participation_projects') }}</span>
-                @endif
+                <div class="form-group {{ $errors->has('description')?'has-error':'' }}">
+                    <label class="control-label" for="description">Опис професійних якостей:</label>
+                    <textarea rows="6" type="text" name="description" class="form-control" id="text">{{ old('description') }}</textarea>
+                    @if($errors->has('description'))
+                    <span class="control-label"> {{ $errors->first('description') }}</span>
+                    @endif
+                </div>
             </div>
-
         </div>
-        <div class="form-group {{ $errors->has('description')?'has-error':'' }}">
-            <label class="col-md-2  control-label" for="description">Опис професійних якостей:</label>
+
+        <div class="col-md-offset-2">
             <div class="col-md-10">
+                <div class="form-group {{ $errors->has('adress')?'has-error':'' }}">
 
-                <textarea rows="6" type="text" name="description" class="form-control" id="text">{{ old('description') }}</textarea>
-                @if($errors->has('description'))
-                <span class="control-label"> {{ $errors->first('description') }}</span>
-                @endif
-            </div>
+                    <label class="control-label" for="adress">Адреса:</label>
 
-        </div>
-        <div class="form-group {{ $errors->has('adress')?'has-error':'' }}">
-
-            <label class="col-md-2  control-label" for="adress">Адреса:</label>
-            <div class="col-md-10">
-                <input type="text" value="{{ old('adress') }}" name="adress" class="form-control" id="text">
-                @if($errors->has('org_name'))
-                <span class="control-label"> {{ $errors->first('adress') }}</span>
-                @endif
-            </div>
-        </div> 
-        <div class="form-group {{ $errors->has('phone')?'has-error':'' }}">
-
-            <label class="col-md-2  control-label" for="phone">Телефон:</label>
-            <div class="col-md-10">
-                <input type="text" value="{{ old('phone') }}" name="phone" class="form-control" id="text">
-                @if($errors->has('phone'))
-                <span class="control-label"> {{ $errors->first('phone') }}</span>
-                @endif
+                    <input type="text" value="{{ old('adress') }}" name="adress" class="form-control" id="text">
+                    @if($errors->has('org_name'))
+                    <span class="control-label"> {{ $errors->first('adress') }}</span>
+                    @endif
+                </div>
             </div>
         </div> 
 
-
-
-        <div class="form-group {{ $errors->has('contacts')?'has-error':'' }}">
-            <label class="col-md-2  control-label" for="Contacts">Інші контактні дані:</label>
+        <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="input-group">
-                    <div class="input-group-addon">
-                        <i class="fa fa-book ">
-                        </i>
-                    </div>
+                <div class="form-group {{ $errors->has('phone')?'has-error':'' }}">
+
+                    <label class="control-label" for="phone">Телефон:</label>
+
+                    <input type="text" value="{{ old('phone') }}" name="phone" class="form-control" id="text">
+                    @if($errors->has('phone'))
+                    <span class="control-label"> {{ $errors->first('phone') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div> 
+
+
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('contacts')?'has-error':'' }}">
+                    <label class="control-label" for="Contacts">Інші контактні дані:</label>
                     <textarea rows="3" type="text" name="contacts" class="form-control" id="text">{{ old('contacts') }}</textarea>
+                    
+                    @if($errors->has('contacts'))
+                    <span class="control-label"> {{ $errors->first('contacts') }}</span>
+                    @endif
                 </div>
-                @if($errors->has('contacts'))
-                <span class="control-label"> {{ $errors->first('contacts') }}</span>
-                @endif
+                <div class="help-block"></div>
             </div>
-            <div class="help-block"></div>
         </div>
 
 
-        <div class="form-group">
-
-            <label class="col-md-2  control-label" for="doc_file">Резюме(в ел. варіанті):</label>
+        <div class="col-md-offset-2">
             <div class="col-md-10">
-                <input type="text" value="{{ old('doc_file') }}" name="doc_file" class="form-control" id="text">
+                <div class="form-group">
+                    <label class="control-label" for="doc_file">Резюме(в ел. варіанті):</label>
+                    <input type="text" value="{{ old('doc_file') }}" name="doc_file" class="form-control" id="text">
+                </div>
+            </div> 
+        </div>
 
-            </div>
-        </div> 
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="email">Логотип:</label>
+        <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="input-group">
-                    <div class="input-group-addon">
-                        <i class="fa fa-photo">
-                        </i>
+                <div class="form-group">
+                    <label class="control-label" for="email">Логотип:</label>
+
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-photo">
+                            </i>
+                        </div>
+                        <input type="file" name="logo_img_file" class="form-control" id="file_up">
                     </div>
-                    <input type="file" name="logo_img_file" class="form-control" id="file_up">
                 </div>
             </div>
         </div>
-
-
-        <input value="Подати" type="submit" class="btn btn-success col-md-offset-2">
-
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input value="Подати" type="submit" class="btn btn-success">
+                </div>
+            </div>
+        </div>
     </form>
 </div>
 @stop
