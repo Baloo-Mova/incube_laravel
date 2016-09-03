@@ -263,7 +263,11 @@
                 autoplay          : true,
                 autoplayHoverPause: true,
                 autoplayTimeout   : 5000,
-                smartSpeed        : 1500
+                smartSpeed        : 1500,
+                navText: [
+      "<span class='fa fa-angle-left'></span>",
+      "<span class='fa fa-angle-right'></span>"
+      ],
             });
 
             $('.set-active-tab').on('click', function () {
