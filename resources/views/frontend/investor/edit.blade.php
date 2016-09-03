@@ -31,7 +31,6 @@
                         </i>
                     </div>
                     <input type="text" value="{{ $investor->investor_name }}" name="investor_name" class="form-control" id="text">
-                    
                 </div>
                 @if($errors->has('investor_name'))
                 <span class="control-label"> {{ $errors->first('investor_name') }}</span>

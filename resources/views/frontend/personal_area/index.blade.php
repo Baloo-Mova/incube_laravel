@@ -12,13 +12,14 @@
             </ul>
         </div>
         <div class="col-md-10">
-            <div class="panel">
-                <img class="pic img-circle" src="../img/man-profile.jpg" alt="...">
-                <div class="name"><small>Тест Володимир, Україна</small></div>
-                <a href="#" class="btn btn-xs btn-primary pull-right login" style="margin:10px;"><span class="glyphicon glyphicon-picture"></span> Змінити зображення</a>
+            <div class="pannel-row">
+                <div class="panel">
+                    <img class="pic img-circle" src="../img/man-profile.jpg" alt="...">
+                    <div class="name"><small>Тест Володимир, Україна</small></div>
+                    <a href="#" class="btn btn-xs btn-primary pull-right login" style="margin:10px;"><span class="glyphicon glyphicon-picture"></span> Змінити зображення</a>
+                </div>
             </div>
 
-            <br><br><br>
             <ul class="nav nav-tabs" id="myTab">
                 <li class="active"><a href="#inbox" data-toggle="tab"><i class="fa fa-reply-all"></i> Заявки</a></li>
                 <!--<li><a href="#sent" data-toggle="tab"><i class="fa fa-reply-all"></i> </a></li>

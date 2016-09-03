@@ -1,4 +1,4 @@
-<div class="slider-area container hidden-xs">
+<div class="slider-area hidden-xs">
     <div class="slider">
         <div id="bg-slider" class="owl-carousel owl-theme">
             <div class="item"><img src="../img/slider-image-3.jpg" class="img-responsive" alt="3"></div>

@@ -49,9 +49,7 @@
     <hr/>
 
     <div class="row page-title text-center">
-
         <h2>Заявки на інвестування</h2>
-
     </div>
     <br/>
     <div class="row">

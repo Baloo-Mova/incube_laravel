@@ -610,7 +610,6 @@ min-width: 480px) and (max-width: 767px){
         width:120px;
         margin-left:50px;
         margin-bottom:-60px;
-
     }
 
     .panel
@@ -678,12 +677,16 @@ min-width: 480px) and (max-width: 767px){
     .panel {
         margin-bottom: 20px;
         background-color: rgba(255, 255, 255, 0.75);
+      //  min-height: 175px;
         //border: 1px solid transparent;
         border-radius: 4px;
         -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
         box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
     }
-
+    .pannel-row
+    {
+        min-height: 175px;
+    }
     .reset-col {
         width: 100% !important;
     }
