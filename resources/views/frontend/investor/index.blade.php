@@ -77,30 +77,6 @@
     </div>
 @stop
 
-@section('css')
-    <style>
-        .nav-tabs > li, .nav-pills > li {
-            float: none;
-            display: inline-block;
-            *display: inline; /* for IE7*/
-            *zoom: 1; /* for IE7*/
-
-        }
-
-        .nav-tabs {
-            text-align: center;
-        }
-
-        .tab-content {
-            padding: 0;
-        }
-
-        .tab-pane {
-            padding: 20px 0px 20px 0px;
-        }
-    </style>
-@stop
-
 
 @section('js')
     <script>

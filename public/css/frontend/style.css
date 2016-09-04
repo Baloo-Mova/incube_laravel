@@ -1465,3 +1465,23 @@ a:visited, a:active {
 .carusel-block:hover .show-btn {
     display: block;
 }
+
+.nav-tabs > li, .nav-pills > li {
+    float: none;
+    display: inline-block;
+    *display: inline; /* for IE7*/
+    *zoom: 1; /* for IE7*/
+
+}
+
+.nav-tabs {
+    text-align: center;
+}
+
+.tab-content {
+    padding: 0;
+}
+
+.tab-pane {
+    padding: 20px 0px 20px 0px;
+}

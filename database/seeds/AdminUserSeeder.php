@@ -14,7 +14,6 @@ class AdminUserSeeder extends Seeder
         $user = User::firstOrCreate([
             'email' => 'admin@incube.zp.ua',
         ]);
-
         $user->name = "Администратор";
         $user->password = bcrypt('admin');
         $user->user_type_id = 1;
