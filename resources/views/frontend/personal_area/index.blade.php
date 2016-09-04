@@ -22,8 +22,6 @@
 
             <ul class="nav nav-tabs" id="myTab">
                 <li class="active"><a href="#inbox" data-toggle="tab"><i class="fa fa-reply-all"></i> Заявки</a></li>
-                <!--<li><a href="#sent" data-toggle="tab"><i class="fa fa-reply-all"></i> </a></li>
-                <li><a href="#assignment" data-toggle="tab"><i class="fa fa-file-text-o"></i> Assignment</a></li>-->
                 <li><a href="#event" data-toggle="tab"><i class="fa fa-clock-o"></i> Оповіщення</a></li>
             </ul>
 
@@ -66,10 +64,6 @@
                     </table>
                 </div>
                 </div>
-
-
-
-
             </div>
 
         </div>

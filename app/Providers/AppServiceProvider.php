@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Investor;
+use App\Observers\InvestorObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Investor::observe(InvestorObserver::class);
     }
 
     /**
