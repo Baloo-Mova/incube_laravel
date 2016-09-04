@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','user_type_id'
+        'name', 'email', 'password','user_type_id','logo','country_id','bg_logo'
     ];
 
     /**
@@ -23,4 +23,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function getCountries(){
+        return $this->belongsTo('App\Models\Countries');
+    }
 }

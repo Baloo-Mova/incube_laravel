@@ -1485,3 +1485,21 @@ a:visited, a:active {
 .tab-pane {
     padding: 20px 0px 20px 0px;
 }
+
+.event {
+    position: absolute;
+    top: 5px;
+    right: 2px;
+    text-align: center;
+    font-size: 10px;
+    padding: 2px 3px;
+    /* line-height: .9; */
+    background-color: #D10073; 
+}
+
+  
+.background-logo{
+    max-height: 110px;
+    background-size: contain;
+    
+}

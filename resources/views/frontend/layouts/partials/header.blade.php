@@ -178,7 +178,7 @@
                 <li class=""><a href="{{ url('/register') }}">Реєстрація</a></li>
                 <li class=""><a href="{{url('/login')}}">Вхід</a></li>
                 @else
-                <li class=""><a href="{{ url('/personal-area') }}">Особистий кабінет</a></li>
+                <li class=""><a href="{{ url('/personal-area') }}">Особистий кабінет <span class="event label label-danger">1000</span></a></li>
                 <li class=""><a href="{{url('/logout')}}">Вихід</a></li>
                 @endif
             </ul>
