@@ -20,11 +20,12 @@ class InvestorController extends Controller
     public function __construct()
     {
         $this->middleware('owner:investor', ['only' => ['edit', 'update', 'delete']]);
+        $this->middleware('published:investor', ['only' => ['edit', 'update', 'delete']]);
     }
 
     public function index()
     {
-        $investProjects = Investor::orderBy('id', 'desc')->take(10)->get();
+        $investProjects = Investor::orderBy('id', 'desc')->where(['status'=>true])->take(10)->get();
         $problems       = Customer::where([
             'status' => true,
         ])->orderBy('id', 'desc')->take(10)->get();
@@ -105,7 +106,6 @@ class InvestorController extends Controller
     public function edit(Investor $investor)
     {
         $economicActivities = EconomicActivities::where(['parent_id' => null])->get();
-
         return view('frontend.investor.edit', compact('investor', 'economicActivities'));
     }
 

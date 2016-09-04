@@ -71,12 +71,14 @@
 
         <div class="btn-toolbar">
             @if(Auth::check() && Auth::user()->id == $investor->author_id)
-                <div class="btn-group pull-lef">
-                    <a href="{{ route('investor.edit', ['id'=>$investor->id]) }}" class="btn-primary btn">Оновити</a>
-                </div>
-                <div class="btn-group pull-lef">
-                    <a href="{{ route('investor.delete', ['id'=>$investor->id]) }}" onclick="return confirm('Вы точно хотите удалить проэкт?')" class="btn-danger btn">Видалити</a>
-                </div>
+                @if($investor->status == 0)
+                    <div class="btn-group pull-lef">
+                        <a href="{{ route('investor.edit', ['id'=>$investor->id]) }}" class="btn-primary btn">Оновити</a>
+                    </div>
+                    <div class="btn-group pull-lef">
+                        <a href="{{ route('investor.delete', ['id'=>$investor->id]) }}" onclick="return confirm('Вы точно хотите удалить проэкт?')" class="btn-danger btn">Видалити</a>
+                    </div>
+                @endif
             @else
                 <div class="btn-group pull-right">
                     <a href="#" class="btn btn-primary"> <span><i class="fa fa-dollar"></i> Запропонувати проект</span>

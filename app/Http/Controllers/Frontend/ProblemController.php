@@ -14,16 +14,15 @@ use Illuminate\Support\Facades\Mail;
 class ProblemController extends Controller {
 
     public function index() {
-        $customerProblems = Customer::orderBy('id', 'desc')->take(10)->get();
+        $problems = Customer::where(['status'=>true])->orderBy('id', 'desc')->take(10)->get();
 
         return view('frontend.customer.index')->with([
-                    'customerProblems' => $customerProblems,
+                    'problems' => $problems,
         ]);
     }
 
     public function create() {
-        $economicActivities = EconomicActivities::pluck('name', 'id');
-
+        $economicActivities = EconomicActivities::where(['parent_id' => null])->get();
         return view('frontend.customer.create', compact('economicActivities'));
     }
 

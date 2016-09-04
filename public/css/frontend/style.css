@@ -1466,7 +1466,9 @@ a:visited, a:active {
     display: block;
 }
 
-.nav-tabs > li, .nav-pills > li {
+
+
+.select-tabs .nav-tabs > li, .select-tabs .nav-pills > li {
     float: none;
     display: inline-block;
     *display: inline; /* for IE7*/
@@ -1474,14 +1476,14 @@ a:visited, a:active {
 
 }
 
-.nav-tabs {
+.select-tabs .nav-tabs {
     text-align: center;
 }
 
-.tab-content {
+.select-tabs .tab-content {
     padding: 0;
 }
 
-.tab-pane {
+.select-tabs .tab-pane {
     padding: 20px 0px 20px 0px;
 }

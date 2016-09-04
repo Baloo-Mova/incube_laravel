@@ -7,13 +7,9 @@
             <h2>Інвесторам</h2>
         </div>
         <hr/>
-        <div class="container text-center">
+        <div class="text-center">
             <p><b> Інвестор </b> - це користувач, що вкладає кошти.</p>
-
-            <ul class="nav"> Інвесторомами можуть виступати Юридичні та Фізичні особи, які можуть вкладувати кошти у інноваційний проект
-
-            </ul>
-
+             Інвесторомами можуть виступати Юридичні та Фізичні особи, які можуть вкладувати кошти у інноваційний проект
             <p>Якщо ви хочете виступити інвестором - заповніть наступну форму: </p>
             <div class="text-center">
                 <a href="{{ route('investor.create') }}" class="btn btn-lg btn-danger center">Подати заявку
@@ -21,15 +17,15 @@
             </div>
         </div>
         <hr/>
-        <div class="row page-title text-center">
+        <div class="page-title text-center">
             <h2>Інвестор може вкласти кошти у наступне</h2>
         </div>
-
-        <ul class="nav nav-tabs text-center" id="myTab">
-            <li class="active"><a href="#problem" data-toggle="tab">Проблемы</a></li>
-            <li><a href="#project" data-toggle="tab">Проэкты</a></li>
-        </ul>
-
+        <div class="select-tabs">
+            <ul class="nav nav-tabs text-center" id="myTab">
+                <li class="active"><a href="#problem" data-toggle="tab">Проблемы</a></li>
+                <li><a href="#project" data-toggle="tab">Проэкты</a></li>
+            </ul>
+        </div>
         <div class="tab-content">
             <div id="problem" class="tab-pane fade in active">
                 @forelse($problems as $item)
@@ -62,7 +58,6 @@
             </a>
         </div>
 
-
         @if(count($investProjects) > 0)
             <hr/>
             <div class="row page-title text-center">
@@ -73,7 +68,7 @@
                     @include('frontend.partials.carusel_item',['item'=>$item])
                 @endforeach
             </div>
-    @endif
+        @endif
     </div>
 @stop
 
