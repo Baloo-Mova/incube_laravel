@@ -27,7 +27,42 @@
 
             <div class="tab-content">
                 <div class="tab-pane active" id="inbox">
-
+                <div class="grid-view">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th><a class="" href="{{url('/personal-area/index' . '?sort=executor_fname')}}" data-sort="executor_fname">ПІБ</a></th>
+                                <th><a class="" href="#">Назва проекту</a></th>
+                                <th><a class="" href="#">Дата створення</a></th>
+                                <th><a class="" href="#">Статус</a></th>
+                                <th><a class="" href="#"></a></th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th><input type="text" class="form-control" name=""></th>
+                                <th><input type="text" class="form-control" name=""></th>
+                                <th><input type="text" class="form-control" name=""></th>
+                                <th><input type="text" class="form-control" name=""></th>
+                                <th><a class="" href="#"></a></th>
+                            </tr>
+                        </thead>  
+                        <tbody>
+                            @foreach($usersExecutorProjects as $item)
+                            <tr>    
+                        <th>{{$item->id}}</th>
+                        <th>{{$item->shortname}}</th>
+                        <th>{{$item->id}}</th>
+                        <th>{{$item->created_at}}</th>
+                        <th>@if($item->status!=0) Опубліковано @endif 
+                            @if($item->status==0) Не Опубліковано @endif 
+                        </th>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        
+                    </table>
+                </div>
                 </div>
             </div>
 
