@@ -11,11 +11,13 @@ class AdminUserSeeder extends Seeder
      */
     public function run()
     {
-        User::firstOrNew([
-            'name'=>'admin',
+        $user = User::firstOrCreate([
             'email' => 'admin@incube.zp.ua',
-            'password'=> bcrypt('admin'),
-            'user_type_id'=>1,
-        ])->save();
+        ]);
+
+        $user->name = "Администратор";
+        $user->password = bcrypt('admin');
+        $user->user_type_id = 1;
+        $user->save();
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="page-title text-center">
-    <h2>ПОДАЧА ЗАЯВКИ НА ІНВЕСТУВАННЯ. Ідентифікаційний номер:{{$investor->id}}</h2>
+    <h2>Редагування ЗАЯВКИ НА ІНВЕСТУВАННЯ. Ідентифікаційний номер:{{$investor->id}}</h2>
 </div>
 <hr/>
 <div class="container">
@@ -70,12 +70,11 @@
             <div class="col-md-10">
                 <div class="form-group">
                     <label class="control-label" for="Галузь">Галузь:</label>
-
-                    <select class="form-control" name="economic_activities_id">
-                        @foreach($economicActivities as $i => $item)
-                        <option value="{{ $i }}" {{ ( $investor->economic_activities_id == $i ? "selected":"") }}>{{ $item }}</option>
-                        @endforeach
-                    </select>
+                    @include('frontend.partials.economic_activities_select',
+                        ['economicActivities'=> $economicActivities,
+                         'economicActivitiesAttributeName'=>'economic_activities_id',
+                         'economicActivitiesAttributeValueNow' => $investor->economic_activities_id
+                        ])
                 </div>
             </div>
         </div>

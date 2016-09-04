@@ -18,7 +18,7 @@
             <div class="col-md-6">
                 <div class="panel panel-primary one-row-pannel">
                     <div class="panel-heading text-center">Галузь</div>
-                    <div class="panel-body text-center">{{ $investor->economicActivities->name }}
+                    <div class="panel-body text-center">{{ ($investor->economicActivities->getParent() != null ? $investor->economicActivities->getParent()->name : '')."\n". $investor->economicActivities->name }}
                     </div>
                 </div>
             </div>
@@ -72,19 +72,20 @@
         <div class="btn-toolbar">
             @if(Auth::check() && Auth::user()->id == $investor->author_id)
                 <div class="btn-group pull-lef">
-                    <a href="#" class="btn-primary btn">Оновити</a>
+                    <a href="{{ route('investor.edit', ['id'=>$investor->id]) }}" class="btn-primary btn">Оновити</a>
                 </div>
                 <div class="btn-group pull-lef">
-                    <a href="#" class="btn-danger btn">Видалити</a>
+                    <a href="{{ route('investor.delete', ['id'=>$investor->id]) }}" onclick="return confirm('Вы точно хотите удалить проэкт?')" class="btn-danger btn">Видалити</a>
+                </div>
+            @else
+                <div class="btn-group pull-right">
+                    <a href="#" class="btn btn-primary"> <span><i class="fa fa-dollar"></i> Запропонувати проект</span>
+                    </a>
+                </div>
+                <div class="btn-group pull-right">
+                    <a href="#" class="btn btn-primary"> <span><i class="fa fa-user"></i> Прийняти участь</span> </a>
                 </div>
             @endif
-            <div class="btn-group pull-right">
-                <a href="#" class="btn btn-primary"> <span><i class="fa fa-dollar"></i> Запропонувати проект</span>
-                </a>
-            </div>
-            <div class="btn-group pull-right">
-                <a href="#" class="btn btn-primary"> <span><i class="fa fa-user"></i> Прийняти участь</span> </a>
-            </div>
         </div>
         <div class="product-info">
             <div class="tab-pane fade in active" id="service-one">

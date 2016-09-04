@@ -30,7 +30,7 @@ class CreateBusinessmanTable extends Migration
             $table->text('other')->nullable();
            
             $table->string('logo',100)->nullable();
-            $table->boolean('status')->default(0);
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

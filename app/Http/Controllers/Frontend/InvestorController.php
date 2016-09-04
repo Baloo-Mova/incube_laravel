@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
+use App\Models\Designer;
 use App\Models\EconomicActivities;
 use App\Models\Investor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use App\User;
 use Illuminate\Support\Facades\Mail;
@@ -16,21 +19,29 @@ class InvestorController extends Controller
 
     public function __construct()
     {
-        $this->middleware('owner:investor', ['only' => ['edit', 'update']]);
+        $this->middleware('owner:investor', ['only' => ['edit', 'update', 'delete']]);
     }
 
     public function index()
     {
         $investProjects = Investor::orderBy('id', 'desc')->take(10)->get();
+        $problems       = Customer::where([
+            'status' => true,
+        ])->orderBy('id', 'desc')->take(10)->get();
+        $projects       = Designer::where([
+            'status' => true,
+        ])->orderBy('id', 'desc')->take(10)->get();
 
         return view('frontend.investor.index')->with([
             'investProjects' => $investProjects,
+            'problems'       => $problems,
+            'projects'       => $projects,
         ]);
     }
 
     public function create()
     {
-        $economicActivities = EconomicActivities::pluck('name', 'id');
+        $economicActivities = EconomicActivities::where(['parent_id' => null])->get();
 
         return view('frontend.investor.create', compact('economicActivities'));
     }
@@ -47,11 +58,16 @@ class InvestorController extends Controller
             'investor_contacts.required' => "Поле Контактні дані  обов'язкове для заповнення;",
             "investor_cost.numeric"      => "Поле суми інвестицій повинно бути числов та обов'язково вказано;",
             "email"                      => "Гості мають обовязково вказати свою пошту для рєстрації;",
-            'unique' =>"Ви вже зареєстровані. Спершу ви маєте авторизуватися за допомогою свого логіна і пароля;",
+            'unique'                     => "Ви вже зареєстровані. Спершу ви маєте авторизуватися за допомогою свого логіна і пароля;",
         ]);
 
         $model = new Investor();
         $model->fill($request->all());
+
+        if (!File::exists(storage_path('app/investor/images'))) {
+            File::makeDirectory(storage_path('app/investor/images'), 0755, true);
+        }
+
         if ($request->file('logo_img_file')) {
             $filename    = uniqid() . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
             $image       = Image::make($request->file('logo_img_file'))->resize(250,
@@ -62,7 +78,7 @@ class InvestorController extends Controller
         $email = $request->get('email');
         $pass  = str_random(10);
 
-        if(isset($email) && !empty($email)) {
+        if (isset($email) && ! empty($email)) {
             $user = User::firstOrNew([
                 'email' => $email,
             ]);
@@ -70,7 +86,7 @@ class InvestorController extends Controller
             $user->password = bcrypt($pass);
             $user->save();
 
-            Mail::send('auth.emails.register', ['email' => $email, 'password'=>$pass], function ($m) use ($user) {
+            Mail::send('auth.emails.register', ['email' => $email, 'password' => $pass], function ($m) use ($user) {
                 $m->from('incube.zp.ua@gmail.com', 'Incube');
                 $m->to($user->email)->subject('Приветствуем');
             });
@@ -79,7 +95,7 @@ class InvestorController extends Controller
         $model->author_id = Auth::check() ? Auth::user()->id : $user->id;
         $model->save();
 
-        if (!Auth::check() && Auth::attempt(['email' => $email, 'password' => $pass])) {
+        if ( ! Auth::check() && Auth::attempt(['email' => $email, 'password' => $pass])) {
             return redirect(route('personal_area.index'));
         }
 
@@ -88,7 +104,8 @@ class InvestorController extends Controller
 
     public function edit(Investor $investor)
     {
-        $economicActivities = EconomicActivities::pluck('name', 'id');
+        $economicActivities = EconomicActivities::where(['parent_id' => null])->get();
+
         return view('frontend.investor.edit', compact('investor', 'economicActivities'));
     }
 
@@ -105,13 +122,13 @@ class InvestorController extends Controller
         ]);
 
         $investor->fill($request->all());
-        // Нужно удалять файл
         if ($request->file('logo_img_file')) {
             $filename       = uniqid() . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
             $image          = Image::make($request->file('logo_img_file'))->resize(250,
                 300)->save(storage_path('app/investor/images/' . $filename));
             $investor->logo = $filename;
         }
+
         $investor->save();
 
         return back()->with(['message' => 'Edit successful']);
@@ -120,5 +137,12 @@ class InvestorController extends Controller
     public function show(Investor $investor)
     {
         return view('frontend.investor.show', compact('investor'));
+    }
+
+    public function delete(Investor $investor)
+    {
+        $investor->delete();
+
+        return redirect(route('investor.index'));
     }
 }

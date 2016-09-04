@@ -13,7 +13,10 @@
 
 use App\User;
 
+Route::get('/{name}/image/{id}',['uses'=>'ImagesShowController@index', 'as'=>'images.show']);
+
 Route::group(['namespace' => 'Frontend'], function () {
+
     Route::get('/', ['uses' => 'SiteController@index', 'as' => 'site.index']);
     Route::get('/about', ['uses' => 'SiteController@about', 'as' => 'site.about']);
     Route::get('/contacts', ['uses' => 'SiteController@contacts', 'as' => 'site.contacts']);
@@ -31,6 +34,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/edit/{investor}',['uses'=> 'InvestorController@edit', 'as' => 'investor.edit']);
         Route::post('/edit/{investor}',['uses'=> 'InvestorController@update', 'as' => 'investor.update']);
         Route::get('/show/{investor}',['uses'=>'InvestorController@show', 'as'=>'investor.show']);
+        Route::get('/delete/{investor}', ['uses'=>'InvestorController@delete', 'as'=>'investor.delete']);
     });
     
     Route::group(['prefix' => 'customer'], function () {
@@ -73,34 +77,4 @@ Route::group(['namespace' => 'Frontend'], function () {
     });
 });
 
-Route::group(['namespace'=>'Api', 'prefix'=>'api'],function(){
-    Route::get('/json/{model}',['uses'=>'JsonController@index', 'as'=>'json.get']);
-});
-
-Route::get('/investor/image/{filename}', function($filename)
-{
-    $img = Image::make(storage_path('app/investor/images/'.$filename))->resize(300, 300);
-    return $img->response('jpg');
-});
-Route::get('/customer/image/{filename}', function($filename)
-{
-    $img = Image::make(storage_path('app/customer/images/'.$filename))->resize(300, 300);
-    return $img->response('jpg');
-});
-
-Route::get('/executor/image/{filename}', function($filename)
-{
-    $img = Image::make(storage_path('app/executor/images/'.$filename))->resize(300, 300);
-    return $img->response('jpg');
-});
-Route::get('/designer/image/{filename}', function($filename)
-{
-    $img = Image::make(storage_path('app/designer/images/'.$filename))->resize(300, 300);
-    return $img->response('jpg');
-});
-Route::get('/employer/image/{filename}', function($filename)
-{
-    $img = Image::make(storage_path('app/employer/images/'.$filename))->resize(300, 300);
-    return $img->response('jpg');
-});
 Route::auth();

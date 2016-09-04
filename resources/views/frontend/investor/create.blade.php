@@ -70,11 +70,11 @@
                 <div class="col-md-10">
                     <div class="form-group">
                         <label class="control-label" for="Галузь">Галузь:</label>
-                        <select class="form-control" name="economic_activities_id">
-                            @foreach($economicActivities as $i => $item)
-                                <option value="{{ $i }}" {{ ( old("economic_activities_id") == $i ? "selected":"") }}>{{ $item }}</option>
-                            @endforeach
-                        </select>
+                        @include('frontend.partials.economic_activities_select',
+                        ['economicActivities'=> $economicActivities,
+                         'economicActivitiesAttributeName'=>'economic_activities_id',
+                         'economicActivitiesAttributeValueNow' => old('economic_activities_id')
+                        ])
                     </div>
                 </div>
             </div>
