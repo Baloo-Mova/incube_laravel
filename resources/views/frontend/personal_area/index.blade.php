@@ -74,8 +74,8 @@
                                             <p>{{$item->economicActivities->name }}</p>
                                         </td>
                                         <td>{{$item->created_at}}</td>
-                                        <td>@if($item->status!=0) Опубліковано @endif
-                                            @if($item->status==0) Не Опубліковано @endif
+                                        <td>@if($item->status!=0) <span class="label label-success">Опубліковано</span> @endif
+                                            @if($item->status==0) <span class="label label-danger">Не Опубліковано</span> @endif 
                                         </td>
                                         <td>
                                             <a href="{{url('/customer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
@@ -131,8 +131,8 @@
                                             <p>{{$item->economicActivities->name }}</p>
                                         </td>
                                         <td>{{$item->created_at}}</td>
-                                        <td>@if($item->status!=0) Опубліковано @endif
-                                            @if($item->status==0) Не Опубліковано @endif
+                                        <td>@if($item->status!=0) <span class="label label-success">Опубліковано</span> @endif
+                                            @if($item->status==0) <span class="label label-danger">Не Опубліковано</span> @endif 
                                         </td>
                                         <td>
                                             <a href="{{url('/investor/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
@@ -154,6 +154,7 @@
                             </table>
                         </div>
                     </div>
+                    
                     <!--investor end -->
 
                     <!--designer begin-->
@@ -188,8 +189,8 @@
                                             <p>{{$item->economicActivities->name }}</p>
                                         </td>
                                         <td>{{$item->created_at}}</td>
-                                        <td>@if($item->status!=0) Опубліковано @endif
-                                            @if($item->status==0) Не Опубліковано @endif
+                                        <td>@if($item->status!=0) <span class="label label-success">Опубліковано</span> @endif
+                                            @if($item->status==0) <span class="label label-danger">Не Опубліковано</span> @endif 
                                         </td>
                                         <td>
                                             <a href="{{url('/designer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
@@ -211,13 +212,14 @@
                             </table>
                         </div>
                     </div>
-                    <!--designer end -->
-                    <!-- executer begin-->
-                    <div class="tab-pane" id="executerProj">
-                        <div class="grid-view">
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
+                
+                <!--designer end -->
+                <!-- executer begin-->
+                <div class="tab-pane" id="executerProj">
+                    <div class="grid-view">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr class="text-center">
                                     <th>Id</th>
                                     <th><a class="" href="#" data-sort="executor_fname">ПІБ</a></th>
                                     <th><a class="" href="#">ІД прив'язаного проекту</a></th>
@@ -233,28 +235,28 @@
                                     <th><input type="text" class="form-control" name=""></th>
                                     <th><a class="" href="#"></a></th>
                                 </tr>
-                                </thead>
-                                <tbody>
+                            </thead>  
+                            <tbody class="text-center">
                                 @foreach($usersExecutorProjects as $item)
-                                    <tr>
-                                        <td>{{$item->id}}</td>
-                                        <td>
-                                            <p>{{$item->executor_fname}}</p>
-                                            <p>{{$item->executor_sname}}</p>
-                                            <p>{{$item->executor_thname}}</p>
-                                        </td>
-                                        <td>{{$item->id}}</td>
-                                        <td>{{$item->created_at}}</td>
-                                        <td>@if($item->status!=0) Опубліковано @endif
-                                            @if($item->status==0) Не Опубліковано @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{url('/executor/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
-                                                <span class="glyphicon glyphicon-eye-open"></span>
-                                            </a>
-                                            @if($item->status==0)
-                                                <a href="{{url('/executor/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
-                                                    <span class="glyphicon glyphicon-pencil"></span></a>
+                                <tr>    
+                                    <td>{{$item->id}}</td>
+                                    <td>
+                                        <p>{{$item->executor_fname}}</p>
+                                        <p>{{$item->executor_sname}}</p>
+                                        <p>{{$item->executor_thname}}</p>
+                                    </td>
+                                    <td>{{$item->id}}</td>
+                                    <td>{{$item->created_at}}</td>
+                                    <td>@if($item->status!=0) <span class="label label-success">Опубліковано</span> @endif  
+                                        @if($item->status==0) <span class="label label-danger">Не Опубліковано</span> @endif  
+                                    </td>
+                                    <td>
+                                        <a href="{{url('/executor/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                        @if($item->status==0)  
+                                        <a href="{{url('/executor/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
+                                            <span class="glyphicon glyphicon-pencil"></span></a> 
 
                                                 <a href="#" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
                                                     <span class="glyphicon glyphicon-trash"></span>
@@ -294,21 +296,21 @@
                                 </thead>
                                 <tbody class='text-center'>
                                 @foreach($usersEmployerProjects as $item)
-                                    <tr>
-                                        <td>{{$item->id}}</td>
-                                        <td>{{$item->org_name}}</td>
-                                        <td>{{$item->short_name}}</td>
-                                        <td>{{$item->created_at}}</td>
-                                        <td>@if($item->status!=0) Опубліковано @endif
-                                            @if($item->status==0) Не Опубліковано @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{url('/employer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
-                                                <span class="glyphicon glyphicon-eye-open"></span>
-                                            </a>
-                                            @if($item->status==0)
-                                                <a href="{{url('/employer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
-                                                    <span class="glyphicon glyphicon-pencil"></span></a>
+                                <tr>    
+                                    <td>{{$item->id}}</td>
+                                    <td>{{$item->org_name}}</td>
+                                    <td>{{$item->short_name}}</td>
+                                    <td>{{$item->created_at}}</td>
+                                    <td>@if($item->status!=0) <span class="label label-success">Опубліковано</span> @endif  
+                                        @if($item->status==0) <span class="label label-danger">Не Опубліковано</span> @endif  
+                                    </td>
+                                    <td>
+                                        <a href="{{url('/employer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                        @if($item->status==0)  
+                                        <a href="{{url('/employer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
+                                            <span class="glyphicon glyphicon-pencil"></span></a> 
 
                                                 <a href="#" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
                                                     <span class="glyphicon glyphicon-trash"></span>
@@ -349,22 +351,22 @@
                                 </thead>
                                 <tbody class='text-center'>
                                 @foreach($usersEmployerProjects as $item)
-                                    <tr>
-                                        <td>{{$item->id}}</td>
-                                        <td>{{$item->org_name}}</td>
-                                        <td>{{$item->short_name}}</td>
-                                        <td>{{$item->short_name}}</td>
-                                        <td>{{$item->created_at}}</td>
-                                        <td>@if($item->status!=0) Опубліковано @endif
-                                            @if($item->status==0) Не Опубліковано @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{url('/employer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
-                                                <span class="glyphicon glyphicon-eye-open"></span>
-                                            </a>
-                                            @if($item->status==0)
-                                                <a href="{{url('/employer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
-                                                    <span class="glyphicon glyphicon-pencil"></span></a>
+                                <tr>    
+                                    <td>{{$item->id}}</td>
+                                    <td>{{$item->org_name}}</td>
+                                    <td>{{$item->short_name}}</td>
+                                    <td>{{$item->short_name}}</td>
+                                    <td>{{$item->created_at}}</td>
+                                    <td>@if($item->status!=0) <span class="label label-success">Опубліковано</span> @endif  
+                                        @if($item->status==0) <span class="label label-danger">Не Опубліковано</span> @endif  
+                                    </td>
+                                    <td>
+                                        <a href="{{url('/employer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                        @if($item->status==0)  
+                                        <a href="{{url('/employer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
+                                            <span class="glyphicon glyphicon-pencil"></span></a> 
 
                                                 <a href="#" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
                                                     <span class="glyphicon glyphicon-trash"></span>

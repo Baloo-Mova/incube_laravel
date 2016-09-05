@@ -20,12 +20,18 @@
 
                 <div class="">
                     <img src="{{url('/employer/image/'.$employer->logo)}}" alt="">
-                    
+
                 </div>
-                
+
             </div>
         </div> 
 
+        <div class="col-md-8">
+            <h3 class="text-center" style="color: #00aeef">{{ $employer->org_name}}</h3>
+       
+        
+        </div>
+        
         <div class="col-md-8">
             <div class="panel panel-primary one-row-pannel">
                 <div class="panel-heading text-center">Галузь</div>
@@ -43,9 +49,9 @@
                 </div>
             </div>
         </div>
-                
+
     </div>
-    <div class="container">
+    <div class="">
         <div class="btn-toolbar">
 
             @if(Auth::check() && Auth::user()->id == $employer->author_id)
@@ -73,12 +79,12 @@
                 <blockquote>
                     <p> {!! $employer->description !!}</p>
                 </blockquote>
-                
+
                 <h4>Адресса</h4>
                 <blockquote>
                     <p> {!! $employer->adress !!}</p>
                 </blockquote>
-                
+
                 <h4>Інше</h4>
                 <blockquote>
                     <p><em> {!! $employer->other !!}</em></p>
