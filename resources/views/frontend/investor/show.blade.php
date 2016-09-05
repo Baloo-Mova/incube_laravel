@@ -81,11 +81,8 @@
                 @endif
             @else
                 <div class="btn-group pull-right">
-                    <a href="#" class="btn btn-primary"> <span><i class="fa fa-dollar"></i> Запропонувати проект</span>
+                    <a href="#" id="offer-project" data-toggle="modal" data-target="#myModal" class="btn btn-primary"> <span><i class="fa fa-dollar"></i> Запропонувати проект</span>
                     </a>
-                </div>
-                <div class="btn-group pull-right">
-                    <a href="#" class="btn btn-primary"> <span><i class="fa fa-user"></i> Прийняти участь</span> </a>
                 </div>
             @endif
         </div>
@@ -101,6 +98,38 @@
         </div>
 
 
+    </div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Выберите проэкт на рассмотрение</h4>
+                </div>
+                <div class="modal-body">
+                   <table>
+                       <thead>
+                            <tr>
+                                <th colspan="2">Вашы проэкты</th>
+                            </tr>
+                       </thead>
+                       @forelse($avaibleProjects as $item)
+                           @empty
+                           <tr>
+                               <td colspan="2"> У вас нет ни одного опубликованного проэкта,вы можете подать проэкт воспользовавшись кнопкой ниже</td>
+                           </tr>
+                       @endforelse
+                   </table>
+                </div>
+                <div class="modal-footer">
+                    <a href="{{ route('designer.create') }}" class="btn btn-success pull-left">Подать проэкт</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 @stop

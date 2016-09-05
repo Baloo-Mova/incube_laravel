@@ -20,7 +20,7 @@
 
                         <img class="pic img-circle" src="{{ empty($user->logo)? '../img/man-profile.jpg' : url('/users/image/'.$user->logo)}}" alt="...">
                         <div class="name">
-                            <small>{{$thisUser->name}}, {{$thisUser->country_id}}</small>
+                            <small>{{$thisUser->name}}, {{ $thisUser->country->name}}</small>
                         </div>
                         <a href="#" class="btn btn-xs btn-primary pull-right login" style="margin:10px;"><span class="glyphicon glyphicon-picture"></span> Змінити зображення</a>
                     </div>

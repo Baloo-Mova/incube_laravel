@@ -136,7 +136,16 @@ class InvestorController extends Controller
 
     public function show(Investor $investor)
     {
-        return view('frontend.investor.show', compact('investor'));
+        if(Auth::check()){
+            $id = Auth::user()->id;
+        }else{
+            $id = 0;
+        }
+
+
+        $avaibleProjects = Designer::where(['author_id'=>$id, 'status'=>1])->get();
+
+        return view('frontend.investor.show', compact('investor','avaibleProjects'));
     }
 
     public function delete(Investor $investor)
