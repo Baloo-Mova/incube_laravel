@@ -44,7 +44,7 @@
 
             @if(Auth::check() && Auth::user()->id == $model->author_id)
                 <div class="btn-group pull-lef">
-                    <a href="{{ route('edit') }}" class="btn-primary btn">Оновити</a>
+                    <a href="{{ route('customer.edit') }}" class="btn-primary btn">Оновити</a>
                 </div>
                 <div class="btn-group pull-lef">
                     <a href="#" class="btn-danger btn">Видалити</a>
