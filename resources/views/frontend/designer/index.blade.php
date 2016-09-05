@@ -32,7 +32,7 @@
 </div>
 <hr/>
 <div class="row page-title text-center">
-    <h2>Інвестор може вкласти кошти у наступне</h2>
+    <h2>Проектант може запропонувати свої прокти</h2>
 </div>
 <br/>
 <div class="row">

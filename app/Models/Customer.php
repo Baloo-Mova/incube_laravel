@@ -38,6 +38,4 @@ class Customer extends Model
     public function economicActivities(){
         return $this->belongsTo('App\Models\EconomicActivities');
     }
-    
-    
 }

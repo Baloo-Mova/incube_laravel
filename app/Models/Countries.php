@@ -18,11 +18,5 @@ class Countries extends Model
     public $fillable = [
         'name',
         'icon',
-        
     ];
-    //
-    
-    
-    
-    
 }

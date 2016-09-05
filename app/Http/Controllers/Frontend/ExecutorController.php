@@ -38,12 +38,12 @@ class ExecutorController extends Controller
         $this->validate($request, [
             'executor_fname'    => 'required',
             'executor_sname'    => 'required',
-            'date_birth'        => 'required',
-            'experience'        => 'reguired', 
-            'education'         => 'reguired',
-            'description'       => 'reguired',
-            'adress'            => 'reguired',
-            'phone'             => 'reguired',
+            //'date_birth'        => 'required',
+            //'experience'        => 'reguired', 
+            //'education'         => 'reguired',
+            //'description'       => 'reguired',
+            //'adress'            => 'reguired',
+            //'phone'             => 'reguired',
             'email'             => Auth::check() ? '' : 'required|email|unique:users',
         ], [
             'executor_fname.required'    => "Поле Ім'я обов'язкове для заповнення",
@@ -105,12 +105,12 @@ class ExecutorController extends Controller
         $this->validate($request, [
             'executor_fname'    => 'required',
             'executor_sname'    => 'required',
-            'date_birth'        => 'required',
-            'experience'         => 'required',
-            'education'         => 'reguired',
-            'description'       => 'reguired',
-            'adress'            => 'reguired',
-            'phone'             => 'reguired',
+            //'date_birth'        => 'required',
+            //'experience'         => 'required',
+           //'education'         => 'reguired',
+           //'description'       => 'reguired',
+            //'adress'            => 'reguired',
+            //'phone'             => 'reguired',
             
         ], [
             'executor_fname.required'    => "Поле Ім'я обов'язкове для заповнення",
