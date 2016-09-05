@@ -8,7 +8,12 @@
 <div class="container">
 
     @if(Session::has('message'))
-    <p class="alert alert-info col-md-offset-2 col-md-10">{{ Session::get('message') }}</p>
+    <div class="col-md-offset-2">
+        <div class="c col-md-10 text-center">
+            <p class="alert alert-info">{{ Session::get('message') }}</p>
+            <a href="{{ route('investor.show',['investor'=>$investor->id]) }}" class="btn-primary btn">Продивитись</a>
+        </div>
+    </div>
     @endif
 
     @if (count($errors) > 0)

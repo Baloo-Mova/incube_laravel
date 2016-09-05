@@ -83,7 +83,7 @@
                     <span class="pull-right">
                         @if(Auth::check() && Auth::user()->id == $executor->author_id)
                         <div class="btn-group pull-lef">
-                            <a href="#" class="btn-primary btn">Оновити</a>
+                            <a href="{{route('executor.edit',['executor'=>$executor->id])}}" class="btn-primary btn">Оновити</a>
                         </div>
                         <div class="btn-group pull-lef">
                             <a href="#" class="btn-danger btn">Видалити</a>

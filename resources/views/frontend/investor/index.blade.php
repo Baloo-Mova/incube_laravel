@@ -22,8 +22,8 @@
         </div>
         <div class="select-tabs">
             <ul class="nav nav-tabs text-center" id="myTab">
-                <li class="active"><a href="#problem" data-toggle="tab">Проблемы</a></li>
-                <li><a href="#project" data-toggle="tab">Проэкты</a></li>
+                <li class="active"><a href="#problem" data-toggle="tab">Проблеми</a></li>
+                <li><a href="#project" data-toggle="tab">Проекти</a></li>
             </ul>
         </div>
         <div class="tab-content">
@@ -34,7 +34,7 @@
                     </div>
                 @empty
                     <div class="row text-center">
-                        <h3>Проблемы отсутствуют</h3>
+                        <h3>Проблеми відсутні</h3>
                     </div>
                 @endforelse
             </div>
@@ -46,7 +46,7 @@
                     </div>
                 @empty
                     <div class="row text-center">
-                        <h3>Проэкты отсутствуют</h3>
+                        <h3>Проекти відсутні</h3>
                     </div>
                 @endforelse
             </div>
@@ -61,7 +61,7 @@
         @if(count($investProjects) > 0)
             <hr/>
             <div class="row page-title text-center">
-                <h2>Актуальные инвестиционные проэкты</h2>
+                <h2>Актуальні інвестиційні проекти</h2>
             </div>
             <div class="carusel" id="investorProjects">
                 @foreach($investProjects as $item)

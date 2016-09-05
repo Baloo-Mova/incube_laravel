@@ -9,9 +9,11 @@
 
     @if(Session::has('message'))
     <div class="col-md-offset-2">
-        <div class="col-md-10">
+        <div class="col-md-10 text-center">
             <p class="alert alert-info">{{ Session::get('message') }}</p>
+             <a href="{{ route('employer.show',['employer'=>$employer->id]) }}" class="btn-primary btn">Продивитись</a>
         </div>
+        
     </div>
     @endif
 

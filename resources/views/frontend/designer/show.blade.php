@@ -19,58 +19,54 @@
             <div class="text-center owl-carousel owl-theme" id="owl-demo">
 
                 <div class="">
-                    <img src="{{url('/designer/image/'.$designer->logo)}}" alt="">
+                    <img  class="img-responsive"src="{{url('/designer/image/'.$designer->logo)}}" alt="">
                     1
                 </div>
                 <div class="">
-                    <img src="{{url('/designer/image/'.$designer->logo)}}" alt="">
+                    <img class="img-responsive" src="{{url('/designer/image/'.$designer->logo)}}" alt="">
                     2
                 </div>
                 <div class="">
-                    <img src="{{url('/designer/image/'.$designer->logo)}}" alt="">
+                    <img class="img-responsive" src="{{url('/designer/image/'.$designer->logo)}}" alt="">
                     3
                 </div>
             </div>
         </div> 
 
         <div class="col-md-6">
-            <div class="panel panel-primary one-row-pannel">
-                <div class="panel-heading text-center">Галузь</div>
-                <div class="panel-body text-center">{{ $designer->economicActivities->name }}
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="panel panel-primary one-row-pannel">
-                <div class="panel-heading text-center">Географія проекту</div>
-                <div class="panel-body text-center">{{ $designer->region }}
-                </div>
-            </div>
-        </div>
+            <div class="panel panel-primary">
 
-        <div class="col-md-6">
-            <div class="panel panel-primary one-row-pannel">
-                <div class="panel-heading text-center">Період реалізації проекту</div>
-                <div class="panel-body text-center">{{$designer->project_duration}}
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-6">
-            <div class="panel panel-primary one-row-pannel">
-                <div class="panel-heading text-center">Сума, яку готові інвестувати</div>
-                <div class="panel-body text-center">
-                    <?= number_format($designer["project_cost"], 0, '.', ' ') ?> $
+                <div class="text-center">
+                    <h4 class="title-border">Галузь</h4>
+                    <p>{{ $designer->economicActivities->name }}</p>
                 </div>
+                <div class="text-center">
+                    <h4 class="title-border">Географія проекту(Регіон)</h4>
+                    <p>{{ $designer->region }}</p>
+                </div>
+                <div class="text-center">
+                    <h4 class="title-border">Період реалізації проекту</h4>
+                    <p>{!!$designer->project_duration!!}</p>
+                </div>
+                               
+                <div class="text-center">
+                    <h4 class="title-border">Вартість проекту</h4>
+                    <p> <?= number_format($designer["project_cost"], 0, '.', ' ') ?> $ </p>
+                </div>
+
             </div>
         </div>
+        
+        
+        
     </div>
-    <div class="container">
+    <div class="">
         <div class="btn-toolbar">
 
             @if(Auth::check() && Auth::user()->id == $designer->author_id)
             <div class="btn-group pull-lef">
-                <a href="#" class="btn-primary btn">Оновити</a>
+                <a href="{{route('designer.edit',['designer'=>$designer->id])}}" class="btn-primary btn">Оновити</a>
             </div>
             <div class="btn-group pull-lef">
                 <a href="#" class="btn-danger btn">Видалити</a>
@@ -89,6 +85,7 @@
 
         </div>
     </div>
+    <hr/>
     <div class="product-info">
 
         <div class="tab-pane fade in active" id="service-one">

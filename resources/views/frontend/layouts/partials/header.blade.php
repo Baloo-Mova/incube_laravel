@@ -1,4 +1,4 @@
-<div id="header" class="navbar-fixed-top navbar-fixed-top-size" role="navigation">
+<div id="header" class="navbar-fixed-top" role="navigation">
     <div class="header-connect">
         <div class="container-fluid">
             <div class="row">
@@ -184,4 +184,4 @@
             </ul>
         </div><!-- /.navbar-collapse -->
     </div>
-</div>
+</div> 

@@ -15,50 +15,46 @@
     </div>
     <div class="row">
 
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="text-center owl-carousel owl-theme" id="owl-demo">
 
                 <div class="">
-                    <img src="{{url('/employer/image/'.$employer->logo)}}" alt="">
+                    <img class="img-responsive" src="{{url('/employer/image/'.$employer->logo)}}" alt="">
 
                 </div>
 
             </div>
         </div> 
 
-        <div class="col-md-8">
-            <h3 class="text-center" style="color: #00aeef">{{ $employer->org_name}}</h3>
-       
-        
-        </div>
-        
-        <div class="col-md-8">
-            <div class="panel panel-primary one-row-pannel">
-                <div class="panel-heading text-center">Галузь</div>
-                <div class="panel-body text-center">{{ $employer->economicActivities->name }}
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+
+
+                <div class="text-center">
+                    <h4 class="title-border">Галузь</h4>
+                    <p>{{ $employer->economicActivities->name }}</p>
                 </div>
-            </div>
-            <div class="panel panel-primary one-row-pannel">
-                <div class="panel-heading text-center">Тип організації</div>
-                <div class="panel-body text-center">{{ $employer->org_type }}
+                <div class="text-center">
+                    <h4 class="title-border">Тип організації</h4>
+                    <p>{{ $employer->org_type }}</p>
                 </div>
-            </div>
-            <div class="panel panel-primary one-row-pannel">
-                <div class="panel-heading text-center">Коротка характеристика діяльності організації</div>
-                <div class="panel-body text-center">{!! $employer->org_info !!}
+                <div class="">       
+                    <div class="text-center"><h4 class="title-border">Коротка характеристика діяльності організації</h4></div>
+                    <p>{!! $employer->org_info !!}</p>
                 </div>
             </div>
         </div>
+
 
     </div>
     <div class="">
         <div class="btn-toolbar">
 
             @if(Auth::check() && Auth::user()->id == $employer->author_id)
-            <div class="btn-group pull-lef">
-                <a href="#" class="btn-primary btn">Оновити</a>
+            <div class="btn-group pull-left">
+                <a href="{{ route('employer.edit',['employer'=>$employer->id]) }}" class="btn-primary btn">Оновити</a>
             </div>
-            <div class="btn-group pull-lef">
+            <div class="btn-group pull-left">
                 <a href="#" class="btn-danger btn">Видалити</a>
             </div>
             @endif
@@ -71,6 +67,7 @@
 
         </div>
     </div>
+    <hr/>
     <div class="product-info">
 
         <div class="tab-pane fade in active" id="service-one">

@@ -10,5 +10,9 @@
 <script src="{{ asset("js/moment.js") }}" type="text/javascript"></script>
 <script src="{{ asset("js/bootstrap-datetimepicker.min.js") }}" type="text/javascript"></script>
 <script src="{{ asset("js/fileinput.min.js") }}" type="text/javascript"></script>
+<!--<script src="{{ asset("js/frontend/jquery.bootstrap-autohidingnavbar.js") }}"></script>
+<script>
+      $("div.navbar-fixed-top").autoHidingNavbar();
+    </script>-->
 {!! Toastr::render() !!}
 @yield('js')
