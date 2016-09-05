@@ -8,7 +8,7 @@
                     <li class="active">
                         <a href="{{ route('personal_area.index') }}"><i class="fa fa-home"></i> Кабінет</a></li>
                     <li>
-                        <a href="{{url("/personal-area/edit/") . $thisUser->id }}"><i class="fa fa-user"></i> Профіль</a>
+                        <a href="{{  route('personal_area.edit',['personal'=>$thisUser->id])   }}"><i class="fa fa-user"></i> Профіль</a>
                     </li>
                     <li><a href="#"><i class="fa fa-key"></i> Безпека</a></li>
                     <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> Вихід</a></li>
