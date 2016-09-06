@@ -38,4 +38,8 @@ class Customer extends Model
     public function economicActivities(){
         return $this->belongsTo('App\Models\EconomicActivities');
     }
+
+    public function status(){
+        return $this->belongsTo('App\Models\Status');
+    }
 }

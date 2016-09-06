@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Mail;
 class ProblemController extends Controller {
 
     public function index() {
-        $problems = Customer::where(['status'=>true])->orderBy('id', 'desc')->take(10)->get();
+        $problems = Customer::where(['status_id'=>1])->orderBy('id', 'desc')->take(10)->get();
 
         return view('frontend.customer.index')->with([
                     'problems' => $problems,

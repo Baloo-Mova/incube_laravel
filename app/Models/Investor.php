@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $logo
  * @property string $date_create
  * @property string $date_publish
- * @property integer $status
+ * @property integer $status_id
  *
  */
 class Investor extends Model
@@ -47,5 +47,9 @@ class Investor extends Model
 
     public function economicActivities(){
         return $this->belongsTo('App\Models\EconomicActivities');
+    }
+
+    public function status(){
+        return $this->belongsTo('App\Models\Status');
     }
 }

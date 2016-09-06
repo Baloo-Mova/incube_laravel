@@ -172,6 +172,7 @@
                 <li><a href="{{url('/contacts')}}">Контакти</a></li>
                 <li><a href="{{url('/about')}}">Про нас</a></li>
                 <li><a href="{{url('/rules')}}">Правила</a></li>
+                <li><a href="{{url('/blog')}}">Блог</a></li>
             </ul>
             <ul class="main-nav nav navbar-nav navbar-right">
                 @if(!Auth::check())

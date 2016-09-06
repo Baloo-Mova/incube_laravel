@@ -12,8 +12,9 @@
              Інвесторомами можуть виступати Юридичні та Фізичні особи, які можуть вкладувати кошти у інноваційний проект
             <p>Якщо ви хочете виступити інвестором - заповніть наступну форму: </p>
             <div class="text-center">
-                <a href="{{ route('investor.create') }}" class="btn btn-lg btn-danger center">Подати заявку
-                    <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a href="{{ route('investor.create') }}" class="btn btn-lg btn-danger">Подати заявку
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
             </div>
         </div>
         <hr/>

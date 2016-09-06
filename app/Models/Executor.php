@@ -24,5 +24,7 @@ class Executor extends Model {
         'other',
         'status',
     ];
-
+    public function status(){
+        return $this->belongsTo('App\Models\Status');
+    }
 }

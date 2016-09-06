@@ -61,18 +61,24 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="home">
                                     <h3 class="head text-center">Вас вітає</h3>
-                                    <h3 class="text-center">Відкрита регіональна платформа науково виробничого партнерства</h3>
+                                    <h3 class="text-center">Відкрита регіональна платформа науково виробничого
+                                        партнерства</h3>
                                     <h1 class="text-center">
-                                        <span style='color: #D30072; font-weight: bold;'>In</span><span style="color:#00AEEF; font-weight: bold;">Cube</span>
+                                        <span style='color: #D30072; font-weight: bold;'>In</span><span
+                                                style="color:#00AEEF; font-weight: bold;">Cube</span>
                                     </h1>
                                     <h4 class="narrow text-center">
-                                        Дана платформа розрахована на реалізацію молодіжних наукових розробок, актуальних для промислових і сільськогосподарських підприємств Запорізького регіону.
+                                        Дана платформа розрахована на реалізацію молодіжних наукових розробок,
+                                        актуальних для промислових і сільськогосподарських підприємств Запорізького
+                                        регіону.
                                     </h4>
                                     <p class="text-center">
-                                        <a href="{{ url('/about') }}" target="_blank" class="btn btn-success btn-outline-rounded green"> Детальніше
+                                        <a href="{{ url('/about') }}" target="_blank"
+                                           class="btn btn-success btn-outline-rounded green"> Детальніше
                                             <i class="glyphicon glyphicon-send"></i>
                                         </a>
-                                        <a href="#profile" data-toggle="tab" class="btn btn-success btn-outline-rounded set-active-tab"> Дальше
+                                        <a href="#profile" data-toggle="tab"
+                                           class="btn btn-success btn-outline-rounded set-active-tab"> Дальше
                                             <i class="glyphicon glyphicon-arrow-right"></i>
                                         </a>
                                     </p>
@@ -84,10 +90,12 @@
                                     </h4>
 
                                     <p class="text-center">
-                                        <a href="{{ url('/register') }}" target="_blank" class="btn btn-success btn-outline-rounded green"> Створити свій аккаунт
+                                        <a href="{{ url('/register') }}" target="_blank"
+                                           class="btn btn-success btn-outline-rounded green"> Створити свій аккаунт
                                             <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span>
                                         </a>
-                                        <a href="#messages" data-toggle="tab" class="btn btn-success btn-outline-rounded set-active-tab"> Дальше
+                                        <a href="#messages" data-toggle="tab"
+                                           class="btn btn-success btn-outline-rounded set-active-tab"> Дальше
                                             <i class="glyphicon glyphicon-arrow-right"></i>
                                         </a>
                                     </p>
@@ -103,7 +111,8 @@
                                         <a href="#" class="btn btn-success btn-outline-rounded green"> Подати заявку
                                             <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span>
                                         </a>
-                                        <a href="#settings" data-toggle="tab" class="btn btn-success btn-outline-rounded set-active-tab"> Дальше
+                                        <a href="#settings" data-toggle="tab"
+                                           class="btn btn-success btn-outline-rounded set-active-tab"> Дальше
                                             <i class="glyphicon glyphicon-arrow-right"></i>
                                         </a>
                                     </p>
@@ -111,11 +120,13 @@
                                 <div class="tab-pane fade" id="settings">
                                     <h3 class="head text-center">Слідкуйте за проектом</h3>
                                     <h4 class="narrow text-center">
-                                        Для подальшого розвинення проекта спілкуйтесь з іншими учасниками платформи для отримання інвестицій, плану роботи, потрібних фахівців, тощо.
+                                        Для подальшого розвинення проекта спілкуйтесь з іншими учасниками платформи для
+                                        отримання інвестицій, плану роботи, потрібних фахівців, тощо.
                                     </h4>
 
                                     <p class="text-center">
-                                        <a href="#doner" data-toggle="tab" class="btn btn-success btn-outline-rounded set-active-tab"> Дальше
+                                        <a href="#doner" data-toggle="tab"
+                                           class="btn btn-success btn-outline-rounded set-active-tab"> Дальше
                                             <i class="glyphicon glyphicon-arrow-right"></i>
                                         </a>
                                     </p>
@@ -229,45 +240,60 @@
             window.scrollTo(0, 0);
 
             $("#bg-slider").owlCarousel({
-                navigation        : false, // Show next and prev buttons
-                loop              : true,
-                items             : 1,
-                mouseDrag         : false,
-                autoplay          : true,
+                navigation: false, // Show next and prev buttons
+                loop: true,
+                items: 1,
+                mouseDrag: false,
+                autoplay: true,
                 autoplayHoverPause: true,
-                animateIn         : 'bounceInRight',
-                animateOut        : 'bounceOutRight',
-                autoplayTimeout   : 8000,
-                autoplaySpeed     : 3000,
-                smartSpeed        : 3000
+                animateIn: 'bounceInRight',
+                animateOut: 'bounceOutRight',
+                autoplayTimeout: 8000,
+                autoplaySpeed: 3000,
+                smartSpeed: 3000
             });
 
             $('#how-it-work').owlCarousel({
-                loop              : true,
-                navigation        : false,
-                margin            : 30,
-                stagePadding      : 150,
-                dots              : false,
-                autoplay          : true,
+                loop: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                    800: {
+                        items: 3,
+                        stagePadding: 150,
+                    }
+                },
+                navigation: false,
+                margin: 20,
+                dots: false,
+                autoplay: true,
                 autoplayHoverPause: true,
-                autoplayTimeout   : 3000,
-                smartSpeed        : 3000
+                autoplayTimeout: 3000,
+                smartSpeed: 3000
             });
 
             $('#materials').owlCarousel({
-                loop              : true,
-                nav        : true,
-                items             : 4,
-                center            : true,
-                dots              : false,
-                autoplay          : true,
+                loop: true,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                    800: {
+                        items: 4,
+                    }
+                },
+                center: true,
+                dots: false,
+               // autoplay: true,
                 autoplayHoverPause: true,
-                autoplayTimeout   : 5000,
-                smartSpeed        : 1500,
+                autoplayTimeout: 5000,
+                smartSpeed: 1500,
                 navText: [
-      "<span class='fa fa-angle-left'></span>",
-      "<span class='fa fa-angle-right'></span>"
-      ],
+                    "<span class='fa fa-angle-left'></span>",
+                    "<span class='fa fa-angle-right'></span>"
+                ],
             });
 
             $('.set-active-tab').on('click', function () {

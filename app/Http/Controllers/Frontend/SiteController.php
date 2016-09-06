@@ -9,17 +9,23 @@ use App\Http\Controllers\Controller;
 
 class SiteController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('frontend.site.index');
     }
 
-     public function contacts(){
+    public function contacts()
+    {
         return view('frontend.site.contacts');
     }
-    public function about(){
+
+    public function about()
+    {
         return view('frontend.site.about');
     }
-    public function ourrules(){
+
+    public function ourrules()
+    {
         return view('frontend.site.rules');
     }
 }

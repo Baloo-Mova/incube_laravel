@@ -25,12 +25,13 @@ class InvestorController extends Controller
 
     public function index()
     {
-        $investProjects = Investor::orderBy('id', 'desc')->where(['status'=>true])->take(10)->get();
+        $investProjects = Investor::orderBy('id', 'desc')->where(['status_id'=>2])->take(10)->get();
+
         $problems       = Customer::where([
-            'status' => true,
+            'status_id' => 2,
         ])->orderBy('id', 'desc')->take(10)->get();
         $projects       = Designer::where([
-            'status' => true,
+            'status_id' => 2,
         ])->orderBy('id', 'desc')->take(10)->get();
 
         return view('frontend.investor.index')->with([

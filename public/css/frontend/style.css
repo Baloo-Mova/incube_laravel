@@ -1194,8 +1194,13 @@ a:visited, a:active {
 @media (max-width: 585px) {
 
     .board {
-        width: 90%;
         height: auto !important;
+    }
+    .board-inner .nav-tabs > li:after {
+        left:33% !important;
+    }
+    #content{
+        padding-top: 196px !important;
     }
 
     span.round-tabs {
@@ -1416,13 +1421,15 @@ a:visited, a:active {
 
 .carusel-block {
     display: block;
-    float: left;
+    //float: left;
     text-align: center;
     width: 250px;
     min-height: 300px;
     position: relative;
     overflow: hidden;
+    margin: 0 auto;
 }
+
 
 .carusel-block-content {
     position: relative;
