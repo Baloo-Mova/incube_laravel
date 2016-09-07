@@ -21,8 +21,8 @@ class InvestorController extends Controller
 
     public function __construct()
     {
-        $this->middleware('owner:investor', ['only' => ['edit', 'update', 'delete']]);
-        $this->middleware('published:investor', ['only' => ['edit', 'update', 'delete']]);
+        //$this->middleware('owner:investor', ['only' => ['edit', 'update', 'delete']]);
+        //$this->middleware('published:investor', ['only' => ['edit', 'update', 'delete']]);
     }
 
     public function index()
@@ -47,7 +47,6 @@ class InvestorController extends Controller
     public function create()
     {
         $economicActivities = EconomicActivity::where(['parent_id' => null])->get();
-
         return view('frontend.investor.create', compact('economicActivities'));
     }
 
