@@ -17,6 +17,10 @@ class AddStatusTable extends Migration
               $table->increments('id');
               $table->string('name',30)->unique();
           });
+        Schema::create('stages', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('name',100);
+        });
 
     }
 
@@ -28,5 +32,6 @@ class AddStatusTable extends Migration
     public function down()
     {
         Schema::drop('statuses');
+        Schema::drop('stages');
     }
 }

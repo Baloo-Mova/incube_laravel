@@ -16,7 +16,7 @@ class AbortIfPublished
     public function handle($request, Closure $next,$project)
     {
 
-        if ($request->$project->status == 1) {
+        if ($request->$project->status->id == 2) {
             abort('401','Нельзя редактировать опубликованный материал');
         }
 

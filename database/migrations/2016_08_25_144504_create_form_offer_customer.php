@@ -10,20 +10,33 @@ class CreateFormOfferCustomer extends Migration
      *
      * @return void
      */
-     public function up()
+    public function up()
     {
-        Schema::create('customer_forms', function (Blueprint $table) {
+        Schema::create('problem_forms', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('author_id')->index()->nullable();
+            $table->integer('author_id')->index();
             $table->integer('publisher_id')->index()->nullable();
-            $table->integer('economic_activities_id')->nullable();
-            $table->string('problem_name', 100)->nullable();
-            $table->text('problem_description')->nullable();
-            $table->text('region')->nullable();
-			$table->text('other')->nullable();
-            $table->string('logo',100)->nullable();
-            $table->boolean('status')->default(false);
+            $table->integer('status_id')->default(1);
+            $table->integer('economic_activities_id')->index();
+            $table->integer('country_id')->index();
+            $table->integer('city_id')->index()->nullable();
+
+            $table->string('name', 100);
+            $table->text('description')->nullable();
+
             $table->timestamps();
+        });
+
+        Schema::create('documents', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('filename');
+        });
+
+        Schema::create('document_form_relation', function(Blueprint $table){
+            $table->increments('id');
+            $table->integer('table_type_id');
+            $table->integer('table_id');
+            $table->integer('documents_id');
         });
     }
 
@@ -34,6 +47,8 @@ class CreateFormOfferCustomer extends Migration
      */
     public function down()
     {
-        Schema::drop('customer_forms');
+        Schema::drop('problem_forms');
+        Schema::drop('documents');
+        Schema::drop('document_form_relation');
     }
 }

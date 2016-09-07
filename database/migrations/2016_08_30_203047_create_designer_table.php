@@ -13,31 +13,33 @@ class CreateDesignerTable extends Migration
      */
     public function up()
     {
-        Schema::create('designer_forms', function (Blueprint $table) {
+        Schema::create('project_form', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('author_id')->index()->nullable();
+            $table->integer('author_id')->index();
             $table->integer('publisher_id')->index()->nullable();
-            $table->integer('economic_activities_id')->nullable();
+            $table->integer('status_id')->default(1);
+            $table->integer('economic_activities_id')->index();
+            $table->integer('country_id')->index();
+            $table->integer('city_id')->index()->nullable();
+            $table->integer('stage_id')->index();
             
-            $table->string('project_name', 255)->nullable();
-            $table->text('project_manager')->nullable();
-            $table->text('project_contacts')->nullable();
-            $table->string('phone', 100)->nullable();
-            $table->string('email', 100)->nullable();
-            $table->string('web_site', 100)->nullable();
-            $table->text('project_goal')->nullable();
-            $table->text('project_aspects')->nullable();
-            $table->text('project_beneficaries')->nullable();
+            $table->string('name', 255)->nullable();
             $table->text('description')->nullable();
-            $table->integer('project_cost')->nullable();
-            $table->string('project_duration', 100)->nullable();
-            $table->text('region')->nullable();
-            $table->text('project_stage')->nullable();
-            $table->text('available_funding')->nullable();
-            $table->text('other')->nullable();
-            $table->string('logo',100)->nullable();
-            $table->string('project_files',100)->nullable();
-            $table->boolean('status')->default(false);
+
+            $table->string('web_site', 100)->nullable();
+            $table->string('youtube_link', 100)->nullable();
+
+            $table->text('idea')->nullable();
+            $table->text('current_situation')->nullable();
+            $table->text('field')->nullable();
+            $table->text('problem')->nullable();
+            $table->text('solution')->nullable();
+            $table->text('competition');
+            $table->text('benefits');
+            $table->text('buisness_model');
+            $table->text('money_target');
+            $table->text('investor_interest');
+            $table->text('risks');
             $table->timestamps();
         });
     }
@@ -49,7 +51,7 @@ class CreateDesignerTable extends Migration
      */
     public function down()
     {
-        Schema::drop('designer_forms');
+        Schema::drop('project_form');
     }
 }
 

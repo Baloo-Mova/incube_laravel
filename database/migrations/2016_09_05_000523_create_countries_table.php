@@ -17,7 +17,6 @@ class CreateCountriesTable extends Migration
             $table->integer('id')->unique();
             $table->string('name', 255)->nullable();
             $table->string('icon',255)->nullable();
-           
         });
     }
 

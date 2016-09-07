@@ -13,24 +13,26 @@ class CreateBusinessmanTable extends Migration
      */
    public function up()
     {
-        Schema::create('employer_forms', function (Blueprint $table) {
+        Schema::create('work_form', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('author_id')->index()->nullable();
+            $table->integer('author_id')->index();
             $table->integer('publisher_id')->index()->nullable();
-            $table->integer('economic_activities_id')->nullable();
-            $table->string('short_name', 100)->nullable();
-            $table->string('org_name', 255)->nullable();
-            $table->text('org_info')->nullable();
-            $table->string('org_type',255)->nullable();
-            $table->text('description')->nullable();
-            $table->string('web_site',255)->nullable();
-            $table->string('phone',255)->nullable();
-            $table->string('email',255)->nullable();
-            $table->text('adress')->nullable();
-            $table->text('other')->nullable();
-           
-            $table->string('logo',100)->nullable();
-            $table->boolean('status')->default(false);
+            $table->integer('status_id')->default(1);
+            $table->integer('country_id')->index();
+            $table->integer('city_id')->index()->nullable();
+            $table->integer('economic_activities_id')->index();
+
+            $table->string('name', 100)->nullable();
+            $table->integer('money')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('request_email')->nullable();
+            $table->string('site')->nullable();
+            $table->text('about')->nullable();
+            $table->text('requirements')->nullable();
+            $table->text('working_conditions')->nullable();
+            $table->text('duties')->nullable();
+            $table->text('ect')->nullable();
+
             $table->timestamps();
         });
     }
@@ -42,6 +44,6 @@ class CreateBusinessmanTable extends Migration
      */
     public function down()
     {
-        Schema::drop('employer_forms');
+        Schema::drop('work_form');
     }
 }

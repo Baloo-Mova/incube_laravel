@@ -4,14 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Executor extends Model {
+/**
+ * Class ExecutorForm
+ */
+class ExecutorForm extends Model
+{
+    protected $table = 'executor_forms';
 
-    public $table = "executor_forms";
-    public $fillable = [
+    public $timestamps = true;
+
+    protected $fillable = [
+        'author_id',
+        'publisher_id',
+        'status_id',
         'executor_fname',
         'executor_sname',
         'executor_thname',
-        'short_name',
         'date_birth',
         'experience',
         'education',
@@ -21,10 +29,10 @@ class Executor extends Model {
         'adress',
         'phone',
         'contacts',
-        'other',
-        'status',
+        'other'
     ];
-    public function status(){
-        return $this->belongsTo('App\Models\Status');
-    }
+
+    protected $guarded = [];
+
+
 }

@@ -17,6 +17,7 @@ class CreateExecutorTable extends Migration
             $table->increments('id');
             $table->integer('author_id')->index()->nullable();
             $table->integer('publisher_id')->index()->nullable();
+            $table->integer('status_id')->default(1)->index();
             $table->string('executor_fname', 100)->nullable();
             $table->string('executor_sname', 100)->nullable();
             $table->string('executor_thname', 100)->nullable();
@@ -30,9 +31,6 @@ class CreateExecutorTable extends Migration
             $table->string('phone', 100)->nullable();
             $table->text('contacts')->nullable();
             $table->text('other')->nullable();
-            $table->string('doc_file',100)->nullable();
-            $table->string('logo',100)->nullable();
-            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

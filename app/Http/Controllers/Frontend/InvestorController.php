@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Customer;
-use App\Models\Designer;
-use App\Models\EconomicActivities;
-use App\Models\Investor;
+use App\Http\Requests\InvestorCreateRequest;
+use App\Models\ProblemForm;
+use App\Models\ProjectForm;
+use App\Models\EconomicActivity;
+use App\Models\InvestorForm;
+use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -25,13 +27,14 @@ class InvestorController extends Controller
 
     public function index()
     {
-        $investProjects = Investor::orderBy('id', 'desc')->where(['status_id'=>2])->take(10)->get();
+        $investProjects = InvestorForm::orderBy('id', 'desc')->where(['status_id'=>Status::PUBLISHED])->take(10)->get();
 
-        $problems       = Customer::where([
-            'status_id' => 2,
+        $problems       = ProblemForm::where([
+            'status_id' => Status::PUBLISHED,
         ])->orderBy('id', 'desc')->take(10)->get();
-        $projects       = Designer::where([
-            'status_id' => 2,
+
+        $projects       = ProjectForm::where([
+            'status_id' => Status::PUBLISHED,
         ])->orderBy('id', 'desc')->take(10)->get();
 
         return view('frontend.investor.index')->with([
@@ -43,27 +46,14 @@ class InvestorController extends Controller
 
     public function create()
     {
-        $economicActivities = EconomicActivities::where(['parent_id' => null])->get();
+        $economicActivities = EconomicActivity::where(['parent_id' => null])->get();
 
         return view('frontend.investor.create', compact('economicActivities'));
     }
 
-    public function store(Request $request)
+    public function store(InvestorCreateRequest $request)
     {
-        $this->validate($request, [
-            'investor_name'     => 'required',
-            'investor_contacts' => 'required',
-            'investor_cost'     => 'numeric',
-            'email'             => Auth::check() ? '' : 'required|email|unique:users',
-        ], [
-            'investor_name.required'     => "Поле Назва інвестування  обов'язкове для заповнення;",
-            'investor_contacts.required' => "Поле Контактні дані  обов'язкове для заповнення;",
-            "investor_cost.numeric"      => "Поле суми інвестицій повинно бути числов та обов'язково вказано;",
-            "email"                      => "Гості мають обовязково вказати свою пошту для рєстрації;",
-            'unique'                     => "Ви вже зареєстровані. Спершу ви маєте авторизуватися за допомогою свого логіна і пароля;",
-        ]);
-
-        $model = new Investor();
+        $model = new InvestorForm();
         $model->fill($request->all());
 
         if (!File::exists(storage_path('app/investor/images'))) {
@@ -71,9 +61,8 @@ class InvestorController extends Controller
         }
 
         if ($request->file('logo_img_file')) {
-            $filename    = uniqid() . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
-            $image       = Image::make($request->file('logo_img_file'))->resize(250,
-                300)->save(storage_path('app/investor/images/' . $filename));
+            $filename    = uniqid('investor_') . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
+            $request->file('logo_img_file')->move(storage_path('app/investor/images/'), $filename);
             $model->logo = $filename;
         }
 
@@ -124,15 +113,15 @@ class InvestorController extends Controller
 
         $investor->fill($request->all());
         if ($request->file('logo_img_file')) {
-            $filename       = uniqid() . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
-            $image          = Image::make($request->file('logo_img_file'))->resize(250,
-                300)->save(storage_path('app/investor/images/' . $filename));
+            $filename    = uniqid('investor_') . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
+            $request->file('logo_img_file')->move(storage_path('app/investor/images/'), $filename);
             $investor->logo = $filename;
         }
 
+        $investor->status_id = Status::EDITED;
         $investor->save();
 
-        return back()->with(['message' => 'Edit successful']);
+        return back()->with(['message' => 'Відредаговано']);
     }
 
     public function show(Investor $investor)
@@ -143,8 +132,7 @@ class InvestorController extends Controller
             $id = 0;
         }
 
-
-        $avaibleProjects = Designer::where(['author_id'=>$id, 'status'=>1])->get();
+        $avaibleProjects = Designer::where(['author_id'=>$id, 'status_id'=>2])->get();
 
         return view('frontend.investor.show', compact('investor','avaibleProjects'));
     }

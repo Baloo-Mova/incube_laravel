@@ -4,10 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EconomicActivities extends Model
+/**
+ * Class EconomicActivity
+ */
+class EconomicActivity extends Model
 {
-    public $table='economic_activities';
+    protected $table = 'economic_activities';
+
     public $timestamps = false;
+
+    protected $fillable = [
+        'name',
+        's_code',
+        'parent_id'
+    ];
+
+    protected $guarded = [];
 
     public function getChildrens(){
         return self::where(['parent_id'=>$this->id])->get();
@@ -21,4 +33,5 @@ class EconomicActivities extends Model
         return isset($this->parent_id) ? self::where(['id'=>$this->parent_id])->first() : null;
     }
 
+        
 }

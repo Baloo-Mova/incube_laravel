@@ -8,7 +8,7 @@
                         <i class="glyphicon glyphicon-envelope"></i><span> incube.zp@gmail.com</span>
                     </div>
                 </div>
-                <div class="col-md-2 col-md-offset-5  col-sm-3 col-sm-offset-1 hidden-xs">
+                <div class="col-md-3 col-md-offset-4  col-sm-3 col-sm-offset-1 hidden-xs">
                     <div class="header-half header-social">
                         <ul class="list-inline">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>

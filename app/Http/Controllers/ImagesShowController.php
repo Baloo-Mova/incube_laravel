@@ -9,12 +9,12 @@ use Intervention\Image\Facades\Image;
 
 class ImagesShowController extends Controller
 {
-    public function index($name, $id)
+    public function index($name, $id,$height,$width)
     {
         if ( ! File::exists(storage_path("app/$name/images/$id"))) {
             abort(404);
         }
-        $img = Image::make(storage_path("app/$name/images/$id"))->resize(250, 300);
+        $img = Image::make(storage_path("app/$name/images/$id"))->resize($width, $height);
 
         return $img->response('jpg');
     }

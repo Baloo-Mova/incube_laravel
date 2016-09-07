@@ -14,7 +14,7 @@ class EconomicActivitiesTableSeeder extends Seeder
     {
         
 
-        \DB::table('economic_activities')->delete();
+        \DB::table('economic_activities')->truncate();
         
         \DB::table('economic_activities')->insert(array (
             0 => 

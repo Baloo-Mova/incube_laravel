@@ -168,6 +168,7 @@
             <div class="col-md-10">
                 <div class="form-group">
                     <input value="Зберегти" type="submit" class="btn btn-success">
+                    <input type="button" class="btn btn-default" value="Назад" onclick="history.back()">
                 </div>
             </div>
         </div>
@@ -186,7 +187,7 @@
             'previewFileType'     : 'image',
             'allowedFileTypes'    : ['image'],
             'initialPreview'      : [
-                    @if (!empty($investor->logo)) '{{url('/investor/image/'.$investor->logo)}}' @endif,
+                    @if (!empty($investor->logo)) '{{route('images.show',['name'=>'investor','id'=>$investor->logo, 'width'=>'max', 'height'=>'max'])}}' @endif,
             ],
             'initialPreviewAsData': true,
     });</script>

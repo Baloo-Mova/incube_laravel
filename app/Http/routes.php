@@ -13,7 +13,7 @@
 
 use App\User;
 
-Route::get('/{name}/image/{id}',['uses'=>'ImagesShowController@index', 'as'=>'images.show']);
+Route::get('/{name}/image/{id}/{height}x{width}',['uses'=>'ImagesShowController@index', 'as'=>'images.show']);
 
 Route::group(['namespace' => 'Frontend'], function () {
 

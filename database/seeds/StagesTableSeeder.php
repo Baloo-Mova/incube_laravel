@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CountriesTableSeeder extends Seeder
+class StagesTableSeeder extends Seeder
 {
 
     /**
@@ -14,26 +14,23 @@ class CountriesTableSeeder extends Seeder
     {
         
 
-        \DB::table('countries')->truncate();
+        \DB::table('stages')->truncate();
         
-        \DB::table('countries')->insert(array (
+        \DB::table('stages')->insert(array (
             0 => 
             array (
                 'id' => 1,
-                'name' => 'Росiя',
-                'icon' => NULL,
+                'name' => 'Є ідея або напрацювання',
             ),
             1 => 
             array (
                 'id' => 2,
-                'name' => 'Україна',
-                'icon' => NULL,
+                'name' => 'Готовий прототип або продукт',
             ),
             2 => 
             array (
                 'id' => 3,
-                'name' => 'Бiлорусь',
-                'icon' => NULL,
+                'name' => 'Існуючий бізнес',
             ),
         ));
         

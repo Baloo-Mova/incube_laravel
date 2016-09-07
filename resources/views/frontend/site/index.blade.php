@@ -214,7 +214,7 @@
                                 </div>
                                 <a class="show-btn hvr-rectangle-out" href="#">Продивитись</a>
                             </div>
-                            <span class="carusel-badge" href="#">{{ $i }}</span>
+                            <span class="carusel-id-badge" href="#">{{ $i }}</span>
                         </div>
                     @endfor
                 </div>
@@ -280,8 +280,11 @@
                     0: {
                         items: 1,
                     },
-                    800: {
-                        items: 4,
+                    900: {
+                        items: 3,
+                    },
+                    1200:{
+                        items:4,
                     }
                 },
                 center: true,
