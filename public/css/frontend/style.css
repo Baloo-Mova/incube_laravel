@@ -75,20 +75,21 @@ blockquote {
     border-bottom: 1px solid #e7e7e7;
 }
 
+.navbar-brand{
+    padding: 5px 10px 5px 20px;
+}
+
+
 .navbar-default .navbar-nav > li > a {
     color: #202020;
     font-size: 16px;
     font-weight: 400;
-    // text-transform: capitalize;
     position: relative;
-
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     color: white;
     background-color: #D10073;
-    // #00aeef;
-
 }
 
 .navbar-nav > li > a {
@@ -97,9 +98,8 @@ blockquote {
 }
 
 .navbar-default .navbar-nav > li > a.active:after {
-
     background-color: #00aeef;
-    bottom: -10px;
+    bottom: -6px;
     content: "";
     height: 5px;
     left: 0;
@@ -110,7 +110,7 @@ blockquote {
 
 .navbar-default .navbar-nav > li > a::after {
     background-color: #00aeef;
-    bottom: -10px;
+    bottom: -6px;
     content: "";
     height: 5px;
     left: 0;
@@ -132,9 +132,17 @@ blockquote {
 }
 
 .main-nav {
-    padding: 25px 0px 25px 0px;
+    padding: 5px 0px;
 }
-
+.main-navbar{
+    width: 100%;
+    text-align: center;
+}
+.main-navbar .navbar-nav{
+    float: none !important;
+    display: inline-block;
+    text-align:  center;
+}
 .button.navbar-right {
     padding-top: 31px;
     padding-right: 10px;
@@ -162,18 +170,14 @@ blockquote {
     background-color: #00AEEF;
 }
 
-.nav-logo {
-    display: inline-block;
-    min-height: 100px;
-    clear: both;
-}
-
 .navbar-toggle {
     float: none;
 }
 
 .navbar-header {
-    min-height: 100px;
+    min-height: 50px;
+    height: 60px;
+    width: 100%;
     text-align: center;
 }
 
@@ -190,7 +194,9 @@ blockquote {
 .navbar .container {
     padding-top: 15px
 }
-
+.navbar-brand img{
+    height: 50px;
+}
 .big {
     height: 10000px;
 }
@@ -1200,7 +1206,7 @@ a:visited, a:active {
         left:33% !important;
     }
     #content{
-        padding-top: 196px !important;
+        padding-top: 120px !important;
     }
 
     span.round-tabs {
@@ -1392,7 +1398,7 @@ a:visited, a:active {
 }
 
 #content {
-    padding-top: 142px;
+    padding-top: 100px;
     min-height: 729px;
     padding-bottom:20px;
 }
@@ -1430,14 +1436,21 @@ a:visited, a:active {
     margin: 0 auto;
 }
 
-
 .carusel-block-content {
     position: relative;
     margin: 0;
     text-decoration: none;
 }
-
-.carusel-badge {
+.carusel-money-badge{
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 15px;
+    background-color:#00AEEF;
+}
+.carusel-id-badge {
     position: absolute;
     top: 5%;
     left: 0;
@@ -1449,7 +1462,15 @@ a:visited, a:active {
 
 .carusel-block-content-description {
     overflow: auto;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 250px;
     height: 50px;
+}
+
+.btn, .btn-success, .btn-custom, .btn-danger{
+    border-radius: 0px;
 }
 
 .carusel-block .show-btn {
