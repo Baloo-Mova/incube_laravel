@@ -169,17 +169,21 @@ blockquote {
 .nav-button:hover {
     background-color: #00AEEF;
 }
-
-.navbar-toggle {
-    float: none;
+.nav-logo{
+    width: 165px;
+    height: 50px;
+    float: left;
+    display:inline-block;
+    clear: none;
 }
 
 .navbar-header {
     min-height: 50px;
-    height: 60px;
     width: 100%;
     text-align: center;
 }
+
+
 
 .navbar-default {
     background-image: none;
@@ -194,9 +198,20 @@ blockquote {
 .navbar .container {
     padding-top: 15px
 }
+.navbar-brand{
+    height: 60px;
+
+}
 .navbar-brand img{
     height: 50px;
 }
+
+@media (max-width: 768px) {
+    .navbar-brand img{
+        height: 40px;
+    }
+}
+
 .big {
     height: 10000px;
 }
