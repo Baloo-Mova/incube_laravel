@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\InvestorForm;
+use App\Policies\InvestorPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -15,6 +17,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        InvestorForm::class=>InvestorPolicy::class,
     ];
 
     /**

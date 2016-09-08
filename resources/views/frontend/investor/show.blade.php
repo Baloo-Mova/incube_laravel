@@ -8,98 +8,100 @@
 
 
     <div class="container-fluid">
-        <div class="row">
-            <div class="head-show-info">
-                <div class="col-md-6">
-                    <img class="img-responsive"
-                         src="{{ route('images.show',['name'=>'investor', 'id'=>$investor->logo, 'width'=>'max', 'height'=>'max']) }}"
-                         alt="{{ $investor->short_name }}">
-                </div>
-                <div class="col-md-6">
-                            <h2>{{ $investor["investor_name"]}}</h2>
-                            <p> {{ $investor->other}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="text-center">
-                    <img class="img-responsive"
-                         src=""
-                         alt="">
-
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="panel panel-primary">
-                    <div class="text-center">
-                        <h4 class="title-border">Галузь</h4>
-                        <p>{{ $investor->economicActivities->name }}</p>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="title-border">Регіон інвестування</h4>
-                        <p>{{ $investor->region }}</p>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="title-border">Період реалізації інвестиційного проекту</h4>
-                        <p>{!!$investor->duration_project!!}</p>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="title-border">Термін повернення вкладених коштів</h4>
-                        <p>{!! $investor->term_refund !!}</p>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="title-border">Етап проекту</h4>
-                        <p>{!!$investor->stage_project!!}</p>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="title-border">Планова рентабельність проекту</h4>
-                        <p>{!!$investor->plan_rent!!}</p>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="title-border">Сума, яку готові інвестувати</h4>
-                        <p> <?= number_format($investor["investor_cost"], 0, '.', ' ') ?> $ </p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="container">
-                <div class="btn-toolbar">
-                    @if(Auth::check() && Auth::user()->id == $investor->author_id)
-                        @if($investor->status_id != 6)
-                            <div class="btn-group pull-left">
-                                <a href="{{ route('investor.edit', ['id'=>$investor->id]) }}" class="btn-primary btn">Оновити</a>
-                            </div>
-                            <div class="btn-group pull-left">
-                                <a href="{{ route('investor.delete', ['id'=>$investor->id]) }}"
-                                   onclick="return confirm('Вы точно хотите удалить проэкт?')" class="btn-danger btn">Видалити</a>
-                            </div>
-                        @endif
-                    @else
-                        <div class="btn-group pull-right">
-                            <a href="#" id="offer-project" data-toggle="modal" data-target="#myModal"
-                               class="btn btn-primary"> <span><i class="fa fa-check"></i> Запропонувати проект</span>
-                            </a>
-                        </div>
-                    @endif
-                </div>
-            </div>
+        <div class="row text-center">
+            <h1>{{ $investor->name }}</h1>
         </div>
         <hr/>
-        <div class="product-info">
-            <div class="tab-pane fade in active" id="service-one">
-                <section class="product-info">
-                    <h4>Інше</h4>
-                    <blockquote>
-                        <p><em> {!! $investor["other"] !!}</em></p>
-                    </blockquote>
-                </section>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="description">
+                {!! $investor->description !!}
             </div>
         </div>
 
+        <div class="btn-toolbar">
+            @if(Auth::check())
+                @if($investor->status_id != \App\Models\Status::PUBLISHED)
+                    <div class="btn-group pull-left">
+                        <a href="{{ route('investor.edit', ['id'=>$investor->id]) }}"
+                           class="btn-primary btn">Оновити</a>
+                    </div>
+                    <div class="btn-group pull-left">
+                        <a href="{{ route('investor.delete', ['id'=>$investor->id]) }}"
+                           onclick="return confirm('Вы точно хотите удалить проэкт?')"
+                           class="btn-danger btn">Видалити</a>
+                    </div>
+                @endif
+                @if(Auth::user()->can('offer', $investor))
+                    <div class="btn-group pull-right">
+                        <a href="#" id="offer-project" data-toggle="modal" data-target="#myModal"
+                           class="btn btn-primary"> <span><i class="fa fa-check"></i> Запропонувати проект</span>
+                        </a>
+                    </div>
+                @endif
+            @endif
+        </div>
 
+        <div class="row">
+
+            <div class="col-md-10">
+                <hr/>
+                <label> Дата подачи заявки</label>
+                <div class="clearfix"></div>
+                {{ $investor->created_at->format("d.m.Y") }}
+                <hr/>
+            </div>
+            <div class="col-md-10">
+                <label> Сумма инвестирования</label>
+                <div class="clearfix"></div>
+                {{ $investor->money_count }}$
+                <hr/>
+            </div>
+            <div class="col-md-10">
+                <label>Отрасль</label>
+                <div class="clearfix"></div>
+                @if(!$investor->economicActivities->gotParent())
+                    {{ $investor->economicActivities->name }}
+                @else
+                    {{ $investor->economicActivities->getParent()->name }}: <div class="clearfix"></div>  <span style="margin-left: 20px">{{ $investor->economicActivities->name }}</span>
+                    @endif
+                <hr/>
+            </div>
+            <div class="col-md-10">
+                <label> Страна</label>
+                <div class="clearfix"></div>
+                {{ $investor->country->name }}
+                <hr/>
+            </div>
+            @if(isset($investor->city))
+            <div class="col-md-10">
+                <label> Область инвестирования</label>
+                <div class="clearfix"></div>
+                {{ $investor->city->name }}
+                <hr/>
+            </div>
+            @endif
+            <div class="col-md-10">
+                <label> Період реалізації інвестиційного проекту</label>
+                <div class="clearfix"></div>
+                {{ $investor->duration_project }}
+                <hr/>
+            </div>
+            <div class="col-md-10">
+                <label> Термін повернення вкладених коштів</label>
+                <div class="clearfix"></div>
+                {{ $investor->term_refund }}
+                <hr/>
+            </div>
+            <div class="col-md-10">
+                <label> Планована рентабельність проекту</label>
+                <div class="clearfix"></div>
+                {{ $investor->plan_rent }} %
+                <hr/>
+            </div>
+        </div>
     </div>
 
     <div id="myModal" class="modal fade" role="dialog">
@@ -121,14 +123,6 @@
                             <th colspan="2">Ваші проекти</th>
                         </tr>
                         </thead>
-                        @forelse($avaibleProjects as $item)
-                        @empty
-                            <tr>
-                                <td colspan="2"> У вас не має поданих проектів. Для подачі нового проекту скористайтеся
-                                    кнопкою "Подати проект".
-                                </td>
-                            </tr>
-                        @endforelse
                     </table>
                 </div>
                 <div class="modal-footer">
@@ -136,7 +130,6 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
                 </div>
             </div>
-
         </div>
     </div>
 

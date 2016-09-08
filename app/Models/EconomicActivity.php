@@ -33,5 +33,10 @@ class EconomicActivity extends Model
         return isset($this->parent_id) ? self::where(['id'=>$this->parent_id])->first() : null;
     }
 
+    public function gotParent(){
+        return $this->parent_id != 0;
+    }
+
+
         
 }

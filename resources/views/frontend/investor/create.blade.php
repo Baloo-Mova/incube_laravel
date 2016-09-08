@@ -6,7 +6,7 @@
     </div>
     <hr/>
     <div class="container">
-        <form method="POST" enctype="multipart/form-data" class="form-horizontal">
+        <form method="POST"  class="form-horizontal">
             {{ csrf_field() }}
 
             @if(!Auth::check())
@@ -132,7 +132,7 @@
                 <div class="col-md-10">
                     <div class="form-group {{ $errors->has('duration_project')?'has-error':'' }}">
                         <label class="control-label" for="email">Період реалізації інвестиційного проекту</label>
-                        <input type="text" value="{{ old('duration_project') }}" name="duration_project" class="form-control" id="text">
+                        <input type="text" placeholder="Наприклад: 3 місяця" value="{{ old('duration_project') }}" name="duration_project" class="form-control" id="text">
                         @if($errors->has('duration_project'))
                             <span class="control-label"> {{ $errors->first('duration_project') }}</span>
                         @endif
@@ -143,7 +143,7 @@
                 <div class="col-md-10">
                     <div class="form-group {{ $errors->has('term_refund')?'has-error':'' }}">
                         <label class="control-label" for="email">Термін повернення вкладених коштів</label>
-                        <input type="text" value="{{ old('term_refund') }}" name="term_refund" class="form-control" id="text">
+                        <input type="text" placeholder="Наприклад: 1 рік" value="{{ old('term_refund') }}" name="term_refund" class="form-control" id="text">
                         @if($errors->has('term_refund'))
                             <span class="control-label"> {{ $errors->first('term_refund') }}</span>
                         @endif
@@ -154,7 +154,7 @@
                 <div class="col-md-10">
                     <div class="form-group {{ $errors->has('plan_rent')?'has-error':'' }}">
                         <label class="control-label" for="email">Планована рентабельність проекту (%)</label>
-                        <input type="text" value="{{ old('plan_rent') }}" name="plan_rent" class="form-control" id="text">
+                        <input type="number" value="{{ old('plan_rent') }}" name="plan_rent" class="form-control" id="text">
                         @if($errors->has('plan_rent'))
                             <span class="control-label"> {{ $errors->first('plan_rent') }}</span>
                         @endif
@@ -182,7 +182,7 @@
                 success: function(data){
                     var select = $('#city_id');
                     select.find('option').remove();
-                    select.append('<option selected disabled>Виберіть регіон</option>');
+                    select.append('<option selected value="0">Усi</option>');
                     $.each(data, function(i, item){
                         select.append('<option value="'+i+'"> '+item+' </option>');
                     });

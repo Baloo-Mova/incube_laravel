@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\InvestorCreateRequest;
+use App\Http\Requests\Investor\CreateRequest;
+use App\Http\Requests\Investor\EditRequest;
+use App\Http\Requests\Investor\UpdateRequest;
 use App\Models\ProblemForm;
 use App\Models\ProjectForm;
 use App\Models\EconomicActivity;
 use App\Models\InvestorForm;
 use App\Models\Status;
+use App\Notifications\RegisterSuccess;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -18,27 +21,22 @@ use Illuminate\Support\Facades\Mail;
 class InvestorController extends Controller
 {
 
-    public function __construct()
-    {
-
-    }
-
     public function index()
     {
-        $investProjects = InvestorForm::orderBy('id', 'desc')->where(['status_id'=>Status::PUBLISHED])->take(10)->get();
+        $investProjects = InvestorForm::orderBy('id', 'desc')->where(['status_id' => Status::PUBLISHED])->take(10)->get();
 
-        $problems       = ProblemForm::where([
+        $problems = ProblemForm::where([
             'status_id' => Status::PUBLISHED,
         ])->orderBy('id', 'desc')->take(10)->get();
 
-        $projects       = ProjectForm::where([
+        $projects = ProjectForm::where([
             'status_id' => Status::PUBLISHED,
         ])->orderBy('id', 'desc')->take(10)->get();
 
         return view('frontend.investor.index')->with([
             'investProjects' => $investProjects,
-            'problems'       => $problems,
-            'projects'       => $projects,
+            'problems' => $problems,
+            'projects' => $projects,
         ]);
     }
 
@@ -48,15 +46,15 @@ class InvestorController extends Controller
         return view('frontend.investor.create', compact('economicActivities'));
     }
 
-    public function store(InvestorCreateRequest $request)
+    public function store(CreateRequest $request)
     {
         $model = new InvestorForm();
         $model->fill($request->all());
 
         $email = $request->get('email');
-        $pass  = str_random(10);
+        $pass = str_random(10);
 
-        if (isset($email) && ! empty($email)) {
+        if (isset($email) && !empty($email)) {
             $user = User::firstOrNew([
                 'email' => $email,
             ]);
@@ -64,67 +62,41 @@ class InvestorController extends Controller
             $user->password = bcrypt($pass);
             $user->save();
 
-            Mail::send('auth.emails.register', ['email' => $email, 'password' => $pass], function ($m) use ($user) {
-                $m->from('incube.zp.ua@gmail.com', 'Incube');
-                $m->to($user->email)->subject('Приветствуем');
-            });
+            $user->notify(new RegisterSuccess($pass));
         }
 
         $model->author_id = Auth::check() ? Auth::user()->id : $user->id;
         $model->save();
 
-        if ( ! Auth::check() && Auth::attempt(['email' => $email, 'password' => $pass])) {
-            return redirect(route('personal_area.index'));
+        if (!Auth::check()) {
+            Auth::attempt(['email' => $email, 'password' => $pass]);
         }
 
-        return redirect(route('investor.index'));
+        return redirect(route('personal_area.index'));
     }
 
-    public function edit(Investor $investor)
+    public function edit(EditRequest $request, InvestorForm $investor)
     {
-        $economicActivities = EconomicActivities::where(['parent_id' => null])->get();
+        $economicActivities = EconomicActivity::where(['parent_id' => null])->get();
         return view('frontend.investor.edit', compact('investor', 'economicActivities'));
     }
 
-    public function update(Request $request, Investor $investor)
+    public function update(UpdateRequest $request, InvestorForm $investor)
     {
-        $this->validate($request, [
-            'investor_name'     => 'required',
-            'investor_contacts' => 'required',
-            'investor_cost'     => 'numeric',
-        ], [
-            'investor_name.required'     => "Поле Назва інвестування  обов'язкове для заповнення;",
-            'investor_contacts.required' => "Поле Контактні дані  обов'язкове для заповнення;",
-            "investor_cost.numeric"      => "Поле суми інвестицій повинно бути числов та обов'язково вказано;",
-        ]);
 
         $investor->fill($request->all());
-        if ($request->file('logo_img_file')) {
-            $filename    = uniqid('investor_') . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
-            $request->file('logo_img_file')->move(storage_path('app/investor/images/'), $filename);
-            $investor->logo = $filename;
-        }
-
         $investor->status_id = Status::EDITED;
         $investor->save();
 
         return back()->with(['message' => 'Відредаговано']);
     }
 
-    public function show(Investor $investor)
+    public function show(InvestorForm $investor)
     {
-        if(Auth::check()){
-            $id = Auth::user()->id;
-        }else{
-            $id = 0;
-        }
-
-        $avaibleProjects = Designer::where(['author_id'=>$id, 'status_id'=>2])->get();
-
-        return view('frontend.investor.show', compact('investor','avaibleProjects'));
+        return view('frontend.investor.show', compact('investor'));
     }
 
-    public function delete(Investor $investor)
+    public function delete(InvestorForm $investor)
     {
         $investor->delete();
 

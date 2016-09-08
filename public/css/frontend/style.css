@@ -16,11 +16,10 @@ html, body {
 .head-show-info{
     height: 400px;
 }
-blockquote {
+.description {
     padding: 10px 20px;
     margin: 0 0 20px;
     font-size: 14px;
-    border-left: 5px solid #00AEEF;
 }
 
 .float-right {
