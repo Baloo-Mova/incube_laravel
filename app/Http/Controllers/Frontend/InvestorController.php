@@ -12,7 +12,6 @@ use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Intervention\Image\Facades\Image;
 use App\User;
 use Illuminate\Support\Facades\Mail;
 
@@ -21,8 +20,7 @@ class InvestorController extends Controller
 
     public function __construct()
     {
-        //$this->middleware('owner:investor', ['only' => ['edit', 'update', 'delete']]);
-        //$this->middleware('published:investor', ['only' => ['edit', 'update', 'delete']]);
+
     }
 
     public function index()
@@ -54,16 +52,6 @@ class InvestorController extends Controller
     {
         $model = new InvestorForm();
         $model->fill($request->all());
-
-        if (!File::exists(storage_path('app/investor/images'))) {
-            File::makeDirectory(storage_path('app/investor/images'), 0755, true);
-        }
-
-        if ($request->file('logo_img_file')) {
-            $filename    = uniqid('investor_') . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
-            $request->file('logo_img_file')->move(storage_path('app/investor/images/'), $filename);
-            $model->logo = $filename;
-        }
 
         $email = $request->get('email');
         $pass  = str_random(10);

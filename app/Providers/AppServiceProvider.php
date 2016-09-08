@@ -15,11 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //Investor::observe(InvestorObserver::class);
 
-        if ($this->app->environment() == 'local') {
-            $this->app->register('Iber\Generator\ModelGeneratorProvider');
-        }
     }
 
     /**
@@ -29,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 }

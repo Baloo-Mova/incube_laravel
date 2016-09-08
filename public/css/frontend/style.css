@@ -1408,7 +1408,7 @@ a:visited, a:active {
 }
 
 #content {
-    padding-top: 115px;
+    padding-top: 105px;
     min-height: 729px;
     padding-bottom:20px;
 }
@@ -1416,7 +1416,9 @@ a:visited, a:active {
 .content-area {
     padding-bottom: 30px;
 }
-
+.form-required{
+    color: red;
+}
 #footer {
     background: #000;
     border-top: 4px solid #00AEEF;

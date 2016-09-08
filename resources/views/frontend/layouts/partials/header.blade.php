@@ -45,7 +45,17 @@
                     @else
                         <li class=""><a href="{{ url('/personal-area') }}">Особистий кабінет <span
                                         class="event label label-danger">1000</span></a></li>
-                        <li class=""><a href="{{url('/logout')}}">Вихід</a></li>
+                        <li class="">
+                            <a href="{{ url('/logout') }}"
+                               onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                Вихід
+                            </a>
+
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
                     @endif
                 </ul>
                 <div class="main-navbar">

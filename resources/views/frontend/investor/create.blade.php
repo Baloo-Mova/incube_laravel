@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-title text-center">
-        <h2>ПОДАЧА ЗАЯВКИ НА ІНВЕСТУВАННЯ</h2>
+        <h2>ПОДАЧА ЗАЯВКИ ІНВЕСТОРА</h2>
     </div>
     <hr/>
     <div class="container">
@@ -13,7 +13,7 @@
                 <div class="col-md-offset-2">
                     <div class="col-md-10">
                         <div class="form-group {{ $errors->has('email')?'has-error':'' }}">
-                            <label class="control-label" for="Назва інвестування">Email:</label>
+                            <label class="control-label">Email <span class="form-required">*</span></label>
                             <input type="email" value="{{ old('email') }}" name="email" class="form-control" id="text">
                             @if($errors->has('email'))
                                 <span class="control-label"> {{ $errors->first('email') }}</span>
@@ -22,46 +22,36 @@
                     </div>
                 </div>
             @endif
+
             <div class="col-md-offset-2">
                 <div class="col-md-10">
-                    <div class="form-group {{ $errors->has('investor_name')?'has-error':'' }}">
-                        <label class="control-label" for="Назва інвестування">Назва інвестування:</label>
-                        <input type="text" value="{{ old('investor_name') }}" name="investor_name" class="form-control" id="text">
-                        @if($errors->has('investor_name'))
-                            <span class="control-label"> {{ $errors->first('investor_name') }}</span>
+                    <div class="form-group {{ $errors->has('name')?'has-error':'' }}">
+                        <label class="control-label">Назва інвестування <span class="form-required">*</span></label>
+                        <input type="text" value="{{ old('name') }}" name="name" class="form-control" id="text">
+                        @if($errors->has('name'))
+                            <span class="control-label"> {{ $errors->first('name') }}</span>
                         @endif
                     </div>
                 </div>
             </div>
             <div class="col-md-offset-2">
                 <div class="col-md-10">
-                    <div class="form-group {{ $errors->has('short_name')?'has-error':'' }}">
-                        <label class="control-label" for="short_name">Коротка Назва інвестування:</label>
-                        <input type="text" value="{{ old('short_name') }}" name="short_name" class="form-control" id="text">
-                        @if($errors->has('short_name'))
-                            <span class="control-label"> {{ $errors->first('short_name') }}</span>
+                    <div class="form-group {{ $errors->has('description')?'has-error':'' }}">
+                        <label class="control-label" for="Contacts">Опис</label>
+                        <textarea rows="6" type="text" name="description" class="form-control" id="text">{{ old('description') }}</textarea>
+                        @if($errors->has('description'))
+                            <span class="control-label"> {{ $errors->first('description') }}</span>
                         @endif
                     </div>
                 </div>
             </div>
             <div class="col-md-offset-2">
                 <div class="col-md-10">
-                    <div class="form-group {{ $errors->has('investor_contacts')?'has-error':'' }}">
-                        <label class="control-label" for="Contacts">Контактні дані:</label>
-                        <textarea rows="6" type="text" name="investor_contacts" class="form-control" id="text">{{ old('investor_contacts') }}</textarea>
-                        @if($errors->has('investor_contacts'))
-                            <span class="control-label"> {{ $errors->first('investor_contacts') }}</span>
-                        @endif
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-offset-2">
-                <div class="col-md-10">
-                    <div class="form-group {{ $errors->has('stage_project')?'has-error':'' }}">
-                        <label class="control-label" for="email">Етап проекту:</label>
-                        <input type="text" value="{{ old('stage_project') }}" name="stage_project" class="form-control" id="text">
-                        @if($errors->has('stage_project'))
-                            <span class="control-label"> {{ $errors->first('stage_project') }}</span>
+                    <div class="form-group {{ $errors->has('contacts')?'has-error':'' }}">
+                        <label class="control-label" for="Contacts">Контакти <span class="form-required">*</span></label>
+                        <textarea rows="6" type="text" name="contacts" class="form-control" id="text">{{ old('contacts') }}</textarea>
+                        @if($errors->has('contacts'))
+                            <span class="control-label"> {{ $errors->first('contacts') }}</span>
                         @endif
                     </div>
                 </div>
@@ -69,7 +59,7 @@
             <div class="col-md-offset-2">
                 <div class="col-md-10">
                     <div class="form-group">
-                        <label class="control-label" for="Галузь">Галузь:</label>
+                        <label class="control-label" for="Галузь">Галузь <span class="form-required">*</span></label>
                         @include('frontend.partials.economic_activities_select',
                         ['economicActivities'=> $economicActivities,
                          'economicActivitiesAttributeName'=>'economic_activities_id',
@@ -80,22 +70,60 @@
             </div>
             <div class="col-md-offset-2">
                 <div class="col-md-10">
-                    <div class="form-group {{ $errors->has('region')?'has-error':'' }}">
-                        <label class="control-label" for="region">Регіон інвестування:</label>
-                        <input type="text" value="{{ old('region') }}" name="region" class="form-control" id="text">
-                        @if($errors->has('region'))
-                            <span class="control-label"> {{ $errors->first('region') }}</span>
+                    <div class="form-group {{ $errors->has('country_id')?'has-error':'' }}">
+                        <label class="control-label" for="region">Країна інвестування <span class="form-required">*</span></label>
+                        <select id="country_id" class="form-control" name="country_id">
+                            @if(old('country_id')==null)
+                            <option value="" selected disabled>Оберіть країну</option>
+                            @endif
+                            @foreach(\App\Models\Country::all() as $country)
+                                <option value="{{ $country->id }}" {{ ( old('country_id') == $country->id ? "selected":"") }}>{{ $country->name }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('country_id'))
+                            <span class="control-label"> {{ $errors->first('country_id') }}</span>
                         @endif
                     </div>
                 </div>
             </div>
             <div class="col-md-offset-2">
                 <div class="col-md-10">
-                    <div class="form-group {{ $errors->has('investor_cost')?'has-error':'' }}">
-                        <label class="control-label" for="investor_cost">Сума, яку готові інвестувати:</label>
-                        <input type="number" value="{{ old('investor_cost') }}" name="investor_cost" class="form-control" id="text">
-                        @if($errors->has('investor_cost'))
-                            <span class="control-label"> {{ $errors->first('investor_cost') }}</span>
+                    <div class="form-group {{ $errors->has('city_id')?'has-error':'' }}">
+                        <label class="control-label" for="region">Регіон інвестування</label>
+                        <select id="city_id" class="form-control" name="city_id">
+
+                        </select>
+                        @if($errors->has('city_id'))
+                            <span class="control-label"> {{ $errors->first('city_id') }}</span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-offset-2">
+                <div class="col-md-10">
+                    <div class="form-group {{ $errors->has('stage_id')?'has-error':'' }}">
+                        <label class="control-label" for="stage_id">Очікуваний етап проекту <span class="form-required">*</span></label>
+                        <select id="stage_id" class="form-control" name="stage_id">
+                            @if(old('stage_id')==null)
+                             <option disabled selected> Виберіть етап проекту</option>
+                            @endif
+                            @foreach(\App\Models\Stage::all() as $item)
+                                <option value="{{$item->id}}" {{ ( old('stage_id') == $item->id ? "selected":"") }}> {{ $item->name }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('stage_id'))
+                            <span class="control-label"> {{ $errors->first('stage_id') }}</span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-offset-2">
+                <div class="col-md-10">
+                    <div class="form-group {{ $errors->has('money_count')?'has-error':'' }}">
+                        <label class="control-label" for="money_count">Сума, яку готові інвестувати ($)<span class="form-required">*</span></label>
+                        <input type="number" value="{{ old('money_count') }}" name="money_count" class="form-control" id="money_count">
+                        @if($errors->has('money_count'))
+                            <span class="control-label"> {{ $errors->first('money_count') }}</span>
                         @endif
                     </div>
                 </div>
@@ -103,7 +131,7 @@
             <div class="col-md-offset-2">
                 <div class="col-md-10">
                     <div class="form-group {{ $errors->has('duration_project')?'has-error':'' }}">
-                        <label class="control-label" for="email">Період реалізації інвестиційного проекту:</label>
+                        <label class="control-label" for="email">Період реалізації інвестиційного проекту</label>
                         <input type="text" value="{{ old('duration_project') }}" name="duration_project" class="form-control" id="text">
                         @if($errors->has('duration_project'))
                             <span class="control-label"> {{ $errors->first('duration_project') }}</span>
@@ -114,7 +142,7 @@
             <div class="col-md-offset-2">
                 <div class="col-md-10">
                     <div class="form-group {{ $errors->has('term_refund')?'has-error':'' }}">
-                        <label class="control-label" for="email">Термін повернення вкладених коштів:</label>
+                        <label class="control-label" for="email">Термін повернення вкладених коштів</label>
                         <input type="text" value="{{ old('term_refund') }}" name="term_refund" class="form-control" id="text">
                         @if($errors->has('term_refund'))
                             <span class="control-label"> {{ $errors->first('term_refund') }}</span>
@@ -125,33 +153,11 @@
             <div class="col-md-offset-2">
                 <div class="col-md-10">
                     <div class="form-group {{ $errors->has('plan_rent')?'has-error':'' }}">
-                        <label class="control-label" for="email">Планована рентабельність проекту:</label>
+                        <label class="control-label" for="email">Планована рентабельність проекту (%)</label>
                         <input type="text" value="{{ old('plan_rent') }}" name="plan_rent" class="form-control" id="text">
                         @if($errors->has('plan_rent'))
                             <span class="control-label"> {{ $errors->first('plan_rent') }}</span>
                         @endif
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-offset-2">
-                <div class="col-md-10">
-                    <div class="form-group {{ $errors->has('other')?'has-error':'' }}">
-                        <label class="control-label" for="email">Інше:</label>
-
-                        <textarea type="text" name="other" class="form-control" id="text" rows="6">{{ old('other') }}</textarea>
-
-                        @if($errors->has('other'))
-                            <span class="control-label"> {{ $errors->first('other') }}</span>
-                        @endif
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-offset-2">
-                <div class="col-md-10">
-                    <div class="form-group">
-                        <label class="control-label" for="email">Логотип:</label>
-                        <input type="file" name="logo_img_file" class="form-control" id="file_up">
                     </div>
                 </div>
             </div>
@@ -167,20 +173,24 @@
 @stop
 @section('js')
     <script type="text/javascript">
-        //    $('select').select2({
-        //        placeholder: "Выберите регион",
-        //        allowClear: true,
-        //        width: 'resolve'
-        //    });
-        $("#file_up").fileinput({
-            'showUpload'      : false,
-            'previewFileType' : 'any',
-            'allowedFileTypes': ['image']
 
+        $('#country_id').on('change', function(){
+            var id = $(this).val();
+
+            $.ajax({
+                url: "{{ url('/get/cities/') }}/"+id,
+                success: function(data){
+                    var select = $('#city_id');
+                    select.find('option').remove();
+                    select.append('<option selected disabled>Виберіть регіон</option>');
+                    $.each(data, function(i, item){
+                        select.append('<option value="'+i+'"> '+item+' </option>');
+                    });
+                },
+                dataType: "json"
+            });
         });
-    </script>
-    <script src="{{ asset('tinymce/js/tinymce/tinymce.min.js')}}"></script>
-    <script>
+
         tinymce.init({
             selector: "textarea",
             plugins : [

@@ -2,18 +2,21 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a Closure or controller method. Build something great!
 |
 */
 
-use App\User;
+
+Auth::routes();
+
 
 Route::get('/{name}/image/{id}/{height}x{width}',['uses'=>'ImagesShowController@index', 'as'=>'images.show']);
+Route::get('/get/cities/{id}', ['uses'=>'MainApiController@getCities', 'as'=>'get.city']);
 
 Route::group(['namespace' => 'Frontend'], function () {
 
@@ -36,7 +39,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/show/{investor}',['uses'=>'InvestorController@show', 'as'=>'investor.show']);
         Route::get('/delete/{investor}', ['uses'=>'InvestorController@delete', 'as'=>'investor.delete']);
     });
-    
+
     Route::group(['prefix' => 'customer'], function () {
         Route::get('/', ['uses' => 'ProblemController@index', 'as' => 'customer.index']);
         Route::get('/create', ['uses' => 'ProblemController@create', 'as' => 'customer.create']);
@@ -45,7 +48,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::post('/edit/{problem}',['uses'=> 'ProblemController@update', 'as' => 'customer.update']);
         Route::get('/show/{problem}',['uses'=> 'ProblemController@show', 'as'=>'customer.show']);
     });
-    
+
     Route::group(['prefix' => 'executor'], function () {
         Route::get('/', ['uses' => 'ExecutorController@index', 'as' => 'executor.index']);
         Route::get('/create', ['uses' => 'ExecutorController@create', 'as' => 'executor.create']);
@@ -54,7 +57,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::post('/edit/{executor}',['uses'=> 'ExecutorController@update', 'as' => 'executor.update']);
         Route::get('/show/{executor}',['uses'=>'ExecutorController@show', 'as'=>'executor.show']);
     });
-    
+
     Route::group(['prefix' => 'designer'], function () {
         Route::get('/', ['uses' => 'DesignerController@index', 'as' => 'designer.index']);
         Route::get('/create', ['uses' => 'DesignerController@create', 'as' => 'designer.create']);
@@ -76,8 +79,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/',['uses'=>'PersonalAreaController@index', 'as'=>'personal_area.index']);
         Route::get('/edit/{personal}',['uses'=> 'PersonalAreaController@edit', 'as' => 'personal_area.edit']);
         Route::post('/edit/{personal}',['uses'=> 'PersonalAreaController@update', 'as' => 'personal_area.update']);
-        
+
     });
 });
 
-Route::auth();
