@@ -1557,3 +1557,11 @@ a:visited, a:active {
         padding-top: 165px;
     }
 }
+@media (max-width: 990px) {
+   .affix {
+        position: relative;
+        //width:213px;
+        
+} 
+    
+}

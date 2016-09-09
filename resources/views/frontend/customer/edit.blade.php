@@ -30,7 +30,7 @@
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('problem_name')?'has-error':'' }}">
+                <div class="form-group {{ $errors->has('name')?'has-error':'' }}">
                     <label class="control-label" for="Назва питання">Назва питання(проблеми):</label>
 
 
@@ -89,7 +89,7 @@
                         <label class="control-label" for="region">Регіон проблеми</label>
                         <select id="city_id" class="form-control" name="city_id">
                             <option value="0"> Усi </option>
-                            @foreach(\App\Models\City::where(['country_id'=>$investor->country_id])->get() as $city)
+                            @foreach(\App\Models\City::where(['country_id'=>$problem->country_id])->get() as $city)
                                 <option value="{{ $city->id }}" {{ $problem->city_id == $city->id ? "selected" : "" }}>{{ $city->name }}</option>
                             @endforeach
                         </select>
@@ -133,7 +133,7 @@
             {{--'previewFileType': 'image',--}}
             {{--'allowedFileTypes': ['image'],--}}
             {{--'initialPreview': [--}}
-                {{--@if (!empty($investor->logo)) '{{route('images.show',['name'=>'investor','id'=>$investor->logo, 'width'=>'max', 'height'=>'max'])}}' @endif,--}}
+                {{--@if (!empty($problem->logo)) '{{route('images.show',['name'=>'problem','id'=>$problem->logo, 'width'=>'max', 'height'=>'max'])}}' @endif,--}}
             {{--],--}}
             {{--'initialPreviewAsData': true,--}}
         {{--});--}}
@@ -160,6 +160,7 @@
 <script>
             tinymce.init({
             selector: "textarea",
+            language: 'uk_UA',
                     plugins: [
                             "advlist autolink lists link image charmap print preview anchor",
                             "searchreplace visualblocks code fullscreen",

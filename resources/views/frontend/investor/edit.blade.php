@@ -208,6 +208,7 @@
     <script>
         tinymce.init({
             selector: "textarea",
+            language: 'uk_UA',
             plugins: [
                 "advlist autolink lists link image charmap print preview anchor",
                 "searchreplace visualblocks code fullscreen",

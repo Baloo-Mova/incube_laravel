@@ -25,6 +25,14 @@ class ProblemForm extends Model
     ];
 
     protected $guarded = [];
-
-        
+    
+    public function economicActivities(){
+        return $this->belongsTo('App\Models\EconomicActivity');
+    }
+    public function country(){
+        return $this->belongsTo('App\Models\Country');
+    }
+    public function city(){
+        return $this->belongsTo('App\Models\City');
+    }        
 }

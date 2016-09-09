@@ -67,7 +67,7 @@ class ProblemController extends Controller {
 
         $economicActivities = EconomicActivity::where(['parent_id' => null])->get();
 
-        return view('frontend.customer.edit', compact('customer', 'economicActivities'));
+        return view('frontend.customer.edit', compact('problem', 'economicActivities'));
     }
 
     public function update(UpdateRequest $request, ProblemForm $problem) {
@@ -81,6 +81,7 @@ class ProblemController extends Controller {
     }
 
     public function show(ProblemForm $problem) {
+        //dd($problem);
         return view('frontend.customer.show', compact('problem'));
     }
     public function delete(ProblemForm $problem)
