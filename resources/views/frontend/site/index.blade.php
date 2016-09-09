@@ -159,35 +159,35 @@
                     <div class="how-it-work text-center owl-carousel owl-theme" id="how-it-work">
                         <a href="{{url('/customer')}}">
                             <div class="single-work wow fadeInUp" data-wow-delay="0.3s">
-                                <img src="../img/how-work3.png" alt="">
+                                <img src="{{ url('img/how-work3.png')}}" alt="">
                                 <h3>Замовник</h3>
                                 <p>Подає питання, що потрібно вирішити</p>
                             </div>
                         </a>
                         <a href="{{url('/investor')}}">
                             <div class="single-work  wow fadeInUp" data-wow-delay="0.6s">
-                                <img src="../img/investor_desc_logo.png" alt="">
+                                <img src="{{ url('img/investor_desc_logo.png')}}" alt="">
                                 <h3>Інвестор</h3>
                                 <p>Юридичні та фізичні особи, які можуть вкладувати кошти у інноваційний проект</p>
                             </div>
                         </a>
                         <a href="{{url('/designer')}}">
                             <div class="single-work wow fadeInUp" data-wow-delay="0.9s">
-                                <img src="../img/how-work1.png" alt="">
+                                <img src="{{ url('img/how-work1.png')}}" alt="">
                                 <h3>Проектант</h3>
                                 <p>Розробник інноваційного проекту</p>
                             </div>
                         </a>
                         <a href="{{url('/executor')}}">
                             <div class="single-work wow fadeInUp" data-wow-delay="1.2s">
-                                <img src="../img/how-work2.png" alt="">
+                                <img src="{{ url('img/how-work2.png')}}" alt="">
                                 <h3>Виконавець</h3>
                                 <p>Фахівець у певній галузі, що хоче прийняти участь у проекті або знайти роботу</p>
                             </div>
                         </a>
                         <a href="{{url('/employer')}}">
                             <div class="single-work wow fadeInUp" data-wow-delay="1.5s">
-                                <img src="../img/how-work5.png" alt="">
+                                <img src="{{ url('img/how-work5.png')}}" alt="">
                                 <h3>Підприємець</h3>
                                 <p>Пропонує вакансії на роботу</p>
                             </div>
