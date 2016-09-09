@@ -17,7 +17,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
-        InvestorForm::class=>InvestorPolicy::class,
+        InvestorForm::class=>EditPolicy::class,
+        ProblemForm::class=>EditPolicy::class,
     ];
 
     /**

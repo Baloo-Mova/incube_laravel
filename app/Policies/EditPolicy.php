@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Policies;
-
+use Illuminate\Database\Eloquent\Model;
 use App\User;
-use App\Models\InvestorForm;
+
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class InvestorPolicy
-{
+class EditPolicy {
+
     use HandlesAuthorization;
 
     /**
@@ -17,9 +17,8 @@ class InvestorPolicy
      * @param  InvestorForm  $investorform
      * @return mixed
      */
-    public function update(User $user, InvestorForm $investorform)
-    {
-        return $user->id == $investorform->author_id;
+    public function update(User $user, Model $form) {
+        return $user->id == $form->author_id;
     }
 
     /**
@@ -29,12 +28,13 @@ class InvestorPolicy
      * @param  InvestorForm  $investorform
      * @return mixed
      */
-    public function delete(User $user, InvestorForm $investorform)
-    {
-        return $user->id == $investorform->author_id;
+    public function delete(User $user, Model $form) {
+        return $user->id == $form->author_id;
+    }
+    
+
+    public function offer(User $user, Model $form) {
+       return $user->id == $form->author_id;
     }
 
-    public function offer(User $user, InvestorForm $form){
-        return $user->id != $form->author_id;
-    }
 }

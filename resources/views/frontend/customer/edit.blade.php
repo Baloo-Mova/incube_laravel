@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="page-title text-center">
-    <h2>Оновлення заявки питання(проблеми). Ідентифікаційний номер:{{$customer->id}}</h2>
+    <h2>Оновлення заявки питання(проблеми). Ідентифікаційний номер:{{$problem->id}}</h2>
 </div>
 <hr/>
 <div class="container">
@@ -11,7 +11,7 @@
     <div class="col-md-offset-2">
         <div class="c col-md-10 text-center">
             <p class="alert alert-info">{{ Session::get('message') }}</p>
-            <a href="{{ route('customer.show',['problem'=>$customer->id]) }}" class="btn-primary btn">Продивитись</a>
+            <a href="{{ route('customer.show',['problem'=>$problem->id]) }}" class="btn-primary btn">Продивитись</a>
         </div>
     </div>
     @endif
@@ -34,77 +34,71 @@
                     <label class="control-label" for="Назва питання">Назва питання(проблеми):</label>
 
 
-                    <input type="text" value="{{ $customer->problem_name }}" name="problem_name" class="form-control" id="text">
-                    @if($errors->has('problem_name'))
-                    <span class="control-label"> {{ $errors->first('problem_name') }}</span>
+                    <input type="text" value="{{ $problem->name }}" name="name" class="form-control" id="text">
+                    @if($errors->has('name'))
+                    <span class="control-label"> {{ $errors->first('name') }}</span>
                     @endif
                 </div>
             </div>
         </div>
 
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('short_name')?'has-error':'' }}">
-                    <label class="control-label" for="short_name">Коротка Назва питання(проблеми):</label>
-
-
-                    <input type="text" value="{{ $customer->short_name }}" name="short_name" class="form-control" id="text">
-                    @if($errors->has('short_name'))
-                    <span class="control-label"> {{ $errors->first('short_name') }}</span>
-                    @endif
-                </div>
-            </div>
-        </div>
+        
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group {{ $errors->has('problem_description')?'has-error':'' }}">
                     <label class="control-label" for="discription">Опис питання(проблеми):</label>
-                    <textarea rows="6" type="text" name="problem_description" class="form-control" id="text">{{ $customer->problem_description }}</textarea>
-                    @if($errors->has('problem_description'))
-                    <span class="control-label"> {{ $errors->first('problem_description') }}</span>
+                    <textarea rows="6" type="text" name="description" class="form-control" id="text">{{ $problem->description }}</textarea>
+                    @if($errors->has('description'))
+                    <span class="control-label"> {{ $errors->first('description') }}</span>
                     @endif
                 </div>
             </div>
         </div>
 
         <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group">
-                    <label class="control-label" for="Галузь">Галузь:</label>
-
-                    <select class="form-control" name="economic_activities_id">
-                        @foreach($economicActivities as $i => $item)
-                        <option value="{{ $i }}" {{ ( $customer->economic_activities_id == $i ? "selected":"") }}>{{ $item }}</option>
-                        @endforeach
-                    </select>
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label class="control-label" for="Галузь">Галузь:</label>
+                        @include('frontend.partials.economic_activities_select',
+                            ['economicActivities'=> $economicActivities,
+                             'economicActivitiesAttributeName'=>'economic_activities_id',
+                             'economicActivitiesAttributeValueNow' => $problem->economic_activities_id
+                            ])
+                    </div>
                 </div>
             </div>
-        </div>
         <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('region')?'has-error':'' }}">
-                    <label class="control-label" for="region">Регіон:</label>
-                    <input type="text" value="{{ $customer->region }}" name="region" class="form-control" id="text">
-                    @if($errors->has('region'))
-                    <span class="control-label"> {{ $errors->first('region') }}</span>
-                    @endif
+                <div class="col-md-10">
+                    <div class="form-group {{ $errors->has('country_id')?'has-error':'' }}">
+                        <label class="control-label" for="region">Країна проблеми</label>
+                        <select id="country_id" class="form-control" name="country_id">
+                            @foreach(\App\Models\Country::all() as $country)
+                                <option value="{{ $country->id }}" {{ $problem->country_id == $country->id ? "selected" : "" }}>{{ $country->name }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('country_id'))
+                            <span class="control-label"> {{ $errors->first('country_id') }}</span>
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('other')?'has-error':'' }}">
-                    <label class="control-label" for="email">Інше:</label>
-                    <textarea type="text" name="other" class="form-control" id="text" rows="6">{{ $customer->other }}</textarea>
-
-                    @if($errors->has('other'))
-                    <span class="control-label"> {{ $errors->first('other') }}</span>
-                    @endif
+            <div class="col-md-offset-2">
+                <div class="col-md-10">
+                    <div class="form-group {{ $errors->has('city_id')?'has-error':'' }}">
+                        <label class="control-label" for="region">Регіон проблеми</label>
+                        <select id="city_id" class="form-control" name="city_id">
+                            <option value="0"> Усi </option>
+                            @foreach(\App\Models\City::where(['country_id'=>$investor->country_id])->get() as $city)
+                                <option value="{{ $city->id }}" {{ $problem->city_id == $city->id ? "selected" : "" }}>{{ $city->name }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('city_id'))
+                            <span class="control-label"> {{ $errors->first('city_id') }}</span>
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
@@ -134,20 +128,34 @@
 @stop
 @section('js')
 <script type="text/javascript">
-    //    $('select').select2({
-    //        placeholder: "Выберите регион",
-    //        allowClear: true,
-    //        width: 'resolve'
-    //    });
-    $("#file_up").fileinput({
-    'showUpload'          : false,
-            'previewFileType'     : 'image',
-            'allowedFileTypes'    : ['image'],
-            'initialPreview'      : [
-                    @if (!empty($customer->logo)) '{{url('/customer/image/'.$customer->logo)}}' @endif,
-            ],
-            'initialPreviewAsData': true,
-    });</script>
+        {{--$("#file_up").fileinput({--}}
+            {{--'showUpload': false,--}}
+            {{--'previewFileType': 'image',--}}
+            {{--'allowedFileTypes': ['image'],--}}
+            {{--'initialPreview': [--}}
+                {{--@if (!empty($investor->logo)) '{{route('images.show',['name'=>'investor','id'=>$investor->logo, 'width'=>'max', 'height'=>'max'])}}' @endif,--}}
+            {{--],--}}
+            {{--'initialPreviewAsData': true,--}}
+        {{--});--}}
+
+        $('#country_id').on('change', function () {
+            var id = $(this).val();
+
+            $.ajax({
+                url: "{{ url('/get/cities/') }}/" + id,
+                success: function (data) {
+                    var select = $('#city_id');
+                    select.find('option').remove();
+                    select.append('<option selected disabled>Виберіть регіон</option>');
+                    $.each(data, function (i, item) {
+                        select.append('<option value="' + i + '"> ' + item + ' </option>');
+                    });
+                },
+                dataType: "json"
+            });
+        });
+
+</script>
 <script src="{{ asset('tinymce/js/tinymce/tinymce.min.js')}}"></script>
 <script>
             tinymce.init({

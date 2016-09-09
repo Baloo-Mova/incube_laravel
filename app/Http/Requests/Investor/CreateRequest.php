@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Investor;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CreateRequest extends FormRequest
 {

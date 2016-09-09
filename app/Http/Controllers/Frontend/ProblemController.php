@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\EconomicActivities;
-use App\Models\Customer;
+use App\Http\Requests\Customer\CreateRequest;
+use App\Http\Requests\Customer\EditRequest;
+use App\Http\Requests\Customer\UpdateRequest;
+use App\Models\EconomicActivity;
+use App\Models\ProblemForm;
+use App\Models\Status;
+use App\Notifications\RegisterSuccess;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -14,37 +19,21 @@ use Illuminate\Support\Facades\Mail;
 class ProblemController extends Controller {
 
     public function index() {
-        $problems = Customer::where(['status_id'=>1])->orderBy('id', 'desc')->take(10)->get();
-
+        $problems = ProblemForm::orderBy('id', 'desc')->where(['status_id' => Status::PUBLISHED])->take(10)->get();
         return view('frontend.customer.index')->with([
                     'problems' => $problems,
         ]);
     }
 
     public function create() {
-        $economicActivities = EconomicActivities::where(['parent_id' => null])->get();
+        $economicActivities = EconomicActivity::where(['parent_id' => null])->get();
         return view('frontend.customer.create', compact('economicActivities'));
     }
 
-    public function store(Request $request) {
-        $this->validate($request, [
-            'problem_name' => 'required',
-            'problem_description' => 'required',
-            'email' => Auth::check() ? '' : 'required|email|unique:users',
-                ], [
-            'problem_name.required' => 'Поле Назва проблеми обов`язкове для заповнення ;',
-            'problem_description.required' => 'Поле Опис проблеми  обов`язкове для заповнення;',
-            'email' => "Email обязателен для пользователей не прошедших авторизацию",
-            'unique' => 'Ви вже зареєстровані. Спершу Ви маєте авторизуватися за допомогою свого логіна та пароля.',
-        ]);
+    public function store(CreateRequest $request) {
 
-        $model = new Customer();
+        $model = new ProblemForm();
         $model->fill($request->all());
-        if ($request->file('logo_img_file')) {
-            $filename = uniqid() . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
-            $image = Image::make($request->file('logo_img_file'))->resize(250, 300)->save(storage_path('app/customer/images/' . $filename));
-            $model->logo = $filename;
-        }
 
         $email = $request->get('email');
         $pass = str_random(10);
@@ -66,47 +55,39 @@ class ProblemController extends Controller {
         $model->author_id = Auth::check() ? Auth::user()->id : $user->id;
         $model->save();
 
-        if (!Auth::check() && Auth::attempt(['email' => $email, 'password' => $pass])) {
-            return redirect(route('personal_area.index'));
+        if (!Auth::check()) {
+            Auth::attempt(['email' => $email, 'password' => $pass]);
         }
 
         return redirect(route('customer.index'));
+        //return redirect(route('personal_area.index'));
     }
 
-    public function edit($id) {
-        $customer = Customer::findOrFail($id);
-        $economicActivities = EconomicActivities::pluck('name', 'id');
+    public function edit(EditRequest $request, ProblemForm $problem) {
+
+        $economicActivities = EconomicActivity::where(['parent_id' => null])->get();
 
         return view('frontend.customer.edit', compact('customer', 'economicActivities'));
     }
 
-    public function update(Request $request, $id) {
-        $this->validate($request, [
-            'problem_name' => 'required',
-            'problem_description' => 'required',
-                ], [
-            'problem_name.required' => 'Поле Назва проблеми обов`язкове для заповнення ;',
-            'problem_description.required' => 'Поле Опис проблеми  обов`язкове для заповнення;',
-        ]);
-        
+    public function update(UpdateRequest $request, ProblemForm $problem) {
 
-        $customer = Customer::findOrFail($id);
-        $customer->fill($request->all());
-        // Нужно удалять файл
-        if ($request->file('logo_img_file')) {
-            $filename = uniqid() . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
-            $image = Image::make($request->file('logo_img_file'))->resize(250, 300)->save(storage_path('app/customer/images/' . $filename));
-            $customer->logo = $filename;
-        }
-        $customer->save();
 
-        return back()->with(['message' => 'Ваша заявка оновлена']);
+        $problem->fill($request->all());
+        $problem->status_id = Status::EDITED;
+        $problem->save();
+
+        return back()->with(['message' => 'Відредаговано']);
     }
 
-    public function show($id) {
-        $model = Customer::findOrFail($id);
+    public function show(ProblemForm $problem) {
+        return view('frontend.customer.show', compact('problem'));
+    }
+    public function delete(ProblemForm $problem)
+    {
+        $problem->delete();
 
-        return view('frontend.customer.show', compact('model'));
+        return redirect(route('customer.index'));
     }
 
 }

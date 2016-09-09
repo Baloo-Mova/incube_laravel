@@ -47,6 +47,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/edit/{problem}',['uses'=> 'ProblemController@edit', 'as' => 'customer.edit']);
         Route::post('/edit/{problem}',['uses'=> 'ProblemController@update', 'as' => 'customer.update']);
         Route::get('/show/{problem}',['uses'=> 'ProblemController@show', 'as'=>'customer.show']);
+        Route::get('/delete/{problem}', ['uses'=>'ProblemController@delete', 'as'=>'problem.delete']);
     });
 
     Route::group(['prefix' => 'executor'], function () {

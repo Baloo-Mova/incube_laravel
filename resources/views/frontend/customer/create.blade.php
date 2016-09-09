@@ -6,15 +6,7 @@
 </div>
 <hr/>
 <div class="container">
-    @if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+   
     <form method="POST" enctype="multipart/form-data" class="form-horizontal">
         {{ csrf_field() }}
         @if(!Auth::check())
@@ -34,38 +26,25 @@
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('problem_name')?'has-error':'' }}">
-                    <label class="control-label" for="Назва питання">Назва питання(проблеми):</label>
+                <div class="form-group {{ $errors->has('name')?'has-error':'' }}">
+                    <label class="control-label" for="Назва питання">Назва питання(проблеми)<span class="form-required">*</span></label>
 
 
-                    <input type="text" value="{{ old('problem_name') }}" name="problem_name" class="form-control" id="text">
-                    @if($errors->has('problem_name'))
-                    <span class="control-label"> {{ $errors->first('problem_name') }}</span>
+                    <input type="text" value="{{ old('name') }}" name="name" class="form-control" id="text">
+                    @if($errors->has('name'))
+                    <span class="control-label"> {{ $errors->first('name') }}</span>
                     @endif
                 </div>
             </div>
         </div>
-
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('short_name')?'has-error':'' }}">
-                    <label class="control-label" for="short_name">Коротка Назва питання(проблеми):</label>
-                    <input type="text" value="{{ old('short_name') }}" name="short_name" class="form-control" id="text">
-                    @if($errors->has('short_name'))
-                    <span class="control-label"> {{ $errors->first('short_name') }}</span>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('problem_description')?'has-error':'' }}">
-                    <label class="control-label" for="discription">Опис питання(проблеми):</label>
-                    <textarea rows="6" type="text" name="problem_description" class="form-control" id="text">{{ old('problem_description') }}</textarea>
-                    @if($errors->has('problem_description'))
-                    <span class="control-label"> {{ $errors->first('problem_description') }}</span>
-                    @endif
+                <div class="form-group {{ $errors->has('description')?'has-error':'' }}">
+                    <label class="control-label" for="discription">Опис питання(проблеми)<span class="form-required">*</span></label>
+                    <textarea rows="6" type="text" name="description" class="form-control" id="text">{{ old('description') }}</textarea>
+                        @if($errors->has('description'))
+                            <span class="control-label"> {{ $errors->first('description') }}</span>
+                        @endif
                 </div>
             </div>
         </div>
@@ -84,33 +63,38 @@
         </div>
 
         <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('region')?'has-error':'' }}">
-                    <label class="control-label" for="region">Регіон:</label>
-
-
-                    <input type="text" value="{{ old('region') }}" name="region" class="form-control" id="text">
-
-                    @if($errors->has('region'))
-                    <span class="control-label"> {{ $errors->first('region') }}</span>
-                    @endif
+                <div class="col-md-10">
+                    <div class="form-group {{ $errors->has('country_id')?'has-error':'' }}">
+                        <label class="control-label" for="region">Країна проблеми <span class="form-required">*</span></label>
+                        <select id="country_id" class="form-control" name="country_id">
+                            @if(old('country_id')==null)
+                            <option value="" selected disabled>Оберіть країну</option>
+                            @endif
+                            @foreach(\App\Models\Country::all() as $country)
+                                <option value="{{ $country->id }}" {{ ( old('country_id') == $country->id ? "selected":"") }}>{{ $country->name }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('country_id'))
+                            <span class="control-label"> {{ $errors->first('country_id') }}</span>
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
+        
+            <div class="col-md-offset-2">
+                <div class="col-md-10">
+                    <div class="form-group {{ $errors->has('city_id')?'has-error':'' }}">
+                        <label class="control-label" for="region">Регіон проблеми</label>
+                        <select id="city_id" class="form-control" name="city_id">
 
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('other')?'has-error':'' }}">
-                    <label class="control-label" for="email">Інше:</label>
-                    <textarea type="text" name="other" class="form-control" id="text" rows="6">{{ old('other') }}</textarea>
-
-                    @if($errors->has('other'))
-                    <span class="control-label"> {{ $errors->first('other') }}</span>
-                    @endif
+                        </select>
+                        @if($errors->has('city_id'))
+                            <span class="control-label"> {{ $errors->first('city_id') }}</span>
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
-
+      
         <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group">
@@ -151,16 +135,33 @@
 
     });
 </script>
-<script src="{{ asset('tinymce/js/tinymce/tinymce.min.js')}}"></script>
-<script>
-    tinymce.init({
-        selector: "textarea",
-        plugins: [
-            "advlist autolink lists link image charmap print preview anchor",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table contextmenu paste"
-        ],
-        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-    });
-</script>
+<script type="text/javascript">
+
+        $('#country_id').on('change', function(){
+            var id = $(this).val();
+
+            $.ajax({
+                url: "{{ url('/get/cities/') }}/"+id,
+                success: function(data){
+                    var select = $('#city_id');
+                    select.find('option').remove();
+                    select.append('<option selected value="0">Усi</option>');
+                    $.each(data, function(i, item){
+                        select.append('<option value="'+i+'"> '+item+' </option>');
+                    });
+                },
+                dataType: "json"
+            });
+        });
+
+        tinymce.init({
+            selector: "textarea",
+            plugins : [
+                "advlist autolink lists link image charmap print preview anchor",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table contextmenu paste"
+            ],
+            toolbar : "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+        });
+    </script>
 @stop
