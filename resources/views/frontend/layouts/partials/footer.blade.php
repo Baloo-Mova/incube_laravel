@@ -25,8 +25,7 @@
                     </div>
                 </div>
                 <div class="row footer-copy text-center">
-                    <p><span>All rights reserved</span> | <span>Graphic Designed by <a href="#">VlaD_77</a></span> |
-                        <span> Web Designed by <a href="#">VlaD_77</a></span></p>
+                    <p><span>All rights reserved &copy; 2016</span></p>
                 </div>
             </div>
         </div>

@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use App\Models\InvestorForm;
-use App\Policies\InvestorPolicy;
+use App\Policies\EditPolicy;
+use App\Models\ProblemForm;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 

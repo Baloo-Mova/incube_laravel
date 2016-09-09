@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Policies;
+
 use Illuminate\Database\Eloquent\Model;
 use App\User;
-
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class EditPolicy {

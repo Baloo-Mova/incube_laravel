@@ -20,7 +20,7 @@ class EditRequest extends FormRequest
             return false;
         }
 
-        $form = $this->route('customer');
+        $form = $this->route('problem');
         return Auth::user()->can('update', $form);
     }
 
