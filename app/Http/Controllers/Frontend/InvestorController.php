@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Investor\CreateRequest;
 use App\Http\Requests\Investor\EditRequest;
 use App\Http\Requests\Investor\UpdateRequest;
+use App\Jobs\Test;
 use App\Models\ProblemForm;
 use App\Models\ProjectForm;
 use App\Models\EconomicActivity;
 use App\Models\InvestorForm;
 use App\Models\Status;
+use App\Notifications\Poxer;
 use App\Notifications\RegisterSuccess;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +25,9 @@ class InvestorController extends Controller
 
     public function index()
     {
+
+        dd(Auth::user()->notifications[0]->markAsRead());
+
         $investProjects = InvestorForm::orderBy('id', 'desc')->where(['status_id' => Status::PUBLISHED])->take(10)->get();
 
         $problems = ProblemForm::where([
@@ -93,6 +98,7 @@ class InvestorController extends Controller
 
     public function show(InvestorForm $investor)
     {
+
         return view('frontend.investor.show', compact('investor'));
     }
 

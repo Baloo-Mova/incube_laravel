@@ -21,6 +21,9 @@ class EditPolicy {
         return $user->id == $form->author_id;
     }
 
+    public function edit(User $user, Model $form) {
+        return $user->id == $form->author_id;
+    }
     /**
      * Determine whether the user can delete the investorform.
      *
@@ -34,7 +37,7 @@ class EditPolicy {
     
 
     public function offer(User $user, Model $form) {
-       return $user->id == $form->author_id;
+       return $user->id != $form->author_id;
     }
 
 }
