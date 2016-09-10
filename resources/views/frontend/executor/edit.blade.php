@@ -68,11 +68,11 @@
                     <label class="control-label" for="date_birth">Дата народження:</label>
 
                    
-                        <div class='input-group date' id='datetimepicker1'>
+                        <div class='input-group date'>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
-                            <input type="text" value="{{ $executor->date_birth }}" class="form-control" name="contacts">
+                            <input type="text" value="{{ $executor->date_birth }}" class="form-control" name="date_birth" id='datetimepicker1'>
 
                         </div>
                         @if($errors->has('date_birth'))
@@ -246,12 +246,15 @@
 <script type="text/javascript">
             $(function () {
             $('#datetimepicker1').datetimepicker({
+                 format: 'DD.MM.YYYY',
+                  
             });
             });</script>
 <script src="{{ asset('tinymce/js/tinymce/tinymce.min.js')}}"></script>
 <script>
             tinymce.init({
             selector: "textarea",
+            language: 'uk_UA',
                     plugins: [
                             "advlist autolink lists link image charmap print preview anchor",
                             "searchreplace visualblocks code fullscreen",

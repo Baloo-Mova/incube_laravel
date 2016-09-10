@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
-use App\Models\Customer;
-use App\Models\Investor;
-use App\Models\Designer;
-use App\Models\Executor;
-use App\Models\Employer;
-use App\Models\Countries;
+use App\Models\ProblemForm;
+use App\Models\InvestorForm;
+use App\Models\ProjectForm;
+use App\Models\ExecutorForm;
+use App\Models\WorkForm;
+use App\Models\Country;
 use App\Models\EconomicActivities;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -27,11 +27,11 @@ class PersonalAreaController extends Controller
     public function index(){
         
         $thisUser = Auth::user();
-        $usersCustomerProjects = Customer::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
-        $usersInvestorProjects = Investor::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
-        $usersDesignerProjects = Designer::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
-        $usersExecutorProjects = Executor::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
-        $usersEmployerProjects = Employer::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
+        $usersCustomerProjects = ProblemForm::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
+        $usersInvestorProjects = InvestorForm::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
+        $usersDesignerProjects = ProjectForm::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
+        $usersExecutorProjects = ExecutorForm::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
+        $usersEmployerProjects = WorkForm::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
         return view('frontend.personal_area.index')->with([
         'thisUser'              => $thisUser,
         'usersCustomerProjects' => $usersCustomerProjects, 
@@ -45,7 +45,7 @@ class PersonalAreaController extends Controller
     
      public function edit(User $myUser)
     {
-        $countries = Countries::orderBy('id', 'desc')->get();
+        $countries = Country::orderBy('id', 'desc')->get();
 
         return view('frontend.personal_area.edit', compact('myUser', 'countries'));
     }

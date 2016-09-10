@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 /**
  * Class ExecutorForm
  */
@@ -35,4 +35,9 @@ class ExecutorForm extends Model
     protected $guarded = [];
 
 
+    // public function getDates()
+   // {
+    //    return ['created_at', 'updated_at', 'date_birth'];
+    //}
+    
 }

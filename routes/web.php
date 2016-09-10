@@ -57,6 +57,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/edit/{executor}',['uses'=> 'ExecutorController@edit', 'as' => 'executor.edit']);
         Route::post('/edit/{executor}',['uses'=> 'ExecutorController@update', 'as' => 'executor.update']);
         Route::get('/show/{executor}',['uses'=>'ExecutorController@show', 'as'=>'executor.show']);
+        Route::get('/delete/{executor}', ['uses'=>'ExecutorController@delete', 'as'=>'executor.delete']);
     });
 
     Route::group(['prefix' => 'designer'], function () {

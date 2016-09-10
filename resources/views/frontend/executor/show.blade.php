@@ -21,7 +21,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ empty($executor->logo)? 'http://placehold.it/250x300' : url('/executor/image/'.$executor->logo) }}" class="img-circle img-responsive"> </div>
+                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ url('/img/250n300.png') }}" class="img-circle img-responsive"> </div>
 
                         <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
                           <dl>
@@ -81,14 +81,17 @@
                 <div class="panel-footer">
                     <a data-original-title="Надіслати повідомлення" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                     <span class="pull-right">
-                        @if(Auth::check() && Auth::user()->id == $executor->author_id)
-                        <div class="btn-group pull-lef">
+                       @if(Auth::check())
+                @if($executor->status_id != \App\Models\Status::PUBLISHED)
+                   <div class="btn-group pull-lef">
                             <a href="{{route('executor.edit',['executor'=>$executor->id])}}" class="btn-primary btn">Оновити</a>
                         </div>
                         <div class="btn-group pull-lef">
-                            <a href="#" class="btn-danger btn">Видалити</a>
+                            <a href="{{ route('executor.delete', ['id'=>$executor->id]) }}" class="btn-danger btn" onclick="return confirm('Вы точно хотите удалить проэкт?')">Видалити</a>
                         </div>
-                        @endif
+                @endif
+                @endif
+                       
                     </span>
                 </div>
 

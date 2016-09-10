@@ -91,17 +91,17 @@
             <div class="col-md-10">
                 <div class="form-group {{ $errors->has('date_birth')?'has-error':'' }}">
                     <label class="control-label" for="date_birth">Дата народження:</label>
-                        <div class='input-group date' id='datetimepicker1'>
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                            <input type="text" value="{{ old('date_birth') }}" class="form-control" name="contacts">
+                    <div class='input-group date'>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        <input type="text" value="{{ old('date_birth') }}" class="form-control" name="date_birth" id='datetimepicker1'>
 
-                        </div>
-                        @if($errors->has('date_birth'))
-                        <span class="control-label"> {{ $errors->first('date_birth') }}</span>
-                        @endif
-                   
+                    </div>
+                    @if($errors->has('date_birth'))
+                    <span class="control-label"> {{ $errors->first('date_birth') }}</span>
+                    @endif
+
 
                 </div>
             </div>
@@ -206,7 +206,7 @@
                 <div class="form-group {{ $errors->has('contacts')?'has-error':'' }}">
                     <label class="control-label" for="Contacts">Інші контактні дані:</label>
                     <textarea rows="3" type="text" name="contacts" class="form-control" id="text">{{ old('contacts') }}</textarea>
-                    
+
                     @if($errors->has('contacts'))
                     <span class="control-label"> {{ $errors->first('contacts') }}</span>
                     @endif
@@ -267,6 +267,9 @@
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker1').datetimepicker({
+            
+            format: 'DD.MM.YYYY',
+            
         });
     });
 </script>
@@ -274,6 +277,7 @@
 <script>
     tinymce.init({
         selector: "textarea",
+        language: 'uk_UA',
         plugins: [
             "advlist autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",

@@ -68,7 +68,7 @@
                                 @foreach($usersCustomerProjects as $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
-                                        <td>{{$item->problem_name}}</td>
+                                        <td>{{$item->name}}</td>
                                         <td>
                                             <strong>{{($item->economicActivities->getParent() != null ? $item->economicActivities->getParent()->name : '')}}</strong>
                                             <p>{{$item->economicActivities->name }}</p>
@@ -125,7 +125,7 @@
                                 @foreach($usersInvestorProjects as $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
-                                        <td>{{$item->investor_name}}</td>
+                                        <td>{{$item->name}}</td>
                                         <td>
                                             <strong>{{($item->economicActivities->getParent() != null ? $item->economicActivities->getParent()->name : '')}}</strong>
                                             <p>{{$item->economicActivities->name }}</p>
@@ -183,7 +183,7 @@
                                 @foreach($usersDesignerProjects as $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
-                                        <td>{{$item->project_name}}</td>
+                                        <td>{{$item->name}}</td>
                                         <td>
                                             <strong>{{($item->economicActivities->getParent() != null ? $item->economicActivities->getParent()->name : '')}}</strong>
                                             <p>{{$item->economicActivities->name }}</p>
