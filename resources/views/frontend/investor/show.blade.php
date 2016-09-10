@@ -23,7 +23,7 @@
 
         <div class="btn-toolbar">
             @if(Auth::check())
-                @if($investor->status_id != \App\Models\Status::PUBLISHED)
+                @if(Auth::user()->can('edit', $investor) && $investor->status_id != \App\Models\Status::PUBLISHED)
                     <div class="btn-group pull-left">
                         <a href="{{ route('investor.edit', ['id'=>$investor->id]) }}"
                            class="btn-primary btn">Оновити</a>
