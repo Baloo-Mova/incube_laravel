@@ -17,6 +17,7 @@ Auth::routes();
 
 Route::get('/{name}/image/{id}/{height}x{width}',['uses'=>'ImagesShowController@index', 'as'=>'images.show']);
 Route::get('/get/cities/{id}', ['uses'=>'MainApiController@getCities', 'as'=>'get.city']);
+Route::post('/create/offer', ['uses'=>'MainApiController@createOffer', 'as' => 'create.offer']);
 
 Route::group(['namespace' => 'Frontend'], function () {
 
