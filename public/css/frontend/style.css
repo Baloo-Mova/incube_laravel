@@ -974,7 +974,11 @@ a {
 }
 
 .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
-    background-color: white;
+   // background-color: white;
+}
+.new-message {
+    background-color: #ccc;
+    font-weight: bold;
 }
 
 .well {

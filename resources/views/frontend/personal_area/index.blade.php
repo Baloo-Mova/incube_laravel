@@ -10,7 +10,7 @@
                     <li>
                         <a href="{{  route('personal_area.edit',['personal'=>$thisUser->id])   }}"><i class="fa fa-user"></i> Профіль</a>
                     </li>
-                    <li><a href="#"><i class="fa fa-key"></i> Безпека</a></li>
+                    <li><a href="{{route('personal_area.security')}}"><i class="fa fa-key"></i> Безпека</a></li>
                     <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> Вихід</a></li>
                 </ul>
             </div>
@@ -18,9 +18,9 @@
                 <div class="pannel-row">
                     <div class="panel background-logo" style="background-image: url('{{ empty($user->bg_logo)? '../img/bg_image.jpg' : url('/users/image/'.$user->bg_logo)}}')">
 
-                        <img class="pic img-circle" src="{{ empty($user->logo)? '../img/man-profile.jpg' : url('/users/image/'.$user->logo)}}" alt="...">
+                        <img class="pic img-circle" src="{{ empty($thisUser->logo)? '../img/man-profile.jpg' : url('/users/image/'.$thisUser->logo)}}" alt="...">
                         <div class="name">
-                            <small>{{$thisUser->name}}, {{$thisUser->country->name}}</small>
+                            <small>{{$thisUser->name}}, {{ empty($thisUser->country_id)? '' : $thisUser->country->name}}</small>
                         </div>
                         <a href="#" class="btn btn-xs btn-primary pull-right login" style="margin:10px;"><span class="glyphicon glyphicon-picture"></span> Змінити зображення</a>
                     </div>
@@ -329,34 +329,40 @@
                     <!--event begin-->
                     <div class="tab-pane" id="event">
                         <div class="grid-view">
-                            <table class="table table-striped table-bordered">
+                            <table class="table table-bordered">
                                 <thead>
                                 <tr>
+                                    <th><a class="" href="#"></a>Обрати</th>
                                     <th>Id</th>
                                     <th><a class="" href="#">Тема</a></th>
                                     <th><a class="" href="#">Відправник</a></th>
                                     <th><a class="" href="#">Отримувач</a></th>
                                     <th><a class="" href="#">Дата створення</a></th>
                                     <th><a class="" href="#">Статус</a></th>
-                                    <th><a class="" href="#"></a></th>
+                                    <th><a class="" href="#">Дії</a></th>
+                                    
                                 </tr>
                                 <tr>
+                                    <th></th>
                                     <th></th>
                                     <th><input type="text" class="form-control" name=""></th>
                                     <th><input type="text" class="form-control" name=""></th>
                                     <th><input type="text" class="form-control" name=""></th>
                                     <th><input type="text" class="form-control" name=""></th>
-                                    <th><a class="" href="#"></a></th>
+                                    <th><input type="text" class="form-control" name=""></th>
+                                    <th></th>
+                                   
                                 </tr>
                                 </thead>
                                 <tbody class='text-center'>
-                                @foreach($usersEmployerProjects as $item)
-                                <tr>    
+                                @foreach($usersCustomerProjects as $item)
+                                <tr class="<?php if(rand(0,1)!=0) echo 'new-message';?>">    
+                                    <td><input type="checkbox" value=""></td>
                                     <td>{{$item->id}}</td>
-                                    <td>{{$item->org_name}}</td>
-                                    <td>{{$item->short_name}}</td>
-                                    <td>{{$item->short_name}}</td>
-                                    <td>{{$item->created_at}}</td>
+                                    <td>{{$item->name}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>@if($item->status!=0) <span class="label label-success">Опубліковано</span> @endif  
                                         @if($item->status==0) <span class="label label-danger">Не Опубліковано</span> @endif  
                                     </td>

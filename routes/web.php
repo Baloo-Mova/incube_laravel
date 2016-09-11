@@ -79,8 +79,9 @@ Route::group(['namespace' => 'Frontend'], function () {
 
     Route::group(['prefix'=>'personal-area'], function (){
         Route::get('/',['uses'=>'PersonalAreaController@index', 'as'=>'personal_area.index']);
-        Route::get('/edit/{personal}',['uses'=> 'PersonalAreaController@edit', 'as' => 'personal_area.edit']);
-        Route::post('/edit/{personal}',['uses'=> 'PersonalAreaController@update', 'as' => 'personal_area.update']);
+        Route::get('/edit',['uses'=> 'PersonalAreaController@edit', 'as' => 'personal_area.edit']);
+        Route::post('/edit',['uses'=> 'PersonalAreaController@update', 'as' => 'personal_area.update']);
+        Route::get('/security',['uses'=> 'PersonalAreaController@security', 'as' => 'personal_area.security']);
 
     });
 });

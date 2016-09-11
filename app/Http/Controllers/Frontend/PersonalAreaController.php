@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
+//use App\Http\Requests\PersonalArea\CreateRequest;
+use App\Http\Requests\PersonalArea\EditRequest;
+use App\Http\Requests\PersonalArea\UpdateRequest;
+
 use Illuminate\Http\Request;
 use App\Models\ProblemForm;
 use App\Models\InvestorForm;
@@ -43,42 +47,28 @@ class PersonalAreaController extends Controller
         ]);
     }
     
-     public function edit(User $myUser)
+     public function edit()
     {
-        $countries = Country::orderBy('id', 'desc')->get();
+         $myUser=Auth::user();
+         
+        $country = Country::orderBy('id', 'desc')->get();
 
-        return view('frontend.personal_area.edit', compact('myUser', 'countries'));
+        return view('frontend.personal_area.edit', compact('myUser', 'country'));
     }
 
-    public function update(Request $request, User $myUser)
+    public function update(Request $request)
     {
-        $this->validate($request, [
-            //'name'     => 'required',
-          //  'email' => 'required',
-            
-        ], [
-          //  'name.required'     => "Поле ПІБ інвестування  обов'язкове для заповнення;",
-          //  'email.required' => "Поле Пошта  обов'язкове для заповнення;",
-            
-        ]);
+       
+        $myUser=Auth::user();
 
         $myUser->fill($request->all());
-        if ($request->file('logo_img_file')) {
-            $filename       = uniqid() . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
-            $image          = Image::make($request->file('logo_img_file'))->resize(250,
-                300)->save(storage_path('app/users/images/' . $filename));
-            $myUser->logo = $filename;
-        }
-        if ($request->file('bg_img_file')) {
-            $filename       = uniqid() . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
-            $image          = Image::make($request->file('logo_img_file'))->resize(250,
-                300)->save(storage_path('app/users/images/' . $filename));
-            $myUser->logo = $filename;
-        }
-
+       
         $myUser->save();
 
         return back()->with(['message' => 'Редагування завершено']);
     }
-    
+     public function security(){
+         
+      return view('frontend.personal_area.security');
+     }
 }
