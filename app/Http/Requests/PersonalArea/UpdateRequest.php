@@ -33,10 +33,6 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'country_id' => 'required',
-            
-            
-                      
-            
         ];
     }
 
@@ -46,8 +42,6 @@ class UpdateRequest extends FormRequest
             'name.max' => 'Максимальна довжина назви 255 символів',
             'name.required' => "Поле Прізвище, Ім'я, По-батькові  обов'язкове для заповнення",
             'country_id.required' => "Поле Країна інвестування обов'язкове для заповнення;",
-            
-            
         ];
     }
 

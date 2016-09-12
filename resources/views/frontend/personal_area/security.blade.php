@@ -4,12 +4,7 @@
 <div class="container-fluid">
     <div class="row well">
         <div class="col-md-2">
-            <ul class="nav nav-pills nav-stacked well">
-                <li><a href="{{ route('personal_area.index') }}"><i class="fa fa-home"></i> Кабінет</a></li>
-                <li><a href="{{route('personal_area.edit')}}"><i class="fa fa-myUser"></i> Профіль</a></li>
-                <li class="active"><a href="{{route('personal_area.security')}}"><i class="fa fa-key"></i> Безпека</a></li>
-                <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> Вихід</a></li>
-            </ul>
+            @include('frontend.personal_area.sidebar')
         </div>
         <div class="col-md-10">
             <div class="page-title text-center">

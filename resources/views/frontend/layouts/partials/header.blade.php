@@ -44,7 +44,7 @@
                         <li class=""><a href="{{url('/login')}}">Вхід</a></li>
                     @else
                         <li class=""><a href="{{ url('/personal-area') }}">Особистий кабінет <span
-                                        class="event label label-danger">1000</span></a></li>
+                                        class="event label label-danger">{{ Auth::check()? (count(Auth::user()->unreadNotifications) > 0 ? count(Auth::user()->unreadNotifications) : '')  : '' }}</span></a></li>
                         <li class="">
                             <a href="{{ url('/logout') }}"
                                onclick="event.preventDefault();
