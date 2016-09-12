@@ -34,7 +34,7 @@ class EconomicActivity extends Model
     protected $guarded = [];
 
     public function parent(){
-        return $this->hasOne(EconomicActivity::class);
+        return $this->hasOne(EconomicActivity::class,'id','parent_id');
     }
 
     public function childrens(){
@@ -42,7 +42,7 @@ class EconomicActivity extends Model
     }
 
     public function isParent(){
-        return  self::withCount('childrens')->where('id','=',$this->id)->first()->childrens_count > 0;
+        return  count($this->childrens) > 0;
     }
 
     public function isChildren(){

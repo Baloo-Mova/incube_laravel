@@ -3,7 +3,7 @@
         @if($item->isParent())
             <optgroup label="{{ $item->name }}">
                 <option value="{{ $item->id }}" {{ ( $economicActivitiesAttributeValueNow == $item->id ? "selected":"") }}>{{ $item->name }}</option>
-                @foreach($item->getChildrens() as $children)
+                @foreach($item->childrens as $children)
                     <option value="{{ $children->id }}" {{ ( $economicActivitiesAttributeValueNow  == $children->id ? "selected":"") }}>{{ $children->name }}</option>
                 @endforeach
             </optgroup>

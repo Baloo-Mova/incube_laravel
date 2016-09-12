@@ -59,17 +59,6 @@
             </a>
         </div>
 
-        @if(count($investProjects) > 0)
-            <hr/>
-            <div class="row page-title text-center">
-                <h2>Актуальні інвестиційні проекти</h2>
-            </div>
-            <div class="carusel" id="investorProjects">
-                @foreach($investProjects as $item)
-                    @include('frontend.partials.carusel_item',['item'=>$item])
-                @endforeach
-            </div>
-        @endif
     </div>
 @stop
 

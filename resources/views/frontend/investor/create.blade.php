@@ -119,11 +119,11 @@
             </div>
             <div class="col-md-offset-2">
                 <div class="col-md-10">
-                    <div class="form-group {{ $errors->has('money_count')?'has-error':'' }}">
-                        <label class="control-label" for="money_count">Сума, яку готові інвестувати ($)<span class="form-required">*</span></label>
-                        <input type="number" value="{{ old('money_count') }}" name="money_count" class="form-control" id="money_count">
-                        @if($errors->has('money_count'))
-                            <span class="control-label"> {{ $errors->first('money_count') }}</span>
+                    <div class="form-group {{ $errors->has('money')?'has-error':'' }}">
+                        <label class="control-label" for="money">Сума, яку готові інвестувати ($)<span class="form-required">*</span></label>
+                        <input type="number" value="{{ old('money') }}" name="money" class="form-control" id="money">
+                        @if($errors->has('money'))
+                            <span class="control-label"> {{ $errors->first('money') }}</span>
                         @endif
                     </div>
                 </div>

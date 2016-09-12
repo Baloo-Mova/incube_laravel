@@ -220,6 +220,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Toastr'    => Kamaln7\Toastr\Facades\Toastr::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

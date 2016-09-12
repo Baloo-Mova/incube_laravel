@@ -34,7 +34,7 @@ class UpdateRequest extends FormRequest
             'name' => 'required|max:100',
             'country_id' => 'required',
             'stage_id' => 'required',
-            'money_count' => 'required|numeric',
+            'money' => 'required|numeric',
             'contacts' => 'required|min:20',
             'plan_rent'=>'numeric',
         ];
@@ -50,8 +50,8 @@ class UpdateRequest extends FormRequest
             'country_id.required' => "Поле Країна інвестування обов'язкове для заповнення;",
             'contacts.required' => "Поле Контактні дані обов'язкове для заповнення",
             'contacts.min' => "Поле Контактні дані ну ДУУУУУУЖЕ маленьке",
-            "money_count.numeric" => "Поле суми інвестицій повинно бути число",
-            "money_count.required" => "Поле суми інвестицій обов'язкове для заповнення",
+            "money.numeric" => "Поле суми інвестицій повинно бути число",
+            "money.required" => "Поле суми інвестицій обов'язкове для заповнення",
         ];
     }
 

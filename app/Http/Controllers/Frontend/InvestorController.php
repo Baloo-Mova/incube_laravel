@@ -6,37 +6,31 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Investor\CreateRequest;
 use App\Http\Requests\Investor\EditRequest;
 use App\Http\Requests\Investor\UpdateRequest;
-use App\Jobs\Test;
-use App\Models\ProblemForm;
-use App\Models\ProjectForm;
 use App\Models\EconomicActivity;
-use App\Models\InvestorForm;
 use App\Models\Status;
-use App\Notifications\Poxer;
+use App\Models\TableType;
+use App\Models\UserForm;
 use App\Notifications\RegisterSuccess;
-use Illuminate\Http\Request;
+use Doctrine\DBAL\Schema\Table;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
 use App\User;
-use Illuminate\Support\Facades\Mail;
 
 class InvestorController extends Controller
 {
 
     public function index()
     {
-        $investProjects = InvestorForm::orderBy('id', 'desc')->where(['status_id' => Status::PUBLISHED])->take(10)->get();
-
-        $problems = ProblemForm::where([
+        $problems = UserForm::withAll()->where([
             'status_id' => Status::PUBLISHED,
+            'form_type_id'=> TableType::Problem
         ])->orderBy('id', 'desc')->take(10)->get();
 
-        $projects = ProjectForm::where([
+        $projects = UserForm::withAll()->where([
             'status_id' => Status::PUBLISHED,
+            'form_type_id'=> TableType::Project
         ])->orderBy('id', 'desc')->take(10)->get();
 
         return view('frontend.investor.index')->with([
-            'investProjects' => $investProjects,
             'problems' => $problems,
             'projects' => $projects,
         ]);
@@ -44,15 +38,15 @@ class InvestorController extends Controller
 
     public function create()
     {
-        $economicActivities = EconomicActivity::where(['parent_id' => null])->get();
+        $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();
         return view('frontend.investor.create', compact('economicActivities'));
     }
 
     public function store(CreateRequest $request)
     {
-        $model = new InvestorForm();
+        $model = new UserForm();
         $model->fill($request->all());
-
+        $model->form_type_id = TableType::Investor;
         $email = $request->get('email');
         $pass = str_random(10);
 
@@ -77,15 +71,14 @@ class InvestorController extends Controller
         return redirect(route('personal_area.index'));
     }
 
-    public function edit(EditRequest $request, InvestorForm $investor)
+    public function edit(EditRequest $request, UserForm $investor)
     {
-        $economicActivities = EconomicActivity::where(['parent_id' => null])->get();
+        $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();
         return view('frontend.investor.edit', compact('investor', 'economicActivities'));
     }
 
-    public function update(UpdateRequest $request, InvestorForm $investor)
+    public function update(UpdateRequest $request, UserForm $investor)
     {
-
         $investor->fill($request->all());
         $investor->status_id = Status::EDITED;
         $investor->save();
@@ -93,13 +86,12 @@ class InvestorController extends Controller
         return back()->with(['message' => 'Відредаговано']);
     }
 
-    public function show(InvestorForm $investor)
+    public function show(UserForm $investor)
     {
-
         return view('frontend.investor.show', compact('investor'));
     }
 
-    public function delete(InvestorForm $investor)
+    public function delete(UserForm $investor)
     {
         $investor->delete();
 

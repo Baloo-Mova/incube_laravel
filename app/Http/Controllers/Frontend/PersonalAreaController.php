@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Requests\PersonalArea\EditRequest;
 use App\Http\Requests\PersonalArea\UpdateRequest;
 
+use App\Models\TableType;
+use App\Models\UserForm;
 use Illuminate\Http\Request;
 use App\Models\ProblemForm;
 use App\Models\InvestorForm;
@@ -31,11 +33,11 @@ class PersonalAreaController extends Controller
     public function index(){
         
         $thisUser = Auth::user();
-        $usersCustomerProjects = ProblemForm::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
-        $usersInvestorProjects = InvestorForm::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
-        $usersDesignerProjects = ProjectForm::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
-        $usersExecutorProjects = ExecutorForm::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
-        $usersEmployerProjects = WorkForm::orderBy('id', 'desc')->where('author_id',$thisUser->id)->get();
+        $usersCustomerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Problem])->get();
+        $usersInvestorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Investor])->get();
+        $usersDesignerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Project])->get();
+        $usersExecutorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Executor])->get();
+        $usersEmployerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Work])->get();
         return view('frontend.personal_area.index')->with([
         'thisUser'              => $thisUser,
         'usersCustomerProjects' => $usersCustomerProjects, 

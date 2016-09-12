@@ -29,7 +29,7 @@ class CreateRequest extends FormRequest
             'country_id' => 'required',
             'stage_id' => 'required',
             'email' => Auth::check() ? '' : 'required|email|unique:users',
-            'money_count' => 'required|numeric',
+            'money' => 'required|numeric',
             'contacts' => 'required|min:20',
             'plan_rent'=>'numeric',
         ];
@@ -45,8 +45,8 @@ class CreateRequest extends FormRequest
             'country_id.required' => "Поле Країна інвестування обов'язкове для заповнення;",
             'contacts.required' => "Поле Контактні дані обов'язкове для заповнення",
             'contacts.min' => "Поле Контактні дані ну ДУУУУУУЖЕ маленьке",
-            "money_count.numeric" => "Поле суми інвестицій повинно бути число",
-            "money_count.required" => "Поле суми інвестицій обов'язкове для заповнення",
+            "money.numeric" => "Поле суми інвестицій повинно бути число",
+            "money.required" => "Поле суми інвестицій обов'язкове для заповнення",
             "email" => "Гості мають обовязково вказати свою пошту для рєстрації",
             'unique' => "Ви вже зареєстровані. Спершу ви маєте авторизуватися за допомогою свого логіна і пароля",
         ];

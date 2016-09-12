@@ -55,16 +55,16 @@
             <div class="col-md-10">
                 <label> Сумма инвестирования</label>
                 <div class="clearfix"></div>
-                {{ $investor->money_count }}$
+                {{ $investor->money }} $
                 <hr/>
             </div>
             <div class="col-md-10">
                 <label>Отрасль</label>
                 <div class="clearfix"></div>
-                @if(!$investor->economicActivities->gotParent())
+                @if(!$investor->economicActivities->isChildren())
                     {{ $investor->economicActivities->name }}
                 @else
-                    {{ $investor->economicActivities->getParent()->name }}: <div class="clearfix"></div>  <span style="margin-left: 20px">{{ $investor->economicActivities->name }}</span>
+                    {{ $investor->economicActivities->parent->name }}: <div class="clearfix"></div>  <span style="margin-left: 20px">{{ $investor->economicActivities->name }}</span>
                     @endif
                 <hr/>
             </div>
@@ -138,16 +138,6 @@
 @section('js')
     <script>
         $(document).ready(function () {
-
-//        $("#owl-demo").owlCarousel({
-//            autoPlay: 3000, //Set AutoPlay to 3 seconds
-//
-//            items: 1,
-//            itemsDesktop: [1199, 3],
-//            itemsDesktopSmall: [979, 3]
-//
-//        });
-
             $('#send-project').click(function() {
 
                $.ajax({

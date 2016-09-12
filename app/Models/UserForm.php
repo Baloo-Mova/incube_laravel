@@ -30,6 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $experience
  * @property string $education
  * @property string $internship
+ * @property string $logo
  * @property string $participation_projects
  * @property string $adress
  * @property string $phone
@@ -124,7 +125,7 @@ class UserForm extends Model
     public $timestamps = true;
 
     protected $fillable = [
-
+        'logo',
         'name',
         'description',
         'money',
@@ -160,20 +161,19 @@ class UserForm extends Model
         'company_name',
         'company_info',
         'other',
-        'contacts',
-        'site',
-        'youtube_link'
-    ];
-
-    protected $guarded = [
-        'author_id',
-        'form_type_id',
+        'contacts', 'author_id',
         'publisher_id',
         'status_id',
         'economic_activities_id',
         'country_id',
         'city_id',
         'stage_id',
+        'site',
+        'youtube_link'
+    ];
+
+    protected $guarded = [
+        'form_type_id',
     ];
 
     public function author(){
@@ -209,10 +209,24 @@ class UserForm extends Model
     }
 
     public function documents(){
-        return $this->hasMany(Document::class);
+        return $this->hasMany(Document::class,'form_id');
     }
 
+    public function scopeWithAll($query){
+        return $query->with($this->allRelations);
+    }
 
+    protected $allRelations = [
+        'author',
+        'formType',
+        'publisher',
+        'status',
+        'economicActivities',
+        'country',
+        'city',
+        'stage',
+        'documents'
+    ];
 
 
 }

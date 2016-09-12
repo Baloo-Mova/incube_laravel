@@ -70,18 +70,17 @@
                                         <td>{{$item->id}}</td>
                                         <td>{{$item->name}}</td>
                                         <td>
-                                            <strong>{{($item->economicActivities->getParent() != null ? $item->economicActivities->getParent()->name : '')}}</strong>
+                                            <strong>{{$item->economicActivities->parent->name or ''}}</strong>
                                             <p>{{$item->economicActivities->name }}</p>
                                         </td>
                                         <td>{{$item->created_at}}</td>
-                                        <td>@if($item->status!=0) <span class="label label-success">Опубліковано</span> @endif
-                                            @if($item->status==0) <span class="label label-danger">Не Опубліковано</span> @endif 
+                                        <td> {{ $item->status->name }}
                                         </td>
                                         <td>
                                             <a href="{{url('/customer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                             </a>
-                                            @if($item->status==0)
+                                            @if($item->status->id==0)
                                                 <a href="{{url('/customer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
                                                     <span class="glyphicon glyphicon-pencil"></span></a>
 
@@ -127,18 +126,18 @@
                                         <td>{{$item->id}}</td>
                                         <td>{{$item->name}}</td>
                                         <td>
-                                            <strong>{{($item->economicActivities->getParent() != null ? $item->economicActivities->getParent()->name : '')}}</strong>
+                                            <strong>{{$item->economicActivities->parent->name or ''}}</strong>
                                             <p>{{$item->economicActivities->name }}</p>
                                         </td>
                                         <td>{{$item->created_at}}</td>
-                                        <td>@if($item->status!=0) <span class="label label-success">Опубліковано</span> @endif
-                                            @if($item->status==0) <span class="label label-danger">Не Опубліковано</span> @endif 
+                                        <td>
+                                            {{ $item->status->name }}
                                         </td>
                                         <td>
                                             <a href="{{url('/investor/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                             </a>
-                                            @if($item->status==0)
+                                            @if($item->status->id==0)
                                                 <a href="{{url('/investor/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
                                                     <span class="glyphicon glyphicon-pencil"></span></a>
 
@@ -185,18 +184,17 @@
                                         <td>{{$item->id}}</td>
                                         <td>{{$item->name}}</td>
                                         <td>
-                                            <strong>{{($item->economicActivities->getParent() != null ? $item->economicActivities->getParent()->name : '')}}</strong>
+                                            <strong>{{$item->economicActivities->parent->name or ''}}</strong>
                                             <p>{{$item->economicActivities->name }}</p>
                                         </td>
                                         <td>{{$item->created_at}}</td>
-                                        <td>@if($item->status!=0) <span class="label label-success">Опубліковано</span> @endif
-                                            @if($item->status==0) <span class="label label-danger">Не Опубліковано</span> @endif 
+                                        <td> {{ $item->status->name }}
                                         </td>
                                         <td>
                                             <a href="{{url('/designer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                             </a>
-                                            @if($item->status==0)
+                                            @if($item->status->id==0)
                                                 <a href="{{url('/designer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
                                                     <span class="glyphicon glyphicon-pencil"></span></a>
 
@@ -247,14 +245,13 @@
                                     </td>
                                     <td>{{$item->id}}</td>
                                     <td>{{$item->created_at}}</td>
-                                    <td>@if($item->status!=0) <span class="label label-success">Опубліковано</span> @endif  
-                                        @if($item->status==0) <span class="label label-danger">Не Опубліковано</span> @endif  
+                                    <td> {{ $item->status->name }}
                                     </td>
                                     <td>
                                         <a href="{{url('/executor/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
-                                        @if($item->status==0)  
+                                        @if($item->status->id==0)  
                                         <a href="{{url('/executor/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
                                             <span class="glyphicon glyphicon-pencil"></span></a> 
 
@@ -301,14 +298,13 @@
                                     <td>{{$item->org_name}}</td>
                                     <td>{{$item->short_name}}</td>
                                     <td>{{$item->created_at}}</td>
-                                    <td>@if($item->status!=0) <span class="label label-success">Опубліковано</span> @endif  
-                                        @if($item->status==0) <span class="label label-danger">Не Опубліковано</span> @endif  
+                                    <td> {{ $item->status->name }}
                                     </td>
                                     <td>
                                         <a href="{{url('/employer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
-                                        @if($item->status==0)  
+                                        @if($item->status->id==0)  
                                         <a href="{{url('/employer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
                                             <span class="glyphicon glyphicon-pencil"></span></a> 
 
@@ -363,14 +359,13 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td>@if($item->status!=0) <span class="label label-success">Опубліковано</span> @endif  
-                                        @if($item->status==0) <span class="label label-danger">Не Опубліковано</span> @endif  
+                                    <td> {{ $item->status->name }}
                                     </td>
                                     <td>
                                         <a href="{{url('/employer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
-                                        @if($item->status==0)  
+                                        @if($item->status->id==0)  
                                         <a href="{{url('/employer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
                                             <span class="glyphicon glyphicon-pencil"></span></a> 
 
