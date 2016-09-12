@@ -123,6 +123,8 @@
                         </tr>
                         </thead>
                     </table>
+                    {{-- TODO: delete this button --}}
+                    <button type="button" class="btn btn-danger btn-block" id="send-project">Send test project</button>
                 </div>
                 <div class="modal-footer">
                     <a href="{{ route('designer.create') }}" class="btn btn-success pull-left">Подати проект</a>
@@ -145,6 +147,24 @@
 //            itemsDesktopSmall: [979, 3]
 //
 //        });
+
+            $('#send-project').click(function() {
+
+               $.ajax({
+                   url: '{{ url('/create/offer') }}',
+                   method: 'POST',
+                   data: {
+                       '_token' : '{{ csrf_token() }}',
+                       'receiver_id': '{{ $investor->id }}',
+                       'receiver_type': '1', //investor table id
+                       'sender_id': '1', //random id
+                       'sender_type': '3' // project table id
+                   },
+                   success: function(response) {
+                       console.log(response);
+                   }
+                })
+            });
 
         });
     </script>
