@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TableType
+ *
+ * @property integer $id
+ * @property string $name
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\TableType whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\TableType whereName($value)
+ * @mixin \Eloquent
  */
 class TableType extends Model
 {

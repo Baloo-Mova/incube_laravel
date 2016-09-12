@@ -13,12 +13,11 @@ class AddActivityRelationshipTable extends Migration
      */
     public function up()
     {
-        Schema::create('activity_relationship', function (Blueprint $table) {
+        Schema::create('proposal_forms', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sender_table_type');
-            $table->integer('sender_table_id');
-            $table->integer('receiver_table_type_id');
-            $table->integer('receiver_table_id');
+            $table->integer('sender_table_id')->unsigned()->index();
+            $table->integer('receiver_table_id')->unsigned()->index();
+            $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ class AddActivityRelationshipTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('proposal_forms');
     }
 }

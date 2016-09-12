@@ -19,7 +19,8 @@
         "symfony/dom-crawler": "2.8.*|3.0.*",
         "orangehill/iseed": "dev-master",
         "ignasbernotas/laravel-model-generator": "^1",
-        "doctrine/dbal":"*"
+        "doctrine/dbal":"*",
+        "barryvdh/laravel-ide-helper": "^2.2"
     },
     "autoload": {
         "classmap": [
@@ -47,6 +48,8 @@
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan ide-helper:generate",
+            "php artisan ide-helper:meta",
             "php artisan optimize"
         ]
     },

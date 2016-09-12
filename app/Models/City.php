@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class City
+ *
+ * @property integer $id
+ * @property string $name
+ * @property integer $country_id
+ * @property-read \App\Models\Country $country
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\City whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\City whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\City whereCountryId($value)
+ * @mixin \Eloquent
  */
 class City extends Model
 {

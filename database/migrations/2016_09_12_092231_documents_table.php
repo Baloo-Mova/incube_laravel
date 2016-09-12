@@ -1,10 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\Schema;
 
-class EconomicActivitiesTable extends Migration
+class DocumentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class EconomicActivitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('economic_activities', function(Blueprint $table){
+        Schema::create('documents', function(Blueprint $table){
             $table->increments('id');
-            $table->string('name',100);
-            $table->string('s_code',20);
-            $table->integer('parent_id')->index()->nullable()->unsigned();
+            $table->string('name');
+            $table->integer('form_id')->unsigned()->index();
+            $table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ class EconomicActivitiesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('economic_activities');
+        Schema::drop('documents');
     }
 }

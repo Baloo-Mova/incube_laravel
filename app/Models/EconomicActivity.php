@@ -6,6 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class EconomicActivity
+ *
+ * @property integer $id
+ * @property string $name
+ * @property string $s_code
+ * @property integer $parent_id
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EconomicActivity whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EconomicActivity whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EconomicActivity whereSCode($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EconomicActivity whereParentId($value)
+ * @mixin \Eloquent
+ * @property-read \App\Models\EconomicActivity $parent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EconomicActivity[] $childrens
  */
 class EconomicActivity extends Model
 {
@@ -21,19 +33,19 @@ class EconomicActivity extends Model
 
     protected $guarded = [];
 
-    public function getChildrens(){
-        return self::where(['parent_id'=>$this->id])->get();
+    public function parent(){
+        return $this->hasOne(EconomicActivity::class);
+    }
+
+    public function childrens(){
+        return $this->hasMany(EconomicActivity::class,'parent_id');
     }
 
     public function isParent(){
-        return self::where(['parent_id'=>$this->id])->count() > 0;
+        return  self::withCount('childrens')->where('id','=',$this->id)->first()->childrens_count > 0;
     }
 
-    public function getParent(){
-        return isset($this->parent_id) ? self::where(['id'=>$this->parent_id])->first() : null;
-    }
-
-    public function gotParent(){
+    public function isChildren(){
         return $this->parent_id != 0;
     }
 
