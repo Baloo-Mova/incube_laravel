@@ -16,62 +16,64 @@ use Intervention\Image\Facades\Image;
 use App\User;
 use Illuminate\Support\Facades\Mail;
 
-class ProblemController extends Controller {
+class ProblemController extends Controller
+{
 
-    public function index() {
+    public function index()
+    {
         $problems = ProblemForm::orderBy('id', 'desc')->where(['status_id' => Status::PUBLISHED])->take(10)->get();
+
         return view('frontend.customer.index')->with([
-                    'problems' => $problems,
+            'problems' => $problems,
         ]);
     }
 
-    public function create() {
+    public function create()
+    {
         $economicActivities = EconomicActivity::where(['parent_id' => null])->get();
+
         return view('frontend.customer.create', compact('economicActivities'));
     }
 
-    public function store(CreateRequest $request) {
-
+    public function store(CreateRequest $request)
+    {
         $model = new ProblemForm();
         $model->fill($request->all());
 
         $email = $request->get('email');
-        $pass = str_random(10);
+        $pass  = str_random(10);
 
-        if (isset($email) && !empty($email)) {
-            $user = User::firstOrNew([
-                        'email' => $email,
+        if (isset($email) && ! empty($email)) {
+            $user           = User::firstOrNew([
+                'email' => $email,
             ]);
-
             $user->password = bcrypt($pass);
             $user->save();
 
-            Mail::send('auth.emails.register', ['email' => $email, 'password' => $pass], function ($m) use ($user) {
-                $m->from('incube.zp.ua@gmail.com', 'Incube');
-                $m->to($user->email)->subject('Приветствуем');
-            });
+            $user->notify(new RegisterSuccess($pass));
         }
 
         $model->author_id = Auth::check() ? Auth::user()->id : $user->id;
         $model->save();
+        $model->saveFiles($request->allFiles());
 
-        if (!Auth::check()) {
+        if ( ! Auth::check()) {
             Auth::attempt(['email' => $email, 'password' => $pass]);
         }
 
-        return redirect(route('customer.index'));
-        //return redirect(route('personal_area.index'));
+        return redirect(route('personal_area.index'));
     }
 
-    public function edit(EditRequest $request, ProblemForm $problem) {
+    public function edit(EditRequest $request, ProblemForm $problem)
+    {
 
         $economicActivities = EconomicActivity::where(['parent_id' => null])->get();
 
         return view('frontend.customer.edit', compact('problem', 'economicActivities'));
     }
 
-    public function update(UpdateRequest $request, ProblemForm $problem) {
-
+    public function update(UpdateRequest $request, ProblemForm $problem)
+    {
 
         $problem->fill($request->all());
         $problem->status_id = Status::EDITED;
@@ -80,10 +82,12 @@ class ProblemController extends Controller {
         return back()->with(['message' => 'Відредаговано']);
     }
 
-    public function show(ProblemForm $problem) {
+    public function show(ProblemForm $problem)
+    {
         //dd($problem);
         return view('frontend.customer.show', compact('problem'));
     }
+
     public function delete(ProblemForm $problem)
     {
         $problem->delete();

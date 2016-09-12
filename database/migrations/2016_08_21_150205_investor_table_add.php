@@ -15,13 +15,13 @@ class InvestorTableAdd extends Migration
     {
         Schema::create('investor_forms', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('author_id')->index();
-            $table->integer('publisher_id')->index()->nullable();
-            $table->integer('status_id')->default(1);
-            $table->integer('economic_activities_id')->index();
-            $table->integer('country_id')->index();
-            $table->integer('city_id')->index()->nullable();
-            $table->integer('stage_id')->index();
+            $table->integer('author_id')->index()->unsigned();
+            $table->integer('publisher_id')->index()->nullable()->unsigned();
+            $table->integer('status_id')->default(1)->unsigned();
+            $table->integer('economic_activities_id')->index()->unsigned();
+            $table->integer('country_id')->index()->unsigned();
+            $table->integer('city_id')->index()->nullable()->unsigned();
+            $table->integer('stage_id')->index()->unsigned();
             $table->string('name', 100);
             $table->text('description')->nullable();
             $table->integer('money_count');
@@ -29,6 +29,8 @@ class InvestorTableAdd extends Migration
             $table->integer('term_refund')->nullable();
             $table->integer('plan_rent')->nullable();
             $table->timestamps();
+
+            $table->foreign('author_id', )
         });
     }
 

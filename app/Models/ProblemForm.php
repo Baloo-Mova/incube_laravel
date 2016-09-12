@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\SaveFile;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -9,6 +10,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ProblemForm extends Model
 {
+
+    use SaveFile;
+
     protected $table = 'problem_forms';
 
     public $timestamps = true;
@@ -34,5 +38,6 @@ class ProblemForm extends Model
     }
     public function city(){
         return $this->belongsTo('App\Models\City');
-    }        
+    }
+
 }

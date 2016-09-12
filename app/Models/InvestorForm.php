@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\SaveFile;
 use Illuminate\Database\Eloquent\Model;
 
 /**

@@ -48,9 +48,10 @@ return [
             'root' => storage_path('app'),
         ],
 
-        'investor_images' => [
+        'problem' => [
             'driver' => 'local',
-            'root' => storage_path('app/investor/images'),
+            'root' => storage_path('app/problem'),
+            'visibility' => 'public',
         ],
 
         'public' => [

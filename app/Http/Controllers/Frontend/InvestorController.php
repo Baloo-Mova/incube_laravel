@@ -25,9 +25,6 @@ class InvestorController extends Controller
 
     public function index()
     {
-
-        dd(Auth::user()->notifications[0]->markAsRead());
-
         $investProjects = InvestorForm::orderBy('id', 'desc')->where(['status_id' => Status::PUBLISHED])->take(10)->get();
 
         $problems = ProblemForm::where([

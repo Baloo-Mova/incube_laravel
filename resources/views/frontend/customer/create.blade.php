@@ -131,8 +131,8 @@
     $("#file_up").fileinput({
         'showUpload': false,
         'previewFileType': 'any',
-        'allowedFileTypes': ['image']
-
+        'allowedFileTypes': ['image'],
+        'multiple':false,
     });
 </script>
 <script type="text/javascript">

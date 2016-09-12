@@ -20,7 +20,6 @@
                 {!! $investor->description !!}
             </div>
         </div>
-
         <div class="btn-toolbar">
             @if(Auth::check())
                 @if(Auth::user()->can('edit', $investor) && $investor->status_id != \App\Models\Status::PUBLISHED)
