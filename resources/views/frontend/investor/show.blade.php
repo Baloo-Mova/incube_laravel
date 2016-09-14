@@ -29,7 +29,7 @@
                     </div>
                     <div class="btn-group pull-left">
                         <a href="{{ route('investor.delete', ['id'=>$investor->id]) }}"
-                           onclick="return confirm('Вы точно хотите удалить проэкт?')"
+                           onclick="return confirm('Вы точно хочете видалити проект?')"
                            class="btn-danger btn">Видалити</a>
                     </div>
                 @endif
@@ -47,19 +47,19 @@
 
             <div class="col-md-10">
                 <hr/>
-                <label> Дата подачи заявки</label>
+                <label> Дата подачі заявки</label>
                 <div class="clearfix"></div>
                 {{ $investor->created_at->format("d.m.Y") }}
                 <hr/>
             </div>
             <div class="col-md-10">
-                <label> Сумма инвестирования</label>
+                <label> Сума інвестування</label>
                 <div class="clearfix"></div>
                 {{ $investor->money }} $
                 <hr/>
             </div>
             <div class="col-md-10">
-                <label>Отрасль</label>
+                <label>Галузь</label>
                 <div class="clearfix"></div>
                 @if(!$investor->economicActivities->isChildren())
                     {{ $investor->economicActivities->name }}
@@ -69,14 +69,14 @@
                 <hr/>
             </div>
             <div class="col-md-10">
-                <label> Страна</label>
+                <label> Країна</label>
                 <div class="clearfix"></div>
                 {{ $investor->country->name }}
                 <hr/>
             </div>
             @if(isset($investor->city))
             <div class="col-md-10">
-                <label> Область инвестирования</label>
+                <label> Область інвестування</label>
                 <div class="clearfix"></div>
                 {{ $investor->city->name }}
                 <hr/>

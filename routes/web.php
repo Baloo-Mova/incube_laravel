@@ -68,6 +68,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/edit/{designer}',['uses'=> 'DesignerController@edit', 'as' => 'designer.edit']);
         Route::post('/edit/{designer}',['uses'=> 'DesignerController@update', 'as' => 'designer.update']);
         Route::get('/show/{designer}',['uses'=>'DesignerController@show', 'as'=>'designer.show']);
+        Route::get('/delete/{designer}', ['uses'=>'DesignerController@delete', 'as'=>'designer.delete']);
     });
     Route::group(['prefix' => 'employer'], function () {
         Route::get('/', ['uses' => 'EmployerController@index', 'as' => 'employer.index']);
@@ -76,6 +77,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/edit/{employer}',['uses'=> 'EmployerController@edit', 'as' => 'employer.edit']);
         Route::post('/edit/{employer}',['uses'=> 'EmployerController@update', 'as' => 'employer.update']);
         Route::get('/show/{employer}',['uses'=>'EmployerController@show', 'as'=>'employer.show']);
+        Route::get('/delete/{employer}', ['uses'=>'EmployerController@delete', 'as'=>'employer.delete']);
     });
 
     Route::group(['prefix'=>'personal-area'], function (){

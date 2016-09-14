@@ -31,8 +31,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'executor_fname'    => 'required',
-            'executor_sname'    => 'required',
+            'name'    => 'required',
+            
             //'date_birth'        => 'required',
             //'experience'        => 'reguired', 
             //'education'         => 'reguired',
@@ -46,8 +46,7 @@ class UpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            'executor_fname.required'    => "Поле Ім'я обов'язкове для заповнення",
-            'executor_sname.required'    => "Поле Прізвище обов'язкове для заповнення",
+            'name.required'    => "Поле Прізвище Ім'я По-батькові обов'язкове для заповнення",
             'date_birth.required'        => "Поле Дата Народження обов'язкове для заповнення",
             'experience.required'        => "Поле Досвід роботи обов'язкове для заповнення",
             'education.required'         => "Поле Освіта обов'язкове для заповнення",

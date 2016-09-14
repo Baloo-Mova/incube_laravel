@@ -5,15 +5,14 @@ namespace App\Http\Requests\Executor;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class CreateRequest extends FormRequest
-{
+class CreateRequest extends FormRequest {
+
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize() {
         return true;
     }
 
@@ -22,36 +21,31 @@ class CreateRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            'executor_fname'    => 'required',
-            'executor_sname'    => 'required',
+            'name' => 'required',
             //'date_birth'        => 'required',
             //'experience'        => 'reguired', 
             //'education'         => 'reguired',
             //'description'       => 'reguired',
             //'adress'            => 'reguired',
             //'phone'             => 'reguired',
-            'email'             => Auth::check() ? '' : 'required|email|unique:users',
+            'email' => Auth::check() ? '' : 'required|email|unique:users',
         ];
-        
     }
 
-    public function messages()
-    {
+    public function messages() {
         return[
-        'executor_fname.required'    => "Поле Ім'я обов'язкове для заповнення",
-        'executor_sname.required'    => "Поле Прізвище обов'язкове для заповнення",
-        'date_birth.required'        => "Поле Дата Народження обов'язкове для заповнення",
-        'experience.required'        => "Поле Досвід роботи обов'язкове для заповнення",
-        'education.required'         => "Поле Освіта обов'язкове для заповнення",
-        'description.required'       => "Поле Особисті дані обов'язкове для заповнення",
-        'adress.required'            => "Поле Адреса обов'язкове для заповнення",
-        'phone.required'             => "Поле Телефон обов'язкове для заповнення",
-            'email'                      => "Гості мають обовязково вказати свою пошту",
+            'name.required' => "Поле Прізвище Ім'я По-батькові обов'язкове для заповнення",
+            'date_birth.required' => "Поле Дата Народження обов'язкове для заповнення",
+            'experience.required' => "Поле Досвід роботи обов'язкове для заповнення",
+            'education.required' => "Поле Освіта обов'язкове для заповнення",
+            'description.required' => "Поле Особисті дані обов'язкове для заповнення",
+            'adress.required' => "Поле Адреса обов'язкове для заповнення",
+            'phone.required' => "Поле Телефон обов'язкове для заповнення",
+            'email' => "Гості мають обовязково вказати свою пошту",
             'unique' => "Ви вже зареєстровані. Спершу ви маєте авторизуватися за допомогою свого логіна і пароля",
         ];
-        
     }
+
 }

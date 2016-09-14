@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Executor\CreateRequest;
 use App\Http\Requests\Executor\EditRequest;
 use App\Http\Requests\Executor\UpdateRequest;
-use App\Models\ExecutorForm;
-use App\Models\ProjectForm;
 use App\Models\Status;
 use App\Notifications\RegisterSuccess;
-use Illuminate\Http\Request;
+use App\Models\TableType;
+use App\Models\UserForm;
+
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use App\User;
@@ -19,10 +19,16 @@ use Illuminate\Support\Facades\Mail;
 class ExecutorController extends Controller {
 
     public function index() {
-        $executorProjects = ExecutorForm::orderBy('id', 'desc')->where(['status_id' => Status::PUBLISHED])->take(10)->get();
-        $projects = ProjectForm::where([
+        $executorProjects = UserForm::withAll()->where([
             'status_id' => Status::PUBLISHED,
+            'form_type_id'=> TableType::Executor
         ])->orderBy('id', 'desc')->take(10)->get();
+
+        $projects = UserForm::withAll()->where([
+            'status_id' => Status::PUBLISHED,
+            'form_type_id'=> TableType::Project
+        ])->orderBy('id', 'desc')->take(10)->get();
+        
         return view('frontend.executor.index')->with([
                     'executorProjects' => $executorProjects,
                     'projects' => $projects,
@@ -35,9 +41,9 @@ class ExecutorController extends Controller {
 
     public function store(CreateRequest $request) {
      
-        $model = new ExecutorForm();
+        $model = new UserForm();
         $model->fill($request->all());
-
+        $model->form_type_id = TableType::Executor;
         $email = $request->get('email');
         $pass = str_random(10);
 
@@ -62,12 +68,12 @@ class ExecutorController extends Controller {
         //return redirect(route('executor.index'));
     }
 
-    public function edit(EditRequest $request, ExecutorForm $executor) {
+    public function edit(EditRequest $request, UserForm $executor) {
        
        return view('frontend.executor.edit', compact('executor'));
     }
 
-    public function update(UpdateRequest $request, ExecutorForm $executor) {
+    public function update(UpdateRequest $request, UserForm $executor) {
 
        $executor->fill($request->all());
        $executor->status_id = Status::EDITED;
@@ -76,11 +82,11 @@ class ExecutorController extends Controller {
         return back()->with(['message' => 'Заявка оновлена']);
     }
 
-    public function show(ExecutorForm $executor) {
+    public function show(UserForm $executor) {
         return view('frontend.executor.show', compact('executor'));
     }
     
-     public function delete(ExecutorForm $executor)
+     public function delete(UserForm $executor)
     {
         $executor->delete();
 

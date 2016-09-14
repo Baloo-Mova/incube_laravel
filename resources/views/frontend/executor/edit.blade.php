@@ -27,41 +27,21 @@
     <form method="POST" enctype="multipart/form-data" class="form-horizontal">
         {{ csrf_field() }}
         <div class="col-md-offset-2">
-            <div class='col-xs-4 col-sm-4 col-md-3'>
-                <div class="form-group {{ $errors->has('executor_fname')?'has-error':'' }}">
-                    <label class="control-label" for="date_birth">Ім'я:</label>
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('name')?'has-error':'' }}">
+                    <label class="control-label" for="name">Прізвище, Ім'я, По-батькові:</label>
                     
-                        <input type="text" value="{{ $executor->executor_fname }}" name="executor_fname" class="form-control" id="text" placeholder="Ім'я">
-                    
-                    @if($errors->has('executor_fname'))
-                    <span class="control-label"> {{ $errors->first('executor_fname') }}</span>
-                    @endif
-                </div>
-            </div> 
-            <div class='col-xs-4 col-sm-4 col-md-4'>
-                <div class="form-group {{ $errors->has('executor_sname')?'has-error':'' }}">
+                       <input type="text" value="{{ $executor->name }}" name="name" class="form-control" id="text">
 
-                    <label class="control-label" for="date_birth">Прізвище:</label>
                     
-                    <input type="text" value="{{ $executor->executor_sname }}" name="executor_sname" class="form-control" id="text" placeholder="Прізвище">
-                    @if($errors->has('executor_sname'))
-                    <span class="control-label"> {{ $errors->first('executor_sname') }}</span>
+                    @if($errors->has('name'))
+                    <span class="control-label"> {{ $errors->first('name') }}</span>
                     @endif
+
+
                 </div>
-            </div> 
-            <div class='col-xs-4 col-sm-4 col-md-3'>
-                <div class="form-group {{ $errors->has('executor_thname')?'has-error':'' }}">
-                    <label class="control-label" for="date_birth">По-батькові:</label>
-                    
-                    <input type="text" value="{{ $executor->executor_thname }}" name="executor_thname" class="form-control" id="text" placeholder="По-батькові">
-                    
-                    @if($errors->has('executor_thname'))
-                    <span class="control-label"> {{ $errors->first('executor_thname') }}</span>
-                    @endif
-                </div> 
-            </div> 
+            </div>
         </div>
-        <hr/>
         <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group {{ $errors->has('date_birth')?'has-error':'' }}">
@@ -246,7 +226,7 @@
 <script type="text/javascript">
             $(function () {
             $('#datetimepicker1').datetimepicker({
-                 format: 'DD.MM.YYYY',
+                 format: 'YYYY-MM-DD',
                   
             });
             });</script>

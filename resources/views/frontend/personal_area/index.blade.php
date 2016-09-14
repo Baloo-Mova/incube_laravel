@@ -72,7 +72,7 @@
                                             <a href="{{url('/customer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                             </a>
-                                            @if($item->status->id==0)
+                                            @if($item->status->id!=2)
                                                 <a href="{{url('/customer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
                                                     <span class="glyphicon glyphicon-pencil"></span></a>
 
@@ -129,7 +129,7 @@
                                             <a href="{{url('/investor/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                             </a>
-                                            @if($item->status->id==0)
+                                            @if($item->status->id!=2)
                                                 <a href="{{url('/investor/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
                                                     <span class="glyphicon glyphicon-pencil"></span></a>
 
@@ -186,7 +186,7 @@
                                             <a href="{{url('/designer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                             </a>
-                                            @if($item->status->id==0)
+                                            @if($item->status->id!=2)
                                                 <a href="{{url('/designer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
                                                     <span class="glyphicon glyphicon-pencil"></span></a>
 
@@ -231,9 +231,8 @@
                                 <tr>    
                                     <td>{{$item->id}}</td>
                                     <td>
-                                        <p>{{$item->executor_fname}}</p>
-                                        <p>{{$item->executor_sname}}</p>
-                                        <p>{{$item->executor_thname}}</p>
+                                        <p>{{$item->name}}</p>
+                                       
                                     </td>
                                     <td>{{$item->id}}</td>
                                     <td>{{$item->created_at}}</td>
@@ -243,7 +242,7 @@
                                         <a href="{{url('/executor/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
-                                        @if($item->status->id==0)  
+                                        @if($item->status->id!=2)  
                                         <a href="{{url('/executor/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
                                             <span class="glyphicon glyphicon-pencil"></span></a> 
 
@@ -296,7 +295,7 @@
                                         <a href="{{url('/employer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
-                                        @if($item->status->id==0)  
+                                        @if($item->status->id!=2)  
                                         <a href="{{url('/employer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
                                             <span class="glyphicon glyphicon-pencil"></span></a> 
 
@@ -357,7 +356,7 @@
                                         <a href="{{url('/employer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
-                                        @if($item->status->id==0)  
+                                        @if($item->status->id!=2)  
                                         <a href="{{url('/employer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
                                             <span class="glyphicon glyphicon-pencil"></span></a> 
 

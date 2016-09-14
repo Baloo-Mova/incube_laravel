@@ -3,149 +3,98 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\EconomicActivities;
-use App\Models\Employer;
-use Illuminate\Http\Request;
+use App\Http\Requests\Employer\CreateRequest;
+use App\Http\Requests\Employer\EditRequest;
+use App\Http\Requests\Employer\UpdateRequest;
+use App\Models\EconomicActivity;
+use App\Models\Status;
+use App\Models\TableType;
+use App\Models\UserForm;
+use App\Notifications\RegisterSuccess;
+
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
 use App\User;
-use Illuminate\Support\Facades\Mail;
 
 class EmployerController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('owner:employer', ['only' => ['edit', 'update']]);
-    }
-
     public function index()
     {
-        $employerProjects = Employer::orderBy('id', 'desc')->take(10)->get();
+        $resumes = UserForm::withAll()->where([
+            'status_id' => Status::PUBLISHED,
+            'form_type_id'=> TableType::Executor
+        ])->orderBy('id', 'desc')->take(10)->get();
+
+        $employerProjects = UserForm::withAll()->where([
+            'status_id' => Status::PUBLISHED,
+            'form_type_id'=> TableType::Work
+        ])->orderBy('id', 'desc')->take(10)->get();
 
         return view('frontend.employer.index')->with([
+            'resumes' => $resumes,
             'employerProjects' => $employerProjects,
         ]);
     }
 
     public function create()
     {
-        $economicActivities = EconomicActivities::pluck('name', 'id');
-
+        $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();
         return view('frontend.employer.create', compact('economicActivities'));
     }
 
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        $this->validate($request, [
-            //'short_name'   => 'required',
-            'org_name'     => 'required',
-            'phone'        => 'required',
-            'email'        => 'required',
-            'web_site'     => 'required',
-            'org_info'     => 'required',
-            'org_type'     => 'required',
-            'description'  => 'required',
-            'adress'       => 'required',
-            
-            'reg_email'             => Auth::check() ? '' : 'required|email|unique:users',
-        ], [
-            //'short_name.required'       => "Поле Коротка Назва організації обов'язкове для заповнення;",
-            'org_name.required'         => "Поле Назва організації обов'язкове для заповнення;",
-            'phone.required'            => "Поле Телефон обов'язкове для заповнення;",
-            'email.required'            => "Поле Контактна пошта обов'язкове для заповнення;",
-            'web_site.required'         => "Поле Веб-сайт обов'язкове для заповнення;",
-            'org_info.required'         => "Поле Коротка характеристика діяльності організації обов'язкове для заповнення;",
-            'org_type.required'         => "Поле Тип організації обов'язкове для заповнення;",
-            'description.required'      => "Поле Загальна інформація (звернення компанії) обов'язкове для заповнення;",
-            'adress.required'           => "Поле Адресса  обов'язкове для заповнення;",
-            
-            'reg_email'                 => "Гості мають обовязково вказати свою пошту для рєстрації;",
-            'unique' => "Ви вже зареєстровані. Спершу ви маєте авторизуватися за допомогою свого логіна і пароля;",
-        ]);
-
-        $model = new Employer();
+        $model = new UserForm();
         $model->fill($request->all());
-        if ($request->file('logo_img_file')) {
-            $filename    = uniqid() . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
-            $image       = Image::make($request->file('logo_img_file'))->resize(250,
-                300)->save(storage_path('app/employer/images/' . $filename));
-            $model->logo = $filename;
-        }
+        $model->form_type_id = TableType::Work;
+        $email = $request->get('email');
+        $pass = str_random(10);
 
-        $reg_email = $request->get('reg_email');
-        $pass  = str_random(10);
-
-        if(isset($reg_email) && !empty($reg_email)) {
+        if (isset($email) && !empty($email)) {
             $user = User::firstOrNew([
-                'email' => $reg_email,
+                'email' => $email,
             ]);
 
             $user->password = bcrypt($pass);
             $user->save();
 
-            Mail::send('auth.emails.register', ['email' => $reg_email, 'password'=>$pass], function ($m) use ($user) {
-                $m->from('incube.zp.ua@gmail.com', 'Incube');
-                $m->to($user->email)->subject('Приветствуем');
-            });
+            $user->notify(new RegisterSuccess($pass));
         }
 
         $model->author_id = Auth::check() ? Auth::user()->id : $user->id;
         $model->save();
 
-        if (!Auth::check() && Auth::attempt(['email' => $reg_email, 'password' => $pass])) {
-            return redirect(route('personal_area.index'));
+        if (!Auth::check()) {
+            Auth::attempt(['email' => $email, 'password' => $pass]);
         }
 
-        return redirect(route('employer.index'));
+        return redirect(route('personal_area.index'));
     }
 
-    public function edit(Employer $employer)
+    public function edit(EditRequest $request, UserForm $employer)
     {
-        $economicActivities = EconomicActivities::pluck('name', 'id');
+        $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();
         return view('frontend.employer.edit', compact('employer', 'economicActivities'));
     }
 
-    public function update(Request $request, Employer $employer)
+    public function update(UpdateRequest $request, UserForm $employer)
     {
-        $this->validate($request, [
-            //'short_name'   => 'required',
-            'org_name'     => 'required',
-            'phone'        => 'required',
-            'email'        => 'required',
-            'web_site'     => 'required',
-            'org_info'     => 'required',
-            'org_type'     => 'required',
-            'description'  => 'required',
-            'adress'       => 'required',
-        ], [
-            //'short_name.required'       => "Поле Коротка Назва організації обов'язкове для заповнення;",
-            'org_name.required'         => "Поле Назва організації обов'язкове для заповнення;",
-            'phone.required'            => "Поле Телефон обов'язкове для заповнення;",
-            'email.required'            => "Поле Контактна пошта обов'язкове для заповнення;",
-            'web_site.required'         => "Поле Веб-сайт обов'язкове для заповнення;",
-            'org_info.required'         => "Поле Коротка характеристика діяльності організації обов'язкове для заповнення;",
-            'org_type.required'         => "Поле Тип організації обов'язкове для заповнення;",
-            'description.required'      => "Поле Загальна інформація (звернення компанії) обов'язкове для заповнення;",
-            'adress.required'           => "Поле Адресса  обов'язкове для заповнення;",
-            
-        ]);
-
         $employer->fill($request->all());
-        // Нужно удалять файл
-        if ($request->file('logo_img_file')) {
-            $filename       = uniqid() . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
-            $image          = Image::make($request->file('logo_img_file'))->resize(250,
-                300)->save(storage_path('app/employer/images/' . $filename));
-            $employer->logo = $filename;
-        }
+        $employer->status_id = Status::EDITED;
         $employer->save();
 
-        return back()->with(['message' => 'Редагування завершено']);
+        return back()->with(['message' => 'Відредаговано']);
     }
 
-    public function show(Employer $employer)
+    public function show(UserForm $employer)
     {
         return view('frontend.employer.show', compact('employer'));
+    }
+
+    public function delete(UserForm $employer)
+    {
+        $employer->delete();
+
+        return redirect(route('employer.index'));
     }
 }

@@ -31,10 +31,10 @@
 
                 <div class="text-center">
                     <h4 class="title-border">Галузь</h4>
-                    @if(!$problem->economicActivities->gotParent())
+                    @if(!$problem->economicActivities->isChildren())
                     <p>{{ $problem->economicActivities->name }}</p>
                     @else
-                    <p>{{ $problem->economicActivities->getParent()->name }}:</p> <div class="clearfix"></div>  <span style="margin-left: 20px">{{ $problem->economicActivities->name }}</span>
+                    <p>{{ $problem->economicActivities->parent->name }}:</p> <div class="clearfix"></div>  <span style="margin-left: 20px">{{ $problem->economicActivities->name }}</span>
                     @endif
 
 
