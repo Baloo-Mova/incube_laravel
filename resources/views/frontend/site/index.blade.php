@@ -207,14 +207,18 @@
                         <div class="carusel-block wow slideInUp" data-wow-duration="{{$i/10}}s">
                             <div class="carusel-block-content">
                                 <a class="img-responsive" href="#">
-                                    <img src="{{ asset('img/250n300.png') }}" alt="polo shirt img">
+                                    <img src="{{ asset('img/250n300.png') }}" alt="polo shirt img" class="carusel-block-img">
                                 </a>
-                                <div class="carusel-block-content-description">
+                                <h4 class="carusel-block-content-title">
                                     Обновление экосистемы города запорожье и запорожской области
+                                </h4>
+                                <div class="carusel-block-content-description">
+                                    <p class="">Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки</p> 
                                 </div>
                                 <a class="show-btn hvr-rectangle-out" href="#">Продивитись</a>
                             </div>
                             <span class="carusel-id-badge" href="#">{{ $i }}</span>
+                            <span class="carusel-price-badge" href="#">{{ $i+1344  }}$</span>
                         </div>
                     @endfor
                 </div>
@@ -225,6 +229,7 @@
                 </div>
             </div>
         </div>
+        
         <!-- end container-->
     </div>
     <!-- end content area-->
@@ -305,6 +310,7 @@
                 });
                 $($(this).prop("hash") + '-li').addClass('active');
             });
-        });
-    </script>
+        });              
+    </script>    
+  
 @stop

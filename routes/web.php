@@ -87,5 +87,10 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/security',['uses'=> 'PersonalAreaController@security', 'as' => 'personal_area.security']);
 
     });
+    Route::group(['prefix'=>'project-viewer'], function (){
+        Route::get('/',['uses'=>'ProjectViewerController@index', 'as'=>'project_viewer.index']);
+        Route::get('/show/{material}',['uses'=>'ProjectViewerController@show', 'as'=>'project_viewer.show']);
+
+    });
 });
 

@@ -974,7 +974,7 @@ a {
 }
 
 .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
-   // background-color: white;
+    // background-color: white;
 }
 .new-message {
     background-color: #ccc;
@@ -1445,10 +1445,10 @@ a:visited, a:active {
     //float: left;
     text-align: center;
     width: 250px;
-    min-height: 300px;
+    //height: 450px;
     position: relative;
     overflow: hidden;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 .carusel-block-content {
@@ -1474,16 +1474,55 @@ a:visited, a:active {
     font-size: 15px;
     background-color: #AFCB09;
 }
-
-.carusel-block-content-description {
-    overflow: auto;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    width: 250px;
-    height: 50px;
+.carusel-price-badge {
+    position: absolute;
+    top: 49%;
+    right: 0;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 15px;
+    background-color: #00D9A4;
 }
 
+.carusel-block-content-description {
+    opacity:1;
+    position: relative;
+    height: 4.6em; /* exactly three lines */
+    overflow: hidden;
+    vertical-align: middle;
+    //text-align: center;
+    //width: 250px;
+    //height: 50px;
+
+}
+.carusel-block-content-description:after {
+    content: "";
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70%;
+    height: 1.6em;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+}
+
+h4.carusel-block-content-title {
+
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    font-weight: bold;/* Цвет фона */
+    padding: 5px; /* Поля вокруг текста */
+    text-overflow: ellipsis; /* Добавляем многоточие */
+    vertical-align: middle;
+    text-align: center;
+    //width: 250px;
+    //height: 50px;
+}
+img.carusel-block-img{
+    width:100%;
+    height: 200px;
+
+}
 .btn, .btn-success, .btn-custom, .btn-danger{
     border-radius: 0px;
 }
@@ -1549,9 +1588,9 @@ a:visited, a:active {
 
 }
 .title-border{
-    
-      font-weight: bold; 
-     
+
+    font-weight: bold; 
+
 }
 @media (max-width: 768px) {
     .navbar-brand img{
@@ -1562,10 +1601,10 @@ a:visited, a:active {
     }
 }
 @media (max-width: 990px) {
-   .affix {
+    .affix {
         position: relative;
         //width:213px;
-        
-} 
-    
+
+    } 
+
 }
