@@ -42,13 +42,13 @@ Route::group(['namespace' => 'Frontend'], function () {
     });
 
     Route::group(['prefix' => 'customer'], function () {
-        Route::get('/', ['uses' => 'ProblemController@index', 'as' => 'customer.index']);
-        Route::get('/create', ['uses' => 'ProblemController@create', 'as' => 'customer.create']);
-        Route::post('/create', ['uses'=> 'ProblemController@store', 'as' => 'customer.store']);
-        Route::get('/edit/{problem}',['uses'=> 'ProblemController@edit', 'as' => 'customer.edit']);
-        Route::post('/edit/{problem}',['uses'=> 'ProblemController@update', 'as' => 'customer.update']);
-        Route::get('/show/{problem}',['uses'=> 'ProblemController@show', 'as'=>'customer.show']);
-        Route::get('/delete/{problem}', ['uses'=>'ProblemController@delete', 'as'=>'customer.delete']);
+        Route::get('/', ['uses' => 'ProblemController@index', 'as' => 'problem.index']);
+        Route::get('/create', ['uses' => 'ProblemController@create', 'as' => 'problem.create']);
+        Route::post('/create', ['uses'=> 'ProblemController@store', 'as' => 'problem.store']);
+        Route::get('/edit/{problem}',['uses'=> 'ProblemController@edit', 'as' => 'problem.edit']);
+        Route::post('/edit/{problem}',['uses'=> 'ProblemController@update', 'as' => 'problem.update']);
+        Route::get('/show/{problem}',['uses'=> 'ProblemController@show', 'as'=>'problem.show']);
+        Route::get('/delete/{problem}', ['uses'=>'ProblemController@delete', 'as'=>'problem.delete']);
     });
 
     Route::group(['prefix' => 'executor'], function () {

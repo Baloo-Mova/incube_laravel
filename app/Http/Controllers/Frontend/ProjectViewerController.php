@@ -24,21 +24,8 @@ class ProjectViewerController extends Controller {
     }
 
     public function show(UserForm $material) {
-        
-        switch ($material->form_type_id) {
-            case 1: return redirect(route('investor.show', [$material->id]));
-                break;
-            case 2: return redirect(route('customer.show', [$material->id]));
-                break;
-            case 3: return redirect(route('designer.show', [$material->id]));
-                break;
-            case 4: return redirect(route('employer.show', [$material->id]));
-                break;
-            case 5: return redirect(route('executor.show', [$material->id]));
-                break;
-            
-        }
-        
+
+        return redirect(route($material->formType->name.'.show',[$material->id]));
     }
 
 }
