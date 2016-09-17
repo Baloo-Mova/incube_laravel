@@ -1450,7 +1450,10 @@ a:visited, a:active {
     overflow: hidden;
     margin: 10px auto;
 }
-
+.carusel-block a:hover, a:focus {
+    text-decoration: none;
+    color:black;
+}
 .carusel-block-content {
     position: relative;
     margin: 0;
@@ -1545,7 +1548,14 @@ img.carusel-block-img{
 }
 
 .carusel-block:hover .show-btn {
+    //display: block;
+   
+}
+.carusel-block:hover {
     display: block;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    box-shadow: 0 0 2px 0 rgba(35,31,32,.14),0 0 24px 0 rgba(35,31,32,.24);
 }
 
 
