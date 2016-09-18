@@ -2,7 +2,7 @@
     <a href="{{ route(strtolower($item->formType->name).'.show', [$item->id]) }}">
         <div class="carusel-block-content">
             <div class="carusel-image">
-                <img class="img-responsive" src="{{ route('images.show', ['name'=>$item->formType->name,'id'=>$item->logo,'height'=>300,'width'=>250]) }}">
+                <img class="img-responsive" src="{{ route('images.show', ['name'=>$item->formType->name,'id'=> (empty($item->logo)?'empty':$item->logo),'height'=>200,'width'=>250]) }}">
             </div>
             <h4 class="carusel-block-content-title">
                 {!!$item->name!!}

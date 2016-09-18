@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Helpers\SaveFile;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Investor\CreateRequest;
 use App\Http\Requests\Investor\EditRequest;

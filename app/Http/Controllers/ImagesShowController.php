@@ -9,13 +9,29 @@ use Intervention\Image\Facades\Image;
 
 class ImagesShowController extends Controller
 {
-    public function index($name, $id,$height,$width)
-    {
+    public function index($name, $id, $height, $width)
+    {// ТУТ гавнокод но мне лень его исправлять, я хочу покататся а велосипеде(
         if ( ! File::exists(storage_path("app/$name/images/$id"))) {
-            abort(404);
-        }
-        $img = Image::make(storage_path("app/$name/images/$id"))->resize($width, $height);
+            $imgNumber = random_int(1, 9);
+            $image     = Image::make(asset('img/default_placeholders/' . $imgNumber . '.jpg'));
+            if ($width == 'max') {
+                $width = $image->width();
+            }
+            if ($height == 'max') {
+                $height = $image->height();
+            }
 
-        return $img->response('jpg');
+            return $image->resize($width, $height)->response('jpg');
+        }
+
+        $img = Image::make(storage_path("app/$name/images/$id"));
+        if ($width == 'max') {
+            $width = $img->width();
+        }
+        if ($height == 'max') {
+            $height = $img->height();
+        }
+
+        return $img->resize($width, $height)->response('jpg');
     }
 }
