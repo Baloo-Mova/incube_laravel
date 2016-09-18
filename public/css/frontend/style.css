@@ -945,7 +945,6 @@ html, body {
     border: 1px solid #ddd;
 }
 
-//bootstrap
 .well {
     min-height: 20px;
     padding: 19px;
@@ -1410,9 +1409,13 @@ a:visited, a:active {
     position: relative;
 }
 
+.preview-image{
+    max-height: 300px;
+}
+
 #content {
     padding-top: 105px;
-    min-height: 729px;
+    min-height: 733px;
     padding-bottom:20px;
 }
 

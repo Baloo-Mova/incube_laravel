@@ -44,7 +44,6 @@
         </div>
 
         <div class="row">
-
             <div class="col-md-10">
                 <hr/>
                 <label> Дата подачі заявки</label>

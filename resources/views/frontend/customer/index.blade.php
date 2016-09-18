@@ -11,7 +11,7 @@
             Замовниками можуть виступати Юридичні та Фізичні особи, які можуть вкладувати кошти у інноваційний проект
             <p>Якщо ви хочете виступити Замовником - заповніть наступну форму: </p>
             <div class="text-center">
-                <a href="{{ route('customer.create') }}" class="btn btn-lg btn-danger center">Подати заявку
+                <a href="{{ route('problem.create') }}" class="btn btn-lg btn-danger center">Подати заявку
                     <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
@@ -31,4 +31,12 @@
             @endforelse
         </div>
     </div>
+@stop
+
+@section('js')
+    <script>
+        $(document).ready(function () {
+            initialize_owl($("#problems"), options);
+        });
+    </script>
 @stop

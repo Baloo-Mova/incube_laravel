@@ -66,42 +66,19 @@
 @section('js')
     <script>
         $(function () {
-
-            var options = {
-                loop              : true,
-                nav               : true,
-                items             : 4,
-                center            : true,
-                dots              : false,
-                autoplay          : true,
-                autoplayHoverPause: true,
-                autoplayTimeout   : 5000,
-                smartSpeed        : 1500
-            };
-
-            initialize_owl($('#problems'));
-            initialize_owl($('#investorProjects'));
+            initialize_owl($('#problems'),options);
 
             $('a[href="#problem"]').on('shown.bs.tab', function () {
-                initialize_owl($('#problems'));
+                initialize_owl($('#problems'),options);
             }).on('hide.bs.tab', function () {
                 destroy_owl($('#problems'));
             });
 
             $('a[href="#project"]').on('shown.bs.tab', function () {
-                initialize_owl($('#projects'));
+                initialize_owl($('#projects'),options);
             }).on('hide.bs.tab', function () {
                 destroy_owl($('#projects'));
             });
-
-            function initialize_owl(el) {
-                el.owlCarousel(options);
-            }
-
-            function destroy_owl(el) {
-                el.data('owlCarousel').destroy();
-            }
-
         });
     </script>
 @stop

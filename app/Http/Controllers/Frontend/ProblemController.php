@@ -15,6 +15,7 @@ use App\Notifications\RegisterSuccess;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use App\User;
+
 //use Illuminate\Support\Facades\Mail;
 
 class ProblemController extends Controller
@@ -23,8 +24,8 @@ class ProblemController extends Controller
     public function index()
     {
         $problems = UserForm::withAll()->where([
-            'status_id' => Status::PUBLISHED,
-            'form_type_id'=> TableType::Problem
+            'status_id'    => Status::PUBLISHED,
+            'form_type_id' => TableType::Problem
         ])->orderBy('id', 'desc')->take(10)->get();
 
         return view('frontend.customer.index')->with([
@@ -44,8 +45,8 @@ class ProblemController extends Controller
         $model = new UserForm();
         $model->fill($request->all());
         $model->form_type_id = TableType::Problem;
-        $email = $request->get('email');
-        $pass  = str_random(10);
+        $email               = $request->get('email');
+        $pass                = str_random(10);
 
         if (isset($email) && ! empty($email)) {
             $user           = User::firstOrNew([
@@ -56,10 +57,15 @@ class ProblemController extends Controller
 
             $user->notify(new RegisterSuccess($pass));
         }
-
         $model->author_id = Auth::check() ? Auth::user()->id : $user->id;
+
+        if ($request->hasFile('logo_img_file')) {
+            $filename = uniqid('problem', true) . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
+            $request->file('logo_img_file')->storeAs('documents', $filename);
+            $model->logo = $filename;
+        }
+
         $model->save();
-       
 
         if ( ! Auth::check()) {
             Auth::attempt(['email' => $email, 'password' => $pass]);
@@ -72,6 +78,7 @@ class ProblemController extends Controller
     {
 
         $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();
+
         return view('frontend.customer.edit', compact('problem', 'economicActivities'));
     }
 

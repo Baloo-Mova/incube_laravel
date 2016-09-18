@@ -241,9 +241,7 @@
 @section('js')
     <script>
         $(function () {
-
             window.scrollTo(0, 0);
-
             $("#bg-slider").owlCarousel({
                 navigation: false, // Show next and prev buttons
                 loop: true,
@@ -257,7 +255,6 @@
                 autoplaySpeed: 3000,
                 smartSpeed: 3000
             });
-
             $('#how-it-work').owlCarousel({
                 loop: true,
                 responsive: {
@@ -277,33 +274,7 @@
                 autoplayTimeout: 3000,
                 smartSpeed: 3000
             });
-
-            $('#materials').owlCarousel({
-                loop: true,
-                nav: true,
-                responsive: {
-                    0: {
-                        items: 1,
-                    },
-                    900: {
-                        items: 3,
-                    },
-                    1200:{
-                        items:4,
-                    }
-                },
-                center: true,
-                dots: false,
-               // autoplay: true,
-                autoplayHoverPause: true,
-                autoplayTimeout: 5000,
-                smartSpeed: 1500,
-                navText: [
-                    "<span class='fa fa-angle-left'></span>",
-                    "<span class='fa fa-angle-right'></span>"
-                ],
-            });
-
+            initialize_owl($('#materials'),options);
             $('.set-active-tab').on('click', function () {
                 $('.board li').each(function (item) {
                     $(this).removeClass('active');
