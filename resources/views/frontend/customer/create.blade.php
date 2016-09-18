@@ -28,8 +28,6 @@
                 <div class="col-md-10">
                     <div class="form-group {{ $errors->has('name')?'has-error':'' }}">
                         <label class="control-label" for="Назва питання">Назва питання(проблеми)<span class="form-required">*</span></label>
-
-
                         <input type="text" value="{{ old('name') }}" name="name" class="form-control" id="text">
                         @if($errors->has('name'))
                             <span class="control-label"> {{ $errors->first('name') }}</span>
@@ -37,6 +35,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-offset-2">
                 <div class="col-md-10">
                     <div class="form-group {{ $errors->has('description')?'has-error':'' }}">

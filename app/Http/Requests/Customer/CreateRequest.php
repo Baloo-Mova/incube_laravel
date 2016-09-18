@@ -27,10 +27,8 @@ class CreateRequest extends FormRequest
         return [
             'name' => 'required|max:100',
             'country_id' => 'required',
-            //'description' =>'reguired|min:100',
+            'description' =>'required|min:20',
             'email' => Auth::check() ? '' : 'required|email|unique:users',
-                      
-            
         ];
     }
 
@@ -40,8 +38,8 @@ class CreateRequest extends FormRequest
             'name.max' => 'Максимальна довжина назви 100 символів',
             'name.required' => "Поле Назва інвестування  обов'язкове для заповнення",
             'country_id.required' => "Поле Країна інвестування обов'язкове для заповнення",
-          //  'description.min' => 'Ви маєте надати більше інформації',
-            //'description.required' => "Поле Опис проблеми обов'язкове для заповнення",
+            'description.min' => 'Ви маєте надати більше інформації',
+            'description.required' => "Поле Опис проблеми обов'язкове для заповнення",
             "email" => "Гості мають обовязково вказати свою пошту для рєстрації",
             'unique' => "Ви вже зареєстровані. Спершу ви маєте авторизуватися за допомогою свого логіна і пароля",
         ];
