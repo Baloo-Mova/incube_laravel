@@ -2,7 +2,9 @@ html, body {
     font-family: 'Open Sans', sans-serif;
     height: 100%;
 }
-
+.margin-top-20{
+    margin-top: 20px;
+}
 .btn-toolbar .title {
     display: block;
     float: left;

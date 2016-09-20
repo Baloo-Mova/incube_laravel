@@ -31,7 +31,7 @@ class DesignerController extends Controller
             'form_type_id'=> TableType::Problem
         ])->orderBy('id', 'desc')->take(10)->get();
 
-        $invProjects = UserForm::withAll()->where([
+        $investor = UserForm::withAll()->where([
             'status_id' => Status::PUBLISHED,
             'form_type_id'=> TableType::Investor
         ])->orderBy('id', 'desc')->take(10)->get();
@@ -39,7 +39,7 @@ class DesignerController extends Controller
         return view('frontend.designer.index')->with([
             'designerProjects' => $designerProjects,
             'problems' => $problems,
-            'invProjects' => $invProjects,
+            'investor' => $investor,
             
         ]);
     }

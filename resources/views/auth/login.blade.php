@@ -3,10 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <h1 class="text-center">Вхiд</h1>
+        <div class="margin-top-20"> </div>
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-primary">
-                <div class="panel-heading text-center">Вхід</div>
-                <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 
@@ -44,7 +43,7 @@
                                     Запам'ятати?
                                 </label>
                             </div>
-                                
+
                             </div>
                         </div>
 
@@ -58,8 +57,6 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
         </div>
     </div>
 </div>

@@ -4,10 +4,10 @@
 @section('content')
 <div class="container">
     <div class="row">
+
+        <h1 class="text-center">Зміна паролю</h1>
+        <div class="margin-top-20"> </div>
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-primary">
-                <div class="panel-heading text-center">Зміна паролю</div>
-                <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
@@ -39,8 +39,6 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
         </div>
     </div>
 </div>
