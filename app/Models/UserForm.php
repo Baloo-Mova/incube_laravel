@@ -125,6 +125,7 @@ class UserForm extends Model
     public $timestamps = true;
 
     protected $fillable = [
+        'status_id',
         'logo',
         'name',
         'description',
