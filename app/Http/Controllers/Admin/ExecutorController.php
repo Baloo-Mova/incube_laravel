@@ -56,7 +56,7 @@ class ExecutorController extends Controller {
         if (!Auth::check()) {
             Auth::attempt(['email' => $email, 'password' => $pass]);
         }
-        return redirect(route('personal_area.index'));
+        return redirect(route('admin.executor.index'));
         //return redirect(route('executor.index'));
     }
 
@@ -81,7 +81,7 @@ class ExecutorController extends Controller {
     public function delete(UserForm $executor) {
         $executor->delete();
 
-        return redirect(route('executor.index'));
+        return redirect(route('admin.executor.index'));
     }
 
 }

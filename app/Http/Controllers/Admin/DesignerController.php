@@ -22,11 +22,10 @@ class DesignerController extends Controller
     public function index()
     {
         $designerProjects = UserForm::withAll()->where([
-            'status_id' => Status::PUBLISHED,
-            'form_type_id'=> TableType::Project
-        ])->orderBy('id', 'desc')->take(10)->get();
+           'form_type_id'=> TableType::Project
+        ])->orderBy('id', 'desc')->get();
         
-       
+            
         
         return view('admin.designer.index')->with([
             'designerProjects' => $designerProjects,

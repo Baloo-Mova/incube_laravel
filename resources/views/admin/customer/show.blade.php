@@ -67,17 +67,16 @@
         <div class="btn-toolbar">
 
             <div class="btn-group">
-                <a href="{{ route('problem.edit', ['id'=>$problem->id]) }}"
+                <a href="{{ route('admin.problem.edit', ['id'=>$problem->id]) }}"
                    class="btn-primary btn">Оновити</a>
             </div>
             <div class="btn-group">
-                <a href="{{ route('problem.delete', ['id'=>$problem->id]) }}"
+                <a href="{{ route('admin.problem.delete', ['id'=>$problem->id]) }}"
                    onclick="return confirm('Вы точно хотите удалить проэкт?')"
                    class="btn-danger btn">Видалити</a>
             </div>
             <div class="btn-group pull-left">
-                <a href="{{ url('customer/show/'. $problem->id) }}"
-
+                <a href="{{ route('problem.show', ['id'=>$problem->id]) }}"
                    class="btn-default btn">Продивитись на стороні клієнта</a>
             </div>
         </div>

@@ -121,20 +121,20 @@
     </div>
     <div class="btn-toolbar">
 
-        <div class="btn-group pull-left">
-            <a href="{{ route('investor.edit', ['id'=>$investor->id]) }}"
-               class="btn-primary btn">Оновити</a>
-        </div>
-        <div class="btn-group pull-left">
-            <a href="{{ route('investor.delete', ['id'=>$investor->id]) }}"
-               onclick="return confirm('Вы точно хочете видалити проект?')"
-               class="btn-danger btn">Видалити</a>
-        </div>
-         <div class="btn-group pull-left">
-            <a href="{{ url('investor/show/'. $investor->id) }}"
-               
-               class="btn-default btn">Продивитись на стороні клієнта</a>
-        </div>
+            <div class="btn-group">
+                <a href="{{ route('admin.investor.edit', ['id'=>$investor->id]) }}"
+                   class="btn-primary btn">Оновити</a>
+            </div>
+            <div class="btn-group">
+                <a href="{{ route('admin.investor.delete', ['id'=>$investor->id]) }}"
+                   onclick="return confirm('Вы точно хотите удалить проэкт?')"
+                   class="btn-danger btn">Видалити</a>
+            </div>
+            <div class="btn-group pull-left">
+                <a href="{{ route('investor.show', ['id'=>$investor->id]) }}"
+                   class="btn-default btn">Продивитись на стороні клієнта</a>
+            </div>
+        
 
         <div class="btn-group pull-right">
             <a href="#" id="offer-project" data-toggle="modal" data-target="#myModal"

@@ -1,145 +1,72 @@
 @extends('admin.layouts.template')
 
 @section('content')
+<div class="container">
     <div class="page-title text-center">
-        <h2>Виконацям</h2>
+        <h2>Список поданних резюме</h2>
     </div>
     <hr/>
-    <div class="container text-center">
-        <p><b> Виконавець </b> - це користувач, що є фахівцем у певній галузі і який хоче прийняти участь у проекті або знайти роботу.</p>
+    <div class="row">
 
-        <ul class="nav"> Виконавцями можуть виступати Юридичні та Фізичні особи, які бажають взяти участь у реалізації проекту.
-
-        </ul>
-
-        <p>Подайте своє резюме, заповнивши наступну форму: </p>
-        <div class="text-center">
-            <a href="{{ route('executor.create') }}" class="btn btn-lg btn-danger center">Подати заявку
-                <span class="glyphicon glyphicon-chevron-right"></span></a>
+        <div >
+            <a href="{{ route('admin.executor.create') }}" class="btn btn-danger center">Подати резюме</a>
         </div>
     </div>
     <hr/>
-    <div class="row page-title text-center">
-        <h2>Запропонуйте свою участь у вже опублікованих проектах</h2>
-        <h5>або знайдіть роботу з поданих вакансій</h5>
-    </div>
-    <br/>
     <div class="row">
-        <section id="aa-popular-category">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="aa-popular-category-area">
-                                <!-- start prduct navigation -->
-                                <div class="row" >
-                                <ul class="nav aa-products-tab">
-                                    <li class="active">
-                                        <a href="#popular" data-toggle="tab">Питання(проблеми) для вирішення</a></li>
-                                    <li><a href="#featured" data-toggle="tab">Запроновані проекти</a></li>
+        <div class="grid-view">
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th><a class="" href="#">Автор</a></th>
+                                    <th><a class="" href="#">ПІБ</a></th>
+                                    <th><a class="" href="#">Дата створення</a></th>
+                                    <th><a class="" href="#">Статус</a></th>
+                                    <th><a class="" href="#"></a></th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th><input type="text" class="form-control" name=""></th>
+                                    <th><input type="text" class="form-control" name=""></th>
+                                    <th><input type="text" class="form-control" name=""></th>
+                                    <th><input type="text" class="form-control" name=""></th>
+                                    <th><a class="" href="#"></a></th>
+                                </tr>
+                                </thead>
+                                <tbody class='text-center'>
+                                @foreach($projects as $item)
+                                    <tr>
+                                        <td>{{$item->id}}</td>
+                                        <td><a href="#">{{$item->author_id}}</a></td>
+                                        <td>{{$item->name}}</td>
+                                        <td>{{$item->created_at}}</td>
+                                        <td> {{ $item->status->name }}
+                                        </td>
+                                        <td>
+                                            <a href="{{'admin.executor.show', [$item->id])}}" title="View" aria-label="View" data-pjax="0">
+                                                <span class="glyphicon glyphicon-eye-open"></span>
+                                            </a>
+                                            
+                                                <a href="{{'admin.executor.edit', [$item->id])}}" title="Update" aria-label="Update" data-pjax="0">
+                                                    <span class="glyphicon glyphicon-pencil"></span></a>
 
-                                </ul>
-                                </div>
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <!-- Start popular problems -->
-                                    <div class="tab-pane fade in active" id="popular">
-                                        <ul class="aa-product-catg aa-popular-slider">
-                                            <!-- start single product item -->
-                                            <li>
-                                                <figure>
-                                                    <a class="aa-product-img" href="#"><img src="../img/250n300.png" alt="polo shirt img"></a>
-                                                    <a class="aa-add-card-btn" href="$"><span class="glyphicon glyphicon-arrow-right"></span>Продивитись</a>
-                                                    <figcaption class="aa-content">
-                                                        <h4 class="aa-product-title">asdasd</h4>
-                                                        </span><span class="aa-product-price"><del>$65.50</del></span>
-                                                    </figcaption>
-                                                </figure>
-                                                <!-- product id -->
-                                                <span class="aa-badge aa-sale" href="#">1</span>
-                                            </li>
-                                        </ul>
-                                        <a class="btn btn-success btn-lg" href="#">Усі питання
-                                            <span class="fa fa-long-arrow-right"></span></a>
-                                    </div>
-                                    <!-- / popular problem category -->
-                                    <!-- start prop-project category -->
-                                    <div class="tab-pane fade" id="featured">
-                                        <ul class="aa-product-catg aa-featured-slider">
-                                            <!-- start single product item -->
-                                            <li>
-                                                <figure>
-                                                    <a class="aa-product-img" href="#"><img src="../img/250n300.png" alt="polo shirt img"></a>
-                                                    <a class="aa-add-card-btn" href="#"><span class="glyphicon glyphicon-arrow-right"></span>Продивитись</a>
-                                                    <figcaption class="aa-content">
-                                                        <h4 class="aa-product-title">asd</h4>
-                                                    </figcaption>
-                                                </figure>
-                                                <!-- product badge -->
-                                                <span class="aa-badge aa-sale" href="#">1</span>
-                                            </li>
-                                        </ul>
-                                        <a class="btn btn-success btn-lg" href="#">Усі запропоновані проекти<span class="fa fa-long-arrow-right"></span></a>
-                                    </div>
-                                </div>
-                            </div>
+                                                <a href="{{'admin.executor.delete', ['id'=>$item->id]) }}" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </a>
+                                            
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+
+                            </table>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- / popular section -->
+        
     </div>
+</div>
+@stop
 
-    <hr/>
+@section('js')
 
-    <div class="row page-title text-center">
-
-        <h2>Вже подані резюме</h2>
-
-    </div>
-    <br/>
-    <div class="row">
-        <section id="aa-popular-category">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="aa-popular-category-area">
-                                <!-- start prduct navigation -->
-
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <!-- Start popular problems -->
-                                    <div class="tab-pane fade in active" id="popular">
-                                        <ul class="aa-product-catg aa-popular-slider">
-                                            <!-- start single product item -->
-                                            @foreach($executorProjects as $item)
-                                                <li>
-                                                    <figure>
-                                                        <a class="aa-product-img" href="#"><img src="{{ empty($item->logo)? 'http://placehold.it/250x300' : url('/executor/image/'.$item->logo) }}" alt="polo shirt img"></a>
-                                                        <a class="aa-add-card-btn" href="#"><span class="glyphicon glyphicon-arrow-right"></span>Продивитись</a>
-                                                        <figcaption class="aa-content">
-                                                            <h4 class="aa-product-title">{{ $item->executor_fname }} {{ $item->executor_fname }} {{ $item->executor_sname }}{{ $item->executor_thname }}</h4>
-                                                            <!--<span class="aa-product-price"></span>-->
-                                                        </figcaption>
-                                                    </figure>
-                                                    <!-- product id -->
-                                                    <span class="aa-badge aa-sale" href="#">{{ $item->id }}</span>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                        <a class="btn btn-success btn-lg" href="#">Усі резюме
-                                            <span class="fa fa-long-arrow-right"></span></a>
-                                    </div>
-                                    <!-- / popular problem category -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- / popular section -->
-    </div>
 @stop

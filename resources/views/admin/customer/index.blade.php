@@ -9,7 +9,7 @@
     <div class="row">
 
         <div >
-            <a href="{{ route('problem.create') }}" class="btn btn-danger center">Подати питання</a>
+            <a href="{{ route('admin.problem.create') }}" class="btn btn-danger center">Подати питання</a>
         </div>
     </div>
     <hr/>
@@ -50,14 +50,14 @@
                                         <td> {{ $item->status->name }}
                                         </td>
                                         <td>
-                                            <a href="{{route(strtolower($item->formType->name).'.show', [$item->id])}}" title="View" aria-label="View" data-pjax="0">
+                                            <a href="{{route('admin.'. strtolower($item->formType->name).'.show', [$item->id])}}" title="View" aria-label="View" data-pjax="0">
                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                             </a>
                                             
-                                                <a href="{{route(strtolower($item->formType->name).'.edit', [$item->id])}}" title="Update" aria-label="Update" data-pjax="0">
+                                                <a href="{{route('admin.'.strtolower($item->formType->name).'.edit', [$item->id])}}" title="Update" aria-label="Update" data-pjax="0">
                                                     <span class="glyphicon glyphicon-pencil"></span></a>
 
-                                                <a href="{{ route(strtolower($item->formType->name).'.delete', ['id'=>$item->id]) }}" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
+                                                <a href="{{ route('admin.'.strtolower($item->formType->name).'.delete', ['id'=>$item->id]) }}" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
                                             

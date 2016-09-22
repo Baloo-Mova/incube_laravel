@@ -75,4 +75,8 @@ class User extends Authenticatable
     public function country(){
         return $this->belongsTo('App\Models\Country');
     }
+    public function  isAdmin(){
+        return $this->user_type_id;
+        
+    }
 }

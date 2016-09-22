@@ -63,7 +63,7 @@ class InvestorController extends Controller
             Auth::attempt(['email' => $email, 'password' => $pass]);
         }
 
-        return redirect(route('investor.index'));
+        return redirect(route('admin.investor.index'));
     }
 
     public function edit(EditRequest $request, UserForm $investor)
@@ -90,6 +90,6 @@ class InvestorController extends Controller
     {
         $investor->delete();
 
-        return redirect(route('investor.index'));
+        return redirect(route('admin.investor.index'));
     }
 }

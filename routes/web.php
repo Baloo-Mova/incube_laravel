@@ -98,54 +98,54 @@ Route::group(['namespace' => 'Admin'], function () {
 
 
         Route::group(['prefix' => 'customer'], function () {
-            Route::get('/', ['uses' => 'ProblemController@index', 'as' => 'problem.index']);
-            Route::get('/create', ['uses' => 'ProblemController@create', 'as' => 'problem.create']);
-            Route::post('/create', ['uses' => 'ProblemController@store', 'as' => 'problem.store']);
-            Route::get('/edit/{problem}', ['uses' => 'ProblemController@edit', 'as' => 'problem.edit']);
-            Route::post('/edit/{problem}', ['uses' => 'ProblemController@update', 'as' => 'problem.update']);
-            Route::get('/show/{problem}', ['uses' => 'ProblemController@show', 'as' => 'problem.show']);
-            Route::get('/delete/{problem}', ['uses' => 'ProblemController@delete', 'as' => 'problem.delete']);
+            Route::get('/', ['uses' => 'ProblemController@index', 'as' => 'admin.problem.index']);
+            Route::get('/create', ['uses' => 'ProblemController@create', 'as' => 'admin.problem.create']);
+            Route::post('/create', ['uses' => 'ProblemController@store', 'as' => 'admin.problem.store']);
+            Route::get('/edit/{problem}', ['uses' => 'ProblemController@edit', 'as' => 'admin.problem.edit']);
+            Route::post('/edit/{problem}', ['uses' => 'ProblemController@update', 'as' => 'admin.problem.update']);
+            Route::get('/show/{problem}', ['uses' => 'ProblemController@show', 'as' => 'admin.problem.show']);
+            Route::get('/delete/{problem}', ['uses' => 'ProblemController@delete', 'as' => 'admin.problem.delete']);
         });
 
         Route::group(['prefix' => 'investor'], function () {
-            Route::get('/', ['uses' => 'InvestorController@index', 'as' => 'investor.index']);
-            Route::get('/create', ['uses' => 'InvestorController@create', 'as' => 'investor.create']);
-            Route::post('/create', ['uses' => 'InvestorController@store', 'as' => 'investor.store']);
-            Route::get('/edit/{investor}', ['uses' => 'InvestorController@edit', 'as' => 'investor.edit']);
-            Route::post('/edit/{investor}', ['uses' => 'InvestorController@update', 'as' => 'investor.update']);
-            Route::get('/show/{investor}', ['uses' => 'InvestorController@show', 'as' => 'investor.show']);
-            Route::get('/delete/{investor}', ['uses' => 'InvestorController@delete', 'as' => 'investor.delete']);
+            Route::get('/', ['uses' => 'InvestorController@index', 'as' => 'admin.investor.index']);
+            Route::get('/create', ['uses' => 'InvestorController@create', 'as' => 'admin.investor.create']);
+            Route::post('/create', ['uses' => 'InvestorController@store', 'as' => 'admin.investor.store']);
+            Route::get('/edit/{investor}', ['uses' => 'InvestorController@edit', 'as' => 'admin.investor.edit']);
+            Route::post('/edit/{investor}', ['uses' => 'InvestorController@update', 'as' => 'admin.investor.update']);
+            Route::get('/show/{investor}', ['uses' => 'InvestorController@show', 'as' => 'admin.investor.show']);
+            Route::get('/delete/{investor}', ['uses' => 'InvestorController@delete', 'as' => 'admin.investor.delete']);
         });
 
         Route::group(['prefix' => 'designer'], function () {
-            Route::get('/', ['uses' => 'DesignerController@index', 'as' => 'designer.index']);
-            Route::get('/create', ['uses' => 'DesignerController@create', 'as' => 'designer.create']);
-            Route::post('/create', ['uses' => 'DesignerController@store', 'as' => 'designer.store']);
-            Route::get('/edit/{designer}', ['uses' => 'DesignerController@edit', 'as' => 'designer.edit']);
-            Route::post('/edit/{designer}', ['uses' => 'DesignerController@update', 'as' => 'designer.update']);
-            Route::get('/show/{designer}', ['uses' => 'DesignerController@show', 'as' => 'designer.show']);
-            Route::get('/delete/{designer}', ['uses' => 'DesignerController@delete', 'as' => 'designer.delete']);
+            Route::get('/', ['uses' => 'DesignerController@index', 'as' => 'admin.designer.index']);
+            Route::get('/create', ['uses' => 'DesignerController@create', 'as' => 'admin.designer.create']);
+            Route::post('/create', ['uses' => 'DesignerController@store', 'as' => 'admin.designer.store']);
+            Route::get('/edit/{designer}', ['uses' => 'DesignerController@edit', 'as' => 'admin.designer.edit']);
+            Route::post('/edit/{designer}', ['uses' => 'DesignerController@update', 'as' => 'admin.designer.update']);
+            Route::get('/show/{designer}', ['uses' => 'DesignerController@show', 'as' => 'admin.designer.show']);
+            Route::get('/delete/{designer}', ['uses' => 'DesignerController@delete', 'as' => 'admin.designer.delete']);
         });
 
         Route::group(['prefix' => 'executor'], function () {
-            Route::get('/', ['uses' => 'ExecutorController@index', 'as' => 'executor.index']);
-            Route::get('/create', ['uses' => 'ExecutorController@create', 'as' => 'executor.create']);
-            Route::post('/create', ['uses' => 'ExecutorController@store', 'as' => 'executor.store']);
-            Route::get('/edit/{executor}', ['uses' => 'ExecutorController@edit', 'as' => 'executor.edit']);
-            Route::post('/edit/{executor}', ['uses' => 'ExecutorController@update', 'as' => 'executor.update']);
-            Route::get('/show/{executor}', ['uses' => 'ExecutorController@show', 'as' => 'executor.show']);
-            Route::get('/delete/{executor}', ['uses' => 'ExecutorController@delete', 'as' => 'executor.delete']);
+            Route::get('/', ['uses' => 'ExecutorController@index', 'as' => 'admin.executor.index']);
+            Route::get('/create', ['uses' => 'ExecutorController@create', 'as' => 'admin.executor.create']);
+            Route::post('/create', ['uses' => 'ExecutorController@store', 'as' => 'admin.executor.store']);
+            Route::get('/edit/{executor}', ['uses' => 'ExecutorController@edit', 'as' => 'admin.executor.edit']);
+            Route::post('/edit/{executor}', ['uses' => 'ExecutorController@update', 'as' => 'admin.executor.update']);
+            Route::get('/show/{executor}', ['uses' => 'ExecutorController@show', 'as' => 'admin.executor.show']);
+            Route::get('/delete/{executor}', ['uses' => 'ExecutorController@delete', 'as' => 'admin.executor.delete']);
         });
 
 
         Route::group(['prefix' => 'employer'], function () {
-            Route::get('/', ['uses' => 'EmployerController@index', 'as' => 'employer.index']);
-            Route::get('/create', ['uses' => 'EmployerController@create', 'as' => 'employer.create']);
-            Route::post('/create', ['uses' => 'EmployerController@store', 'as' => 'employer.store']);
-            Route::get('/edit/{employer}', ['uses' => 'EmployerController@edit', 'as' => 'employer.edit']);
-            Route::post('/edit/{employer}', ['uses' => 'EmployerController@update', 'as' => 'employer.update']);
-            Route::get('/show/{employer}', ['uses' => 'EmployerController@show', 'as' => 'employer.show']);
-            Route::get('/delete/{employer}', ['uses' => 'EmployerController@delete', 'as' => 'employer.delete']);
+            Route::get('/', ['uses' => 'EmployerController@index', 'as' => 'admin.employer.index']);
+            Route::get('/create', ['uses' => 'EmployerController@create', 'as' => 'admin.employer.create']);
+            Route::post('/create', ['uses' => 'EmployerController@store', 'as' => 'admin.employer.store']);
+            Route::get('/edit/{employer}', ['uses' => 'EmployerController@edit', 'as' => 'admin.employer.edit']);
+            Route::post('/edit/{employer}', ['uses' => 'EmployerController@update', 'as' => 'admin.employer.update']);
+            Route::get('/show/{employer}', ['uses' => 'EmployerController@show', 'as' => 'admin.employer.show']);
+            Route::get('/delete/{employer}', ['uses' => 'EmployerController@delete', 'as' => 'admin.employer.delete']);
         });
     });
 });

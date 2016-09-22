@@ -70,7 +70,7 @@ class ProblemController extends Controller
             Auth::attempt(['email' => $email, 'password' => $pass]);
         }
 
-        return redirect(route('problem.index'));
+        return redirect(route('admin.problem.index'));
     }
 
     public function edit(EditRequest $request, UserForm $problem)
@@ -101,7 +101,7 @@ class ProblemController extends Controller
     {
         $problem->delete();
 
-        return redirect(route('problem.index'));
+        return redirect(route('admin.problem.index'));
     }
 
 }

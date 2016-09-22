@@ -63,7 +63,7 @@ class EmployerController extends Controller
             Auth::attempt(['email' => $email, 'password' => $pass]);
         }
 
-        return redirect(route('personal_area.index'));
+        return redirect(route('admin.employer.index'));
     }
 
     public function edit(EditRequest $request, UserForm $employer)
@@ -90,6 +90,6 @@ class EmployerController extends Controller
     {
         $employer->delete();
 
-        return redirect(route('employer.index'));
+        return redirect(route('admin.employer.index'));
     }
 }

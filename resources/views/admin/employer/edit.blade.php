@@ -30,6 +30,52 @@
         {{ csrf_field() }}
         <div class="col-md-offset-2">
             <div class="col-md-10">
+                <div class="form-group {{ $errors->has('author_id')?'has-error':'' }}">
+                    <label class="control-label" for="author_id">Автор</label>
+                    <select id="country_id" class="form-control" name="author_id">
+                        @foreach(\App\User::all() as $user)
+                        <option value="{{ $user->id }}" {{ ( $employer->author_id == $user->id ? "selected":"") }}>{{ $user->name }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('author_id'))
+                    <span class="control-label"> {{ $errors->first('author_id') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('publisher_id')?'has-error':'' }}">
+                    <label class="control-label" for="publisher_id">Редактор</label>
+                    <select id="country_id" class="form-control" name="publisher_id">
+                        @foreach(\App\User::all() as $user)
+                        <option value="{{ $user->id }}" {{ ( $employer->publisher_id == $user->id ? "selected":"") }}>{{ $user->name }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('publisher_id'))
+                    <span class="control-label"> {{ $errors->first('publisher_id') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('status_id')?'has-error':'' }}">
+                    <label class="control-label" for="status_id">Статус</label>
+                    <select id="country_id" class="form-control" name="status_id">
+                        @foreach(\App\Models\Status::all() as $status)
+                        <option value="{{ $status->id }}" {{ $employer->status_id == $status->id ? "selected" : "" }}>{{ $status->name }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('status_id'))
+                    <span class="control-label"> {{ $errors->first('status_id') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
                 <div class="form-group {{ $errors->has('org_name')?'has-error':'' }}">
                     <label class="control-label" for="org_name">Назва організації:</label>
                     <input type="text" value="{{ $employer->org_name }}" name="org_name" class="form-control" id="text">

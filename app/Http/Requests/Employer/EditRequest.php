@@ -19,7 +19,9 @@ class EditRequest extends FormRequest
         {
             return false;
         }
-
+        if(Auth::user()->isAdmin()){
+            return true;
+        }
         $form = $this->route('employer');
         return Auth::user()->can('update', $form);
     }

@@ -31,12 +31,12 @@
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('project_name')?'has-error':'' }}">
-                    <label class="control-label" for="project_name">Назва проекту:</label>
-                    <input type="text" value="{{ old('project_name') }}" name="project_name" class="form-control" id="text">
+                <div class="form-group {{ $errors->has('name')?'has-error':'' }}">
+                    <label class="control-label" for="name">Назва проекту:</label>
+                    <input type="text" value="{{ old('name') }}" name="name" class="form-control" id="text">
 
-                    @if($errors->has('project_name'))
-                    <span class="control-label"> {{ $errors->first('project_name') }}</span>
+                    @if($errors->has('name'))
+                    <span class="control-label"> {{ $errors->first('name') }}</span>
                     @endif
                 </div>
             </div>
@@ -44,11 +44,11 @@
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('short_name')?'has-error':'' }}">
-                    <label class="control-label" for="short_name">Коротка Назва проекту:</label>
-                    <input type="text" value="{{ old('short_name') }}" name="short_name" class="form-control" id="text">
-                    @if($errors->has('short_name'))
-                    <span class="control-label"> {{ $errors->first('short_name') }}</span>
+                <div class="form-group {{ $errors->has('idea')?'has-error':'' }}">
+                    <label class="control-label" for="idea">Мета проекту:</label>
+                    <textarea rows="4" type="text" name="idea" class="form-control" id="text">{{ old('idea') }}</textarea>
+                    @if($errors->has('idea'))
+                    <span class="control-label"> {{ $errors->first('idea') }}</span>
                     @endif
                 </div>
             </div>
@@ -56,106 +56,79 @@
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('project_manager')?'has-error':'' }}">
-                    <label class="control-label" for="project_manager">Керівник проекту:</label>
-                    <textarea rows="4" type="text" name="project_manager" class="form-control" id="text" placeholder="Введіть дані про керівника проекту. Наприклад: Шевченко А.Р., нач. РННВЦ «Фірма».">{{ old('project_manager') }}</textarea>
-                    <span class="control-label">Введіть дані про керівника проекту. Наприклад: Шевченко А.Р., нач. РННВЦ «Фірма».</span>
-                    @if($errors->has('project_manager'))
-                    <span class="control-label"> {{ $errors->first('project_manager') }}</span>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('project_contacts')?'has-error':'' }}">
-                    <label class="control-label" for="Contacts">Контактні дані:</label>
-                    <textarea rows="4" type="text" name="project_contacts" class="form-control" id="text">{{ old('project_contacts') }}</textarea>
-
-                    @if($errors->has('project_contacts'))
-                    <span class="control-label"> {{ $errors->first('project_contacts') }}</span>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('phone')?'has-error':'' }}">
-                    <label class="control-label" for="phone">Телефон:</label>
-                    <input type="text" value="{{ old('phone') }}" name="phone" class="form-control" id="text">
-
-                    @if($errors->has('phone'))
-                    <span class="control-label"> {{ $errors->first('phone') }}</span>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-offset-2">
-            <div class="col-md-10">   
-                <div class="form-group {{ $errors->has('email')?'has-error':'' }}">
-                    <label class="control-label" for="email">Контактна ел. пошта:</label>
-
-
-                    <input type="email" value="{{ old('email') }}" name="email" class="form-control" id="text">
-
-                    @if($errors->has('email'))
-                    <span class="control-label"> {{ $errors->first('email') }}</span>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('web_site')?'has-error':'' }}">
-                    <label class="control-label" for="web_site">Веб-сайт:</label>
-
-                    <input type="text" value="{{ old('web_site') }}" name="web_site" class="form-control" id="text">
-
-                    @if($errors->has('web_site'))
-                    <span class="control-label"> {{ $errors->first('web_site') }}</span>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('project_goal')?'has-error':'' }}">
-                    <label class="control-label" for="project_goal">Мета проекту:</label>
-                    <textarea rows="4" type="text" name="project_goal" class="form-control" id="text">{{ old('project_goal') }}</textarea>
-                    @if($errors->has('project_goal'))
-                    <span class="control-label"> {{ $errors->first('project_goal') }}</span>
+                <div class="form-group {{ $errors->has('current_situation')?'has-error':'' }}">
+                    <label class="control-label" for="current_situation">Дійсна ситуація:</label>
+                    <textarea rows="4" type="text" name="current_situation" class="form-control" id="text">{{ old('current_situation') }}</textarea>
+                    <span class="control-label">Введіть дані про готовність проекту.</span>
+                    @if($errors->has('current_situation'))
+                    <span class="control-label"> {{ $errors->first('current_situation') }}</span>
                     @endif
                 </div>
             </div>
         </div>
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('project_aspects')?'has-error':'' }}">
-                    <label class="control-label" for="project_aspects">Іноваційні аспекти та переваги проекту:</label>
-                    <textarea rows="4" type="text" name="project_aspects" class="form-control" id="text">{{ old('project_aspects') }}</textarea>
-                    @if($errors->has('project_aspects'))
-                    <span class="control-label"> {{ $errors->first('project_aspects') }}</span>
+                <div class="form-group {{ $errors->has('stage_id')?'has-error':'' }}">
+                    <label class="control-label" for="stage_id">Етап проекту <span class="form-required">*</span></label>
+                    <select id="stage_id" class="form-control" name="stage_id">
+                        @if(old('stage_id')==null)
+                        <option disabled selected> Виберіть етап проекту</option>
+                        @endif
+                        @foreach(\App\Models\Stage::all() as $item)
+                        <option value="{{$item->id}}" {{ ( old('stage_id') == $item->id ? "selected":"") }}> {{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('stage_id'))
+                    <span class="control-label"> {{ $errors->first('stage_id') }}</span>
                     @endif
+                </div>
+            </div>
+        </div>
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label" for="Галузь">Галузь <span class="form-required">*</span></label>
+                    @include('admin.partials.economic_activities_select',
+                    ['economicActivities'=> $economicActivities,
+                    'economicActivitiesAttributeName'=>'economic_activities_id',
+                    'economicActivitiesAttributeValueNow' => old('economic_activities_id')
+                    ])
                 </div>
             </div>
         </div>
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('project_beneficaries')?'has-error':'' }}">
-                    <label class="control-label" for="project_beneficaries">Отримувачі вигоди:</label>
-                    <textarea rows="4" type="text" name="project_beneficaries" class="form-control" id="text">{{ old('project_beneficaries') }}</textarea>
-                    @if($errors->has('project_beneficaries'))
-                    <span class="control-label"> {{ $errors->first('project_beneficaries') }}</span>
+                <div class="form-group {{ $errors->has('country_id')?'has-error':'' }}">
+                    <label class="control-label" for="region">Країна інвестування <span class="form-required">*</span></label>
+                    <select id="country_id" class="form-control" name="country_id">
+                        @if(old('country_id')==null)
+                        <option value="" selected disabled>Оберіть країну</option>
+                        @endif
+                        @foreach(\App\Models\Country::all() as $country)
+                        <option value="{{ $country->id }}" {{ ( old('country_id') == $country->id ? "selected":"") }}>{{ $country->name }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('country_id'))
+                    <span class="control-label"> {{ $errors->first('country_id') }}</span>
                     @endif
                 </div>
             </div>
         </div>
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('city_id')?'has-error':'' }}">
+                    <label class="control-label" for="region">Регіон інвестування</label>
+                    <select id="city_id" class="form-control" name="city_id">
+
+                    </select>
+                    @if($errors->has('city_id'))
+                    <span class="control-label"> {{ $errors->first('city_id') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>  
+
         <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group {{ $errors->has('description')?'has-error':'' }}">
@@ -170,13 +143,11 @@
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('project_cost')?'has-error':'' }}">
-                    <label class="control-label" for="project_cost">Вартість проекту:</label>
-
-                    <input type="number" value="{{ old('project_cost') }}" name="project_cost" class="form-control" id="text">
-
-                    @if($errors->has('project_cost'))
-                    <span class="control-label"> {{ $errors->first('project_cost') }}</span>
+                <div class="form-group {{ $errors->has('money')?'has-error':'' }}">
+                    <label class="control-label" for="money">Вартість проекту ($)<span class="form-required">*</span></label>
+                    <input type="number" value="{{ old('money') }}" name="money" class="form-control" id="money">
+                    @if($errors->has('money'))
+                    <span class="control-label"> {{ $errors->first('money') }}</span>
                     @endif
                 </div>
             </div>
@@ -184,13 +155,11 @@
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('project_duration')?'has-error':'' }}">
-                    <label class="control-label" for="project_duration">Період реалізації проекту:</label>
-
-                    <input type="text" value="{{ old('project_duration') }}" name="project_duration" class="form-control" id="text">
-
-                    @if($errors->has('project_duration'))
-                    <span class="control-label"> {{ $errors->first('project_duration') }}</span>
+                <div class="form-group {{ $errors->has('problem')?'has-error':'' }}">
+                    <label class="control-label" for="problem">Проблема чи можливість:</label>
+                    <textarea rows="4" type="text" name="problem" class="form-control" id="text">{{ old('problem') }}</textarea>
+                    @if($errors->has('problem'))
+                    <span class="control-label"> {{ $errors->first('problem') }}</span>
                     @endif
                 </div>
             </div>
@@ -198,13 +167,22 @@
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('region')?'has-error':'' }}">
-                    <label class="control-label" for="region">Географія проекту:</label>
-
-                    <input type="text" value="{{ old('region') }}" name="region" class="form-control" id="text">
-
-                    @if($errors->has('region'))
-                    <span class="control-label"> {{ $errors->first('region') }}</span>
+                <div class="form-group {{ $errors->has('solution')?'has-error':'' }}">
+                    <label class="control-label" for="solution">Рішення(продукт чи послуга):</label>
+                    <textarea rows="4" type="text" name="solution" class="form-control" id="text">{{ old('solution') }}</textarea>
+                    @if($errors->has('solution'))
+                    <span class="control-label"> {{ $errors->first('solution') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('competition')?'has-error':'' }}">
+                    <label class="control-label" for="competition">Конкуренція:</label>
+                    <textarea rows="4" type="text" name="competition" class="form-control" id="text">{{ old('competition') }}</textarea>
+                    @if($errors->has('competition'))
+                    <span class="control-label"> {{ $errors->first('competition') }}</span>
                     @endif
                 </div>
             </div>
@@ -212,40 +190,96 @@
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('project_stage')?'has-error':'' }}">
-                    <label class="control-label" for="project_stage">Етап проекту:</label>
-
-                    <input type="text" value="{{ old('project_stage') }}" name="project_stage" class="form-control" id="text">
-
-                    @if($errors->has('project_stage'))
-                    <span class="control-label"> {{ $errors->first('project_stage') }}</span>
+                <div class="form-group {{ $errors->has('benefits')?'has-error':'' }}">
+                    <label class="control-label" for="benefits">Іноваційні аспекти та переваги проекту:</label>
+                    <textarea rows="4" type="text" name="benefits" class="form-control" id="text">{{ old('benefits') }}</textarea>
+                    @if($errors->has('benefits'))
+                    <span class="control-label"> {{ $errors->first('benefits') }}</span>
                     @endif
                 </div>
             </div>
         </div>
 
-
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('economic_activities')?'has-error':'' }}">
-                    <label class="control-label" for="Галузь">Галузь:</label>
-
-                    <select class="form-control" name="economic_activities_id">
-                        @foreach($economicActivities as $i => $item)
-                        <option value="{{ $i }}" {{ ( old("economic_activities_id") == $i ? "selected":"") }}>{{ $item }}</option>
-                        @endforeach
-                    </select>
+                <div class="form-group {{ $errors->has('buisness_model')?'has-error':'' }}">
+                    <label class="control-label" for="buisness_model">Фінансова частина / Бізнес-модель:</label>
+                    <textarea rows="4" type="text" name="buisness_model" class="form-control" id="text">{{ old('buisness_model') }}</textarea>
+                    @if($errors->has('buisness_model'))
+                    <span class="control-label"> {{ $errors->first('buisness_model') }}</span>
+                    @endif
                 </div>
             </div>
         </div>
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('available_funding')?'has-error':'' }}">
-                    <label class="control-label" for="email">Джерела фінансування:</label>
-                    <input type="text" value="{{ old('available_funding') }}" name="available_funding" class="form-control" id="text">
-                    @if($errors->has('available_funding'))
-                    <span class="control-label"> {{ $errors->first('available_funding') }}</span>
+                <div class="form-group {{ $errors->has('money_target')?'has-error':'' }}">
+                    <label class="control-label" for="money_target">Цільове призначення інвестицій:</label>
+                    <textarea rows="4" type="text" name="money_target" class="form-control" id="text">{{ old('money_target') }}</textarea>
+                    @if($errors->has('money_target'))
+                    <span class="control-label"> {{ $errors->first('money_target') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('investor_interest')?'has-error':'' }}">
+                    <label class="control-label" for="investor_interest">Пропозиції інвестору:</label>
+                    <textarea rows="4" type="text" name="investor_interest" class="form-control" id="text">{{ old('investor_interest') }}</textarea>
+                    @if($errors->has('investor_interest'))
+                    <span class="control-label"> {{ $errors->first('investor_interest') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('risks')?'has-error':'' }}">
+                    <label class="control-label" for="risks">Опис ризиків:</label>
+                    <textarea rows="4" type="text" name="risks" class="form-control" id="text">{{ old('risks') }}</textarea>
+                    @if($errors->has('risks'))
+                    <span class="control-label"> {{ $errors->first('risks') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('contacts')?'has-error':'' }}">
+                    <label class="control-label" for="Contacts">Контактні дані:</label>
+                    <textarea rows="4" type="text" name="contacts" class="form-control" id="text">{{ old('contacts') }}</textarea>
+
+                    @if($errors->has('contacts'))
+                    <span class="control-label"> {{ $errors->first('contacts') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('site')?'has-error':'' }}">
+                    <label class="control-label" for="site">Веб-сайт:</label>
+                    <input type="text" value="{{ old('site') }}" name="site" class="form-control" id="text">
+                    @if($errors->has('site'))
+                    <span class="control-label"> {{ $errors->first('site') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('youtube_link')?'has-error':'' }}">
+                    <label class="control-label" for="youtube_link">YouTube посилання:</label>
+                    <input type="text" value="{{ old('youtube_link') }}" name="youtube_link" class="form-control" id="text">
+                    @if($errors->has('youtube_link'))
+                    <span class="control-label"> {{ $errors->first('youtube_link') }}</span>
                     @endif
                 </div>
             </div>
@@ -298,11 +332,22 @@
 @stop
 @section('js')
 <script type="text/javascript">
-    //    $('select').select2({
-    //        placeholder: "Выберите регион",
-    //        allowClear: true,
-    //        width: 'resolve'
-    //    });
+    $('#country_id').on('change', function () {
+        var id = $(this).val();
+
+        $.ajax({
+            url: "{{ url('/get/cities/') }}/" + id,
+            success: function (data) {
+                var select = $('#city_id');
+                select.find('option').remove();
+                select.append('<option selected value="0">Усi</option>');
+                $.each(data, function (i, item) {
+                    select.append('<option value="' + i + '"> ' + item + ' </option>');
+                });
+            },
+            dataType: "json"
+        });
+    });
     $("#file_up").fileinput({
         'showUpload': false,
         'previewFileType': 'any',

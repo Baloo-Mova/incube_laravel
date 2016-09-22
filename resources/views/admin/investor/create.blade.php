@@ -8,20 +8,24 @@
 <div class="container">
     <form method="POST"  class="form-horizontal">
         {{ csrf_field() }}
-
-        @if(!Auth::check())
+        
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('email')?'has-error':'' }}">
-                    <label class="control-label">Email <span class="form-required">*</span></label>
-                    <input type="email" value="{{ old('email') }}" name="email" class="form-control" id="text">
-                    @if($errors->has('email'))
-                    <span class="control-label"> {{ $errors->first('email') }}</span>
+                <div class="form-group {{ $errors->has('author_id')?'has-error':'' }}">
+                    <label class="control-label" for="author_id">Автор</label>
+                    <select id="country_id" class="form-control" name="author_id">
+                        @foreach(\App\User::all() as $user)
+                        <option value="{{ $user->id }}" {{ ( old('author_id') == $user->id ? "selected":"") }}>{{ $user->name }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('author_id'))
+                    <span class="control-label"> {{ $errors->first('author_id') }}</span>
                     @endif
                 </div>
             </div>
         </div>
-        @endif
+        
+       
         <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group {{ $errors->has('status_id')?'has-error':'' }}">
