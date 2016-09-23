@@ -27,7 +27,7 @@ class CreateRequest extends FormRequest
         return [
            'company_name' => 'required|max:100',
            'email' => Auth::check() ? '' : 'required|email|unique:users',
-           'contacts' => 'required|min:20',
+           //'contacts' => 'required|min:20',
             
             /* 'phone'        => 'required',
             'email'        => 'required',

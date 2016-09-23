@@ -3,101 +3,147 @@
 @section('content')
 <div class="container">
     <div class="row page-title text-center">
-        <h2>Список вакансій. Ідентифікаційний номер: {{ $employer->id }}</h2>
+        <h2>Пропозиція вакансій. Ідентифікаційний номер: {{ $employer->id }}</h2>
     </div>
 
-    <div class="project-viewer-content">
-        <div class="panel panel-primary">
-            <div class="panel-body">
-                <h3 class="text-center" style="color: #00aeef">{{ $employer->org_name}}</h3>
-            </div>
-        </div>
-    </div>
+    <h2 class="text-center">{{ $employer->name}} </h2>
     <div class="row">
 
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="text-center owl-carousel owl-theme" id="owl-demo">
 
                 <div class="">
-                    <img class="img-responsive" src="{{url('/employer/image/'.$employer->logo)}}" alt="">
+                    <img  class="img-responsive"src="{{ route('images.show', ['id'=> (empty($employer->logo)? 'empty' : $employer->logo),'height'=>'max','width'=>'max']) }}" alt="">
 
                 </div>
 
             </div>
+
+            <hr/>
+            <div class="">
+                <div class="btn-toolbar">
+
+
+
+                    <div class="btn-group">
+                        <a href="{{ route('admin.employer.edit', ['id'=>$employer->id]) }}"
+                           class="btn-primary btn">Оновити</a>
+                    </div>
+                    <div class="btn-group">
+                        <a href="{{ route('admin.employer.delete', ['id'=>$employer->id]) }}"
+                           onclick="return confirm('Вы точно хотите удалить проэкт?')"
+                           class="btn-danger btn">Видалити</a>
+                    </div>
+                    <div class="btn-group pull-left">
+                        <a href="{{ route('employer.show', ['id'=>$employer->id]) }}"
+                           class="btn-default btn">Продивитись на стороні клієнта</a>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <hr/>
+            <div class="product-info">
+
+                <div class="tab-pane fade in active" id="service-one">
+                    <section class="product-info">
+                        <label>Автор</label>
+                        <p> {{$employer->author->name }}</p>
+
+                        @if(isset($employer->publisher_id))
+                        <label>Редактор</label>
+                        <p> {{  $employer->publisher->name }}</p>
+                        @endif
+                        <label>Статус</label>
+                        <p>{{ $employer->status->name }}</p>
+
+
+                        <label>Назва організації</label>
+                        <p>{{ $employer->company_name }}</p>
+
+
+
+                        <label>Коротка характеристика діяльності організації</label>
+                        {!! $employer->company_info !!}
+
+
+
+                        <label>Вакансії (звернення організації)</label>
+                        {!! $employer->description !!}
+
+                        <label>Вимоги:</label>
+                        {!! $employer->requirements !!}</textarea>
+
+
+                        <label>Умови праці</label>
+                        {!! $employer->working_conditions !!}
+
+
+                        <label>Адресса</label>
+                        {!! $employer->adress !!}
+
+                        <label>Телефон</label>
+                        <p>{{ $employer->phone }}</p>
+
+                        <label>Інше</label>
+                        {!! $employer->other !!}
+
+
+                </div>
+
+
+
+                </section>
+
+            </div>
+
         </div> 
 
-        <div class="col-md-6">
-            <div class="panel panel-primary">
-
-
+        <div class="col-md-4" id="col">
+            <div class="panel panel-primary affix-top" id="fix-div">
                 <div class="text-center">
-                    <h4 class="title-border">Галузь</h4>
+                    <label class="title-border">Галузь</label>
+                    @if(!$employer->economicActivities->isChildren())
                     <p>{{ $employer->economicActivities->name }}</p>
+                    @else
+                    <p>{{ $employer->economicActivities->parent->name }}:</p>
+                    <div class="clearfix"></div>
+                    <span style="margin-left: 20px">{{ $employer->economicActivities->name }}</span>
+                    @endif
                 </div>
                 <div class="text-center">
-                    <h4 class="title-border">Тип організації</h4>
-                    <p>{{ $employer->org_type }}</p>
+                    <label class="title-border">Країна</label>
+                    <p>{{ $employer->country->name }}</p>
                 </div>
-                <div class="">       
-                    <div class="text-center"><h4 class="title-border">Коротка характеристика діяльності організації</h4></div>
-                    <p>{!! $employer->org_info !!}</p>
+                <div class="text-center">
+                    <label>Веб-сайт</label>
+                    <p><a href="#">{{ $employer->site }}</a></p>
                 </div>
+
+
+                <div class="text-center">
+                    <a href="#" class="btn btn-primary">
+                        <span><i class="fa fa-user"></i> Подати резюме</span>
+                    </a>
+                </div>
+                <br>
             </div>
         </div>
 
 
+
     </div>
-    <div class="">
-        <div class="btn-toolbar">
-
-            @if(Auth::check() && Auth::user()->id == $employer->author_id)
-            <div class="btn-group pull-left">
-                <a href="{{ route('employer.edit',['employer'=>$employer->id]) }}" class="btn-primary btn">Оновити</a>
-            </div>
-            <div class="btn-group pull-left">
-                <a href="#" class="btn-danger btn">Видалити</a>
-            </div>
-            @endif
 
 
 
-            <div class="btn-group pull-right">
-                <a href="#" class="btn btn-primary"> <span><i class="fa fa-user"></i> Подати резюме</span> </a>
-            </div>
-
-        </div>
-    </div>
     <hr/>
-    <div class="product-info">
-
-        <div class="tab-pane fade in active" id="service-one">
-            <section class="product-info">
-                <h4>Загальна інформація (звернення організації):</h4>
-                <blockquote>
-                    <p> {!! $employer->description !!}</p>
-                </blockquote>
-
-                <h4>Адресса</h4>
-                <blockquote>
-                    <p> {!! $employer->adress !!}</p>
-                </blockquote>
-
-                <h4>Інше</h4>
-                <blockquote>
-                    <p><em> {!! $employer->other !!}</em></p>
-                </blockquote>
-
-
-            </section>
-
-        </div>
-
-
-        <hr/>
-    </div>
-
-
 </div>
+
+
+
 
 @stop
 @section('js')

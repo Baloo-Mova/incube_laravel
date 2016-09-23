@@ -35,7 +35,7 @@
                                 </tr>
                                 </thead>
                                 <tbody class='text-center'>
-                                @foreach($projects as $item)
+                                @foreach($employerProjects as $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
                                         <td><a href="#">{{$item->author_id}}</a></td>
@@ -44,14 +44,14 @@
                                         <td> {{ $item->status->name }}
                                         </td>
                                         <td>
-                                            <a href="{{'admin.employer.show', [$item->id])}}" title="View" aria-label="View" data-pjax="0">
+                                            <a href="{{route('admin.employer.show', [$item->id])}}" title="View" aria-label="View" data-pjax="0">
                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                             </a>
                                             
-                                                <a href="{{'admin.employer.edit', [$item->id])}}" title="Update" aria-label="Update" data-pjax="0">
+                                                <a href="{{route('admin.employer.edit', [$item->id])}}" title="Update" aria-label="Update" data-pjax="0">
                                                     <span class="glyphicon glyphicon-pencil"></span></a>
 
-                                                <a href="{{'admin.employer.delete', ['id'=>$item->id]) }}" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
+                                                <a href="{{route('admin.employer.delete', ['id'=>$item->id]) }}" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
                                             

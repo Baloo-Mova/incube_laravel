@@ -18,7 +18,9 @@ class UpdateRequest extends FormRequest
         {
             return false;
         }
-
+        if(Auth::user()->isAdmin()){
+            return true;
+        }
         $form = $this->route('problem');
         return Auth::user()->can('update', $form);
     }

@@ -5,20 +5,20 @@ namespace App\Http\Requests\Designer;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class UpdateRequest extends FormRequest
-{
+class UpdateRequest extends FormRequest {
+
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
-    {
-        if(!Auth::check())
-        {
+    public function authorize() {
+        if (!Auth::check()) {
             return false;
         }
-
+        if (Auth::user()->isAdmin()) {
+            return true;
+        }
         $form = $this->route('designer');
         return Auth::user()->can('update', $form);
     }
@@ -28,19 +28,17 @@ class UpdateRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             'name' => 'required|max:100',
             'country_id' => 'required',
             'stage_id' => 'required',
             'money' => 'required|numeric',
-            'contacts' => 'required|min:20',            
+            'contacts' => 'required|min:20',
         ];
     }
 
-    public function messages()
-    {
+    public function messages() {
         return [
             'name.max' => 'Максимальна довжина імені 100 символів',
             'name.required' => "Поле Назва інвестування  обов'язкове для заповнення",
@@ -53,8 +51,8 @@ class UpdateRequest extends FormRequest
         ];
     }
 
-    public function forbiddenResponse()
-    {
+    public function forbiddenResponse() {
         return response()->view('errors.403');
     }
+
 }

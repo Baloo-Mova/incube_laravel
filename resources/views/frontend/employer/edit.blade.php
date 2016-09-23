@@ -30,15 +30,106 @@
         {{ csrf_field() }}
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('org_name')?'has-error':'' }}">
-                    <label class="control-label" for="org_name">Назва організації:</label>
-                    <input type="text" value="{{ $employer->org_name }}" name="org_name" class="form-control" id="text">
-                    @if($errors->has('org_name'))
-                    <span class="control-label"> {{ $errors->first('org_name') }}</span>
+                <div class="form-group {{ $errors->has('name')?'has-error':'' }}">
+                    <label class="control-label" for="name">Назва / короткий перелік вакансій:</label>
+
+
+                    <input type="text" value="{{ $employer->name }}" name="name" class="form-control" id="text">
+                    @if($errors->has('name'))
+                    <span class="control-label"> {{ $errors->first('name') }}</span>
                     @endif
                 </div>
             </div>
         </div>
+
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('company_name')?'has-error':'' }}">
+                    <label class="control-label" for="company_name">Назва організації:</label>
+                    <input type="text" value="{{ $employer->company_name }}" name="company_name" class="form-control" id="text">
+                    @if($errors->has('company_name'))
+                    <span class="control-label"> {{ $errors->first('company_name') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+        
+         <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label" for="Галузь">Галузь:</label>
+                    @include('admin.partials.economic_activities_select',
+                    ['economicActivities'=> $economicActivities,
+                    'economicActivitiesAttributeName'=>'economic_activities_id',
+                    'economicActivitiesAttributeValueNow' => $employer->economic_activities_id
+                    ])
+                </div>
+            </div>
+        </div>
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('country_id')?'has-error':'' }}">
+                    <label class="control-label" for="region">Країна проблеми</label>
+                    <select id="country_id" class="form-control" name="country_id">
+                        @foreach(\App\Models\Country::all() as $country)
+                        <option value="{{ $country->id }}" {{ $employer->country_id == $country->id ? "selected" : "" }}>{{ $country->name }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('country_id'))
+                    <span class="control-label"> {{ $errors->first('country_id') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('company_info')?'has-error':'' }}">
+                    <label class="control-label" for="company_info">Коротка характеристика діяльності організації:</label>
+                    <textarea rows="4" type="text" name="company_info" class="form-control" id="text">{{ $employer->company_info }}</textarea>
+                    @if($errors->has('company_info'))
+                    <span class="control-label"> {{ $errors->first('company_info') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+       
+        
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('description')?'has-error':'' }}">
+                    <label class="control-label" for="description">Вакансії (звернення організації):</label>
+                    <textarea rows="6" type="text" name="description" class="form-control" id="text" placeholder="Укажіть точні назви відкритих вакансій у вигляді списку">{{ $employer->description }}</textarea>
+                    @if($errors->has('description'))
+                    <span class="control-label"> {{ $errors->first('description') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('requirements')?'has-error':'' }}">
+                    <label class="control-label" for="requirements">Вимоги:</label>
+                    <textarea rows="6" type="text" name="requirements" class="form-control" id="text">{{ $employer->requirements }}</textarea>
+                    @if($errors->has('requirements'))
+                    <span class="control-label"> {{ $errors->first('requirements') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('working_conditions')?'has-error':'' }}">
+                    <label class="control-label" for="working_conditions">Умови праці:</label>
+                    <textarea rows="6" type="text" name="working_conditions" class="form-control" id="text">{{ $employer->working_conditions }}</textarea>
+                    @if($errors->has('working_conditions'))
+                    <span class="control-label"> {{ $errors->first('working_conditions') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+        
         <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group {{ $errors->has('adress')?'has-error':'' }}">
@@ -65,95 +156,23 @@
             </div>
         </div>
 
+        
         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('email')?'has-error':'' }}">
-                    <label class="control-label" for="email">Контактна ел. пошта:</label>
-                    <input type="email" value="{{ $employer->email }}" name="email" class="form-control" id="text">
-                    @if($errors->has('email'))
-                    <span class="control-label"> {{ $errors->first('email') }}</span>
+                <div class="form-group {{ $errors->has('site')?'has-error':'' }}">
+                    <label class="control-label" for="site">Веб-сайт:</label>
+
+
+                    <input type="text" value="{{ $employer->site }}" name="site" class="form-control" id="text">
+
+                    @if($errors->has('site'))
+                    <span class="control-label"> {{ $errors->first('site') }}</span>
                     @endif
                 </div>
             </div>
         </div>
-
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('web_site')?'has-error':'' }}">
-                    <label class="control-label" for="web_site">Веб-сайт:</label>
-
-
-                    <input type="text" value="{{ $employer->web_site }}" name="web_site" class="form-control" id="text">
-
-                    @if($errors->has('web_site'))
-                    <span class="control-label"> {{ $errors->first('web_site') }}</span>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('org_info')?'has-error':'' }}">
-                    <label class="control-label" for="org_info">Коротка характеристика діяльності організації:</label>
-                    <textarea rows="4" type="text" name="org_info" class="form-control" id="text">{{ $employer->org_info }}</textarea>
-                    @if($errors->has('org_info'))
-                    <span class="control-label"> {{ $errors->first('org_info') }}</span>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('description')?'has-error':'' }}">
-                    <label class="control-label" for="description">Загальна інформація (звернення організації):</label>
-                    <textarea rows="6" type="text" name="description" class="form-control" id="text" placeholder="Укажіть точні назви відкритих вакансій у вигляді списку">{{ $employer->description }}</textarea>
-                    @if($errors->has('description'))
-                    <span class="control-label"> {{ $errors->first('description') }}</span>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('short_name')?'has-error':'' }}">
-                    <label class="control-label" for="short_name">Короткий перелік вакансій:</label>
-
-
-                    <input type="text" value="{{ $employer->short_name }}" name="short_name" class="form-control" id="text">
-                    @if($errors->has('short_name'))
-                    <span class="control-label"> {{ $errors->first('short_name') }}</span>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group">
-                    <label class="control-label" for="Галузь">Галузь:</label>
-                    <select class="form-control" name="economic_activities_id">
-                        @foreach($economicActivities as $i => $item)
-                        <option value="{{ $i }}" {{ ( $employer->economic_activities_id == $i ? "selected":"") }}>{{ $item }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('org_type')?'has-error':'' }}">
-                    <label class="control-label" for="org_type">Тип організації:</label>
-                    <input type="text" value="{{ $employer->org_type }}" name="org_type" class="form-control" id="text">
-                    @if($errors->has('org_type'))
-                    <span class="control-label"> {{ $errors->first('org_type') }}</span>
-                    @endif
-                </div>
-            </div>
-        </div>
+ 
+        
 
         <div class="col-md-offset-2">
             <div class="col-md-10">

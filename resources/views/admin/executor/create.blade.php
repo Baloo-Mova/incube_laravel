@@ -34,21 +34,7 @@
             </div>
         </div>
         
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('publisher_id')?'has-error':'' }}">
-                    <label class="control-label" for="publisher_id">Редактор</label>
-                    <select id="country_id" class="form-control" name="publisher_id">
-                        @foreach(\App\User::all() as $user)
-                        <option value="{{ $user->id }}" {{ ( old('publisher_id') == $user->id ? "selected":"") }}>{{ $user->name }}</option>
-                        @endforeach
-                    </select>
-                    @if($errors->has('publisher_id'))
-                    <span class="control-label"> {{ $errors->first('publisher_id') }}</span>
-                    @endif
-                </div>
-            </div>
-        </div>
+        
         <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group {{ $errors->has('status_id')?'has-error':'' }}">
