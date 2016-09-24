@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class UserForm
@@ -211,6 +212,14 @@ class UserForm extends Model
 
     public function documents(){
         return $this->hasMany(Document::class,'form_id');
+    }
+
+    public function clearDocuments(){
+        foreach ($this->documents as $item){
+            Storage::disk('documents')->delete($item->name);
+        }
+
+        $this->documents()->delete();
     }
 
     public function scopeWithAll($query){

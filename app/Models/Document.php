@@ -25,7 +25,7 @@ class Document extends Model
 
     protected $table = 'documents';
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'filename'

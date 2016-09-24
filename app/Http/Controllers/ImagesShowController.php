@@ -10,8 +10,7 @@ use Intervention\Image\Facades\Image;
 class ImagesShowController extends Controller
 {
     public function index($id, $height, $width)
-    {// ТУТ гавнокод но мне лень его исправлять, я хочу покататся а велосипеде(
-
+    {
         if ( ! File::exists(storage_path("app/documents/$id"))) {
             $imgNumber = random_int(1, 9);
             $image     = Image::make(asset('img/default_placeholders/' . $imgNumber . '.jpg'));
@@ -33,6 +32,6 @@ class ImagesShowController extends Controller
             $height = $img->height();
         }
 
-        return $img->resize($width, $height)->response('jpg');
+        return $img->resize($width, $height)->response();
     }
 }

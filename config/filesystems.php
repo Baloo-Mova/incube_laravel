@@ -54,6 +54,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'documents'=>[
+            'driver'=>'local',
+            'root'=> storage_path('app/documents'),
+            'visibility'=>'public',
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
