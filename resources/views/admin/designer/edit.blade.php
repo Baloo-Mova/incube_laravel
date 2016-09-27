@@ -25,7 +25,7 @@
         </ul>
     </div>
     @endif
-    <
+    
     <form method="POST" enctype="multipart/form-data" class="form-horizontal">
         {{ csrf_field() }}
         <div class="col-md-offset-2">

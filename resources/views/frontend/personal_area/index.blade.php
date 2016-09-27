@@ -133,7 +133,7 @@
                                                 <a href="{{url('/investor/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
                                                     <span class="glyphicon glyphicon-pencil"></span></a>
 
-                                                <a href="#" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
+                                                <a href="{{url('/investor/delete/'. $item->id)}}" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
                                             @endif
@@ -183,14 +183,14 @@
                                         <td> {{ $item->status->name }}
                                         </td>
                                         <td>
-                                            <a href="{{url('/designer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
+                                            <a href="{{route("designer.show",['id'=>$item->id])}}" title="View" aria-label="View" data-pjax="0">
                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                             </a>
                                             @if($item->status->id!=2)
-                                                <a href="{{url('/designer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
+                                                <a href="{{route("designer.edit",['id'=>$item->id])}}" title="Update" aria-label="Update" data-pjax="0">
                                                     <span class="glyphicon glyphicon-pencil"></span></a>
 
-                                                <a href="#" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
+                                                <a href="{{route("designer.delete",['id'=>$item->id])}}" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
                                             @endif
@@ -239,14 +239,14 @@
                                     <td> {{ $item->status->name }}
                                     </td>
                                     <td>
-                                        <a href="{{url('/executor/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
+                                        <a href="{{route("executor.show",['id'=>$item->id])}}" title="View" aria-label="View" data-pjax="0">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
                                         @if($item->status->id!=2)  
-                                        <a href="{{url('/executor/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
+                                        <a href="{{route("executor.edit",['id'=>$item->id])}}" title="Update" aria-label="Update" data-pjax="0">
                                             <span class="glyphicon glyphicon-pencil"></span></a> 
 
-                                                <a href="#" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
+                                                <a href="{{route("executor.delete",['id'=>$item->id])}}" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
                                             @endif
@@ -292,14 +292,14 @@
                                     <td> {{ $item->status->name }}
                                     </td>
                                     <td>
-                                        <a href="{{url('/employer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
+                                        <a href="{{route("employer.show",['id'=>$item->id])}}" title="View" aria-label="View" data-pjax="0">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
                                         @if($item->status->id!=2)  
-                                        <a href="{{url('/employer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
+                                        <a href="{{route("employer.edit",['id'=>$item->id])}}" title="Update" aria-label="Update" data-pjax="0">
                                             <span class="glyphicon glyphicon-pencil"></span></a> 
 
-                                                <a href="#" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
+                                                <a href="{{route("employer.delete",['id'=>$item->id])}}" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
                                             @endif

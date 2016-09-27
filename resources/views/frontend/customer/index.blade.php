@@ -20,15 +20,17 @@
             <h2>Дійсні проблеми</h2>
         </div>
         <div id="problem" class="tab-pane fade in active">
+            <div class="carusel" id="problems">
             @forelse($problems as $item)
-                <div class="carusel" id="problems">
+                
                     @include('frontend.partials.carusel_item',['item'=>$item])
-                </div>
+                
             @empty
                 <div class="row text-center">
                     <h3>Проблемы отсутствуют</h3>
                 </div>
             @endforelse
+            </div>
         </div>
     </div>
 @stop

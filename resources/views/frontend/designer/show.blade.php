@@ -76,8 +76,8 @@
                             <label>Опис ризиків</label>
                             <p>   {!! $designer->risks !!}</p>
 
-                            <label>Контактні дані</label>
-                            <p>   {!! $designer->contacts !!}</p>
+                            {{--<label>Контактні дані</label>
+                            <p>   {!! $designer->contacts !!}</p>--}}
                             <div>
                                 <label>Веб-сайт</label>
                                 <p><a href="#">{{ $designer->site }}</a></p>

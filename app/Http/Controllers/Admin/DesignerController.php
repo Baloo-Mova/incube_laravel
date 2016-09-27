@@ -63,10 +63,26 @@ class DesignerController extends Controller
         }
 
         $model->author_id = Auth::check() ? Auth::user()->id : $user->id;
+        if ($request->hasFile('logo_file')) {
+            $filename = uniqid('project', true) . '.' . $request->file('logo_file')->getClientOriginalExtension();
+            $request->file('logo_file')->storeAs('documents', $filename);
+            $model->logo = $filename;
+        }
         $model->save();
 
         if (!Auth::check() && Auth::attempt(['email' => $reg_email, 'password' => $pass])) {
             return redirect(route('personal_area.index'));
+        }
+        if ($request->hasFile('project_files')) {
+            foreach ($request->file('project_files') as $item) {
+                $filename = uniqid('project', true) . '.' . $item->getClientOriginalExtension();
+                $item->storeAs('documents', $filename);
+
+                $doc = new Document();
+                $doc->form_id = $model->id;
+                $doc->name = $filename;
+                $doc->save();
+            }
         }
 
         return redirect(route('designer.index'));
@@ -89,12 +105,25 @@ class DesignerController extends Controller
 
     public function show(UserForm $designer)
     {
-        return view('admin.designer.show', compact('designer'));
+        $files = [];
+
+        if (!empty($designer->logo)) {
+            $files[] = $designer->logo;
+        }
+        $documents = $designer->documents;
+        $allowedMimeTypes = ['image/jpeg', 'image/gif', 'image/png'];
+        foreach ($documents as $item) {
+            $contentType = mime_content_type(storage_path('app\documents') . '\\' . $item->name);
+            if (in_array($contentType, $allowedMimeTypes)) {
+                $files[] = $item->name;
+            }
+        }
+        return view('admin.designer.show', compact('designer', 'files'));
     }
     
      public function delete(UserForm $designer)
     {
-        $designer->delete();
+                 
 
         return redirect(route('designer.index'));
     }

@@ -7,6 +7,9 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
+use App\Models\Status;
+use App\Models\TableType;
+use App\Models\UserForm;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Notification;
@@ -17,7 +20,14 @@ class SiteController extends Controller
 {
     public function index()
     {
-        return view('frontend.site.index');
+              $allMaterials = UserForm::withAll()->where([
+                    'status_id' => Status::PUBLISHED,
+                ])->orderBy('id', 'desc')->get();
+
+        return view('frontend.site.index')->with([
+                    'allMaterials' => $allMaterials,
+        ]);
+     
     }
 
     public function contacts()

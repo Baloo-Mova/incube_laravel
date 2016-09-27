@@ -99,7 +99,7 @@
                 <div class="col-md-10">
                     <div class="form-group">
                         <label class="control-label" for="email">Логотип:</label>
-                        <input type="file" name="logo_img_file" class="form-control" id="file_up">
+                        <input type="file" name="logo_img_file" class="form-control" id="logo">
                     </div>
                 </div>
             </div>
@@ -116,11 +116,11 @@
 @stop
 @section('js')
     <script type="text/javascript">
-        $("#file_up").fileinput({
-            'showUpload'      : false,
-            'previewFileType' : 'any',
-            'allowedFileTypes': ['image'],
-            'multiple'        : false
+        $("#logo").fileinput({
+            'showUpload': false,
+            'previewFileType': 'any',
+            'allowedFileTypes': ['image']
+
         });
         $('#country_id').on('change', function () {
             var id = $(this).val();

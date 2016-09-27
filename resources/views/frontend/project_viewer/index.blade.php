@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="page-title text-center">
-        <h2>Усы подані матеріали</h2>
+        <h2>Усі подані матеріали</h2>
     </div>
     <hr/>
     <div class="text-center">
@@ -17,7 +17,8 @@
     </div>
     <div class="select-tabs">
         <ul class="nav nav-pills nav-stacked text-center" id="myTab">
-            <li class="active"><a href="#problem" data-toggle="tab">Проблеми</a></li>
+            <li class="active"><a href="#allmat" data-toggle="tab">Усі пропозиції</a></li>
+            <li><a href="#problem" data-toggle="tab">Проблеми</a></li>
             <li><a href="#invest" data-toggle="tab">Заявки на інвестування</a></li>
             <li><a href="#project" data-toggle="tab">Проекти</a></li>
             <li><a href="#employer" data-toggle="tab">Пропозиції роботи</a></li>
@@ -25,10 +26,10 @@
         </ul>
     </div>
     <div class="tab-content">
-        <div id="problem" class="tab-pane fade in active">
+        <div id="allmat" class="tab-pane fade in active">
             @forelse($allMaterials as $item)
             <div class="carusel" id="problems">
-                @include('frontend.partials.carusel_item',['item'=>$item])
+              @include('frontend.partials.viewer_item',['item'=>$item])
             </div>
             @empty
             <div class="row text-center">
@@ -37,7 +38,10 @@
             @endforelse
         </div>
 
-        <div id="invest" class="tab-pane fade">
+        <div id="problem" class="tab-pane fade">
+
+        </div>
+         <div id="invest" class="tab-pane fade">
 
         </div>
 

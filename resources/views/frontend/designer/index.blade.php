@@ -44,32 +44,36 @@
     <div class="select-tabs">
         <ul class="nav nav-tabs text-center" id="myTab">
             <li class="active"><a href="#problem" data-toggle="tab">Проблеми</a></li>
-            <li><a href="#project" data-toggle="tab">Проекти</a></li>
+            <li><a href="#project" data-toggle="tab">Інвестиційні пропозиції</a></li>
         </ul>
     </div>
     <div class="tab-content">
         <div id="problem" class="tab-pane fade in active">
-            @forelse($problems as $item)
-                <div class="carusel" id="problems">
+           <div class="carusel" id="problems">
+               @forelse($problems as $item)
+                
                     @include('frontend.partials.carusel_item',['item'=>$item])
-                </div>
+               
             @empty
                 <div class="row text-center">
                     <h3>Проблеми відсутні</h3>
                 </div>
-            @endforelse
+            @endforelse 
+           </div>
         </div>
 
         <div id="project" class="tab-pane fade">
+           <div class="carusel" id="projects">
             @forelse($investor as $item)
-                <div class="carusel" id="projects">
+                
                     @include('frontend.partials.carusel_item',['item'=>$item])
-                </div>
+                
             @empty
                 <div class="row text-center">
-                    <h3>Проекти відсутні</h3>
+                    <h3>Опубліковані пропозиції відсутні </h3>
                 </div>
             @endforelse
+            </div>
         </div>
     </div>
 
@@ -79,4 +83,23 @@
         </a>
     </div>
 
+@stop
+@section('js')
+ <script>
+        $(function () {
+            initialize_owl($('#problems'),options);
+
+            $('a[href="#problem"]').on('shown.bs.tab', function () {
+                initialize_owl($('#problems'),options);
+            }).on('hide.bs.tab', function () {
+                destroy_owl($('#problems'));
+            });
+
+            $('a[href="#project"]').on('shown.bs.tab', function () {
+                initialize_owl($('#projects'),options);
+            }).on('hide.bs.tab', function () {
+                destroy_owl($('#projects'));
+            });
+        });
+    </script>   
 @stop
