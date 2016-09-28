@@ -22,7 +22,7 @@ class SiteController extends Controller
     {
               $allMaterials = UserForm::withAll()->where([
                     'status_id' => Status::PUBLISHED,
-                ])->orderBy('id', 'desc')->get();
+                ])->orderBy('id', 'desc')->take(10)->get();
 
         return view('frontend.site.index')->with([
                     'allMaterials' => $allMaterials,

@@ -132,6 +132,8 @@ class DesignerController extends Controller
             }
         }
 
+        $designer->save();
+
         return back()->with(['message' => 'Редагування завершено']);
     }
 
