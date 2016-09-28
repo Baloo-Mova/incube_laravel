@@ -1,12 +1,8 @@
 <div class="col-md-4 col-sm-6 col-xs-12">
     <div class="carusel-block">
-        @if($item->form_type_id==3)
-            <a href="{{ route('designer.show', [$item->id]) }}">
-           
-            @else
+        
         <a href="{{ route(strtolower($item->formType->name).'.show', [$item->id]) }}">
-           
-            @endif
+          
             <div class="carusel-block-content">
                 <div class="carusel-image">
                     <img class="carusel-block-img img-responsive" src="{{ route('images.show', ['id'=> (empty($item->logo)?'empty':$item->logo),'height'=>168,'width'=>250]) }}">

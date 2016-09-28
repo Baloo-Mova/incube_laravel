@@ -30,12 +30,12 @@ class TableTypesTableSeeder extends Seeder
             2 => 
             array (
                 'id' => 3,
-                'name' => 'Project',
+                'name' => 'Designer',
             ),
             3 => 
             array (
                 'id' => 4,
-                'name' => 'Work',
+                'name' => 'Employer',
             ),
             4 => 
             array (

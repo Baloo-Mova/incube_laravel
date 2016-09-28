@@ -17,8 +17,8 @@ class TableType extends Model
 {
     const Investor = 1;
     const Problem = 2;
-    const Project = 3;
-    const Work = 4;
+    const Designer = 3;
+    const Employer = 4;
     const Executor = 5;
 
     protected $table = 'table_types';
