@@ -28,7 +28,7 @@ class InvestorController extends Controller
 
         $projects = UserForm::withAll()->where([
             'status_id' => Status::PUBLISHED,
-            'form_type_id'=> TableType::Project
+            'form_type_id'=> TableType::Designer
         ])->orderBy('id', 'desc')->take(10)->get();
 
         return view('frontend.investor.index')->with([
