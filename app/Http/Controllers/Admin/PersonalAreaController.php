@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Admin;
 
 //use App\Http\Requests\PersonalArea\CreateRequest;
+use App\Http\Requests\PersonalArea\CreateRequest;
 use App\Http\Requests\PersonalArea\EditRequest;
 use App\Http\Requests\PersonalArea\UpdateRequest;
-
 use App\Models\TableType;
 use App\Models\UserForm;
 use App\Notifications\Test;
@@ -16,62 +16,123 @@ use App\Models\ProjectForm;
 use App\Models\ExecutorForm;
 use App\Models\WorkForm;
 use App\Models\Country;
-use App\Models\EconomicActivities;
+
 use App\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class PersonalAreaController extends Controller
-{
-    public function __construct()
-    {
+class PersonalAreaController extends Controller {
+
+    public function __construct() {
         $this->middleware('auth');
     }
 
-    public function index(){
-        
-        $thisUser = Auth::user();
-        $usersCustomerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Problem])->get();
-        $usersInvestorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Investor])->get();
-        $usersDesignerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Project])->get();
-        $usersExecutorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Executor])->get();
-        $usersEmployerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Work])->get();
-        return view('frontend.personal_area.index')->with([
-        'thisUser'              => $thisUser,
-        'usersCustomerProjects' => $usersCustomerProjects, 
-        'usersInvestorProjects' => $usersInvestorProjects,
-        'usersDesignerProjects' => $usersDesignerProjects,
-        'usersExecutorProjects' => $usersExecutorProjects,
-        'usersEmployerProjects' => $usersEmployerProjects,
-            
+    public function index() {
+
+
+        $ListUsers = User::orderBy('id', 'desc')->get();
+
+        return view('admin.users.index')->with([
+                    'ListUsers' => $ListUsers,
         ]);
     }
-    
-     public function edit()
-    {
-         $myUser=Auth::user();
-         
+
+    public function create() {
+        $country = Country::orderBy('id', 'desc')->get();
+        return view('admin.users.create', compact('country'));
+    }
+
+    public function store(CreateRequest $request) {
+
+
+        $email = $request->get('email');
+        $pass = $request->get('password');
+
+        if (isset($email) && !empty($email)) {
+          
+            $user = User::firstOrNew([
+                        'email' => $email,
+            ]);
+            $user-> fill($request->all());
+            $user->password      =    bcrypt($pass);
+            $user->name          =    $request->get('name');
+            $user->adress        =    $request->get('adress');
+            $user->phone_number  =    $request->get('phone_number');
+            $user->web_site      =    $request->get('web_site');
+            $user->contacts      =    $request->get('contacts');
+            
+            if ($request->hasFile('logo_img_file')) {
+                $filename = uniqid('user', true) . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
+                $request->file('logo_img_file')->storeAs('documents', $filename);
+                $user->logo = $filename;
+            }
+            if ($request->hasFile('bg_img_file')) {
+                $filename = uniqid('user', true) . '.' . $request->file('bg_img_file')->getClientOriginalExtension();
+                $request->file('bg_img_file')->storeAs('documents', $filename);
+                $user->bg_logo = $filename;
+            }
+            $user->save();
+            //$user->notify(new RegisterSuccess($pass));
+        }
+
+
+
+
+        if (!Auth::check()) {
+            Auth::attempt(['email' => $email, 'password' => $pass]);
+        }
+
+        return redirect(route('admin.users.index'));
+    }
+
+    public function edit(Request $request, User $user) {
+       
         $country = Country::orderBy('id', 'desc')->get();
 
-        return view('frontend.personal_area.edit', compact('myUser', 'country'));
+        return view('admin.users.edit', compact('user', 'country'));
     }
 
-    public function update(Request $request)
+    public function update(UpdateRequest $request, User $user) {
+
+        $user->fill($request->all());
+        if ($request->hasFile('logo_img_file')) {
+            $filename = uniqid('user', true) . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
+            $request->file('logo_img_file')->storeAs('documents', $filename);
+            Storage::disk('documents')->delete($user->logo);
+            $user->logo = $filename;
+        }
+        if ($request->hasFile('bg_img_file')) {
+            $filename = uniqid('user', true) . '.' . $request->file('bg_img_file')->getClientOriginalExtension();
+            $request->file('bg_img_file')->storeAs('documents', $filename);
+            Storage::disk('documents')->delete($user->bg_logo);
+            $user->bg_logo = $filename;
+        }
+        $user->save();
+
+        return back()->with(['message' => 'Відредаговано']);
+    }
+
+    public function show(User $user)
     {
-       
-        $myUser=Auth::user();
+        $files = [];
 
-        $myUser->fill($request->all());
-       
-        $myUser->save();
+        if (!empty($user->logo)) {
+            $files[] = $user->logo;
+        }
+        
 
-        return back()->with(['message' => 'Редагування завершено']);
+        return view('admin.users.show', compact('user'));
     }
-     public function security(){
-         
-      return view('frontend.personal_area.security');
-     }
+
+    public function delete(User $user)
+    {
+        $user->delete();
+
+        return redirect(route('admin.users.index'));
+    }
+
+    
 }

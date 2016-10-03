@@ -19,8 +19,14 @@ class EditRequest extends FormRequest
         {
             return false;
         }
+        if(Auth::user()->user_type_id!='1'){
+            return false;
+        }
+        else{
+            return true;
+        }
 
-        $form = $this->route('personal-area');
+        $form = $this->route('admin.users.index');
         return Auth::user()->can('update', $form);
     }
 

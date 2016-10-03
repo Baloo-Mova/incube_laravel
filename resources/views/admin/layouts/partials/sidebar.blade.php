@@ -59,7 +59,17 @@
                             </li>--}}
                         </ul>
                     </li>
-                    
+                    <li class="{{((Request::is('admin/users') ||Request::is('admin/users/*') )? 'active' : '') }}">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#users">Користувачі <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="users" class="{{((Request::is('admin/users') ||Request::is('admin/users/*') )? 'collapse in' : 'collapse') }}">
+                            <li>
+                                <a href="{{route("admin.users.index")}}">Список користувачів</a>
+                            </li>
+                           {{-- <li>
+                                <a href="{{route("admin.users.create")}}">Сворити користувача</a>
+                            </li>--}}
+                        </ul>
+                    </li>
                     
                     
                 </ul>

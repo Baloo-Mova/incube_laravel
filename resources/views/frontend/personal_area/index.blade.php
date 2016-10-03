@@ -8,9 +8,9 @@
             </div>
             <div class="col-md-10">
                 <div class="pannel-row">
-                    <div class="panel background-logo" style="background-image: url('{{ empty($user->bg_logo)? '../img/bg_image.jpg' : url('/users/image/'.$user->bg_logo)}}')">
-
-                        <img class="pic img-circle" src="{{ empty($thisUser->logo)? '../img/man-profile.jpg' : url('/users/image/'.$thisUser->logo)}}" alt="...">
+                    <div class="panel background-logo" style="background-image: url('{{ route('images.show', ['id'=> (empty($thisUser->bg_logo)? 'empty' : $thisUser->bg_logo),'height'=>'max','width'=>'max']) }}')">
+                     
+                        <img class="pic img-circle" src="{{ route('images.show', ['id'=> (empty($thisUser->logo)? 'empty' : $thisUser->logo),'height'=>'200','width'=>'200']) }}" alt="">
                         <div class="name">
                             <small>{{$thisUser->name}}, {{ empty($thisUser->country_id)? '' : $thisUser->country->name}}</small>
                         </div>

@@ -147,6 +147,15 @@ Route::group(['namespace' => 'Admin'], function () {
             Route::get('/show/{employer}', ['uses' => 'EmployerController@show', 'as' => 'admin.employer.show']);
             Route::get('/delete/{employer}', ['uses' => 'EmployerController@delete', 'as' => 'admin.employer.delete']);
         });
+        Route::group(['prefix' => 'users'], function () {
+            Route::get('/', ['uses' => 'PersonalAreaController@index', 'as' => 'admin.users.index']);
+            Route::get('/create', ['uses' => 'PersonalAreaController@create', 'as' => 'admin.users.create']);
+            Route::post('/create', ['uses' => 'PersonalAreaController@store', 'as' => 'admin.users.store']);
+            Route::get('/edit/{user}', ['uses' => 'PersonalAreaController@edit', 'as' => 'admin.users.edit']);
+            Route::post('/edit/{user}', ['uses' => 'PersonalAreaController@update', 'as' => 'admin.users.update']);
+            Route::get('/show/{user}', ['uses' => 'PersonalAreaController@show', 'as' => 'admin.users.show']);
+            Route::get('/delete/{user}', ['uses' => 'PersonalAreaController@delete', 'as' => 'admin.users.delete']);
+        });
     });
 });
 

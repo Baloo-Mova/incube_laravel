@@ -27,7 +27,7 @@ class EmployerController extends Controller
 
         $employerProjects = UserForm::withAll()->where([
             'status_id' => Status::PUBLISHED,
-            'form_type_id'=> TableType::Work
+            'form_type_id'=> TableType::Employer
         ])->orderBy('id', 'desc')->take(10)->get();
 
         return view('frontend.employer.index')->with([
@@ -46,7 +46,7 @@ class EmployerController extends Controller
     {
         $model = new UserForm();
         $model->fill($request->all());
-        $model->form_type_id = TableType::Work;
+        $model->form_type_id = TableType::Employer;
         $email = $request->get('email');
         $pass = str_random(10);
 
