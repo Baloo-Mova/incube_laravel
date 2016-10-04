@@ -7,10 +7,12 @@ use App\Http\Requests\Executor\CreateRequest;
 use App\Http\Requests\Executor\EditRequest;
 use App\Http\Requests\Executor\UpdateRequest;
 use App\Models\Status;
+use App\Models\Document;
 use App\Notifications\RegisterSuccess;
 use App\Models\TableType;
 use App\Models\UserForm;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use App\User;
 use Illuminate\Support\Facades\Mail;
@@ -51,11 +53,30 @@ class ExecutorController extends Controller {
         }
 
         $model->author_id = Auth::check() ? Auth::user()->id : $user->id;
+        if ($request->hasFile('logo_file')) {
+            $filename = uniqid('executor', true) . '.' . $request->file('logo_file')->getClientOriginalExtension();
+            $request->file('logo_file')->storeAs('documents', $filename);
+            $model->logo = $filename;
+        }
+        
         $model->save();
 
         if (!Auth::check()) {
             Auth::attempt(['email' => $email, 'password' => $pass]);
         }
+        if ($request->hasFile('executor_files')) {
+            foreach ($request->file('executor_files') as $item) {
+                $filename = uniqid('executor', true) . '.' . $item->getClientOriginalExtension();
+                $item->storeAs('documents', $filename);
+
+                $doc = new Document();
+                $doc->form_id = $model->id;
+                $doc->name = $filename;
+                $doc->save();
+            }
+        
+        }
+        
         return redirect(route('admin.executor.index'));
         //return redirect(route('executor.index'));
     }
@@ -69,13 +90,47 @@ class ExecutorController extends Controller {
 
         $executor->fill($request->all());
         //$executor->status_id = Status::EDITED;
+        if ($request->hasFile('logo_file')) {
+            $filename = uniqid('executor', true) . '.' . $request->file('logo_file')->getClientOriginalExtension();
+            $request->file('logo_file')->storeAs('documents', $filename);
+            Storage::disk('documents')->delete($executor->logo);
+            $executor->logo = $filename;
+        }
+
+        if ($request->hasFile('executor_files')) {
+            $executor->clearDocuments();
+            foreach ($request->file('executor_files') as $item) {
+                $filename = uniqid('executor', true) . '.' . $item->getClientOriginalExtension();
+                $item->storeAs('documents', $filename);
+                $doc = new Document();
+                $doc->form_id = $executor->id;
+                $doc->name = $filename;
+                $doc->save();
+            }
+        }
+        
         $executor->save();
 
         return back()->with(['message' => 'Заявка оновлена']);
     }
 
     public function show(UserForm $executor) {
-        return view('admin.executor.show', compact('executor'));
+        $files = [];
+
+        if (!empty($executor->logo)) {
+            $files[] = $executor->logo;
+        }
+        $documents = $executor->documents;
+        $allowedMimeTypes = ['image/jpeg', 'image/gif', 'image/png'];
+        foreach ($documents as $item) {
+            $contentType = mime_content_type(storage_path('app\documents') . '\\' . $item->name);
+            if (in_array($contentType, $allowedMimeTypes)) {
+                $files[] = $item->name;
+            }
+        }
+
+        return view('admin.executor.show', compact('executor', 'files'));
+       // return view('admin.executor.show', compact('executor'));
     }
 
     public function delete(UserForm $executor) {

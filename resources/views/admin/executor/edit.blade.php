@@ -205,27 +205,20 @@
         </div>
 
 
-        <div class="col-md-offset-2">
+       <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group">
-                    <label class="control-label" for="doc_file">Резюме(в ел. варіанті):</label>
-                    <input type="text" value="{{ $executor->doc_file }}" name="doc_file" class="form-control" id="text">
+                    <label class="control-label" for="email">Логотип:</label>
+                    <input type="file" name="logo_file" class="form-control" id="logo">
                 </div>
-            </div> 
+            </div>
         </div>
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group">
-                    <label class="control-label" for="email">Логотип:</label>
-
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-photo">
-                            </i>
-                        </div>
-                        <input type="file" name="logo_img_file" class="form-control" id="file_up">
-                    </div>
+                    <label class="control-label" for="email">Резюме в ел. варіанті:</label>
+                    <input type="file" name="executor_files[]" multiple class="form-control" id="documents">
                 </div>
             </div>
         </div>
@@ -242,20 +235,47 @@
 @stop
 @section('js')
 <script type="text/javascript">
-    //    $('select').select2({
-    //        placeholder: "Выберите регион",
-    //        allowClear: true,
-    //        width: 'resolve'
-    //    });
-    $("#file_up").fileinput({
-    'showUpload'          : false,
-            'previewFileType'     : 'image',
-            'allowedFileTypes'    : ['image'],
-            'initialPreview'      : [
-                    @if (!empty($executor->logo)) '{{url('/executor/image/'.$executor->logo)}}' @endif,
+    $("#logo").fileinput({
+            'showUpload': false,
+            'previewFileType': 'any',
+            'allowedFileTypes': ['image'],
+            'multiple': false,
+            initialPreview: [
+                "{{route('images.show',['id'=>$executor->logo,'width'=>'max','height'=>'max'])}}"
             ],
-            'initialPreviewAsData': true,
-    });</script>
+            initialPreviewAsData: true,
+            layoutTemplates: {
+                actions: '<div class="file-actions">\n' +
+                '    <div class="file-footer-buttons">\n' +
+                '        {upload} {zoom} {other}' +
+                '    </div>\n' +
+                '    {drag}\n' +
+                '    <div class="clearfix"></div>\n' +
+                '</div>',
+            }
+        });
+        $("#documents").fileinput({
+            'showUpload': false,
+            'previewFileType': 'any',
+            initialPreview: [
+                @foreach($executor->documents as $i=>$file)
+                        "{{route('images.show',['id'=>$file->name,'width'=>'max','height'=>'max'])}}",
+                @endforeach
+            ],
+            initialPreviewAsData: true,
+            layoutTemplates: {
+                actions: '<div class="file-actions">\n' +
+                '    <div class="file-footer-buttons">\n' +
+                '        {upload} {zoom} {other}' +
+                '    </div>\n' +
+                '    {drag}\n' +
+                '    <div class="clearfix"></div>\n' +
+                '</div>',
+            }
+
+        });    
+
+</script>
 <script type="text/javascript">
             $(function () {
             $('#datetimepicker1').datetimepicker({

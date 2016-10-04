@@ -155,7 +155,7 @@
                             <i class="fa fa-photo">
                             </i>
                         </div>
-                        <input type="file" name="logo_img_file" class="form-control" id="file_up">
+                        <input type="file" name="logo_img_file" class="form-control" id="logo">
                     </div>
                 </div>
             </div>
@@ -173,15 +173,25 @@
 @stop
 @section('js')
 <script type="text/javascript">
-    {{--$("#file_up").fileinput({--}}
-    {{--'showUpload': false, --}}
-    {{--'previewFileType': 'image', --}}
-    {{--'allowedFileTypes': ['image'], --}}
-    {{--'initialPreview': [--}}
-    {{--@if (!empty($problem - > logo)) '{{route('images.show',['name'=>'problem','id'=>$problem->logo, 'width'=>'max', 'height'=>'max'])}}' @endif, --}}
-    {{--], --}}
-    {{--'initialPreviewAsData': true, --}}
-    {{--}); --}}
+     $("#logo").fileinput({
+            'showUpload': false,
+            'previewFileType': 'any',
+            'allowedFileTypes': ['image'],
+            'multiple': false,
+            initialPreview: [
+                "{{route('images.show',['id'=>$problem->logo,'width'=>'max','height'=>'max'])}}"
+            ],
+            initialPreviewAsData: true,
+            layoutTemplates: {
+                actions: '<div class="file-actions">\n' +
+                '    <div class="file-footer-buttons">\n' +
+                '        {upload} {zoom} {other}' +
+                '    </div>\n' +
+                '    {drag}\n' +
+                '    <div class="clearfix"></div>\n' +
+                '</div>',
+            }
+        });
 
     $('#country_id').on('change', function () {
     var id = $(this).val();

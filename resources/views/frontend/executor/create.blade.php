@@ -184,27 +184,19 @@
         </div>
 
 
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group">
-                    <label class="control-label" for="doc_file">Резюме(в ел. варіанті):</label>
-                    <input type="text" value="{{ old('doc_file') }}" name="doc_file" class="form-control" id="text">
-                </div>
-            </div> 
-        </div>
-
-        <div class="col-md-offset-2">
+      <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group">
                     <label class="control-label" for="email">Логотип:</label>
-
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-photo">
-                            </i>
-                        </div>
-                        <input type="file" name="logo_img_file" class="form-control" id="file_up">
-                    </div>
+                    <input type="file" name="logo_file" class="form-control" id="logo">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label" for="email">Резюме в ел. варіанті:</label>
+                    <input type="file" name="executor_files[]" class="form-control" multiple id="documents">
                 </div>
             </div>
         </div>
@@ -220,17 +212,17 @@
 @stop
 @section('js')
 <script type="text/javascript">
-    //    $('select').select2({
-    //        placeholder: "Выберите регион",
-    //        allowClear: true,
-    //        width: 'resolve'
-    //    });
-    $("#file_up").fileinput({
-        'showUpload': false,
-        'previewFileType': 'any',
-        'allowedFileTypes': ['image']
+    $("#logo").fileinput({
+            'showUpload': false,
+            'previewFileType': 'any',
+            'allowedFileTypes': ['image']
 
-    });
+        });
+        $("#documents").fileinput({
+            'showUpload': false,
+            'previewFileType': 'any'
+
+        });
 </script>
 <script type="text/javascript">
     $(function () {

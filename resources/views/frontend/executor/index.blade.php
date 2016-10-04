@@ -1,145 +1,115 @@
 @extends('frontend.layouts.template')
 
 @section('content')
-    <div class="page-title text-center">
-        <h2>Виконацям</h2>
+<div class="page-title text-center">
+    <h2>Виконацям</h2>
+</div>
+<hr/>
+<div class="container text-center">
+    <p><b> Виконавець </b> - це користувач, що є фахівцем у певній галузі і який хоче прийняти участь у проекті або знайти роботу.</p>
+
+    <ul class="nav"> Виконавцями можуть виступати Юридичні та Фізичні особи, які бажають взяти участь у реалізації проекту.
+
+    </ul>
+
+    <p>Подайте своє резюме, заповнивши наступну форму: </p>
+    <div class="text-center">
+        <a href="{{ route('executor.create') }}" class="btn btn-lg btn-danger center">Подати заявку
+            <span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
-    <hr/>
-    <div class="container text-center">
-        <p><b> Виконавець </b> - це користувач, що є фахівцем у певній галузі і який хоче прийняти участь у проекті або знайти роботу.</p>
+</div>
+<hr/>
+<div class="row page-title text-center">
+    <h2>Запропонуйте свою участь у вже опублікованих проектах</h2>
+    {{--<h5>або знайдіть роботу з поданих вакансій</h5>--}}
+</div>
+<br/>
 
-        <ul class="nav"> Виконавцями можуть виступати Юридичні та Фізичні особи, які бажають взяти участь у реалізації проекту.
+<div class='container'>
 
+    <div class="select-tabs">
+        <ul class="nav nav-tabs text-center" id="myTab">
+            <li class="active"><a href="#project" data-toggle="tab">Подані проекти</a></li>
+            {{--<li><a href="#employer" data-toggle="tab">Запропоновані вакансії</a></li>--}}
         </ul>
+    </div>
+    <div class="tab-content">
+        <div id="project" class="tab-pane fade in active">
+            <div class="carusel" id="projects">
+                @forelse($projects as $item)
 
-        <p>Подайте своє резюме, заповнивши наступну форму: </p>
-        <div class="text-center">
-            <a href="{{ route('executor.create') }}" class="btn btn-lg btn-danger center">Подати заявку
-                <span class="glyphicon glyphicon-chevron-right"></span></a>
+                @include('frontend.partials.carusel_item',['item'=>$item])
+
+                @empty
+                <div class="row text-center">
+                    <h3>Проблеми відсутні</h3>
+                </div>
+                @endforelse 
+            </div>
         </div>
-    </div>
-    <hr/>
-    <div class="row page-title text-center">
-        <h2>Запропонуйте свою участь у вже опублікованих проектах</h2>
-        <h5>або знайдіть роботу з поданих вакансій</h5>
-    </div>
-    <br/>
-    <div class="row">
-        <section id="aa-popular-category">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="aa-popular-category-area">
-                                <!-- start prduct navigation -->
-                                <div class="row" >
-                                <ul class="nav aa-products-tab">
-                                    <li class="active">
-                                        <a href="#popular" data-toggle="tab">Питання(проблеми) для вирішення</a></li>
-                                    <li><a href="#featured" data-toggle="tab">Запроновані проекти</a></li>
 
-                                </ul>
-                                </div>
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <!-- Start popular problems -->
-                                    <div class="tab-pane fade in active" id="popular">
-                                        <ul class="aa-product-catg aa-popular-slider">
-                                            <!-- start single product item -->
-                                            <li>
-                                                <figure>
-                                                    <a class="aa-product-img" href="#"><img src="../img/250n300.png" alt="polo shirt img"></a>
-                                                    <a class="aa-add-card-btn" href="$"><span class="glyphicon glyphicon-arrow-right"></span>Продивитись</a>
-                                                    <figcaption class="aa-content">
-                                                        <h4 class="aa-product-title">asdasd</h4>
-                                                        </span><span class="aa-product-price"><del>$65.50</del></span>
-                                                    </figcaption>
-                                                </figure>
-                                                <!-- product id -->
-                                                <span class="aa-badge aa-sale" href="#">1</span>
-                                            </li>
-                                        </ul>
-                                        <a class="btn btn-success btn-lg" href="#">Усі питання
-                                            <span class="fa fa-long-arrow-right"></span></a>
-                                    </div>
-                                    <!-- / popular problem category -->
-                                    <!-- start prop-project category -->
-                                    <div class="tab-pane fade" id="featured">
-                                        <ul class="aa-product-catg aa-featured-slider">
-                                            <!-- start single product item -->
-                                            <li>
-                                                <figure>
-                                                    <a class="aa-product-img" href="#"><img src="../img/250n300.png" alt="polo shirt img"></a>
-                                                    <a class="aa-add-card-btn" href="#"><span class="glyphicon glyphicon-arrow-right"></span>Продивитись</a>
-                                                    <figcaption class="aa-content">
-                                                        <h4 class="aa-product-title">asd</h4>
-                                                    </figcaption>
-                                                </figure>
-                                                <!-- product badge -->
-                                                <span class="aa-badge aa-sale" href="#">1</span>
-                                            </li>
-                                        </ul>
-                                        <a class="btn btn-success btn-lg" href="#">Усі запропоновані проекти<span class="fa fa-long-arrow-right"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+    </div>
+
+    <div class="row text-center">
+        <a class="btn btn-success btn-lg margin-auto" href="{{ route('project_viewer.index') }}">
+            Усі питання
+        </a>
+    </div>
+</div>
+<hr/>
+
+<div class="row page-title text-center">
+
+    <h2>Вже подані резюме</h2>
+
+</div>
+<div class='container'>
+
+  
+    
+       
+            <div class="carusel" id="problems">
+                @forelse($executorProjects as $item)
+
+                @include('frontend.partials.carusel_item',['item'=>$item])
+
+                @empty
+                <div class="row text-center">
+                    <h3>Проблеми відсутні</h3>
                 </div>
+                @endforelse 
             </div>
-        </section>
-        <!-- / popular section -->
+        
+
+
+  
+
+    <div class="row text-center">
+        <a class="btn btn-success btn-lg margin-auto" href="{{ route('project_viewer.index') }}">
+            Усі резюме
+        </a>
     </div>
+</div>
+<br/>
 
-    <hr/>
+@stop
+@section('js')
+<script>
+    $(function () {
+        initialize_owl($('#problems'), options);
 
-    <div class="row page-title text-center">
+        $('a[href="#problem"]').on('shown.bs.tab', function () {
+            initialize_owl($('#problems'), options);
+        }).on('hide.bs.tab', function () {
+            destroy_owl($('#problems'));
+        });
 
-        <h2>Вже подані резюме</h2>
-
-    </div>
-    <br/>
-    <div class="row">
-        <section id="aa-popular-category">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="aa-popular-category-area">
-                                <!-- start prduct navigation -->
-
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <!-- Start popular problems -->
-                                    <div class="tab-pane fade in active" id="popular">
-                                        <ul class="aa-product-catg aa-popular-slider">
-                                            <!-- start single product item -->
-                                            @foreach($executorProjects as $item)
-                                                <li>
-                                                    <figure>
-                                                        <a class="aa-product-img" href="#"><img src="{{ empty($item->logo)? 'http://placehold.it/250x300' : url('/executor/image/'.$item->logo) }}" alt="polo shirt img"></a>
-                                                        <a class="aa-add-card-btn" href="#"><span class="glyphicon glyphicon-arrow-right"></span>Продивитись</a>
-                                                        <figcaption class="aa-content">
-                                                            <h4 class="aa-product-title">{{ $item->executor_fname }} {{ $item->executor_fname }} {{ $item->executor_sname }}{{ $item->executor_thname }}</h4>
-                                                            <!--<span class="aa-product-price"></span>-->
-                                                        </figcaption>
-                                                    </figure>
-                                                    <!-- product id -->
-                                                    <span class="aa-badge aa-sale" href="#">{{ $item->id }}</span>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                        <a class="btn btn-success btn-lg" href="#">Усі резюме
-                                            <span class="fa fa-long-arrow-right"></span></a>
-                                    </div>
-                                    <!-- / popular problem category -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- / popular section -->
-    </div>
+        $('a[href="#project"]').on('shown.bs.tab', function () {
+            initialize_owl($('#projects'), options);
+        }).on('hide.bs.tab', function () {
+            destroy_owl($('#projects'));
+        });
+    });
+</script>   
 @stop

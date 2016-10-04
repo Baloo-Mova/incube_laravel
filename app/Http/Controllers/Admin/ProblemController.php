@@ -13,7 +13,9 @@ use App\Models\TableType;
 use App\Models\UserForm;
 use App\Notifications\RegisterSuccess;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+
 use App\User;
 
 //use Illuminate\Support\Facades\Mail;
@@ -85,7 +87,12 @@ class ProblemController extends Controller
     {
 
         $problem->fill($request->all());
-        
+        if ($request->hasFile('logo_img_file')) {
+            $filename = uniqid('problem', true) . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
+            $request->file('logo_img_file')->storeAs('documents', $filename);
+            Storage::disk('documents')->delete($problem->logo);
+            $problem->logo = $filename;
+        }
         $problem->save();
 
         return back()->with(['message' => 'Відредаговано']);

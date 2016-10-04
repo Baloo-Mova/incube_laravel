@@ -50,14 +50,14 @@
                                         <td> {{ $item->status->name }}
                                         </td>
                                         <td>
-                                            <a href="{{'admin.' . route(strtolower($item->formType->name).'.show', [$item->id])}}" title="View" aria-label="View" data-pjax="0">
+                                            <a href="{{route('admin.investor.show', [$item->id])}}" title="View" aria-label="View" data-pjax="0">
                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                             </a>
                                             
-                                                <a href="{{'admin.' . route(strtolower($item->formType->name).'.edit', [$item->id])}}" title="Update" aria-label="Update" data-pjax="0">
+                                                <a href="{{route('admin.investor.edit', [$item->id])}}" title="Update" aria-label="Update" data-pjax="0">
                                                     <span class="glyphicon glyphicon-pencil"></span></a>
 
-                                                <a href="{{'admin.' . route(strtolower($item->formType->name).'.delete', ['id'=>$item->id]) }}" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
+                                                <a href="{{route('admin.investor.delete', ['id'=>$item->id]) }}" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
                                             

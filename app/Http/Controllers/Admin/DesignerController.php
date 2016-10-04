@@ -7,11 +7,13 @@ use App\Http\Requests\Designer\CreateRequest;
 use App\Http\Requests\Designer\EditRequest;
 use App\Http\Requests\Designer\UpdateRequest;
 use App\Models\EconomicActivity;
+use App\Models\Document;
 use App\Models\Status;
 use App\Models\TableType;
 use App\Models\UserForm;
 use App\Notifications\RegisterSuccess;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use App\User;
 use Illuminate\Support\Facades\Mail;
@@ -98,6 +100,25 @@ class DesignerController extends Controller
     {        
         $designer->fill($request->all());
         //$designer->status_id = Status::EDITED;
+        if ($request->hasFile('logo_file')) {
+            $filename = uniqid('project', true) . '.' . $request->file('logo_file')->getClientOriginalExtension();
+            $request->file('logo_file')->storeAs('documents', $filename);
+            Storage::disk('documents')->delete($designer->logo);
+            $designer->logo = $filename;
+        }
+
+        if ($request->hasFile('project_files')) {
+            $designer->clearDocuments();
+            foreach ($request->file('project_files') as $item) {
+                $filename = uniqid('project', true) . '.' . $item->getClientOriginalExtension();
+                $item->storeAs('documents', $filename);
+                $doc = new Document();
+                $doc->form_id = $designer->id;
+                $doc->name = $filename;
+                $doc->save();
+            }
+        }
+        
         $designer->save();
 
         return back()->with(['message' => 'Редагування завершено']);

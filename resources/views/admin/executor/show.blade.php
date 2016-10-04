@@ -8,16 +8,39 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div align="center"> <img alt="User Pic" src="{{ url('/img/250n300.png') }}" class="img-circle img-responsive"> </div>
+            <div align="center">
+                {{--<img alt="User Pic" src="{{ route('images.show', ['id'=> (empty($executor->logo)? 'empty' : $executor->logo),'height'=>'max','width'=>'max']) }}" class="img-circle img-responsive">
+            --}}
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label" for="email">Інші файли:</label>
+                        <input type="file" name="executer_files[]" multiple class="form-control" id="documents">
+                    </div>
+                </div>
+           
+
+            
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label" for="email">Логотип:</label>
+                        <input type="file" name="logo_file" class="form-control" id="logo" disabled>
+                    </div>
+                </div>
+            
+            </div>
             <label>Дата створення</label>
             <p>{{ $executor->created_at }} </p>
 
             <label>Дата оновлення</label>
             <p>{{ $executor->updated_at }} </p>
             <label>Автор</label>
-            <p>{{ $executor->author->name }} </p>
+            <p> {{$executor->author->name }}</p>
+
+            @if(isset($employer->publisher_id))
             <label>Редактор</label>
-            <p>{{ $executor->publisher->name }} </p>
+            <p> {{  $executor->publisher->name }}</p>
+            @endif
+
             <label>Прізвище, Ім'я, По-Батькові</label>
             <p>{{ $executor->name }} </p>
             <label>День народження</label>
@@ -65,4 +88,47 @@
 
 </div>
 
+@stop
+@section('js')
+<script type="text/javascript">
+$("#logo").fileinput({
+            'showUpload': false,
+            'previewFileType': 'any',
+            'allowedFileTypes': ['image'],
+            'multiple': false,
+            initialPreview: [
+                "{{route('images.show',['id'=>$executor->logo,'width'=>'max','height'=>'max'])}}"
+            ],
+            initialPreviewAsData: true,
+            layoutTemplates: {
+                actions: '<div class="file-actions">\n' +
+                '    <div class="file-footer-buttons">\n' +
+                '        {upload} {zoom} {other}' +
+                '    </div>\n' +
+                '    {drag}\n' +
+                '    <div class="clearfix"></div>\n' +
+                '</div>',
+            }
+        });
+        $("#documents").fileinput({
+            'showUpload': false,
+            'previewFileType': 'any',
+            initialPreview: [
+                @foreach($executor->documents as $i=>$file)
+                        "{{route('images.show',['id'=>$file->name,'width'=>'max','height'=>'max'])}}",
+                @endforeach
+            ],
+            initialPreviewAsData: true,
+            layoutTemplates: {
+                actions: '<div class="file-actions">\n' +
+                '    <div class="file-footer-buttons">\n' +
+                '        {upload} {zoom} {other}' +
+                '    </div>\n' +
+                '    {drag}\n' +
+                '    <div class="clearfix"></div>\n' +
+                '</div>',
+            }
+
+        });
+</script>
 @stop
