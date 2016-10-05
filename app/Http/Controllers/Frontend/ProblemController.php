@@ -109,7 +109,7 @@ class ProblemController extends Controller
     {
         $problem->delete();
 
-        return redirect(route('customer.index'));
+        return redirect(route('problem.index'));
     }
 
 }
