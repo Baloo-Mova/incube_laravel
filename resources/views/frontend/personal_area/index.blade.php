@@ -76,7 +76,7 @@
                                                 <a href="{{url('/customer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
                                                     <span class="glyphicon glyphicon-pencil"></span></a>
 
-                                                <a href="#" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
+                                                <a href="{{url('/customer/delete/'. $item->id)}}" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
                                             @endif
@@ -231,7 +231,7 @@
                                 <tr>    
                                     <td>{{$item->id}}</td>
                                     <td>
-                                        <p>{{$item->name}}</p>
+                                        <p>{{$item->second_name." ".$item->first_name." ".$item->last_name}}</p>
                                        
                                     </td>
                                     <td>{{$item->id}}</td>

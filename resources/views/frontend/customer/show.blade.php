@@ -25,7 +25,7 @@
                 </div>
                 <div class="btn-group pull-left">
                     <a href="{{ route('problem.delete', ['id'=>$problem->id]) }}"
-                       onclick="return confirm('Вы точно хотите удалить проэкт?')"
+                       onclick="return confirm('Ви впевнені, що хочете видалити цю проблему?')"
                        class="btn-danger btn">Видалити</a>
                 </div>
                 @endif

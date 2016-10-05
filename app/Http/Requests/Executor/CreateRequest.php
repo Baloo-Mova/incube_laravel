@@ -23,20 +23,24 @@ class CreateRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'name' => 'required',
-            //'date_birth'        => 'required',
-            //'experience'        => 'reguired', 
-            //'education'         => 'reguired',
-            //'description'       => 'reguired',
-            //'adress'            => 'reguired',
-            //'phone'             => 'reguired',
+            'first_name' => 'required',
+            'second_name' => 'required',
+            'last_name' => 'required',
+            'date_birth'        => 'required',
+            'experience'        => 'required',
+            'education'         => 'required',
+            'description'       => 'required',
+            'adress'            => 'required',
+            'phone'             => 'required',
             'email' => Auth::check() ? '' : 'required|email|unique:users',
         ];
     }
 
     public function messages() {
         return[
-            'name.required' => "Поле Прізвище Ім'я По-батькові обов'язкове для заповнення",
+            'first_name.required' => "Поле Ім'я обов'язкове для заповнення",
+            'second_name.required' => "Поле Прізвище обов'язкове для заповнення",
+            'last_name.required' => "Поле По-батькові обов'язкове для заповнення",
             'date_birth.required' => "Поле Дата Народження обов'язкове для заповнення",
             'experience.required' => "Поле Досвід роботи обов'язкове для заповнення",
             'education.required' => "Поле Освіта обов'язкове для заповнення",

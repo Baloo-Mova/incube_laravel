@@ -19,19 +19,26 @@ use Illuminate\Support\Facades\Mail;
 class ExecutorController extends Controller {
 
     public function index() {
-        $executorProjects = UserForm::withAll()->where([
+        $executors = UserForm::withAll()->where([
             'status_id' => Status::PUBLISHED,
             'form_type_id'=> TableType::Executor
         ])->orderBy('id', 'desc')->take(10)->get();
 
-        $projects = UserForm::withAll()->where([
+        $designers = UserForm::withAll()->where([
             'status_id' => Status::PUBLISHED,
-            'form_type_id'=> TableType::Project
+            'form_type_id'=> TableType::Designer
         ])->orderBy('id', 'desc')->take(10)->get();
-        
+
+        $problems = UserForm::withAll()->where([
+            'status_id' => Status::PUBLISHED,
+            'form_type_id' => TableType::Problem
+        ])->orderBy('id', 'desc')->take(10)->get();
+
+
         return view('frontend.executor.index')->with([
-                    'executorProjects' => $executorProjects,
-                    'projects' => $projects,
+                    'executors' => $executors,
+                    'problems' => $problems,
+                    'designers' => $designers,
         ]);
     }
 
@@ -59,6 +66,13 @@ class ExecutorController extends Controller {
         }
 
         $model->author_id = Auth::check() ? Auth::user()->id : $user->id;
+
+        if ($request->hasFile('logo_img_file')) {
+            $filename = uniqid('executor', true) . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
+            $request->file('logo_img_file')->storeAs('documents', $filename);
+            $model->logo = $filename;
+        }
+
         $model->save();
 
         if (!Auth::check()) {
@@ -69,7 +83,7 @@ class ExecutorController extends Controller {
     }
 
     public function edit(EditRequest $request, UserForm $executor) {
-       
+
        return view('frontend.executor.edit', compact('executor'));
     }
 
@@ -77,6 +91,13 @@ class ExecutorController extends Controller {
 
        $executor->fill($request->all());
        $executor->status_id = Status::EDITED;
+
+        if ($request->hasFile('logo_img_file')) {
+            $filename = uniqid('executor', true) . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
+            $request->file('logo_img_file')->storeAs('documents', $filename);
+            $executor->logo = $filename;
+        }
+
        $executor->save();
 
         return back()->with(['message' => 'Заявка оновлена']);

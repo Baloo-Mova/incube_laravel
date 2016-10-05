@@ -87,6 +87,13 @@ class ProblemController extends Controller
 
         $problem->fill($request->all());
         $problem->status_id = Status::EDITED;
+
+        if ($request->hasFile('logo_img_file')) {
+            $filename = uniqid('problem', true) . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
+            $request->file('logo_img_file')->storeAs('documents', $filename);
+            $problem->logo = $filename;
+        }
+
         $problem->save();
 
         return back()->with(['message' => 'Відредаговано']);
@@ -94,7 +101,6 @@ class ProblemController extends Controller
 
     public function show(UserForm $problem)
     {
-        //dd($problem);
         return view('frontend.customer.show', compact('problem'));
     }
 
@@ -102,7 +108,7 @@ class ProblemController extends Controller
     {
         $problem->delete();
 
-        return redirect(route('customer.index'));
+        return redirect(route('customer/'));
     }
 
 }

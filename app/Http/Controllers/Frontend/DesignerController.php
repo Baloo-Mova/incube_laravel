@@ -56,7 +56,7 @@ class DesignerController extends Controller
     {
         $model = new UserForm();
         $model->fill($request->all());
-        $model->form_type_id = TableType::Project;
+        $model->form_type_id = TableType::Designer;
         $reg_email = $request->get('reg_email');
         $pass = str_random(10);
 

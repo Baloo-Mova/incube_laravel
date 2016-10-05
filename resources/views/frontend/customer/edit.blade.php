@@ -104,13 +104,8 @@
                     <div class="form-group">
                         <label class="control-label" for="email">Логотип:</label>
 
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-photo">
-                                </i>
-                            </div>
                             <input type="file" name="logo_img_file" class="form-control" id="file_up">
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -127,15 +122,15 @@
 @stop
 @section('js')
     <script type="text/javascript">
-        {{--$("#file_up").fileinput({--}}
-            {{--'showUpload': false,--}}
-            {{--'previewFileType': 'image',--}}
-            {{--'allowedFileTypes': ['image'],--}}
-            {{--'initialPreview': [--}}
-                {{--@if (!empty($problem->logo)) '{{route('images.show',['name'=>'problem','id'=>$problem->logo, 'width'=>'max', 'height'=>'max'])}}' @endif,--}}
-            {{--],--}}
-            {{--'initialPreviewAsData': true,--}}
-        {{--});--}}
+        $("#file_up").fileinput({
+            'showUpload': false,
+            'previewFileType': 'image',
+            'allowedFileTypes': ['image'],
+            'initialPreview': [
+                @if (!empty($problem->logo)) '{{route('images.show',['name'=>'problem','id'=>$problem->logo, 'width'=>'max', 'height'=>'max'])}}' @endif,
+            ],
+            'initialPreviewAsData': true,
+        });
 
         $('#country_id').on('change', function () {
             var id = $(this).val();
@@ -154,9 +149,8 @@
             });
         });
 
-    </script>
-    <script src="{{ asset('tinymce/js/tinymce/tinymce.min.js')}}"></script>
-    <script>
+
+
         tinymce.init({
             selector: "textarea",
             language: 'uk_UA',

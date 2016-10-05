@@ -17,11 +17,11 @@
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{$executor->name }}</h3>
+                    <h3 class="panel-title">{{$executor->second_name." ".$executor->first_name." ".$executor->last_name}}</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ url('/img/250n300.png') }}" class="img-circle img-responsive"> </div>
+                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ route('images.show', ['id'=> (empty($executor->logo)? 'empty' : $executor->logo),'height'=>'max','width'=>'max']) }}" class="img-responsive"> </div>
 
                         <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
                           <dl>
@@ -87,7 +87,7 @@
                             <a href="{{route('executor.edit',['executor'=>$executor->id])}}" class="btn-primary btn">Оновити</a>
                         </div>
                         <div class="btn-group pull-lef">
-                            <a href="{{ route('executor.delete', ['id'=>$executor->id]) }}" class="btn-danger btn" onclick="return confirm('Вы точно хотите удалить проэкт?')">Видалити</a>
+                            <a href="{{ route('executor.delete', ['id'=>$executor->id]) }}" class="btn-danger btn" onclick="return confirm('Ви впевнені, що хочете видалити це резюме?')">Видалити</a>
                         </div>
                 @endif
                 @endif
