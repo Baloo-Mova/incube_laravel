@@ -79,48 +79,48 @@
             </div>
         </div>
 
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('country_id')?'has-error':'' }}">
-                    <label class="control-label" for="region">Країна проблеми
-                        <span class="form-required">*</span></label>
-                    <select id="country_id" class="form-control" name="country_id">
-                        @if(old('country_id')==null)
-                        <option value="" selected disabled>Оберіть країну</option>
+         <div class="col-md-offset-2">
+                <div class="col-md-10">
+                    <div class="form-group {{ $errors->has('country_id')?'has-error':'' }}">
+                        <label class="control-label" for="region">Країна проблеми
+                            <span class="form-required">*</span></label>
+                        <select id="country_id" class="form-control" name="country_id">
+                            @if(old('country_id')==null)
+                                <option value="" selected disabled>Оберіть країну</option>
+                            @endif
+                            @foreach(\App\Models\Country::all() as $country)
+                                <option value="{{ $country->id }}" {{ ( old('country_id') == $country->id ? "selected":"") }}>{{ $country->name }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('country_id'))
+                            <span class="control-label"> {{ $errors->first('country_id') }}</span>
                         @endif
-                        @foreach(\App\Models\Country::all() as $country)
-                        <option value="{{ $country->id }}" {{ ( old('country_id') == $country->id ? "selected":"") }}>{{ $country->name }}</option>
-                        @endforeach
-                    </select>
-                    @if($errors->has('country_id'))
-                    <span class="control-label"> {{ $errors->first('country_id') }}</span>
-                    @endif
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group {{ $errors->has('city_id')?'has-error':'' }}">
-                    <label class="control-label" for="region">Регіон проблеми</label>
-                    <select id="city_id" class="form-control" name="city_id">
+            <div class="col-md-offset-2">
+                <div class="col-md-10">
+                    <div class="form-group {{ $errors->has('city_id')?'has-error':'' }}">
+                        <label class="control-label" for="region">Регіон проблеми</label>
+                        <select id="city_id" class="form-control" name="city_id">
 
-                    </select>
-                    @if($errors->has('city_id'))
-                    <span class="control-label"> {{ $errors->first('city_id') }}</span>
-                    @endif
+                        </select>
+                        @if($errors->has('city_id'))
+                            <span class="control-label"> {{ $errors->first('city_id') }}</span>
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group">
-                    <label class="control-label" for="email">Логотип:</label>
-                    <input type="file" name="logo_img_file" class="form-control" id="file_up">
+       <div class="col-md-offset-2">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label class="control-label" for="email">Логотип:</label>
+                        <input type="file" name="logo_img_file" class="form-control" id="logo">
+                    </div>
                 </div>
             </div>
-        </div>
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
@@ -134,28 +134,28 @@
 @stop
 @section('js')
 <script type="text/javascript">
-    $("#file_up").fileinput({
+    $("#logo").fileinput({
         'showUpload': false,
         'previewFileType': 'any',
         'allowedFileTypes': ['image'],
         'multiple': false
     });
     $('#country_id').on('change', function () {
-        var id = $(this).val();
+            var id = $(this).val();
 
-        $.ajax({
-            url: "{{ url('/get/cities/') }}/" + id,
-            success: function (data) {
-                var select = $('#city_id');
-                select.find('option').remove();
-                select.append('<option selected value="0">Усi</option>');
-                $.each(data, function (i, item) {
-                    select.append('<option value="' + i + '"> ' + item + ' </option>');
-                });
-            },
-            dataType: "json"
+            $.ajax({
+                url     : "{{ url('/get/cities/') }}/" + id,
+                success : function (data) {
+                    var select = $('#city_id');
+                    select.find('option').remove();
+                    select.append('<option selected value="0">Усi</option>');
+                    $.each(data, function (i, item) {
+                        select.append('<option value="' + i + '"> ' + item + ' </option>');
+                    });
+                },
+                dataType: "json"
+            });
         });
-    });
 
     tinymce.init({
         selector: "textarea",

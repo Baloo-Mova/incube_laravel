@@ -19,7 +19,7 @@ use App\Models\Country;
 use App\Models\EconomicActivities;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -65,7 +65,18 @@ class PersonalAreaController extends Controller
         $myUser=Auth::user();
 
         $myUser->fill($request->all());
-       
+       if ($request->hasFile('logo_img_file')) {
+            $filename = uniqid('user', true) . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
+            $request->file('logo_img_file')->storeAs('documents', $filename);
+            Storage::disk('documents')->delete($myUser->logo);
+            $myUser->logo = $filename;
+        }
+        if ($request->hasFile('bg_img_file')) {
+            $filename = uniqid('user', true) . '.' . $request->file('bg_img_file')->getClientOriginalExtension();
+            $request->file('bg_img_file')->storeAs('documents', $filename);
+            Storage::disk('documents')->delete($myUser->bg_logo);
+            $myUser->bg_logo = $filename;
+        }
         $myUser->save();
 
         return back()->with(['message' => 'Редагування завершено']);

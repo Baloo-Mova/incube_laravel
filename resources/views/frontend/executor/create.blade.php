@@ -212,15 +212,14 @@
         </div>
 
 
-        <div class="col-md-offset-2">
+      <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group">
                     <label class="control-label" for="site">Резюме(в ел. варіанті):</label>
                     <input type="text" value="{{ old('site') }}" name="site" class="form-control" id="text">
                 </div>
-            </div> 
+            </div>
         </div>
-
         <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group">

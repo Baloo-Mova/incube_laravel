@@ -13,6 +13,7 @@ use App\Models\TableType;
 use App\Models\UserForm;
 use App\Notifications\RegisterSuccess;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use App\User;
 
@@ -87,13 +88,12 @@ class ProblemController extends Controller
 
         $problem->fill($request->all());
         $problem->status_id = Status::EDITED;
-
-        if ($request->hasFile('logo_img_file')) {
+         if ($request->hasFile('logo_img_file')) {
             $filename = uniqid('problem', true) . '.' . $request->file('logo_img_file')->getClientOriginalExtension();
             $request->file('logo_img_file')->storeAs('documents', $filename);
+            Storage::disk('documents')->delete($problem->logo);
             $problem->logo = $filename;
         }
-
         $problem->save();
 
         return back()->with(['message' => 'Відредаговано']);
@@ -101,6 +101,7 @@ class ProblemController extends Controller
 
     public function show(UserForm $problem)
     {
+        //dd($problem);
         return view('frontend.customer.show', compact('problem'));
     }
 
@@ -108,7 +109,7 @@ class ProblemController extends Controller
     {
         $problem->delete();
 
-        return redirect(route('customer/'));
+        return redirect(route('customer.index'));
     }
 
 }

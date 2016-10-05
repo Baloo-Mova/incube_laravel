@@ -331,37 +331,23 @@
             </div>
         </div>
 
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group">
-                    <label class="control-label" for="email">Логотип:</label>
-
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-photo">
-                            </i>
-                        </div>
-                        <input type="file" name="logo_img_file" class="form-control" id="file_up">
+          <div class="col-md-offset-2">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label class="control-label" for="email">Логотип:</label>
+                        <input type="file" name="logo_file" class="form-control" id="logo">
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-offset-2">
-            <div class="col-md-10">
-                <div class="form-group">
-                    <label class="control-label" for="email">Інші файли:</label>
-
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-upload">
-                            </i>
-                        </div>
-                        <input type="file" name="project_files" class="form-control" id="file_up">
+            <div class="col-md-offset-2">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label class="control-label" for="email">Інші файли:</label>
+                        <input type="file" name="project_files[]" multiple class="form-control" id="documents">
                     </div>
                 </div>
             </div>
-        </div>
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
@@ -390,11 +376,44 @@
                     dataType: "json"
             });
     });
-    $("#file_up").fileinput({
-            'showUpload'      : false,
-            'previewFileType' : 'any',
+   $("#logo").fileinput({
+            'showUpload': false,
+            'previewFileType': 'any',
             'allowedFileTypes': ['image'],
-            'multiple'        : false
+            'multiple': false,
+            initialPreview: [
+                "{{route('images.show',['id'=>$designer->logo,'width'=>'max','height'=>'max'])}}"
+            ],
+            initialPreviewAsData: true,
+            layoutTemplates: {
+                actions: '<div class="file-actions">\n' +
+                '    <div class="file-footer-buttons">\n' +
+                '        {upload} {zoom} {other}' +
+                '    </div>\n' +
+                '    {drag}\n' +
+                '    <div class="clearfix"></div>\n' +
+                '</div>',
+            }
+        });
+        $("#documents").fileinput({
+            'showUpload': false,
+            'previewFileType': 'any',
+            initialPreview: [
+                @foreach($designer->documents as $i=>$file)
+                        "{{route('images.show',['id'=>$file->name,'width'=>'max','height'=>'max'])}}",
+                @endforeach
+            ],
+            initialPreviewAsData: true,
+            layoutTemplates: {
+                actions: '<div class="file-actions">\n' +
+                '    <div class="file-footer-buttons">\n' +
+                '        {upload} {zoom} {other}' +
+                '    </div>\n' +
+                '    {drag}\n' +
+                '    <div class="clearfix"></div>\n' +
+                '</div>',
+            }
+
         });
     </script>
 <script src="{{ asset('tinymce/js/tinymce/tinymce.min.js')}}"></script>

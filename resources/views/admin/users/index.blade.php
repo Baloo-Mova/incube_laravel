@@ -9,7 +9,7 @@
     <div class="row">
 
         <div >
-            <a href="{{ route('admin.investor.create') }}" class="btn btn-danger center">Подати питання</a>
+            <a href="{{ route('admin.users.create') }}" class="btn btn-danger center">Створити користувача</a>
         </div>
     </div>
     <hr/>
@@ -19,11 +19,11 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th><a class="" href="#">Автор</a></th>
-                                    <th><a class="" href="#">Назва питання</a></th>
-                                    <th><a class="" href="#">Галузь</a></th>
+                                    <th><a class="" href="#">ПІБ</a></th>
+                                    <th><a class="" href="#">e-mail</a></th>
+                                    <th><a class="" href="#">Країна</a></th>
+                                    <th><a class="" href="#">Права</a></th>
                                     <th><a class="" href="#">Дата створення</a></th>
-                                    <th><a class="" href="#">Статус</a></th>
                                     <th><a class="" href="#"></a></th>
                                 </tr>
                                 <tr>
@@ -37,27 +37,27 @@
                                 </tr>
                                 </thead>
                                 <tbody class='text-center'>
-                                @foreach($projects as $item)
+                                @foreach($ListUsers as $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
-                                        <td><a href="#">{{$item->author_id}}</a></td>
-                                        <td>{{$item->name}}</td>
+                                        <td><a href="#">{{$item->name}}</a></td>
+                                        <td>{{$item->email}}</td>
                                         <td>
-                                            <strong>{{$item->economicActivities->parent->name or ''}}</strong>
-                                            <p>{{$item->economicActivities->name }}</p>
+                                           {{$item->country->name or ''}}
+                                        </td>
+                                        <td> {{ $item->user_type_id }}
                                         </td>
                                         <td>{{$item->created_at}}</td>
-                                        <td> {{ $item->status->name }}
-                                        </td>
+                                        
                                         <td>
-                                            <a href="{{route('admin.investor.show', [$item->id])}}" title="View" aria-label="View" data-pjax="0">
+                                            <a href="{{route('admin.users.show', [$item->id])}}" title="View" aria-label="View" data-pjax="0">
                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                             </a>
                                             
-                                                <a href="{{route('admin.investor.edit', [$item->id])}}" title="Update" aria-label="Update" data-pjax="0">
+                                                <a href="{{route('admin.users.edit', [$item->id])}}" title="Update" aria-label="Update" data-pjax="0">
                                                     <span class="glyphicon glyphicon-pencil"></span></a>
 
-                                                <a href="{{route('admin.investor.delete', ['id'=>$item->id]) }}" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
+                                                <a href="{{ route('admin.users.delete', ['id'=>$item->id]) }}" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
                                             
