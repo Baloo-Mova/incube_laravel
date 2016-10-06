@@ -1,8 +1,8 @@
 <ul class="nav nav-pills nav-stacked well">
 
     <li class="{{ Route::is('personal_area') ? 'active':'' }}">
-        <a href="javascript:;" data-toggle="collapse" data-target="#customer"><i class="fa fa-file-text-o"></i> Проекти <i class="fa fa-fw fa-caret-down"></i></a>
-        <ul id="customer" class="nav nav-pills nav-stacked lpadding {{((Request::is('personal-area/projects') ||Request::is('personal-area/projects/*') )? 'collapse in' : 'collapse') }}">
+        <a href="javascript:;" data-toggle="collapse" class="" data-target="#customer"><i class="fa fa-file-text-o"></i> Проекти <i class="fa fa-fw fa-caret-down"></i></a>
+        <ul id="customer" class="nav nav-pills nav-stacked lpadding {{((Request::is('personal-area/projects') ||Request::is('personal-area/projects/*') ||Request::is('personal-area') )? 'collapse in' : 'collapse')}}">
             <li class="{{ Route::is('personal_area.customer') ? 'active':'' }}">
                 <a href="{{route("personal_area.customer")}}">Питання (проблеми)</a>
             </li>

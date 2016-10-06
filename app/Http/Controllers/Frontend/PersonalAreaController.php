@@ -56,7 +56,7 @@ class PersonalAreaController extends Controller
     public function customer()
     {
         $thisUser = Auth::user();
-        $usersCustomerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Problem])->paginate(5);
+        $usersCustomerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Problem])->paginate(config('app.post_per_page'));
         return view('frontend.personal_area.customer')->with([
             'thisUser'              => $thisUser,
             'usersCustomerProjects' => $usersCustomerProjects,
@@ -66,7 +66,7 @@ class PersonalAreaController extends Controller
     public function investor()
     {
         $thisUser = Auth::user();
-        $usersInvestorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Investor])->paginate(5);
+        $usersInvestorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Investor])->paginate(config('app.post_per_page'));
         return view('frontend.personal_area.investor')->with([
             'thisUser'              => $thisUser,
             'usersInvestorProjects' => $usersInvestorProjects,
@@ -76,7 +76,7 @@ class PersonalAreaController extends Controller
     public function designer()
     {
         $thisUser = Auth::user();
-        $usersDesignerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Designer])->paginate(5);
+        $usersDesignerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Designer])->paginate(config('app.post_per_page'));
         return view('frontend.personal_area.designer')->with([
             'thisUser'              => $thisUser,
             'usersDesignerProjects' => $usersDesignerProjects,
@@ -86,7 +86,7 @@ class PersonalAreaController extends Controller
     public function executor()
     {
         $thisUser = Auth::user();
-        $usersExecutorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Executor])->paginate(5);
+        $usersExecutorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Executor])->paginate(config('app.post_per_page'));
         return view('frontend.personal_area.executor')->with([
             'thisUser'              => $thisUser,
             'usersExecutorProjects' => $usersExecutorProjects,
@@ -96,7 +96,7 @@ class PersonalAreaController extends Controller
     public function event()
     {
         $thisUser = Auth::user();
-        $usersNotifications = $thisUser->notifications()->orderBy('created_at', 'desc')->paginate(10);
+        $usersNotifications = $thisUser->notifications()->orderBy('created_at', 'desc')->paginate(config('app.post_per_page'));
         return view('frontend.personal_area.event')->with([
             'thisUser'              => $thisUser,
             'usersNotifications' => $usersNotifications,

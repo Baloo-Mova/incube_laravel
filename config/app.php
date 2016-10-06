@@ -223,4 +223,9 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
+    /*
+     * Number of post on page
+     * */
+    'post_per_page' => 5,
+
 ];
