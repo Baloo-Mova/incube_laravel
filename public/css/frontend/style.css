@@ -1607,6 +1607,9 @@ img.carusel-block-img{
     font-weight: bold; 
 
 }
+.lpadding{
+    padding-left: 15px;
+}
 @media (max-width: 768px) {
     .navbar-brand img{
         height: 40px;

@@ -35,7 +35,7 @@ class PersonalAreaController extends Controller
         
         $thisUser = Auth::user();
         $usersCustomerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Problem])->paginate(5);
-        $usersInvestorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Investor])->paginate(1);
+        $usersInvestorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Investor])->paginate(5);
         $usersDesignerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Designer])->paginate(5);
         $usersExecutorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Executor])->paginate(5);
         $usersEmployerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Employer])->paginate(5);
@@ -50,6 +50,56 @@ class PersonalAreaController extends Controller
         'usersExecutorProjects' => $usersExecutorProjects,
         'usersEmployerProjects' => $usersEmployerProjects,
         'usersNotifications'    => $usersNotifications,
+        ]);
+    }
+
+    public function customer()
+    {
+        $thisUser = Auth::user();
+        $usersCustomerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Problem])->paginate(5);
+        return view('frontend.personal_area.customer')->with([
+            'thisUser'              => $thisUser,
+            'usersCustomerProjects' => $usersCustomerProjects,
+        ]);
+    }
+
+    public function investor()
+    {
+        $thisUser = Auth::user();
+        $usersInvestorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Investor])->paginate(5);
+        return view('frontend.personal_area.investor')->with([
+            'thisUser'              => $thisUser,
+            'usersInvestorProjects' => $usersInvestorProjects,
+        ]);
+    }
+
+    public function designer()
+    {
+        $thisUser = Auth::user();
+        $usersDesignerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Designer])->paginate(5);
+        return view('frontend.personal_area.designer')->with([
+            'thisUser'              => $thisUser,
+            'usersDesignerProjects' => $usersDesignerProjects,
+        ]);
+    }
+
+    public function executor()
+    {
+        $thisUser = Auth::user();
+        $usersExecutorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Executor])->paginate(5);
+        return view('frontend.personal_area.executor')->with([
+            'thisUser'              => $thisUser,
+            'usersExecutorProjects' => $usersExecutorProjects,
+        ]);
+    }
+
+    public function event()
+    {
+        $thisUser = Auth::user();
+        $usersNotifications = $thisUser->notifications()->orderBy('created_at', 'desc')->paginate(10);
+        return view('frontend.personal_area.event')->with([
+            'thisUser'              => $thisUser,
+            'usersNotifications' => $usersNotifications,
         ]);
     }
     

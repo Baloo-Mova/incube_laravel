@@ -80,7 +80,12 @@ Route::group(['namespace' => 'Frontend'], function () {
     });
 
     Route::group(['prefix' => 'personal-area'], function () {
-        Route::get('/', ['uses' => 'PersonalAreaController@index', 'as' => 'personal_area.index']);
+        Route::get('/', ['uses' => 'PersonalAreaController@customer', 'as' => 'personal_area.customer']);
+        Route::get('projects/customer', ['uses' => 'PersonalAreaController@customer', 'as' => 'personal_area.customer']);
+        Route::get('projects/investor', ['uses' => 'PersonalAreaController@investor', 'as' => 'personal_area.investor']);
+        Route::get('projects/designer', ['uses' => 'PersonalAreaController@designer', 'as' => 'personal_area.designer']);
+        Route::get('projects/executor', ['uses' => 'PersonalAreaController@executor', 'as' => 'personal_area.executor']);
+        Route::get('/event', ['uses' => 'PersonalAreaController@event', 'as' => 'personal_area.event']);
         Route::get('/edit', ['uses' => 'PersonalAreaController@edit', 'as' => 'personal_area.edit']);
         Route::post('/edit', ['uses' => 'PersonalAreaController@update', 'as' => 'personal_area.update']);
         Route::get('/security', ['uses' => 'PersonalAreaController@security', 'as' => 'personal_area.security']);
