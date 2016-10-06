@@ -41,6 +41,7 @@ class PersonalAreaController extends Controller
         $usersEmployerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Employer])->paginate(5);
 
         $usersNotifications = $thisUser->notifications()->orderBy('created_at', 'desc')->paginate(10);
+
         return view('frontend.personal_area.index')->with([
         'thisUser'              => $thisUser,
         'usersCustomerProjects' => $usersCustomerProjects, 

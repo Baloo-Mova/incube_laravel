@@ -20,7 +20,7 @@
                 <div class="select-tabs">
                     <ul class="nav nav-tabs" id="myTab">
                         <li class='active'>
-                            <a href="#customerProj" data-toggle="tab"><i class="fa fa-caret-down" f></i> Питання(проблеми)</a>
+                            <a href="#customerProj" data-toggle="tab"><i class="fa fa-caret-down"></i> Питання(проблеми)</a>
                         </li>
                         <li>
                             <a href="#investorProj" data-toggle="tab"><i class="fa fa-caret-down"></i> Заявки на інвестування</a>
@@ -83,7 +83,7 @@
                                 </tbody>
 
                             </table>
-                            {{ $usersCustomerProjects->links() }}
+                            {{ $usersCustomerProjects->fragment('customerProj')->links() }}
                         </div>
                     </div>
                     <!--customer end -->
@@ -141,7 +141,7 @@
                                 </tbody>
 
                             </table>
-                            {{ $usersInvestorProjects->links() }}
+                            {{ $usersInvestorProjects->fragment('investorProj')->links() }}
                         </div>
                     </div>
                     
@@ -199,7 +199,7 @@
                                 </tbody>
 
                             </table>
-                            {{ $usersDesignerProjects->links() }}
+                            {{ $usersDesignerProjects->fragment('designerProj')->links() }}
                         </div>
                     </div>
                 
@@ -256,7 +256,7 @@
                                 </tbody>
 
                             </table>
-                        {{ $usersExecutorProjects->links() }}
+                        {{ $usersExecutorProjects->fragment('executerProj')->links() }}
                         </div>
                     </div>
 
@@ -310,7 +310,7 @@
                                 </tbody>
 
                             </table>
-                            {{ $usersEmployerProjects->links() }}
+                            {{ $usersEmployerProjects->fragment('employerProj')->links() }}
                         </div>
                     </div>
                     <!--employer end -->
@@ -344,29 +344,11 @@
                                 </tr>
                                 </thead>
                                 <tbody class='text-center'>
+
                                 @foreach($usersNotifications as $item)
                                 <tr class="<?php if(rand(0,1)!=0) echo 'new-message';?>">    
                                     <td><input type="checkbox" value=""></td>
-                                    <td>{{$item->id}}</td>
-                                    <td>{{$item->name}}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>{{ $item->created_at }}</td>
-                                    <td> {{ $item->status->name }}
-                                    </td>
-                                    <td>
-                                        <a href="{{url('/employer/show/'. $item->id)}}" title="View" aria-label="View" data-pjax="0">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </a>
-                                        @if($item->status->id!=2)  
-                                        <a href="{{url('/employer/edit/'. $item->id)}}" title="Update" aria-label="Update" data-pjax="0">
-                                            <span class="glyphicon glyphicon-pencil"></span></a> 
 
-                                                <a href="#" title="Delete" aria-label="Delete" data-confirm="Ви Дійсно хочете видалити заявку?" data-method="post" data-pjax="0">
-                                                    <span class="glyphicon glyphicon-trash"></span>
-                                                </a>
-                                            @endif
-                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -383,42 +365,16 @@
 @section('js')
     <script>
         $(function () {
-
+            function activaTab(tab){
+                $('.nav-tabs a[href="' + tab + '"]').tab('show');
+            }
             if(window.location.hash != ""){
-                $("#"+window.location.hash).addClass("active");
-                alert(window.location.hash);
+                activaTab(window.location.hash);
             }
 
-            $(".pagination a").on('click', function(e){
-                e.preventDefault();
-
-               var tmp_hash = window.location.hash;
-
-                if(tmp_hash == ""){
-                    window.location.href = this;
-                }else{
-                    window.location.href = this+tmp_hash;
-                }
-
-                
-
-            });
-
-            $('a[href="#customerProj"]').on('click', function () {
-                window.location.hash = "customerProj";
-            });
-            $('a[href="#investorProj"]').on('click', function () {
-                window.location.hash = "#investorProj";
-            });
-            $('a[href="#designerProj"]').on('click', function () {
-                window.location.hash = "designerProj";
-            });
-            $('a[href="#executerProj"]').on('click', function () {
-                window.location.hash = "executerProj";
-            });
-
-            $('a[href="#event"]').on('click', function () {
-                window.location.hash = "event";
+            $('#myTab li').on('click',function(){
+                var hash = $(this).find('a')[0].hash;
+                window.location.href = '/personal-area?page=1'+hash;
             });
         });
     </script>
