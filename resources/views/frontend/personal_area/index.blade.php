@@ -384,14 +384,22 @@
     <script>
         $(function () {
 
-            //window.location.hash = "customerProj";
+            if(window.location.hash != ""){
+                $("#"+window.location.hash).addClass("active");
+                alert(window.location.hash);
+            }
 
             $(".pagination a").on('click', function(e){
                 e.preventDefault();
-               var tmp_hash = window.location.hash,
-                    tmp_search = this.search,
-                       tmp_url = this;
-                window.location.href = this+tmp_hash;
+
+               var tmp_hash = window.location.hash;
+
+                if(tmp_hash == ""){
+                    window.location.href = this;
+                }else{
+                    window.location.href = this+tmp_hash;
+                }
+
                 
 
             });
