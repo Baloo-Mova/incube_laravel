@@ -34,11 +34,13 @@ class PersonalAreaController extends Controller
     public function index(){
         
         $thisUser = Auth::user();
-        $usersCustomerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Problem])->get();
-        $usersInvestorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Investor])->get();
-        $usersDesignerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Designer])->get();
-        $usersExecutorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Executor])->get();
-        $usersEmployerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Employer])->get();
+        $usersCustomerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Problem])->paginate(5);
+        $usersInvestorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Investor])->paginate(1);
+        $usersDesignerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Designer])->paginate(5);
+        $usersExecutorProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Executor])->paginate(5);
+        $usersEmployerProjects = UserForm::orderBy('id', 'desc')->where(['author_id'=>$thisUser->id,'form_type_id'=>TableType::Employer])->paginate(5);
+
+        $usersNotifications = $thisUser->notifications()->orderBy('created_at', 'desc')->paginate(10);
         return view('frontend.personal_area.index')->with([
         'thisUser'              => $thisUser,
         'usersCustomerProjects' => $usersCustomerProjects, 
@@ -46,7 +48,7 @@ class PersonalAreaController extends Controller
         'usersDesignerProjects' => $usersDesignerProjects,
         'usersExecutorProjects' => $usersExecutorProjects,
         'usersEmployerProjects' => $usersEmployerProjects,
-            
+        'usersNotifications'    => $usersNotifications,
         ]);
     }
     

@@ -27,9 +27,6 @@
                         </li>
                         <li><a href="#designerProj" data-toggle="tab"><i class="fa fa-caret-down"></i> Проекти</a></li>
                         <li><a href="#executerProj" data-toggle="tab"><i class="fa fa-caret-down"></i> Резюме</a></li>
-                        <li>
-                            <a href="#employerProj" data-toggle="tab"><i class="fa fa-caret-down"></i> Списки вакансій</a>
-                        </li>
                         <li><a href="#event" data-toggle="tab"><i class="fa fa-clock-o"></i> Оповіщення</a></li>
                     </ul>
                 </div>
@@ -86,6 +83,7 @@
                                 </tbody>
 
                             </table>
+                            {{ $usersCustomerProjects->links() }}
                         </div>
                     </div>
                     <!--customer end -->
@@ -143,6 +141,7 @@
                                 </tbody>
 
                             </table>
+                            {{ $usersInvestorProjects->links() }}
                         </div>
                     </div>
                     
@@ -200,6 +199,7 @@
                                 </tbody>
 
                             </table>
+                            {{ $usersDesignerProjects->links() }}
                         </div>
                     </div>
                 
@@ -256,6 +256,7 @@
                                 </tbody>
 
                             </table>
+                        {{ $usersExecutorProjects->links() }}
                         </div>
                     </div>
 
@@ -309,6 +310,7 @@
                                 </tbody>
 
                             </table>
+                            {{ $usersEmployerProjects->links() }}
                         </div>
                     </div>
                     <!--employer end -->
@@ -342,14 +344,14 @@
                                 </tr>
                                 </thead>
                                 <tbody class='text-center'>
-                                @foreach($usersCustomerProjects as $item)
+                                @foreach($usersNotifications as $item)
                                 <tr class="<?php if(rand(0,1)!=0) echo 'new-message';?>">    
                                     <td><input type="checkbox" value=""></td>
                                     <td>{{$item->id}}</td>
                                     <td>{{$item->name}}</td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
+                                    <td>{{ $item->created_at }}</td>
                                     <td> {{ $item->status->name }}
                                     </td>
                                     <td>
@@ -377,4 +379,39 @@
             </div>
         </div>
     </div>
+@stop
+@section('js')
+    <script>
+        $(function () {
+
+            //window.location.hash = "customerProj";
+
+            $(".pagination a").on('click', function(e){
+                e.preventDefault();
+               var tmp_hash = window.location.hash,
+                    tmp_search = this.search,
+                       tmp_url = this;
+                window.location.href = this+tmp_hash;
+                
+
+            });
+
+            $('a[href="#customerProj"]').on('click', function () {
+                window.location.hash = "customerProj";
+            });
+            $('a[href="#investorProj"]').on('click', function () {
+                window.location.hash = "#investorProj";
+            });
+            $('a[href="#designerProj"]').on('click', function () {
+                window.location.hash = "designerProj";
+            });
+            $('a[href="#executerProj"]').on('click', function () {
+                window.location.hash = "executerProj";
+            });
+
+            $('a[href="#event"]').on('click', function () {
+                window.location.hash = "event";
+            });
+        });
+    </script>
 @stop
