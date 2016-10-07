@@ -15,14 +15,19 @@ class AbortIfNotOwner
      *
      * @return mixed
      */
-    public function handle($request, Closure $next, $project)
+    public function handle($request, Closure $next, $name)
     {
         if (!Auth::check()) {
-            abort(401, 'Вы не авторизованы...');
+            abort('404');
         }
 
-        if (Auth::user()->id != $request->$project->author_id) {
-            abort('401','Вы не создатель...');
+        if(Auth::user()->isAdmin()){
+            return $next($request);
+        }
+
+        $form = $request->route($name);
+        if (!Auth::user()->can('touch', $form)) {
+            abort(404);
         }
 
         return $next($request);

@@ -21,6 +21,10 @@ use App\User;
 
 class ProblemController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkOwner:problem',['except'=>['index','create','store']]);
+    }
 
     public function index()
     {
@@ -75,17 +79,14 @@ class ProblemController extends Controller
         return redirect(route('personal_area.index'));
     }
 
-    public function edit(EditRequest $request, UserForm $problem)
+    public function edit(UserForm $problem)
     {
-
         $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();
-
         return view('frontend.problem.edit', compact('problem', 'economicActivities'));
     }
 
     public function update(UpdateRequest $request, UserForm $problem)
     {
-
         $problem->fill($request->all());
         $problem->status_id = Status::EDITED;
          if ($request->hasFile('logo_img_file')) {
@@ -101,14 +102,12 @@ class ProblemController extends Controller
 
     public function show(UserForm $problem)
     {
-        //dd($problem);
         return view('frontend.problem.show', compact('problem'));
     }
 
     public function delete(UserForm $problem)
     {
         $problem->delete();
-
         return redirect(route('problem.index'));
     }
 

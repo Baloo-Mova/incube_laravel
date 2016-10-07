@@ -25,7 +25,6 @@
 
     <div class="page-title text-center">
         <h2>Запропонуйте свою участь у вже опублікованих проектах</h2>
-        {{--<h5>або знайдіть роботу з поданих вакансій</h5>--}}
     </div>
 
     <br>
@@ -48,13 +47,10 @@
                 @endforelse
             </div>
         </div>
-
         <div id="designer" class="tab-pane fade">
             <div class="carusel" id="designers">
                 @forelse($designers as $item)
-
                     @include('frontend.partials.carusel_item',['item'=>$item])
-
                 @empty
                     <div class="row text-center">
                         <h3>Опубліковані пропозиції відсутні </h3>
@@ -63,23 +59,6 @@
             </div>
         </div>
     </div>
-
-    {{--<div class="tab-content">--}}
-        {{--<div class="page-title text-center">--}}
-            {{--<h2>Вже подані резюме</h2>--}}
-        {{--</div>--}}
-        {{--<div id="executor">--}}
-            {{--<div class="carusel" id="executors">--}}
-                {{--@forelse($executors as $item)--}}
-                    {{--@include('frontend.partials.carusel_item',['item'=>$item])--}}
-                {{--@empty--}}
-                    {{--<div class="row text-center">--}}
-                        {{--<h3>Резюме відсутні</h3>--}}
-                    {{--</div>--}}
-                {{--@endforelse--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
 
     <div class="text-center all-questions">
         <a class="btn btn-success btn-lg margin-auto" href="{{ route('project_viewer.index') }}">

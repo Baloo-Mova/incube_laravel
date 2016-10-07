@@ -1210,9 +1210,6 @@ span.round-tabs.five {
     color: #ffffff;
 }
 
-a:visited, a:active {
-    border: none;
-}
 
 @media (max-width: 585px) {
 

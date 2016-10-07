@@ -14,15 +14,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        if(!Auth::check())
-        {
-            return false;
-        }
-        if(Auth::user()->isAdmin()){
-            return true;
-        }
-        $form = $this->route('problem');
-        return Auth::user()->can('update', $form);
+        return true;
     }
 
     /**
@@ -36,9 +28,6 @@ class UpdateRequest extends FormRequest
             'name' => 'required|max:100',
             'country_id' => 'required',
             //'description' =>'reguired|min:100',
-            
-                      
-            
         ];
     }
 
@@ -50,7 +39,6 @@ class UpdateRequest extends FormRequest
             'country_id.required' => "Поле Країна інвестування обов'язкове для заповнення;",
             //'description.required' => "Поле Опис проблеми обов'язкове для заповнення",
             //'description.min' => 'Ви маєте надати більше інформації',
-            
         ];
     }
 

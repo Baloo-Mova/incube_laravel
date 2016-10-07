@@ -40,9 +40,6 @@
         <div class="page-title text-center">
             <h2>Інвестор може вкласти кошти у наступне</h2>
         </div>
-        
-        
-        
         <div class="select-tabs">
             <ul class="nav nav-tabs text-center" id="myTab">
                 <li class="active"><a href="#problem" data-toggle="tab">Проблеми</a></li>
@@ -53,9 +50,7 @@
             <div id="problem" class="tab-pane fade in active">
                  <div class="carusel" id="problems">
                 @forelse($problems as $item)
-                   
                         @include('frontend.partials.carusel_item',['item'=>$item])
-                    
                 @empty
                     <div class="row text-center">
                         <h3>Проблеми відсутні</h3>
@@ -67,9 +62,7 @@
             <div id="project" class="tab-pane fade">
                <div class="carusel" id="projects">
                 @forelse($projects as $item)
-                    
                         @include('frontend.partials.carusel_item',['item'=>$item])
-                   
                 @empty
                  </div>
                     <div class="row text-center">
@@ -86,7 +79,6 @@
         </div>
     </div>
 @stop
-
 
 @section('js')
     <script>

@@ -59,7 +59,7 @@
                         <td> {{ $item->status->name }}
                         </td>
                         <td>
-                            <a href="{{route("designer.show",['id'=>$item->id])}}" title="View" aria-label="View" data-pjax="0">
+                            <a href="{{route("project_viewer.show",['material'=>$item->id])}}" title="View" aria-label="View" data-pjax="0">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                             </a>
                             @if($item->status->id!=2)

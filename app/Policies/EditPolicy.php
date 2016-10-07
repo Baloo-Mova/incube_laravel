@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\UserForm;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -18,6 +19,10 @@ class EditPolicy {
      * @return mixed
      */
     public function update(User $user, Model $form) {
+        return $user->id == $form->author_id;
+    }
+
+    public function touch(User $user, UserForm $form){
         return $user->id == $form->author_id;
     }
 

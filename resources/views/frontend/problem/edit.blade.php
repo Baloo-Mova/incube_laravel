@@ -11,7 +11,7 @@
             <div class="col-md-offset-2">
                 <div class="c col-md-10 text-center">
                     <p class="alert alert-info">{{ Session::get('message') }}</p>
-                    <a href="{{ route('problem.show',['problem'=>$problem->id]) }}" class="btn-primary btn">Продивитись</a>
+                    <a href="{{ route('project_viewer.show',['material'=>$problem->id]) }}" class="btn-primary btn">Продивитись</a>
                 </div>
             </div>
         @endif

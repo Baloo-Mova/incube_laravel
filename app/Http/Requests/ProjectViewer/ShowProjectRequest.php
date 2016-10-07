@@ -16,7 +16,11 @@ class ShowProjectRequest extends FormRequest
     {
         $model = $this->route('material');
 
-        if($model->status_id != Status::PUBLISHED) {
+        if($model->author_id == \Auth::id()){
+            return true;
+        }
+
+        if($model->status_id != Status::PUBLISHED ) {
             return false;
         }
 

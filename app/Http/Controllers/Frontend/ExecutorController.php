@@ -17,6 +17,10 @@ use App\User;
 use Illuminate\Support\Facades\Mail;
 
 class ExecutorController extends Controller {
+    public function __construct()
+    {
+        $this->middleware('checkOwner:executor',['except'=>['index','create','store']]);
+    }
 
     public function index() {
         $executors = UserForm::withAll()->where([
@@ -79,10 +83,9 @@ class ExecutorController extends Controller {
             Auth::attempt(['email' => $email, 'password' => $pass]);
         }
         return redirect(route('personal_area.index'));
-        //return redirect(route('executor.index'));
     }
 
-    public function edit(EditRequest $request, UserForm $executor) {
+    public function edit(UserForm $executor) {
 
        return view('frontend.executor.edit', compact('executor'));
     }

@@ -27,7 +27,6 @@ class ProjectViewerController extends Controller {
     public function show(ShowProjectRequest $request, UserForm $material) {
 
         $files = [];
-
         if (!empty($material->logo)) {
             $files[] = $material->logo;
         }

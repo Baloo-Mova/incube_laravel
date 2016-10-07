@@ -8,97 +8,76 @@
 
 
     <div class="container-fluid">
-        <div class="row text-center">
-            <h1>{{ $investor->name }}</h1>
+        <div class="row">
+            <div class="text-center">
+                <h1>{{ $investor->name }}</h1>
+            </div>
+            <hr/>
         </div>
-        <hr/>
     </div>
-
     <div class="container">
         <div class="row">
-            <div class="description">
-                {!! $investor->description !!}
-            </div>
-        </div>
-        <div class="btn-toolbar">
-            @if(Auth::check())
-                @if(Auth::user()->can('edit', $investor) && $investor->status_id != \App\Models\Status::PUBLISHED)
-                    <div class="btn-group pull-left">
+            <div class="btn-toolbar">
+                <div class="btn-group pull-left">
+                    @if(Auth::check() && Auth::user()->can('edit', $investor))
                         <a href="{{ route('investor.edit', ['id'=>$investor->id]) }}"
                            class="btn-primary btn">Оновити</a>
-                    </div>
-                    <div class="btn-group pull-left">
                         <a href="{{ route('investor.delete', ['id'=>$investor->id]) }}"
                            onclick="return confirm('Вы точно хочете видалити проект?')"
                            class="btn-danger btn">Видалити</a>
-                    </div>
-                @endif
-                @if(Auth::user()->can('offer', $investor))
-                    <div class="btn-group pull-right">
+                    @endif
+                    @if(Auth::check() && Auth::user()->can('offer', $investor))
                         <a href="#" id="offer-project" data-toggle="modal" data-target="#myModal"
                            class="btn btn-primary"> <span><i class="fa fa-check"></i> Запропонувати проект</span>
                         </a>
-                    </div>
-                @endif
-            @endif
-        </div>
-
-        <div class="row">
-            <div class="col-md-10">
-                <hr/>
-                <label> Дата подачі заявки</label>
-                <div class="clearfix"></div>
-                {{ $investor->created_at->format("d.m.Y") }}
-                <hr/>
-            </div>
-            <div class="col-md-10">
-                <label> Сума інвестування</label>
-                <div class="clearfix"></div>
-                {{ $investor->money }} $
-                <hr/>
-            </div>
-            <div class="col-md-10">
-                <label>Галузь</label>
-                <div class="clearfix"></div>
-                @if(!$investor->economicActivities->isChildren())
-                    {{ $investor->economicActivities->name }}
-                @else
-                    {{ $investor->economicActivities->parent->name }}: <div class="clearfix"></div>  <span style="margin-left: 20px">{{ $investor->economicActivities->name }}</span>
                     @endif
-                <hr/>
+                </div>
             </div>
-            <div class="col-md-10">
-                <label> Країна</label>
-                <div class="clearfix"></div>
-                {{ $investor->country->name }}
-                <hr/>
+            <hr/>
+            <div class="description">
+                {!! $investor->description !!}
             </div>
+            <hr/>
+            <label> Дата подачі заявки</label>
+            <div class="clearfix"></div>
+            {{ $investor->created_at->format("d.m.Y") }}
+            <hr/>
+            <label> Сума інвестування</label>
+            <div class="clearfix"></div>
+            {{ $investor->money }} $
+            <hr/>
+            <label>Галузь</label>
+            <div class="clearfix"></div>
+            @if(!$investor->economicActivities->isChildren())
+                {{ $investor->economicActivities->name }}
+            @else
+                {{ $investor->economicActivities->parent->name }}:
+                <div class="clearfix"></div>  <span
+                        style="margin-left: 20px">{{ $investor->economicActivities->name }}</span>
+            @endif
+            <hr/>
+            <label> Країна</label>
+            <div class="clearfix"></div>
+            {{ $investor->country->name }}
+            <hr/>
             @if(isset($investor->city))
-            <div class="col-md-10">
                 <label> Область інвестування</label>
                 <div class="clearfix"></div>
                 {{ $investor->city->name }}
                 <hr/>
-            </div>
             @endif
-            <div class="col-md-10">
-                <label> Період реалізації інвестиційного проекту</label>
-                <div class="clearfix"></div>
-                {{ $investor->duration_project }}
-                <hr/>
-            </div>
-            <div class="col-md-10">
-                <label> Термін повернення вкладених коштів</label>
-                <div class="clearfix"></div>
-                {{ $investor->term_refund }}
-                <hr/>
-            </div>
-            <div class="col-md-10">
-                <label> Планована рентабельність проекту</label>
-                <div class="clearfix"></div>
-                {{ $investor->plan_rent }} %
-                <hr/>
-            </div>
+            <label> Період реалізації інвестиційного проекту</label>
+            <div class="clearfix"></div>
+            {{ $investor->duration_project }}
+            <hr/>
+            <label> Термін повернення вкладених коштів</label>
+            <div class="clearfix"></div>
+            {{ $investor->term_refund }}
+            <hr/>
+            <label> Планована рентабельність проекту</label>
+            <div class="clearfix"></div>
+            {{ $investor->plan_rent }} %
+            <hr/>
         </div>
     </div>
 
@@ -137,21 +116,21 @@
 @section('js')
     <script>
         $(document).ready(function () {
-            $('#send-project').click(function() {
+            $('#send-project').click(function () {
 
-               $.ajax({
-                   url: '{{ url('/create/offer') }}',
-                   method: 'POST',
-                   data: {
-                       '_token' : '{{ csrf_token() }}',
-                       'receiver_id': '{{ $investor->id }}',
-                       'receiver_type': '1', //investor table id
-                       'sender_id': '1', //random id
-                       'sender_type': '3' // project table id
-                   },
-                   success: function(response) {
-                       console.log(response);
-                   }
+                $.ajax({
+                    url: '{{ url('/create/offer') }}',
+                    method: 'POST',
+                    data: {
+                        '_token': '{{ csrf_token() }}',
+                        'receiver_id': '{{ $investor->id }}',
+                        'receiver_type': '1', //investor table id
+                        'sender_id': '1', //random id
+                        'sender_type': '3' // project table id
+                    },
+                    success: function (response) {
+                        console.log(response);
+                    }
                 })
             });
 

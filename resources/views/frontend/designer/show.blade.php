@@ -3,152 +3,128 @@
 @section('content')
     <div class="container">
         <div class="row page-title text-center">
-            <h2>Проект. Ідентифікаційний номер: {{ $project->id }}</h2>
+            <h2>Проект. Ідентифікаційний номер: {{ $designer->id }}</h2>
         </div>
 
-        <h2 class="text-center">{{ $project->name}} </h2>
-        <div class="row">
-
+        <h2 class="text-center">{{ $designer->name}} </h2>
+        <div class="row all-questions">
             <div class="col-md-8">
                 <div class="text-center owl-carousel owl-theme" id="owl-demo">
                     @foreach($files as $item)
                         <img class="img-responsive"
                              src="{{ route('images.show', ['id'=> $item,'height'=>'max','width'=>'max']) }}"
                              alt="">
-                        @endforeach
+                    @endforeach
                 </div>
-                <hr/>
-                <div class="">
+                @if(Auth::check() && Auth::user()->can('edit', $designer))
+                    <hr/>
                     <div class="btn-toolbar">
-
-
                         <div class="btn-group">
-                            <a href="{{ route('designer.edit', ['id'=>$project->id]) }}"
-                               class="btn-primary btn">Оновити</a>
-                        </div>
-                        <div class="btn-group">
-                            <a href="{{ route('designer.delete', ['id'=>$project->id]) }}"
+                            <a href="{{ route('designer.edit', ['id'=>$designer->id]) }}"
+                               class="btn btn-primary ">Оновити</a>
+                            <a href="{{ route('designer.delete', ['id'=>$designer->id]) }}"
                                onclick="return confirm('Вы точно бажаєте видалити цей проект?')"
-                               class="btn-danger btn">Видалити</a>
+                               class="btn btn-danger">Видалити</a>
                         </div>
-
                     </div>
-                </div>
-                <hr/>
+                    <hr/>
+                @endif
                 <div class="product-info">
-
                     <div class="tab-pane fade in active" id="service-one">
                         <section class="product-info">
 
                             <label>Мета проекту</label>
-                            <p>  {!! $project->idea !!}</p>
+                            <p>  {!! $designer->idea !!}</p>
 
                             <label>Дійсна ситуація</label>
-                            <p> {!! $project->current_situation !!}</p>
+                            <p> {!! $designer->current_situation !!}</p>
 
                             <label>Етап проекту</span></label>
-                            <p>  {{$project->stage->name }}</p>
+                            <p>  {{$designer->stage->name }}</p>
 
                             <label>Стислий опис проекту</label>
-                            <p> {!! $project->description !!}</p>
+                            <p> {!! $designer->description !!}</p>
 
                             <label>Проблема чи можливість</label>
-                            <p> {!! $project->problem !!}</p>
+                            <p> {!! $designer->problem !!}</p>
 
                             <label>Рішення(продукт чи послуга)</label>
-                            <p> {!! $project->solution !!}</p>
+                            <p> {!! $designer->solution !!}</p>
 
                             <label>Конкуренція</label>
-                            <p>  {!! $project->competition !!}</p>
+                            <p>  {!! $designer->competition !!}</p>
 
                             <label>Іноваційні аспекти та переваги проекту</label>
-                            <p>  {!! $project->benefits !!}</p>
+                            <p>  {!! $designer->benefits !!}</p>
 
                             <label>Фінансова частина / Бізнес-модель</label>
-                            <p>  {!! $project->buisness_model !!}</p>
+                            <p>  {!! $designer->buisness_model !!}</p>
 
                             <label>Цільове призначення інвестицій</label>
-                            <p>   {!! $project->money_target !!}</p>
+                            <p>   {!! $designer->money_target !!}</p>
 
                             <label>Пропозиції інвестору</label>
-                            <p>   {!! $project->investor_interest !!}</p>
+                            <p>   {!! $designer->investor_interest !!}</p>
 
                             <label>Опис ризиків</label>
-                            <p>   {!! $project->risks !!}</p>
+                            <p>   {!! $designer->risks !!}</p>
 
                             {{--<label>Контактні дані</label>
-                            <p>   {!! $project->contacts !!}</p>--}}
+                            <p>   {!! $designer->contacts !!}</p>--}}
                             <div>
                                 <label>Веб-сайт</label>
-                                <p><a href="#">{{ $project->site }}</a></p>
+                                <p><a href="#">{{ $designer->site }}</a></p>
                             </div>
                             <div>
                                 <label>YouTube посилання</label>
-                                <p><a href="#">{{ $project->youtube_link }}</a></p>
+                                <p><a href="#">{{ $designer->youtube_link }}</a></p>
                             </div>
                             <label>Інше</label>
-                            {!! $project->other !!}
+                            {!! $designer->other !!}
 
-
+                        </section>
                     </div>
-
-
-                    </section>
-
                 </div>
-
             </div>
 
             <div class="col-md-4" id="col">
                 <div class="panel panel-primary affix-top" id="fix-div">
                     <div class="text-center">
                         <label class="title-border">Галузь</label>
-                        @if(!$project->economicActivities->isChildren())
-                            <p>{{ $project->economicActivities->name }}</p>
+                        @if(!$designer->economicActivities->isChildren())
+                            <p>{{ $designer->economicActivities->name }}</p>
                         @else
-                            <p>{{ $project->economicActivities->parent->name }}:</p>
-                            <div class="clearfix"></div>
-                            <span style="margin-left: 20px">{{ $project->economicActivities->name }}</span>
+                            <p><b>{{ $designer->economicActivities->parent->name }}</b>:
+                                <span style="margin-left: 20px">{{ $designer->economicActivities->name }}</span>
+                            </p>
                         @endif
-                    </div>
-                    <div class="text-center">
-                        <label class="title-border">Країна</label>
-                        <p>{{ $project->country->name }}</p>
-                    </div>
-                    @if(isset($project->city))
-                        <div class="text-center">
-                            <label class="title-border">Регіон</label>
-                            <p>{{ $project->city->name }}</p>
-                        </div>
-                    @endif
-                    @if(isset($project->money))
-                        <div class="text-center">
-                            <label class="title-border">Вартість проекту</label>
-                            <p><?= number_format($project["money"], 0, '.', ' ') ?> $ </p>
-                        </div>
-                    @endif
 
-                    <div class="text-center">
-                        <a href="#" class="btn btn-primary"> <span><i class="fa fa-dollar"></i> Інвестувати </span>
-                        </a>
+                        <label class="title-border">Країна</label>
+                        <p>{{ $designer->country->name }}</p>
+
+                        @if(isset($designer->city))
+                            <label class="title-border">Регіон</label>
+                            <p>{{ $designer->city->name }}</p>
+                        @endif
+
+                        @if(isset($designer->money))
+                            <label class="title-border">Вартість проекту</label>
+                            <p><?= number_format($designer["money"], 0, '.', ' ') ?> $ </p>
+                        @endif
+
+                        @if(Auth::check() && Auth::user()->can('offer', $designer))
+                            <a href="#" class="btn btn-primary"> <span><i class="fa fa-dollar"></i> Інвестувати </span>
+                            </a>
+                            <a href="#" class="btn btn-primary">
+                                <i class="fa fa-user"></i> Прийняти участь
+                            </a>
+                        @endif
+
                     </div>
-                    <br>
-                    <div class="text-center">
-                        <a href="#" class="btn btn-primary">
-                            <span><i class="fa fa-user"></i> Прийняти участь</span>
-                        </a>
-                    </div>
-                    <br>
                 </div>
             </div>
-
-
         </div>
-
-
-        <hr/>
     </div>
-
 @stop
 @section('js')
     <script>

@@ -18,6 +18,10 @@ use App\User;
 
 class InvestorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkOwner:investor',['except'=>['index','create','store']]);
+    }
 
     public function index()
     {
@@ -72,7 +76,7 @@ class InvestorController extends Controller
         return redirect(route('personal_area.index'));
     }
 
-    public function edit(EditRequest $request, UserForm $investor)
+    public function edit(UserForm $investor)
     {
         $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();
         return view('frontend.investor.edit', compact('investor', 'economicActivities'));
