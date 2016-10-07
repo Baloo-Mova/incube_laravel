@@ -3,10 +3,10 @@
 @section('content')
     <div class="container">
         <div class="row page-title text-center">
-            <h2>Проект. Ідентифікаційний номер: {{ $designer->id }}</h2>
+            <h2>Проект. Ідентифікаційний номер: {{ $project->id }}</h2>
         </div>
 
-        <h2 class="text-center">{{ $designer->name}} </h2>
+        <h2 class="text-center">{{ $project->name}} </h2>
         <div class="row">
 
             <div class="col-md-8">
@@ -23,11 +23,11 @@
 
 
                         <div class="btn-group">
-                            <a href="{{ route('designer.edit', ['id'=>$designer->id]) }}"
+                            <a href="{{ route('designer.edit', ['id'=>$project->id]) }}"
                                class="btn-primary btn">Оновити</a>
                         </div>
                         <div class="btn-group">
-                            <a href="{{ route('designer.delete', ['id'=>$designer->id]) }}"
+                            <a href="{{ route('designer.delete', ['id'=>$project->id]) }}"
                                onclick="return confirm('Вы точно бажаєте видалити цей проект?')"
                                class="btn-danger btn">Видалити</a>
                         </div>
@@ -41,53 +41,53 @@
                         <section class="product-info">
 
                             <label>Мета проекту</label>
-                            <p>  {!! $designer->idea !!}</p>
+                            <p>  {!! $project->idea !!}</p>
 
                             <label>Дійсна ситуація</label>
-                            <p> {!! $designer->current_situation !!}</p>
+                            <p> {!! $project->current_situation !!}</p>
 
                             <label>Етап проекту</span></label>
-                            <p>  {{$designer->stage->name }}</p>
+                            <p>  {{$project->stage->name }}</p>
 
                             <label>Стислий опис проекту</label>
-                            <p> {!! $designer->description !!}</p>
+                            <p> {!! $project->description !!}</p>
 
                             <label>Проблема чи можливість</label>
-                            <p> {!! $designer->problem !!}</p>
+                            <p> {!! $project->problem !!}</p>
 
                             <label>Рішення(продукт чи послуга)</label>
-                            <p> {!! $designer->solution !!}</p>
+                            <p> {!! $project->solution !!}</p>
 
                             <label>Конкуренція</label>
-                            <p>  {!! $designer->competition !!}</p>
+                            <p>  {!! $project->competition !!}</p>
 
                             <label>Іноваційні аспекти та переваги проекту</label>
-                            <p>  {!! $designer->benefits !!}</p>
+                            <p>  {!! $project->benefits !!}</p>
 
                             <label>Фінансова частина / Бізнес-модель</label>
-                            <p>  {!! $designer->buisness_model !!}</p>
+                            <p>  {!! $project->buisness_model !!}</p>
 
                             <label>Цільове призначення інвестицій</label>
-                            <p>   {!! $designer->money_target !!}</p>
+                            <p>   {!! $project->money_target !!}</p>
 
                             <label>Пропозиції інвестору</label>
-                            <p>   {!! $designer->investor_interest !!}</p>
+                            <p>   {!! $project->investor_interest !!}</p>
 
                             <label>Опис ризиків</label>
-                            <p>   {!! $designer->risks !!}</p>
+                            <p>   {!! $project->risks !!}</p>
 
                             {{--<label>Контактні дані</label>
-                            <p>   {!! $designer->contacts !!}</p>--}}
+                            <p>   {!! $project->contacts !!}</p>--}}
                             <div>
                                 <label>Веб-сайт</label>
-                                <p><a href="#">{{ $designer->site }}</a></p>
+                                <p><a href="#">{{ $project->site }}</a></p>
                             </div>
                             <div>
                                 <label>YouTube посилання</label>
-                                <p><a href="#">{{ $designer->youtube_link }}</a></p>
+                                <p><a href="#">{{ $project->youtube_link }}</a></p>
                             </div>
                             <label>Інше</label>
-                            {!! $designer->other !!}
+                            {!! $project->other !!}
 
 
                     </div>
@@ -103,28 +103,28 @@
                 <div class="panel panel-primary affix-top" id="fix-div">
                     <div class="text-center">
                         <label class="title-border">Галузь</label>
-                        @if(!$designer->economicActivities->isChildren())
-                            <p>{{ $designer->economicActivities->name }}</p>
+                        @if(!$project->economicActivities->isChildren())
+                            <p>{{ $project->economicActivities->name }}</p>
                         @else
-                            <p>{{ $designer->economicActivities->parent->name }}:</p>
+                            <p>{{ $project->economicActivities->parent->name }}:</p>
                             <div class="clearfix"></div>
-                            <span style="margin-left: 20px">{{ $designer->economicActivities->name }}</span>
+                            <span style="margin-left: 20px">{{ $project->economicActivities->name }}</span>
                         @endif
                     </div>
                     <div class="text-center">
                         <label class="title-border">Країна</label>
-                        <p>{{ $designer->country->name }}</p>
+                        <p>{{ $project->country->name }}</p>
                     </div>
-                    @if(isset($designer->city))
+                    @if(isset($project->city))
                         <div class="text-center">
                             <label class="title-border">Регіон</label>
-                            <p>{{ $designer->city->name }}</p>
+                            <p>{{ $project->city->name }}</p>
                         </div>
                     @endif
-                    @if(isset($designer->money))
+                    @if(isset($project->money))
                         <div class="text-center">
                             <label class="title-border">Вартість проекту</label>
-                            <p><?= number_format($designer["money"], 0, '.', ' ') ?> $ </p>
+                            <p><?= number_format($project["money"], 0, '.', ' ') ?> $ </p>
                         </div>
                     @endif
 

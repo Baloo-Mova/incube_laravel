@@ -1,9 +1,5 @@
 <div class="carusel-block">
-   
-
-
-        <a href="{{ route(strtolower($item->formType->name).'.show', [$item->id]) }}">
-
+        <a href="{{ route('project_viewer.show', [$item->id]) }}">
         <div class="carusel-block-content">
             <div class="carusel-image">
                 <img class="img-responsive" src="{{ route('images.show', ['id'=> (empty($item->logo)?'empty':$item->logo),'height'=>168,'width'=>250]) }}">

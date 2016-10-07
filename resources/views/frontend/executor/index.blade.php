@@ -63,38 +63,29 @@
             </div>
         </div>
     </div>
-    <div class="row text-center">
-        <a class="btn btn-success btn-lg margin-auto" href="{{ route('material.index') }}">
+
+    {{--<div class="tab-content">--}}
+        {{--<div class="page-title text-center">--}}
+            {{--<h2>Вже подані резюме</h2>--}}
+        {{--</div>--}}
+        {{--<div id="executor">--}}
+            {{--<div class="carusel" id="executors">--}}
+                {{--@forelse($executors as $item)--}}
+                    {{--@include('frontend.partials.carusel_item',['item'=>$item])--}}
+                {{--@empty--}}
+                    {{--<div class="row text-center">--}}
+                        {{--<h3>Резюме відсутні</h3>--}}
+                    {{--</div>--}}
+                {{--@endforelse--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+
+    <div class="text-center all-questions">
+        <a class="btn btn-success btn-lg margin-auto" href="{{ route('project_viewer.index') }}">
             Усі позиції
         </a>
     </div>
-
-    <hr/>
-
-    <div class="tab-content">
-        <div class="page-title text-center">
-            <h2>Вже подані резюме</h2>
-        </div>
-        <div id="executor">
-            <div class="carusel" id="executors">
-                @forelse($executors as $item)
-                    @include('frontend.partials.carusel_item',['item'=>$item])
-                @empty
-                    <div class="row text-center">
-                        <h3>Резюме відсутні</h3>
-                    </div>
-                @endforelse
-            </div>
-        </div>
-    </div>
-    <div class="row text-center">
-        <a class="btn btn-success btn-lg margin-auto" href="{{ route('material.index') }}">
-            Усі резюме
-        </a>
-    </div>
-
-
-
 </div>
 
 @stop

@@ -1414,11 +1414,14 @@ a:visited, a:active {
 .preview-image{
     max-height: 300px;
 }
+.all-questions{
+    margin-bottom: 20px;
+}
 
 #content {
     padding-top: 105px;
     min-height: 733px;
-    padding-bottom:20px;
+    /*padding-bottom:20px;*/
 }
 
 .content-area {
@@ -1603,7 +1606,6 @@ img.carusel-block-img{
 
 }
 .title-border{
-
     font-weight: bold; 
 
 }

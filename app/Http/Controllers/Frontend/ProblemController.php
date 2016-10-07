@@ -29,7 +29,7 @@ class ProblemController extends Controller
             'form_type_id' => TableType::Problem
         ])->orderBy('id', 'desc')->take(10)->get();
 
-        return view('frontend.customer.index')->with([
+        return view('frontend.problem.index')->with([
             'problems' => $problems,
         ]);
     }
@@ -38,7 +38,7 @@ class ProblemController extends Controller
     {
         $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();
 
-        return view('frontend.customer.create', compact('economicActivities'));
+        return view('frontend.problem.create', compact('economicActivities'));
     }
 
     public function store(CreateRequest $request)
@@ -80,7 +80,7 @@ class ProblemController extends Controller
 
         $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();
 
-        return view('frontend.customer.edit', compact('problem', 'economicActivities'));
+        return view('frontend.problem.edit', compact('problem', 'economicActivities'));
     }
 
     public function update(UpdateRequest $request, UserForm $problem)
@@ -102,7 +102,7 @@ class ProblemController extends Controller
     public function show(UserForm $problem)
     {
         //dd($problem);
-        return view('frontend.customer.show', compact('problem'));
+        return view('frontend.problem.show', compact('problem'));
     }
 
     public function delete(UserForm $problem)

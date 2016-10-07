@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProjectViewer\ShowProjectRequest;
 use App\Models\EconomicActivity;
 use App\Models\Status;
 use App\Models\TableType;
@@ -23,9 +24,25 @@ class ProjectViewerController extends Controller {
         ]);
     }
 
-    public function show(UserForm $material) {
+    public function show(ShowProjectRequest $request, UserForm $material) {
 
-        return redirect(route($material->formType->name.'.show',[$material->id]));
+        $files = [];
+
+        if (!empty($material->logo)) {
+            $files[] = $material->logo;
+        }
+        $documents = $material->documents;
+        $allowedMimeTypes = ['image/jpeg', 'image/gif', 'image/png'];
+        foreach ($documents as $item) {
+            $contentType = mime_content_type(storage_path('app\documents') . '\\' . $item->name);
+            if (in_array($contentType, $allowedMimeTypes)) {
+                $files[] = $item->name;
+            }
+        }
+
+        return view('frontend.'.strtolower($material->formType->name).'.show')
+            ->with([strtolower($material->formType->name)=>$material, 'files'=>$files]);
+
     }
 
 }

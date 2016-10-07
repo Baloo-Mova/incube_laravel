@@ -1,31 +1,34 @@
 @extends('frontend.layouts.template')
 
 @section('content')
-<div class="container">
-    <div class="row page-title text-center">
-        <h2>Резюме. Ідентифікаційний номер: {{ $executor->id }}</h2>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12  toppad">
-
-            <br>
-            <p class=" text-info">{{ $executor->created_at }} </p>
+    <div class="container">
+        <div class="row page-title text-center">
+            <h2>Резюме. Ідентифікаційний номер: {{ $executor->id }}</h2>
         </div>
-        <div class="col-md-12 toppad" >
+
+        <div class="row">
+
+            <div class="col-md-12 toppad">
 
 
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{$executor->second_name." ".$executor->first_name." ".$executor->last_name}}</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ route('images.show', ['id'=> (empty($executor->logo)? 'empty' : $executor->logo),'height'=>'max','width'=>'max']) }}" class="img-responsive"> </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{$executor->second_name." ".$executor->first_name." ".$executor->last_name}}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3 " align="center"><img alt="User Pic"
+                                                                                src="{{ route('images.show', ['id'=> (empty($executor->logo)? 'empty' : $executor->logo),'height'=>'max','width'=>'max']) }}"
+                                                                                class="img-responsive">
+                                <p>
+                                    Дата створення
+                                </p>
+                                <p class=" text-info">{{ $executor->created_at }} </p>
+                            </div>
 
-                        <div class=" col-md-9 col-lg-9 "> 
-                            <table class="table table-user-information">
-                                <tbody>
+                            <div class=" col-md-9 col-lg-9 ">
+                                <table class="table table-user-information">
+                                    <tbody>
                                     <tr>
                                         <td>День народження</td>
                                         <td>{{$executor->date_birth }}</td>
@@ -55,36 +58,35 @@
                                         <td>Контактні дані(адреса, телефон,ел.пошта)</td>
                                         <td>{!!$executor->contacts!!}</td>
                                     </tr>
-
-
-
-                                </tbody>
-                            </table>
-
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="panel-footer">
-                    <a data-original-title="Надіслати повідомлення" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                    <span class="pull-right">
+                    <div class="panel-footer">
+                        <a data-original-title="Надіслати повідомлення" data-toggle="tooltip"
+                           class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i> Надіслати
+                            повідомлення</a>
+                        <span class="pull-right">
                        @if(Auth::check())
-                @if($executor->status_id != \App\Models\Status::PUBLISHED)
-                   <div class="btn-group pull-lef">
+                                @if($executor->status_id != \App\Models\Status::PUBLISHED)
+                                    <div class="btn-group pull-lef">
                             <a href="{{route('executor.edit',['executor'=>$executor->id])}}" class="btn-primary btn">Оновити</a>
                         </div>
-                        <div class="btn-group pull-lef">
-                            <a href="{{ route('executor.delete', ['id'=>$executor->id]) }}" class="btn-danger btn" onclick="return confirm('Ви впевнені, що хочете видалити це резюме?')">Видалити</a>
+                                    <div class="btn-group pull-lef">
+                            <a href="{{ route('executor.delete', ['id'=>$executor->id]) }}" class="btn-danger btn"
+                               onclick="return confirm('Ви впевнені, що хочете видалити це резюме?')">Видалити</a>
                         </div>
-                @endif
-                @endif
+                                @endif
+                            @endif
                        
                     </span>
-                </div>
+                    </div>
 
+                </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>
 
 @stop

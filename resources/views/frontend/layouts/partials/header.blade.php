@@ -44,7 +44,7 @@
                         <li class=""><a href="{{url('/login')}}">Вхід</a></li>
                     @else
                         <li class=""><a href="{{ url('/personal-area') }}">Особистий кабінет <span
-                                        class="event label label-danger">{{ Auth::check()? (count(Auth::user()->unreadNotifications) > 0 ? count(Auth::user()->unreadNotifications) : '')  : '' }}</span></a></li>
+                                        class="event label label-danger">{{ Auth::check() ? (count(Auth::user()->unreadNotifications) > 0 ? count(Auth::user()->unreadNotifications) : '')  : '' }}</span></a></li>
                         <li class="">
                             <a href="{{ url('/logout') }}"
                                onclick="event.preventDefault();
@@ -146,7 +146,7 @@
                             </a>
                             <ul class="dropdown-menu mega-dropdown-menu">
                                 <li class="col-sm-3 text-center">
-                                    <a href="{{url('/customer')}}" class="dropdown-header">
+                                    <a href="{{route('problem.index')}}" class="dropdown-header">
                                         <div class="hidden-xs">
                                             <img src="{{url('/img/'.'how-work3.png')}}" alt="">
                                         </div>
@@ -154,7 +154,7 @@
                                     </a>
                                 </li>
                                 <li class="col-sm-3 text-center">
-                                    <a href="{{url('/investor')}}" class="dropdown-header">
+                                    <a href="{{route('investor.index')}}" class="dropdown-header">
                                         <div class="hidden-xs">
                                             <img src="{{url('/img/'.'investor_desc_logo.png')}}" alt="">
                                         </div>
@@ -162,7 +162,7 @@
                                     </a>
                                 </li>
                                 <li class="col-sm-3 text-center">
-                                    <a href="{{url('/designer')}}" class="dropdown-header">
+                                    <a href="{{route('designer.index')}}" class="dropdown-header">
                                         <div class="hidden-xs">
                                             <img src="{{url('/img/'.'how-work1.png')}}" alt="">
                                         </div>
@@ -170,7 +170,7 @@
                                     </a>
                                 </li>
                                 <li class="col-sm-3 text-center">
-                                    <a href="{{url('/executor')}}" class="dropdown-header">
+                                    <a href="{{route('executor.index')}}" class="dropdown-header">
                                         <div class="hidden-xs">
                                             <img src="{{url('/img/'.'how-work2.png')}}" alt="">
 

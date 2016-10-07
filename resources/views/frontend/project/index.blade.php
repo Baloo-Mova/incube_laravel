@@ -4,21 +4,29 @@
 
     <div class="container">
         <div class="page-title text-center">
-            <h2>Інвесторам</h2>
+            <h2>Проектантам</h2>
         </div>
+
         <hr/>
+
+        <p>
+            <b> Проектант </b> - це користувач, що пропонує свої проекти.
+        </p>
+        <p>Для співпраці наукової спільноти України з підприємствами великого, середнього
+            та малого бізнесу. Ви зможете на взаємовигідних умовах запропонувати їм свої вже
+            наявні наукові розробки для розв’язання актуальних практичних проблем, надати
+            професійні консультації чи здійснити науково-дослідні роботи, спрямовані на
+            створення необхідних для конкретного замовника прикладних розробок.
+        </p>
+        <p><b>Проектантами</b> можуть виступати Юридичні та Фізичні особи, які можуть запропонувати інноваційний проект
+        </p>
+        <p>Якщо <b>Ви хочете запропонувати свій проект</b> - заповніть наступну форму: </p>
+
         <div class="text-center">
-            <p><b> Інвестор </b> - це користувач, що вкладає кошти.</p>
-             Інвесторомами можуть виступати Юридичні та Фізичні особи, які можуть вкладувати кошти у інноваційний проект
-            <p>Якщо ви хочете виступити інвестором - заповніть наступну форму: </p>
-            <div class="text-center">
-                <a href="{{ route('investor.create') }}" class="btn btn-lg btn-danger">Подати заявку
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
-            </div>
+            <a href="{{ route('designer.create') }}" class="btn btn-lg btn-danger center">Подати заявку
+                <span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
-            <div>
-            <ul class="nav"><h3>Важливі відомості:</h3>
+        <ul class="nav"><h3>Важливі відомості:</h3>
             <li> 1. Заповнивши і надіславши цю заявку нам, Ви даєте згоду на обробку наведеної інформації згідно вимог
                 чинного законодавства.
             </li>
@@ -32,78 +40,71 @@
                 установи, влади, тощо – тобто, безпосередньо контактною особою для розвитку співпраці в межах проекту.
             </li>
         </ul>
-            </div>
-        <div class="text-center">
         <h3>За згодою Ваші пропозиції будуть розміщені на платформі «ІнКуб». Сподіваємося на ефективну співпрацю.</h3>
-        </div>
-        <hr/>
-        <div class="page-title text-center">
-            <h2>Інвестор може вкласти кошти у наступне</h2>
-        </div>
-        
-        
-        
+
+        <hr>
+
+        <h2 class="text-center">Проектант може запропонувати свої проекти</h2>
+
         <div class="select-tabs">
             <ul class="nav nav-tabs text-center" id="myTab">
                 <li class="active"><a href="#problem" data-toggle="tab">Проблеми</a></li>
-                <li><a href="#project" data-toggle="tab">Проекти</a></li>
+                <li><a href="#project" data-toggle="tab">Інвестиційні пропозиції</a></li>
             </ul>
         </div>
         <div class="tab-content">
             <div id="problem" class="tab-pane fade in active">
-                 <div class="carusel" id="problems">
-                @forelse($problems as $item)
-                   
+                <div class="carusel" id="problems">
+                    @forelse($problems as $item)
+
                         @include('frontend.partials.carusel_item',['item'=>$item])
-                    
-                @empty
-                    <div class="row text-center">
-                        <h3>Проблеми відсутні</h3>
-                    </div>
-                @endforelse
+
+                    @empty
+                        <div class="row text-center">
+                            <h3>Проблеми відсутні</h3>
+                        </div>
+                    @endforelse
                 </div>
             </div>
 
             <div id="project" class="tab-pane fade">
-               <div class="carusel" id="projects">
-                @forelse($projects as $item)
-                    
+                <div class="carusel" id="projects">
+                    @forelse($investor as $item)
+
                         @include('frontend.partials.carusel_item',['item'=>$item])
-                   
-                @empty
-                 </div>
-                    <div class="row text-center">
-                        <h3>Проекти відсутні</h3>
-                    </div>
-                @endforelse
+
+                    @empty
+                        <div class="row text-center">
+                            <h3>Опубліковані пропозиції відсутні </h3>
+                        </div>
+                    @endforelse
+                </div>
             </div>
         </div>
 
-        <div class="row text-center all-questions">
-            <a class="btn btn-success btn-lg margin-auto" href="{{ route('material.index') }}">
+        <div class="text-center all-questions">
+            <a class="btn btn-success btn-lg margin-auto" href="{{ route('project_viewer.index') }}">
                 Усі позиції
             </a>
         </div>
     </div>
 @stop
-
-
 @section('js')
     <script>
         $(function () {
-            initialize_owl($('#problems'),options);
+            initialize_owl($('#problems'), options);
 
             $('a[href="#problem"]').on('shown.bs.tab', function () {
-                initialize_owl($('#problems'),options);
+                initialize_owl($('#problems'), options);
             }).on('hide.bs.tab', function () {
                 destroy_owl($('#problems'));
             });
 
             $('a[href="#project"]').on('shown.bs.tab', function () {
-                initialize_owl($('#projects'),options);
+                initialize_owl($('#projects'), options);
             }).on('hide.bs.tab', function () {
                 destroy_owl($('#projects'));
             });
         });
-    </script>   
-@stop 
+    </script>
+@stop

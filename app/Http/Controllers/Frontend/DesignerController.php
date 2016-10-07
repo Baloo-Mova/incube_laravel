@@ -38,7 +38,7 @@ class DesignerController extends Controller
             'form_type_id' => TableType::Investor
         ])->orderBy('id', 'desc')->take(10)->get();
 
-        return view('frontend.designer.index')->with([
+        return view('frontend.project.index')->with([
             'designerProjects' => $designerProjects,
             'problems' => $problems,
             'investor' => $investor,
@@ -49,7 +49,7 @@ class DesignerController extends Controller
     public function create()
     {
         $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();
-        return view('frontend.designer.create', compact('economicActivities'));
+        return view('frontend.project.create', compact('economicActivities'));
     }
 
     public function store(CreateRequest $request)
@@ -105,7 +105,7 @@ class DesignerController extends Controller
     public function edit(EditRequest $request, UserForm $designer)
     {
         $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();
-        return view('frontend.designer.edit', compact('designer', 'economicActivities'));
+        return view('frontend.project.edit', compact('designer', 'economicActivities'));
     }
 
     public function update(UpdateRequest $request, UserForm $designer)
@@ -153,7 +153,7 @@ class DesignerController extends Controller
             }
         }
 
-        return view('frontend.designer.show', compact('designer', 'files'));
+        return view('frontend.project.show', compact('designer', 'files'));
     }
 
     public function delete(UserForm $designer)
