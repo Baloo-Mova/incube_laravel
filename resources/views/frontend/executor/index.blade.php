@@ -25,7 +25,7 @@
 
     <div class="page-title text-center">
         <h2>Запропонуйте свою участь у вже опублікованих проектах</h2>
-        <h5>або знайдіть роботу з поданих вакансій</h5>
+        {{--<h5>або знайдіть роботу з поданих вакансій</h5>--}}
     </div>
 
     <br>
@@ -40,9 +40,7 @@
         <div id="problem" class="tab-pane fade in active">
             <div class="carusel" id="problems">
                 @forelse($problems as $item)
-
                     @include('frontend.partials.carusel_item',['item'=>$item])
-
                 @empty
                     <div class="row text-center">
                         <h3>Проблеми відсутні</h3>
@@ -80,9 +78,7 @@
         <div id="executor">
             <div class="carusel" id="executors">
                 @forelse($executors as $item)
-
                     @include('frontend.partials.carusel_item',['item'=>$item])
-
                 @empty
                     <div class="row text-center">
                         <h3>Резюме відсутні</h3>

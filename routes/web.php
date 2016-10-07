@@ -80,7 +80,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     });
 
     Route::group(['prefix' => 'personal-area'], function () {
-        Route::get('/', ['uses' => 'PersonalAreaController@customer', 'as' => 'personal_area.customer']);
+        Route::get('/', ['uses' => 'PersonalAreaController@index', 'as' => 'personal_area.index']);
         Route::get('projects/customer', ['uses' => 'PersonalAreaController@customer', 'as' => 'personal_area.customer']);
         Route::get('projects/investor', ['uses' => 'PersonalAreaController@investor', 'as' => 'personal_area.investor']);
         Route::get('projects/designer', ['uses' => 'PersonalAreaController@designer', 'as' => 'personal_area.designer']);
