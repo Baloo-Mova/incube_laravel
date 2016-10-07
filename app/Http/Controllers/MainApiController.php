@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\ActivityRelationship;
+use App\Models\UserForm;
+use App\Notifications\NewOffer;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -11,34 +13,38 @@ use App\Http\Controllers\Controller;
 
 class MainApiController extends Controller
 {
-    public function getCities($id){
-        return City::where('country_id','=',$id)->get()->pluck('name','id');
+    public function getCities($id)
+    {
+        return City::where('country_id', '=', $id)->get()->pluck('name', 'id');
     }
 
-    public function createOffer(Request $request) {
-        $requestArray = $request->all();
-        $sender_id = $requestArray['sender_id'];
-        $sender_type = $requestArray['sender_type'];
-        $receiver_id = $requestArray['receiver_id'];
-        $receiver_type = $requestArray['receiver_type'];
+    public function createOffer(Request $request)
+    {
 
-        $offer = ActivityRelationship::where([
-            'sender_table_id' => $sender_id,
-            'sender_table_type' => $sender_type,
-            'receiver_table_id' => $receiver_id,
-            'receiver_table_type_id' => $receiver_type
-        ])->get();
+        $data = $request->all();
+        $form = UserForm::find($data['receiver_id']);
 
-        if(!$offer->isEmpty()) {
-            return "You can't create this offer";
-        } else {
-            $offer = new ActivityRelationship();
-            $offer->sender_table_id = $sender_id;
-            $offer->sender_table_type = $sender_type;
-            $offer->receiver_table_id = $receiver_id;
-            $offer->receiver_table_type_id = $receiver_type;
-            $offer->save();
-            return "Offer created successfully";
+        $offer = UserForm::find($data['sender_id']);
+
+        if(!isset($offer)){
+            return [
+                'NO GOOOD PLS NOOOOOO'
+            ];
         }
+
+        if ($form->offers->contains($data['sender_id'])) {
+            return [
+                'status' => 'danger',
+                'text' => 'Вы уже делали такое предложение'
+            ];
+        }
+
+        $form->offers()->syncWithoutDetaching([$data['sender_id']]);
+        $form->author->notify(new NewOffer($form, $offer));
+
+        return [
+            'status'=>'success',
+            'text' => 'Вы успешно сделали предложение, ожидайте, с вами свяжутся.'
+        ];
     }
 }

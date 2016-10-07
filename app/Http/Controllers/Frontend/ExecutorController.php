@@ -82,7 +82,7 @@ class ExecutorController extends Controller {
         if (!Auth::check()) {
             Auth::attempt(['email' => $email, 'password' => $pass]);
         }
-        return redirect(route('personal_area.index'));
+        return redirect(route('personal_area.executor'));
     }
 
     public function edit(UserForm $executor) {

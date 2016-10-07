@@ -76,7 +76,7 @@ class ProblemController extends Controller
             Auth::attempt(['email' => $email, 'password' => $pass]);
         }
 
-        return redirect(route('personal_area.index'));
+        return redirect(route('personal_area.customer'));
     }
 
     public function edit(UserForm $problem)

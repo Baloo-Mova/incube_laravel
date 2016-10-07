@@ -103,7 +103,7 @@ class DesignerController extends Controller
             return redirect(route('personal_area.index'));
         }
 
-        return redirect(route('personal_area.index'));
+        return redirect(route('personal_area.designer'));
     }
 
     public function edit(UserForm $designer)

@@ -22,7 +22,6 @@
                                 </p>
                                 <p class=" text-info">{{ $executor->created_at }} </p>
                             </div>
-
                             <div class=" col-md-9 col-lg-9 ">
                                 <table class="table table-user-information">
                                     <tbody>
@@ -34,7 +33,6 @@
                                         <td>Досвід роботи</td>
                                         <td>{!!$executor->experience!!}</td>
                                     </tr>
-
                                     <tr>
                                         <td>Освіта</td>
                                         <td>{!!$executor->education!!}</td>
@@ -76,13 +74,10 @@
                             <div class="clearfix"></div>
                         @endif
                     </div>
-
                 </div>
             </div>
         </div>
-
     </div>
-
 @stop
 @section('css')
     <style>

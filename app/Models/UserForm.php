@@ -226,6 +226,10 @@ class UserForm extends Model
         return $query->with($this->allRelations);
     }
 
+    public function offers(){
+        return $this->belongsToMany(UserForm::class,'proposal_forms','sender_table_id', 'receiver_table_id')->withTimestamps();
+    }
+
     protected $allRelations = [
         'author',
         'formType',

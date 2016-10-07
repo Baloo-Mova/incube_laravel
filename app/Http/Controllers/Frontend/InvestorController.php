@@ -73,7 +73,7 @@ class InvestorController extends Controller
             Auth::attempt(['email' => $email, 'password' => $pass]);
         }
 
-        return redirect(route('personal_area.index'));
+        return redirect(route('personal_area.investor'));
     }
 
     public function edit(UserForm $investor)

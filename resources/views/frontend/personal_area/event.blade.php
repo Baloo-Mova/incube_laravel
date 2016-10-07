@@ -55,7 +55,13 @@
                     <tr class="{{ empty($item->read_at)? 'new-message' : ''}}">
                         <td><input type="checkbox" class="notify_checkbox" name="notify_id[]" value="{!! $item->id !!}"></td>
                         <td>{!! $item->id !!}</td>
-                        <td>{{config('eventsstatuses.'.$item->type)}}</td>
+                        <td>
+                            @if($item->type != 'App\Notifications\NewOffer')
+                            {{config('eventsstatuses.'.$item->type)}}
+                                @else
+                            <a style="color: #00A2DE;" href="{{ route('project_viewer.show',['material'=>$item->data['offer_id']]) }}"> {{config('eventsstatuses.'.$item->type)}}</a>
+                            @endif
+                        </td>
                         <td>{!! $item->created_at !!}</td>
                         <td>{{ empty($item->read_at)? 'Нове' : 'Прочитане'}}</td>
                     </tr>

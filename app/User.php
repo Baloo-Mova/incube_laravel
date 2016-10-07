@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Models\Status;
+use App\Models\TableType;
+use App\Models\UserForm;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 /**
@@ -77,6 +80,30 @@ class User extends Authenticatable
     }
     public function  isAdmin(){
         return $this->user_type_id;
-        
     }
+
+    protected function getAllProjects($tableType){
+        return UserForm::where([
+            'status_id' => Status::PUBLISHED,
+            'author_id' => $this->id,
+            'form_type_id' => $tableType
+        ])->get();
+    }
+
+    public function getAllDesigner(){
+        return $this->getAllProjects(TableType::Designer);
+    }
+
+    public function getAllInvestor(){
+        return $this->getAllProjects(TableType::Investor);
+    }
+
+    public function getAllExecutor(){
+        return $this->getAllProjects(TableType::Executor);
+    }
+
+    public function getAllProblem(){
+        return $this->getAllProjects(TableType::Problem);
+    }
+
 }

@@ -1210,6 +1210,11 @@ span.round-tabs.five {
     color: #ffffff;
 }
 
+.information{
+    width:  100%;
+    text-align: center;
+}
+
 
 @media (max-width: 585px) {
 
