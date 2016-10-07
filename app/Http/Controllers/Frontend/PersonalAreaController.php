@@ -105,6 +105,31 @@ class PersonalAreaController extends Controller
             'usersNotifications' => $usersNotifications,
         ]);
     }
+
+    public function events_read(Request $request)
+    {
+
+        $thisUser = Auth::user();
+
+        $notifies = $request->request->all();
+
+
+        if(empty($notifies['notify_id'])){
+            return back()->with(['message' => 'Ви не обрали жодного сповіщення']);
+        }else{
+            $allnotify = $thisUser->Notifications;
+            foreach ($allnotify as $item){
+
+                foreach($notifies['notify_id'] as $n){
+                    if($item->toArray()['id'] == $n){
+                        $item->markAsRead();
+                    }
+                }
+            }
+            return back()->with(['message' => 'Ви успішно ознайомились із обраними сповіщеннями']);
+        }
+
+    }
     
      public function edit()
     {
