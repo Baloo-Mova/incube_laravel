@@ -86,6 +86,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('projects/designer', ['uses' => 'PersonalAreaController@designer', 'as' => 'personal_area.designer']);
         Route::get('projects/executor', ['uses' => 'PersonalAreaController@executor', 'as' => 'personal_area.executor']);
         Route::get('/event', ['uses' => 'PersonalAreaController@event', 'as' => 'personal_area.event']);
+        Route::post('/event', ['uses' => 'PersonalAreaController@events_read', 'as' => 'personal_area.events_read']);
         Route::get('/edit', ['uses' => 'PersonalAreaController@edit', 'as' => 'personal_area.edit']);
         Route::post('/edit', ['uses' => 'PersonalAreaController@update', 'as' => 'personal_area.update']);
         Route::get('/security', ['uses' => 'PersonalAreaController@security', 'as' => 'personal_area.security']);

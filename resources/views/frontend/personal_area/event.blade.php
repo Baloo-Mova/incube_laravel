@@ -35,32 +35,57 @@
                     <th><a class="" href="#">Тема</a></th>
                     <th><a class="" href="#">Дата створення</a></th>
                     <th><a class="" href="#">Статус</a></th>
-                    <th><a class="" href="#">Дії</a></th>
 
                 </tr>
                 <tr>
-                    <th></th>
-                    <th></th>
+                    <th class="text-center"><input type="checkbox" name="notify_select_all" id="notify_select_all" title="Обрати все"></th>
                     <th><input type="text" class="form-control" name=""></th>
                     <th><input type="text" class="form-control" name=""></th>
                     <th><input type="text" class="form-control" name=""></th>
-                    <th></th>
+                    <th><input type="text" class="form-control" name=""></th>
 
                 </tr>
                 </thead>
                 <tbody class='text-center'>
 
-                @foreach($usersNotifications as $item)
-                    <tr class="<?php if(rand(0,1)!=0) echo 'new-message';?>">
-                        <td><input type="checkbox" value=""></td>
+                <form method="POST" enctype="multipart/form-data" class="form-horizontal" action="{!! route('personal_area.events_read') !!}">
+                    {{ csrf_field() }}
 
+                @foreach($usersNotifications as $item)
+                    <tr class="{{ empty($item->read_at)? 'new-message' : ''}}">
+                        <td><input type="checkbox" class="notify_checkbox" name="notify_id[]" value="{!! $item->id !!}"></td>
+                        <td>{!! $item->id !!}</td>
+                        <td>{{config('eventsstatuses.'.$item->type)}}</td>
+                        <td>{!! $item->created_at !!}</td>
+                        <td>{{ empty($item->read_at)? 'Нове' : 'Прочитане'}}</td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
+
+
+            <input value="Зробити відмічені сповіщення прочитаними" type="submit" class="btn btn-info">
+
+            <hr>
+
+            {!! $usersNotifications->links() !!}
             <!-- End content table-->
         </div>
         <!-- End content block-->
     </div>
 </div>
+@stop
+@section('js')
+    <script>
+        $(function () {
+            $("#notify_select_all").on('change',function(){
+                if($("#notify_select_all").prop("checked") != true){
+                    $('.notify_checkbox').prop('checked', false);
+                }else{
+                    $('.notify_checkbox').prop('checked', this.checked);
+                }
+
+            });
+        });
+    </script>
 @stop
