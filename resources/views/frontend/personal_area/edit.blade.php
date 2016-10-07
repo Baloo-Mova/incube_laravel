@@ -12,7 +12,9 @@
                 </div>
                 <hr/>
                 @if(Session::has('message'))
-                    <p class="alert alert-info col-md-offset-2 col-md-10">{{ Session::get('message') }}</p>
+                    <div class="col-md-offset-2">
+                        <span class="alert alert-info col-md-10">{{ Session::get('message') }}</span>
+                    </div>
                 @endif
 
                 @if (count($errors) > 0)
