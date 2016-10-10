@@ -17,7 +17,6 @@
                          src="{{ route('images.show', ['id'=> (empty($problem->logo)? 'empty' : $problem->logo),'height'=>'max','width'=>'max']) }}"
                          alt="">
                 </div>
-
                 @if(Auth::check() && Auth::user()->can('edit', $problem))
                     <div class="btn-toolbar">
                         <hr/>
@@ -141,7 +140,7 @@
                             </h2>
                             <div class="information alert" style="display: none"></div>
 
-                            <table class="table table-hover" id="designer-offer">
+                            <table class="table table-hover offerProjects" id="designer-offer">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
@@ -169,12 +168,61 @@
                     </div>
                 </div>
             </div>
+            <div id="designer_modal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div id="overlay">
+                            <img class="spinner" src="{{ asset('img/spinner.gif') }}">
+                        </div>
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <div class="row-fluid user-row">
+                                <img src="{{url('/img/'.'logo.png')}}" class="img-responsive" alt="log">
+                            </div>
+                            <h4 class="modal-title text-center title-border">Оберіть свій проект</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h2 class="text-center">
+                                Ваші проекти
+                            </h2>
+                            <div class="information alert" style="display: none"></div>
+
+                            <table class="table table-hover offerProjects" id="designer-offer">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Назва</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @forelse(Auth::user()->getAllInvestor() as $item)
+                                    <tr>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->name }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="2" class="text-center"> У вас немае опублiкованих проэктiв</td>
+                                    </tr>
+                                @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="{{ route('investor.create') }}" class="btn btn-success pull-left">Новий проект</a>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         @endif
     </div>
 @stop
 
 @section('js')
     <script>
+
         $(document).ready(function () {
             $('#designer-offer tbody tr').on('click', function () {
                 var td = $(this).find('td');
@@ -201,9 +249,10 @@
                     })
                 }
             });
+
             $('#designer_modal').on('hidden.bs.modal', function () {
-                $.each($('.information'),function(val){
-                    $(val).clear();
+                $.each($('.information'),function(val,item){
+                     $(item).hide();
                 });
             })
         });

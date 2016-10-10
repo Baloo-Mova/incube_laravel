@@ -164,7 +164,7 @@ class UserForm extends Model
         'company_name',
         'company_info',
         'other',
-        'contacts', 
+        'contacts',
         'status_id',
         'economic_activities_id',
         'country_id',
@@ -178,56 +178,88 @@ class UserForm extends Model
         'form_type_id',
     ];
 
-    public function author(){
+    public function author()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function formType(){
+    public function formType()
+    {
         return $this->belongsTo(TableType::class);
     }
 
-    public function publisher(){
+    public function publisher()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function status(){
+    public function status()
+    {
         return $this->belongsTo(Status::class);
     }
 
-    public function economicActivities(){
+    public function economicActivities()
+    {
         return $this->belongsTo(EconomicActivity::class);
     }
 
-    public function country(){
+    public function country()
+    {
         return $this->belongsTo(Country::class);
     }
 
-    public function city(){
+    public function city()
+    {
         return $this->belongsTo(City::class);
     }
 
-    public function stage(){
+    public function stage()
+    {
         return $this->belongsTo(Stage::class);
     }
 
-    public function documents(){
-        return $this->hasMany(Document::class,'form_id');
+    public function documents()
+    {
+        return $this->hasMany(Document::class, 'form_id');
     }
 
-    public function clearDocuments(){
-        foreach ($this->documents as $item){
+    public function clearDocuments()
+    {
+        foreach ($this->documents as $item) {
             Storage::disk('documents')->delete($item->name);
         }
 
         $this->documents()->delete();
     }
 
-    public function scopeWithAll($query){
+    public function scopeWithAll($query)
+    {
         return $query->with($this->allRelations);
     }
 
-    public function offers(){
-        return $this->belongsToMany(UserForm::class,'proposal_forms','sender_table_id', 'receiver_table_id')->withTimestamps();
+    public function scopeWithEconomicActivities($query, $cat_id)
+    {
+        $ea = EconomicActivity::find($cat_id);
+        $ids = [];
+        if ($ea->isParent()) {
+            foreach ($ea->childrens as $item) {
+                $ids[] = $item->id;
+            }
+        }
+
+        $ids[] = $ea->id;
+
+        return $query->whereIn('economic_activities_id', $ids);
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where(['status_id' => Status::PUBLISHED]);
+    }
+
+    public function offers()
+    {
+        return $this->belongsToMany(UserForm::class, 'proposal_forms', 'sender_table_id', 'receiver_table_id')->withTimestamps();
     }
 
     protected $allRelations = [
