@@ -14,13 +14,20 @@ use App\User;
 
 class ProjectViewerController extends Controller {
 
-    public function index() {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
+        $economicActivities = EconomicActivity::all();
+
         $allMaterials = UserForm::withAll()->where([
-                    'status_id' => Status::PUBLISHED,
-                ])->orderBy('id', 'desc')->get();
+            'status_id' => Status::PUBLISHED,
+        ])->orderBy('id', 'desc')->get();
 
         return view('frontend.project_viewer.index')->with([
-                    'allMaterials' => $allMaterials,
+            'allMaterials' => $allMaterials,
+            'economicActivities' => $economicActivities
         ]);
     }
 
