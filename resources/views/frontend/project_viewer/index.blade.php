@@ -15,6 +15,12 @@
     <div class="page-title text-center">
         <h2>Подані матеріали</h2>
     </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            @include('frontend.partials.economic_activities_select',['economicActivitiesAttributeName' => "economic_activities_select",  'economicActivitiesAttributeValueNow' => $catId, 'economicActivities'=>$economicActivities])
+        </div>
+    </div>
+    <br>
     <div class="select-tabs">
         <ul class="nav nav-pills nav-stacked text-center" id="myTab">
             <li class="active"><a href="#allmat" data-toggle="tab">Усі пропозиції</a></li>
@@ -72,6 +78,17 @@
         </div>
     </div>
 </div>
+@stop
+@section('js')
+    <script>
+        $(function () {
+
+            $("select").on('change', function(){
+
+            });
+
+        });
+    </script>
 @stop
 
 

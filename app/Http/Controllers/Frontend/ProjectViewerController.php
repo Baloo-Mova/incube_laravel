@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectViewer\ShowProjectRequest;
-use Illuminate\Http\Request;
 use App\Models\EconomicActivity;
 use App\Models\Status;
 use App\Models\TableType;

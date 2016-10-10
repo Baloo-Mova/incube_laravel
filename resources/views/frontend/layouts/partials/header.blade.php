@@ -83,56 +83,59 @@
                                 <li class="col-sm-3">
                                     <ul>
                                         <li>
-                                            <a class="dropdown-header">Сільське господарство, лісове господарство та
-                                                рибне господарство</a>
+                                            <a class="dropdown-header" href="{{url('/project-viewer?cat_id=2')}}">Сільське господарство, лісове господарство та рибне господарство</a>
                                         </li>
-                                        <li class="divider"></li>
-                                        <li><a class="dropdown-header">Переробна промисловість (Виробництво)</a></li>
                                         <li class="divider"></li>
                                         <li>
-                                            <a class="dropdown-header">Водопостачання, каналізація, поводження з
-                                                відходами</a>
+                                            <a class="dropdown-header" href="{{url('/project-viewer?cat_id=3')}}">Переробна промисловість (Виробництво)</a>
                                         </li>
                                         <li class="divider"></li>
-                                        <li><a class="dropdown-header">Будівництво</a></li>
+                                        <li>
+                                            <a class="dropdown-header" href="{{url('/project-viewer?cat_id=4')}}">Водопостачання, каналізація, поводження з відходами</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a class="dropdown-header" href="{{url('/project-viewer?cat_id=5')}}">Будівництво</a>
+                                        </li>
                                         <li class="divider"></li>
                                     </ul>
                                 </li>
                                 <li class="col-sm-3">
                                     <ul>
                                         <li>
-                                            <a class="dropdown-header">Транспорт, складське господарство, поштова та
-                                                кур'єрська діяльність</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a class="dropdown-header">Професійна, наукова та технічна діяльність</a>
+                                            <a class="dropdown-header" href="{{url('/project-viewer?cat_id=6')}}">Транспорт, складське господарство, поштова та кур'єрська діяльність</a>
                                         </li>
                                         <li class="divider"></li>
                                         <li>
-                                            <a class="dropdown-header">Діяльність у сфері адміністративного та
-                                                допоміжного обслуговування</a>
+                                            <a class="dropdown-header" href="{{url('/project-viewer?cat_id=8')}}">Професійна, наукова та технічна діяльність</a>
                                         </li>
                                         <li class="divider"></li>
                                         <li>
-                                            <a class="dropdown-header">Державне управління й оборона, обов'язкове
-                                                соціальне страхування</a>
+                                            <a class="dropdown-header" href="{{url('/project-viewer?cat_id=9')}}">Діяльність у сфері адміністративного та допоміжного обслуговування</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a class="dropdown-header" href="{{url('/project-viewer?cat_id=10')}}">Державне управління й оборона, обов'язкове соціальне страхування</a>
                                         </li>
                                         <li class="divider"></li>
                                     </ul>
                                 </li>
                                 <li class="col-sm-3">
                                     <ul>
-                                        <li><a class="dropdown-header">Освіта</a></li>
-                                        <li class="divider"></li>
-                                        <li><a class="dropdown-header">Охорона здоров'я та надання соціальної
-                                                допомоги</a>
+                                        <li>
+                                            <a class="dropdown-header" href="{{url('/project-viewer?cat_id=11')}}">Освіта</a>
                                         </li>
                                         <li class="divider"></li>
-                                        <li><a class="dropdown-header">Мистецтво, спорт, розваги та відпочинок</a></li>
+                                        <li>
+                                            <a class="dropdown-header" href="{{url('/project-viewer?cat_id=12')}}">Охорона здоров'я та надання соціальної допомоги</a>
+                                        </li>
                                         <li class="divider"></li>
                                         <li>
-                                            <a class="dropdown-header">Надання інших видів послуг (інші види
-                                                діяльності) </a>
+                                            <a class="dropdown-header" href="{{url('/project-viewer?cat_id=13')}}">Мистецтво, спорт, розваги та відпочинок</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a class="dropdown-header" href="{{url('/project-viewer?cat_id=14')}}">Надання інших видів послуг (інші види діяльності) </a>
                                         </li>
                                         <li class="divider"></li>
                                     </ul>
