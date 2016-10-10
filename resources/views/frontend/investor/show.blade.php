@@ -125,7 +125,6 @@
         @endif
     </div>
     @if(Auth::check() && Auth::user()->can('offer', $investor))
-
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
                 <!-- Modal content-->
@@ -209,25 +208,3 @@
     </script>
 @stop
 
-@section('css')
-    <style>
-        #overlay {
-            background-color: rgba(0, 0, 0, 0.2);
-            z-index: 999;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            display: none;
-        }
-        .spinner {
-            width: 120px;
-            height: 120px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            margin: -60px 0 0 -60px;
-        }
-    </style>
-@endsection

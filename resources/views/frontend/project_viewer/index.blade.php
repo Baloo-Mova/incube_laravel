@@ -21,7 +21,6 @@
             <li><a href="#problem" data-toggle="tab">Проблеми</a></li>
             <li><a href="#invest" data-toggle="tab">Заявки на інвестування</a></li>
             <li><a href="#project" data-toggle="tab">Проекти</a></li>
-            <li><a href="#employer" data-toggle="tab">Пропозиції роботи</a></li>
             <li><a href="#executor" data-toggle="tab">Резюме</a></li>
         </ul>
     </div>
@@ -41,6 +40,7 @@
         <div id="problem" class="tab-pane fade">
 
         </div>
+
          <div id="invest" class="tab-pane fade">
 
         </div>
@@ -49,27 +49,19 @@
 
         </div>
 
-        <div id="employer" class="tab-pane fade">
-
-        </div>
-
         <div id="executor" class="tab-pane fade">
             @for($i=0;$i<10;$i++)
             <div class="col-md-4 col-sm-6 col-xs-12">
-
                 <div class="carusel-block">
                     <a  href="#" class="">
                         <div class="carusel-block-content">
-                            
                                 <img src="{{ asset('img/250n300.png') }}" alt="polo shirt img" class="carusel-block-img img-responsive">
-                            
                             <h4 class="carusel-block-content-title">
                                 Обновление экосистемы города запорожье и запорожской области
                             </h4>
                             <div class="carusel-block-content-description">
                                 <p class="">Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки</p> 
                             </div>
-
                         </div>
                         <span class="carusel-id-badge" href="#">{{ $i }}</span>
                         <span class="carusel-price-badge" href="#">{{ $i+1344  }}$</span>
@@ -77,12 +69,8 @@
                 </div>  
             </div>   
             @endfor
-
-
         </div>
     </div>
-
-
 </div>
 @stop
 

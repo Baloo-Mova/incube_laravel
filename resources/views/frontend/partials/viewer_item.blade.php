@@ -1,7 +1,6 @@
 <div class="col-md-4 col-sm-6 col-xs-12">
     <div class="carusel-block">
-        
-        <a href="{{ route(strtolower($item->formType->name).'.show', [$item->id]) }}">
+        <a href="{{ route("project_viewer.show",['material'=>$item->id]) }}">
           
             <div class="carusel-block-content">
                 <div class="carusel-image">
