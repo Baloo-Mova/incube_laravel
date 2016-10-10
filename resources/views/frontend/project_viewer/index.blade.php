@@ -17,7 +17,7 @@
     </div>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            @include('frontend.partials.economic_activities_select',['economicActivitiesAttributeName' => "economic_activities_select",  'economicActivitiesAttributeValueNow' => 1, 'economicActivities'=>$economicActivities])
+            @include('frontend.partials.economic_activities_select',['economicActivitiesAttributeName' => "economic_activities_select",  'economicActivitiesAttributeValueNow' => $catId, 'economicActivities'=>$economicActivities])
         </div>
     </div>
     <br>
@@ -78,6 +78,17 @@
         </div>
     </div>
 </div>
+@stop
+@section('js')
+    <script>
+        $(function () {
+
+            $("select").on('change', function(){
+
+            });
+
+        });
+    </script>
 @stop
 
 

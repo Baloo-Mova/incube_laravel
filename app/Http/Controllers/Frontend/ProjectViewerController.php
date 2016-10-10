@@ -19,15 +19,28 @@ class ProjectViewerController extends Controller {
      */
     public function index()
     {
+        if(isset($_GET['cat_id'])) {
+            $cat_id = $_GET['cat_id'];
+            $allMaterials = UserForm::withAll()->where([
+                'status_id' => Status::PUBLISHED,
+                'economic_activities_id' => $cat_id,
+            ])->orderBy('id', 'desc')->get();
+        }else{
+            $cat_id = 1;
+
+            $allMaterials = UserForm::withAll()->where([
+                'status_id' => Status::PUBLISHED,
+            ])->orderBy('id', 'desc')->get();
+        }
+
         $economicActivities = EconomicActivity::all();
 
-        $allMaterials = UserForm::withAll()->where([
-            'status_id' => Status::PUBLISHED,
-        ])->orderBy('id', 'desc')->get();
+
 
         return view('frontend.project_viewer.index')->with([
             'allMaterials' => $allMaterials,
-            'economicActivities' => $economicActivities
+            'economicActivities' => $economicActivities,
+            'catId' => $cat_id,
         ]);
     }
 
