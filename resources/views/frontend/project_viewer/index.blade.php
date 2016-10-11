@@ -61,7 +61,8 @@
     </div>
     <div class="clearfix"></div>
     <div class="more_button_block text-center" style="">
-        <a class="btn btn-success btn-lg margin-auto more_button" data-number="0" href="#" disabled="{{$posts_number < config('posts.project_viewer_number') ? "disabled" : false}}">Завантажити ще...</a>
+        <a class="btn btn-success btn-lg margin-auto more_button" data-number="1" href="#" {{$posts_number < config('posts.project_viewer_number') ? "disabled='disabled'" : ""}}>Завантажити ще...</a>
+        <span class="hidden data_project_viewer_number" data-project-viewer-number="{{config('posts.project_viewer_number')}}"></span>
     </div>
 </div>
 @stop
@@ -71,27 +72,31 @@
 
             $("select").on('change', function(){
                 $('.more_button').data('number', 0).attr('data-number', 0);
-                 updateGrid($('li.active > .materials_button'));
+                 updateGrid($('li.active > .materials_button'), 1);
             });
 
             $('.materials_button').on('click', function(){
                 $('.more_button').data('number', 0).attr('data-number', 0);
-                updateGrid(this);
+                updateGrid(this, 1);
             });
 
             $('.more_button').on('click', function(e){
                 e.preventDefault();
-                 updateGrid($('li.active > .materials_button'));
+                 updateGrid($('li.active > .materials_button'), 2);
             });
         });
 
-        function updateGrid(currentTab){
+        function updateGrid(currentTab, printType){
 
             var cat_id = $('select').val(),
                     table_type = $(currentTab)[0].hash.replace('#',""),
                     nmb = $('.more_button').data('number');
 
-            $("#"+table_type).html("");
+            if(printType == 2){
+            }else{
+                $("#"+table_type).html("");
+            }
+
             $.ajax({
                 url: "{{ route('project-viewer.get') }}",
                 method: 'get',
@@ -108,16 +113,21 @@
 
                 var new_problem = "";
 
-                if(data.materials.length == 0){
+                if(data.materials.length == 0 && printType != 2){
                     $("#"+table_type).append("<h3 class='text-center'>Матеріалів не знайдено</h3>");
                 }else{
 
                     $.each( data.materials, function( key, val ) {
+                        if(val.form_type_id == 5){
+                            title = val.second_name+val.first_name+val.last_name;
+                        }else{
+                            title = val.name;
+                        }
                         new_problem +='<div class="col-md-4 col-sm-6 col-xs-12"><div class="carusel-block">';
                         new_problem +='<a  href="project-viewer/show/'+val.id+'" class="">';
                         new_problem +='<div class="carusel-block-content">';
                         new_problem +=        '<img src="img/'+val.logo+'/maxxmax" alt="polo shirt img" class="carusel-block-img img-responsive">';
-                        new_problem +=        '<h4 class="carusel-block-content-title">'+val.name+'</h4>';
+                        new_problem +=        '<h4 class="carusel-block-content-title">'+title+'</h4>';
                         new_problem +='<div class="carusel-block-content-description">';
                         new_problem +=        '<p class="">'+val.description+'</p>';
                         new_problem +='</div></div>';
@@ -128,7 +138,7 @@
                     });
 
                 }
-                if(data.materials.length < 9){
+                if(data.materials.length < $(".data_project_viewer_number").data('projectViewerNumber')){
                     $('.more_button').attr('disabled','disabled');
                 }else{
                     $('.more_button').attr('disabled',false);

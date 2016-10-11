@@ -7,7 +7,7 @@
                     <img class="carusel-block-img img-responsive" src="{{ route('images.show', ['id'=> (empty($item->logo)?'empty':$item->logo),'height'=>168,'width'=>250]) }}">
                 </div>
                 <h4 class="carusel-block-content-title">
-                    {!!$item->name!!}
+                    {!! $item->form_type_id == 5 ? $item->second_name.$item->first_name.$item->last_name : $item->name !!}
                 </h4>
                 <div class="carusel-block-content-description">
                    {!!$item->description!!}
