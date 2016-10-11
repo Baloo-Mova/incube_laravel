@@ -1642,7 +1642,7 @@ img.carusel-block-img{
     height: 100%;
     overflow: visible;
     display: none;
-    background: rgba(0, 0, 0, 0.8) url('/../img/spinner.gif') no-repeat center center;
+    background: rgba(255, 255, 255, 0.8) url('/../img/spinner.gif') no-repeat center center;
 }
 @media (max-width: 768px) {
     .navbar-brand img{
