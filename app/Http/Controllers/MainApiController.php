@@ -49,13 +49,15 @@ class MainApiController extends Controller
         ];
     }
 
-    public function getProblems(Request $request)
+    public function getData(Request $request)
     {
         $cat_id = $request->get('cat_id');
-        $table_types = TableType::where('name', $request->get('table_types'))->first();
-
-        $materials = UserForm::query()->published()->where(['form_type_id' => $table_types['id']]);
-
+        $tableType = $request->get('table_types');
+        $materials = UserForm::query()->published();
+        if($tableType != "All") {
+            $tableTypes = TableType::where('name', $tableType)->first();
+            $materials = $materials->where(['form_type_id' => $tableTypes->id]);
+        }
         if(isset($cat_id)) {
             $materials = $materials->withEconomicActivities($cat_id);
         }

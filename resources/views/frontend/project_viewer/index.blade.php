@@ -23,15 +23,15 @@
     <br>
     <div class="select-tabs">
         <ul class="nav nav-pills nav-stacked text-center" id="myTab">
-            <li class="active"><a href="#allmat" data-toggle="tab">Усі пропозиції</a></li>
-            <li><a href="#Problem" class="materials_button" data-table-type="Problem" data-toggle="tab">Проблеми</a></li>
-            <li><a href="#Investor" class="materials_button" data-table-type="Investor" data-toggle="tab">Заявки на інвестування</a></li>
-            <li><a href="#Designer" class="materials_button" data-table-type="Designer" data-toggle="tab">Проекти</a></li>
-            <li><a href="#Executor" class="materials_button" data-table-type="Executor" data-toggle="tab">Резюме</a></li>
+            <li class="active"><a href="#All" class="materials_button" data-toggle="tab">Усі пропозиції</a></li>
+            <li><a href="#Problem" class="materials_button"   data-toggle="tab">Проблеми</a></li>
+            <li><a href="#Investor" class="materials_button"   data-toggle="tab">Заявки на інвестування</a></li>
+            <li><a href="#Designer" class="materials_button"   data-toggle="tab">Проекти</a></li>
+            <li><a href="#Executor" class="materials_button"   data-toggle="tab">Резюме</a></li>
         </ul>
     </div>
     <div class="tab-content">
-        <div id="allmat" class="tab-pane fade in active">
+        <div id="All" class="tab-pane fade in active">
             @forelse($allMaterials as $item)
             <div class="carusel" id="problems">
               @include('frontend.partials.viewer_item',['item'=>$item])
@@ -70,40 +70,42 @@
             });
 
             $('.materials_button').on('click', function(){
-                var cat_id = $('select').val(),
-                        table_type = $(this).attr('data-table-type');
-                $.ajax({
-                    url: "get/problems",
-                    method: 'get',
-                    data:{
-                        table_types : table_type,
-                        cat_id : cat_id
-                    },
-                }).done(function(data) {
+                updateGrid(this);
+            });
+        });
 
-                    $("#"+table_type).html("");
-                    var new_problem = "";
+        function updateGrid(currentTab){
+            var cat_id = $('select').val(),
+                    table_type = $(currentTab)[0].hash.replace('#',"");
+            $("#"+table_type).html("");
+            $.ajax({
+                url: "{{ route('project-viewer.get') }}",
+                method: 'get',
+                data:{
+                    table_types : table_type,
+                    cat_id : cat_id
+                },
+            }).done(function(data) {
 
-                    $.each( data.materials, function( key, val ) {
-                        new_problem +='<div class="col-md-4 col-sm-6 col-xs-12"><div class="carusel-block">';
-                        new_problem +='<a  href="project-viewer/show/'+val.id+'" class="">';
-                        new_problem +='<div class="carusel-block-content">';
-                        new_problem +=        '<img src="img/'+val.logo+'/maxxmax" alt="polo shirt img" class="carusel-block-img img-responsive">';
-                        new_problem +=        '<h4 class="carusel-block-content-title">'+val.name+'</h4>';
-                        new_problem +='<div class="carusel-block-content-description">';
-                        new_problem +=        '<p class="">'+val.description+'</p>';
-                        new_problem +='</div></div>';
-                        new_problem +='<span class="carusel-id-badge" href="#">'+val.id+'</span>';
-                        new_problem +=        '</a></div></div>';
-                        $("#"+table_type).append(new_problem);
-                        new_problem = "";
-                    });
+                var new_problem = "";
 
+                $.each( data.materials, function( key, val ) {
+                    new_problem +='<div class="col-md-4 col-sm-6 col-xs-12"><div class="carusel-block">';
+                    new_problem +='<a  href="project-viewer/show/'+val.id+'" class="">';
+                    new_problem +='<div class="carusel-block-content">';
+                    new_problem +=        '<img src="img/'+val.logo+'/maxxmax" alt="polo shirt img" class="carusel-block-img img-responsive">';
+                    new_problem +=        '<h4 class="carusel-block-content-title">'+val.name+'</h4>';
+                    new_problem +='<div class="carusel-block-content-description">';
+                    new_problem +=        '<p class="">'+val.description+'</p>';
+                    new_problem +='</div></div>';
+                    new_problem +='<span class="carusel-id-badge" href="#">'+val.id+'</span>';
+                    new_problem +=        '</a></div></div>';
+                    $("#"+table_type).append(new_problem);
+                    new_problem = "";
                 });
 
             });
-
-        });
+        }
     </script>
 @stop
 
