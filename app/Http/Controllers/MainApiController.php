@@ -53,7 +53,13 @@ class MainApiController extends Controller
     {
         $cat_id = $request->get('cat_id');
         $tableType = $request->get('table_types');
+        $skval = $request->get('number');
         $materials = UserForm::query()->published();
+        if(empty($skval)) {
+            $skip_val = 0;
+        }else{
+            $skip_val = $skval * config('posts.project_viewer_number');
+        }
         if($tableType != "All") {
             $tableTypes = TableType::where('name', $tableType)->first();
             $materials = $materials->where(['form_type_id' => $tableTypes->id]);
@@ -62,7 +68,7 @@ class MainApiController extends Controller
             $materials = $materials->withEconomicActivities($cat_id);
         }
 
-        $materials = $materials->orderBy('id','desc')->skip(0)->take(9)->get();
+        $materials = $materials->orderBy('id','desc')->skip($skip_val)->take(config('posts.project_viewer_number'))->get();
 
         return [
             'materials' => $materials,

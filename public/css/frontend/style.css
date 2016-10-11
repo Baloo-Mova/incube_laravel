@@ -1644,6 +1644,9 @@ img.carusel-block-img{
     display: none;
     background: rgba(255, 255, 255, 0.8) url('/../img/spinner.gif') no-repeat center center;
 }
+.more_button_block{
+    margin: 10px 0px;
+}
 @media (max-width: 768px) {
     .navbar-brand img{
         height: 40px;
