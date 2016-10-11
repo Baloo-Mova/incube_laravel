@@ -66,7 +66,7 @@
         $(function () {
 
             $("select").on('change', function(){
-
+                 updateGrid($('li.active > .materials_button'));
             });
 
             $('.materials_button').on('click', function(){
