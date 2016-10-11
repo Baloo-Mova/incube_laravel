@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\City;
 use App\Models\ActivityRelationship;
 use App\Models\UserForm;
+use App\Models\TableType;
 use App\Notifications\NewOffer;
 use Illuminate\Http\Request;
 
@@ -45,6 +46,24 @@ class MainApiController extends Controller
         return [
             'status'=>'success',
             'text' => 'Вы успешно сделали предложение, ожидайте, с вами свяжутся.'
+        ];
+    }
+
+    public function getProblems(Request $request)
+    {
+        $cat_id = $request->get('cat_id');
+        $table_types = TableType::where('name', $request->get('table_types'))->first();
+
+        $materials = UserForm::query()->published()->where(['form_type_id' => $table_types['id']]);
+
+        if(isset($cat_id)) {
+            $materials = $materials->withEconomicActivities($cat_id);
+        }
+
+        $materials = $materials->orderBy('id','desc')->skip(0)->take(9)->get();
+
+        return [
+            'materials' => $materials,
         ];
     }
 }

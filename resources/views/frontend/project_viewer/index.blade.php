@@ -24,10 +24,10 @@
     <div class="select-tabs">
         <ul class="nav nav-pills nav-stacked text-center" id="myTab">
             <li class="active"><a href="#allmat" data-toggle="tab">Усі пропозиції</a></li>
-            <li><a href="#problem" data-toggle="tab">Проблеми</a></li>
-            <li><a href="#invest" data-toggle="tab">Заявки на інвестування</a></li>
-            <li><a href="#project" data-toggle="tab">Проекти</a></li>
-            <li><a href="#executor" data-toggle="tab">Резюме</a></li>
+            <li><a href="#Problem" class="materials_button" data-table-type="Problem" data-toggle="tab">Проблеми</a></li>
+            <li><a href="#Investor" class="materials_button" data-table-type="Investor" data-toggle="tab">Заявки на інвестування</a></li>
+            <li><a href="#Designer" class="materials_button" data-table-type="Designer" data-toggle="tab">Проекти</a></li>
+            <li><a href="#Executor" class="materials_button" data-table-type="Executor" data-toggle="tab">Резюме</a></li>
         </ul>
     </div>
     <div class="tab-content">
@@ -43,38 +43,20 @@
             @endforelse
         </div>
 
-        <div id="problem" class="tab-pane fade">
+        <div id="Problem" class="tab-pane fade">
 
         </div>
 
-         <div id="invest" class="tab-pane fade">
+         <div id="Investor" class="tab-pane fade">
 
         </div>
 
-        <div id="project" class="tab-pane fade">
+        <div id="Designer" class="tab-pane fade">
 
         </div>
 
-        <div id="executor" class="tab-pane fade">
-            @for($i=0;$i<10;$i++)
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="carusel-block">
-                    <a  href="#" class="">
-                        <div class="carusel-block-content">
-                                <img src="{{ asset('img/250n300.png') }}" alt="polo shirt img" class="carusel-block-img img-responsive">
-                            <h4 class="carusel-block-content-title">
-                                Обновление экосистемы города запорожье и запорожской области
-                            </h4>
-                            <div class="carusel-block-content-description">
-                                <p class="">Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки Текст на 3 строки</p> 
-                            </div>
-                        </div>
-                        <span class="carusel-id-badge" href="#">{{ $i }}</span>
-                        <span class="carusel-price-badge" href="#">{{ $i+1344  }}$</span>
-                    </a>     
-                </div>  
-            </div>   
-            @endfor
+        <div id="Executor" class="tab-pane fade">
+
         </div>
     </div>
 </div>
@@ -84,6 +66,40 @@
         $(function () {
 
             $("select").on('change', function(){
+
+            });
+
+            $('.materials_button').on('click', function(){
+                var cat_id = $('select').val(),
+                        table_type = $(this).attr('data-table-type');
+                $.ajax({
+                    url: "get/problems",
+                    method: 'get',
+                    data:{
+                        table_types : table_type,
+                        cat_id : cat_id
+                    },
+                }).done(function(data) {
+
+                    $("#"+table_type).html("");
+                    var new_problem = "";
+
+                    $.each( data.materials, function( key, val ) {
+                        new_problem +='<div class="col-md-4 col-sm-6 col-xs-12"><div class="carusel-block">';
+                        new_problem +='<a  href="project-viewer/show/'+val.id+'" class="">';
+                        new_problem +='<div class="carusel-block-content">';
+                        new_problem +=        '<img src="img/'+val.logo+'/maxxmax" alt="polo shirt img" class="carusel-block-img img-responsive">';
+                        new_problem +=        '<h4 class="carusel-block-content-title">'+val.name+'</h4>';
+                        new_problem +='<div class="carusel-block-content-description">';
+                        new_problem +=        '<p class="">'+val.description+'</p>';
+                        new_problem +='</div></div>';
+                        new_problem +='<span class="carusel-id-badge" href="#">'+val.id+'</span>';
+                        new_problem +=        '</a></div></div>';
+                        $("#"+table_type).append(new_problem);
+                        new_problem = "";
+                    });
+
+                });
 
             });
 

@@ -11,6 +11,7 @@ use App\Models\UserForm;
 use App\Notifications\RegisterSuccess;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Http\Request;
 
 class ProjectViewerController extends Controller {
 
