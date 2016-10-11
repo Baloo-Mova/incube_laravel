@@ -31,6 +31,9 @@
         </ul>
     </div>
     <div class="tab-content">
+
+
+
         <div id="All" class="tab-pane fade in active">
             @forelse($allMaterials as $item)
             <div class="carusel" id="problems">
@@ -66,10 +69,12 @@
         $(function () {
 
             $("select").on('change', function(){
+                pagePreloader();
                  updateGrid($('li.active > .materials_button'));
             });
 
             $('.materials_button').on('click', function(){
+                pagePreloader();
                 updateGrid(this);
             });
         });
@@ -105,7 +110,16 @@
                 });
 
             });
+            pagePreloaderHide();
         }
+
+        function pagePreloader(){
+            $('#preloader').fadeIn('slow');
+        }
+        function pagePreloaderHide(){
+            $('#preloader').fadeOut('slow');
+        }
+
     </script>
 @stop
 
