@@ -288,7 +288,7 @@
                 $.each($('.information'),function(val,item){
                     $(item).hide();
                 });
-            })
+            });
         });
     </script>
 @endsection

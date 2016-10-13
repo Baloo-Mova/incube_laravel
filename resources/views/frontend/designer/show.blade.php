@@ -101,7 +101,7 @@
 
                         <label class="title-border">Країна</label>
                         <p>{{ $designer->country->name }}</p>
-
+                        <input type="hidden" value="{{ $designer->id }}" id="id">
                         @if(isset($designer->city))
                             <label class="title-border">Регіон</label>
                             <p>{{ $designer->city->name }}</p>
@@ -113,16 +113,169 @@
                         @endif
 
                         @if(Auth::check() && Auth::user()->can('offer', $designer))
-                            <a href="#" class="btn btn-primary"> <span><i class="fa fa-dollar"></i> Інвестувати </span>
-                            </a>
-                            <a href="#" class="btn btn-primary">
-                                <i class="fa fa-user"></i> Прийняти участь
-                            </a>
+                            <div class="text-center">
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#investor_modal">
+                                    <span><i class="fa fa-dollar"></i> Інвестувати </span>
+                                </a>
+                            </div>
+                            <br>
+                            <div class="text-center">
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#executor_modal">
+                                    <span><i class="fa fa-user"></i> Запропонувати резюме</span>
+                                </a>
+                            </div>
+                            <br>
                         @endif
-
                     </div>
                 </div>
             </div>
+            @if(Auth::check() && Auth::user()->can('edit', $designer))
+                <div class="row">
+                    <h2 class="text-center">Пропозицii</h2>
+                    <table class="table table-hover" id="offers">
+                        <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Назва проекту</th>
+                            <th class="text-center">Дата</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @forelse($designer->offers as $item)
+                            <tr>
+                                <td class="text-center">
+                                    {{$item->id}}
+                                </td>
+                                <td class="text-center">
+                                    {{ $item->form_type_id == 5 ? $item->second_name." ".$item->first_name." ".$item->last_name : $item->name }}
+                                </td>
+                                <td class="text-center">
+                                    {{ $item->pivot->created_at }}
+                                </td>
+                                <td>
+                                    <a href="{{route('project_viewer.show',['material'=>$item->id])}}" title="View"
+                                       aria-label="View"
+                                       data-pjax="0">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    Пропозицiй нема
+                                </td>
+                            </tr>
+                        @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            @endif
+            @if(Auth::check() && Auth::user()->can('offer', $designer))
+                <div id="investor_modal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div id="investor_overlay">
+                                <img class="spinner" src="{{ asset('img/spinner.gif') }}">
+                            </div>
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <div class="row-fluid user-row">
+                                    <img src="{{url('/img/'.'logo.png')}}" class="img-responsive" alt="log">
+                                </div>
+                                <h4 class="modal-title text-center title-border">Оберіть свій проект</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h2 class="text-center">
+                                    Ваші проекти
+                                </h2>
+                                <div class="information alert" style="display: none"></div>
+
+                                <table class="table table-hover offerProjects" id="investor-offer">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Назва</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @forelse(Auth::user()->getAllInvestor() as $item)
+                                        <tr>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->name }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" class="text-center"> У вас немае опублiкованих проэктiв</td>
+                                        </tr>
+                                    @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{{ route('investor.create') }}" class="btn btn-success pull-left">Новий проект</a>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="executor_modal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div id="executor_overlay">
+                                <img class="spinner" src="{{ asset('img/spinner.gif') }}">
+                            </div>
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <div class="row-fluid user-row">
+                                    <img src="{{url('/img/'.'logo.png')}}" class="img-responsive" alt="log">
+                                </div>
+                                <h4 class="modal-title text-center title-border">Оберіть своє резюме</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h2 class="text-center">
+                                    Ваше резюме
+                                </h2>
+                                <div class="information alert" style="display: none"></div>
+
+                                <table class="table table-hover offerProjects" id="executor-offer">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Назва</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @forelse(Auth::user()->getAllExecutor() as $item)
+                                        <tr>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->second_name." ".$item->first_name." ".$item->last_name }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" class="text-center"> У вас немае опублiкованих резюме</td>
+                                        </tr>
+                                    @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{{ route('executor.create') }}" class="btn btn-success pull-left">Нове резюме</a>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+
+
+
+
         </div>
     </div>
 @stop
@@ -130,14 +283,78 @@
     <script>
         $(document).ready(function () {
 
-            $("#owl-demo").owlCarousel({
+            /*$("#owl-demo").owlCarousel({
                 autoPlay: 3000, //Set AutoPlay to 3 seconds
 
                 items: 1,
                 itemsDesktop: [1199, 3],
                 itemsDesktopSmall: [979, 3]
 
+            });*/
+
+            $('#investor-offer tbody tr').on('click', function () {
+                var td = $(this).find('td');
+                var id = td[0].innerText;
+                var name = td[1].innerText;
+                if (confirm("Ви впевнені, що хочете подати наступний проект - \"" + name + "\" ?")) {
+                    $("#investor_overlay").show();
+                    $.ajax({
+                        url: '{{ route('create.offer') }}',
+                        method: 'POST',
+                        data: {
+                            '_token': '{{ csrf_token() }}',
+                            'receiver_id': $('#id').val(),
+                            'sender_id': id,
+                        },
+                        success: function (response, code) {
+                            var info = $('#investor_modal .information');
+                            info.text(response.text);
+                            info.removeClass('alert-success').removeClass('alert-danger');
+                            info.addClass('alert-' + response.status);
+                            info.show();
+                            $('#investor_overlay').hide();
+                        }
+                    })
+                }
             });
+
+            $('#investor_modal').on('hidden.bs.modal', function () {
+                $.each($('.information'),function(val,item){
+                    $(item).hide();
+                });
+            })
+            //Executor
+            $('#executor-offer tbody tr').on('click', function () {
+                var td = $(this).find('td');
+                var id = td[0].innerText;
+                var name = td[1].innerText;
+                if (confirm("Ви впевнені, що хочете подати наступне резюме - \"" + name + "\" ?")) {
+                    $("#executor_overlay").show();
+                    $.ajax({
+                        url: '{{ route('create.offer') }}',
+                        method: 'POST',
+                        data: {
+                            '_token': '{{ csrf_token() }}',
+                            'receiver_id': $('#id').val(),
+                            'sender_id': id,
+                        },
+                        success: function (response, code) {
+                            var info = $('#executor_modal .information');
+                            info.text(response.text);
+                            info.removeClass('alert-success').removeClass('alert-danger');
+                            info.addClass('alert-' + response.status);
+                            info.show();
+                            $('#executor_overlay').hide();
+                        }
+                    })
+                }
+            });
+
+            $('#executor_modal').on('hidden.bs.modal', function () {
+                $.each($('.information'),function(val,item){
+                    $(item).hide();
+                });
+            })
 
         });
     </script>
