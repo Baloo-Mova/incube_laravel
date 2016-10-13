@@ -129,9 +129,10 @@
                     </div>
                 </div>
             </div>
+            </div>
             @if(Auth::check() && Auth::user()->can('edit', $designer))
                 <div class="row">
-                    <h2 class="text-center">Пропозицii</h2>
+                    <h2 class="text-center">Пропозицiї</h2>
                     <table class="table table-hover" id="offers">
                         <thead>
                         <tr>
@@ -271,13 +272,7 @@
                     </div>
                 </div>
             @endif
-
-
-
-
-
         </div>
-    </div>
 @stop
 @section('js')
     <script>
