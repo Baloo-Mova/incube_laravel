@@ -42,7 +42,7 @@ class EconomicActivity extends Model
     }
 
     public function isParent(){
-        return  count($this->childrens) > 0;
+        return  $this->parent_id == null; //count($this->childrens) > 0;
     }
 
     public function isChildren(){

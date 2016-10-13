@@ -11,6 +11,7 @@ use App\Models\UserForm;
 use App\Notifications\RegisterSuccess;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Http\Request;
 
 class ProjectViewerController extends Controller {
 
@@ -24,12 +25,13 @@ class ProjectViewerController extends Controller {
             $allMaterials = $allMaterials->withEconomicActivities($cat_id);
         }
 
-        $allMaterials = $allMaterials->orderBy('id','desc')->skip(0)->take(9)->get();
+        $allMaterials = $allMaterials->orderBy('id','desc')->skip(0)->take(config('posts.project_viewer_number'))->get();
         $economicActivities = EconomicActivity::all();
 
         return view('frontend.project_viewer.index')->with([
             'allMaterials' => $allMaterials,
             'economicActivities' => $economicActivities,
+            'posts_number' => count($allMaterials),
             'catId' => $cat_id,
         ]);
     }

@@ -18,6 +18,7 @@ Auth::routes();
 Route::get('/img/{id}/{height}x{width}', ['uses' => 'ImagesShowController@index', 'as' => 'images.show']);
 Route::get('/get/cities/{id}', ['uses' => 'MainApiController@getCities', 'as' => 'get.city']);
 Route::post('/create/offer', ['uses' => 'MainApiController@createOffer', 'as' => 'create.offer']);
+Route::get('/get/data', ['uses' => 'MainApiController@getData', 'as' => 'project-viewer.get']);
 
 Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/', ['uses' => 'SiteController@index', 'as' => 'site.index']);

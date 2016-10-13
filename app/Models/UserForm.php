@@ -239,6 +239,10 @@ class UserForm extends Model
 
     public function scopeWithEconomicActivities($query, $cat_id)
     {
+        if($cat_id == 1){
+            return $query;
+        }
+
         $ea = EconomicActivity::find($cat_id);
         $ids = [];
         if ($ea->isParent()) {
