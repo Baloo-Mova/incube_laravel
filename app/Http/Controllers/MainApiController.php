@@ -35,7 +35,7 @@ class MainApiController extends Controller
         if ($form->offers->contains($data['sender_id'])) {
             return [
                 'status' => 'danger',
-                'text' => 'Вы уже делали такое предложение'
+                'text' => 'Ви вже робили цю пропозицію'
             ];
         }
 
@@ -44,7 +44,7 @@ class MainApiController extends Controller
 
         return [
             'status'=>'success',
-            'text' => 'Вы успешно сделали предложение, ожидайте, с вами свяжутся.'
+            'text' => "Ви успішно зробили пропозицію, зачекайте певний час і з Вами зв'яжуться."
         ];
     }
 }

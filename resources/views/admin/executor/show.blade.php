@@ -77,7 +77,7 @@
         </div>
 
         <div class="btn-group pull-lef">
-            <a href="{{route('executor.show',['executor'=>$executor->id])}}" class="btn-default btn">Продивитись на стороні клієнта</a>
+            <a href="{{route('project_viewer.show',['material'=>$executor->id])}}" class="btn-default btn">Продивитись на стороні клієнта</a>
         </div>
     </span>
 </div>

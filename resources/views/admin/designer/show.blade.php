@@ -32,7 +32,7 @@
                                class="btn-danger btn">Видалити</a>
                         </div>
                         <div class="btn-group">
-                            <a href="{{ route('designer.show', ['id'=>$designer->id]) }}"
+                            <a href="{{ route('project_viewer.show',['material'=>$designer->id]) }}"
                                class="btn-default btn">Продивитись на стороні клієнта</a>
                         </div>
 

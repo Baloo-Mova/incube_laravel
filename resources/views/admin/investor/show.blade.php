@@ -131,7 +131,7 @@
                    class="btn-danger btn">Видалити</a>
             </div>
             <div class="btn-group pull-left">
-                <a href="{{ route('investor.show', ['id'=>$investor->id]) }}"
+                <a href="{{ route('project_viewer.show',['material'=>$investor->id]) }}"
                    class="btn-default btn">Продивитись на стороні клієнта</a>
             </div>
         

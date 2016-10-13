@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Designer\CreateRequest;
-use App\Http\Requests\Designer\EditRequest;
+//use App\Http\Requests\Designer\EditRequest;
 use App\Http\Requests\Designer\UpdateRequest;
 use App\Models\EconomicActivity;
 use App\Models\Document;
@@ -90,7 +90,7 @@ class DesignerController extends Controller
         return redirect(route('designer.index'));
     }
 
-    public function edit(EditRequest $request, UserForm $designer)
+    public function edit(UserForm $designer)
     {
         $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();
         return view('admin.designer.edit', compact('designer', 'economicActivities'));

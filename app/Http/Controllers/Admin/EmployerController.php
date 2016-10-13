@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Employer\CreateRequest;
-use App\Http\Requests\Employer\EditRequest;
+//use App\Http\Requests\Employer\EditRequest;
 use App\Http\Requests\Employer\UpdateRequest;
 use App\Models\EconomicActivity;
 use App\Models\Status;
@@ -66,7 +66,7 @@ class EmployerController extends Controller
         return redirect(route('admin.employer.index'));
     }
 
-    public function edit(EditRequest $request, UserForm $employer)
+    public function edit(UserForm $employer)
     {
         $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();
         return view('admin.employer.edit', compact('employer', 'economicActivities'));

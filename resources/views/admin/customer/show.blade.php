@@ -76,7 +76,7 @@
                    class="btn-danger btn">Видалити</a>
             </div>
             <div class="btn-group pull-left">
-                <a href="{{ route('problem.show', ['id'=>$problem->id]) }}"
+                <a href="{{ route('project_viewer.show',['material'=>$problem->id]) }}"
                    class="btn-default btn">Продивитись на стороні клієнта</a>
             </div>
         </div>

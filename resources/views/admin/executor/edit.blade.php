@@ -10,7 +10,7 @@
    <div class="col-md-offset-2">
         <div class="col-md-10 text-center">
             <p class="alert alert-info">{{ Session::get('message') }}</p>
-             <a href="{{ route('executor.show',['executor'=>$executor->id]) }}" class="btn-primary btn">Продивитись</a>
+             <a href="{{ route('project_viewer.show',['material'=>$executor->id]) }}" class="btn-primary btn">Продивитись</a>
         </div>
     </div>
     @endif

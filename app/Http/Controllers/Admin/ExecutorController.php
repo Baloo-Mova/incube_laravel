@@ -81,7 +81,7 @@ class ExecutorController extends Controller {
         //return redirect(route('executor.index'));
     }
 
-    public function edit(EditRequest $request, UserForm $executor) {
+    public function edit(UserForm $executor) {
 
         return view('admin.executor.edit', compact('executor'));
     }

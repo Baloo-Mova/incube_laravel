@@ -75,7 +75,7 @@ class ProblemController extends Controller
         return redirect(route('admin.problem.index'));
     }
 
-    public function edit(EditRequest $request, UserForm $problem)
+    public function edit(UserForm $problem)
     {
 
         $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();

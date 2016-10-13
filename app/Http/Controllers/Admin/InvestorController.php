@@ -66,7 +66,7 @@ class InvestorController extends Controller
         return redirect(route('admin.investor.index'));
     }
 
-    public function edit(EditRequest $request, UserForm $investor)
+    public function edit(UserForm $investor)
     {
         $economicActivities = EconomicActivity::with('childrens')->where(['parent_id' => null])->get();
         return view('admin.investor.edit', compact('investor', 'economicActivities'));

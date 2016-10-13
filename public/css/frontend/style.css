@@ -1619,7 +1619,14 @@ img.carusel-block-img{
     background-color: #D10073; 
 }
 
-
+.badge-default{
+    background:#00ADEF;
+    
+}
+.badge-category{
+    background:#D10073;
+    
+}
 .background-logo{
     max-height: 110px;
     background-size: contain;

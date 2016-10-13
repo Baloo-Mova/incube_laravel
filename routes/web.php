@@ -96,6 +96,10 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('/', ['uses' => 'ProjectViewerController@index', 'as' => 'project_viewer.index']);
         Route::get('/show/{material}', ['uses' => 'ProjectViewerController@show', 'as' => 'project_viewer.show']);
     });
+    Route::group(['prefix' => 'blog'], function () {
+        Route::get('/', ['uses' => 'ArticleController@index', 'as' => 'article.index']);
+        Route::get('/show/{article}', ['uses' => 'ArticleController@show', 'as' => 'article.show']);
+    });
 });
 
 Route::group(['namespace' => 'Admin'], function () {
@@ -161,6 +165,26 @@ Route::group(['namespace' => 'Admin'], function () {
             Route::post('/edit/{user}', ['uses' => 'PersonalAreaController@update', 'as' => 'admin.users.update']);
             Route::get('/show/{user}', ['uses' => 'PersonalAreaController@show', 'as' => 'admin.users.show']);
             Route::get('/delete/{user}', ['uses' => 'PersonalAreaController@delete', 'as' => 'admin.users.delete']);
+        });
+        Route::group(['prefix' => 'blog'], function () {
+            Route::get('/', ['uses' => 'ArticleController@index', 'as' => 'admin.article.index']);
+            Route::get('/create', ['uses' => 'ArticleController@create', 'as' => 'admin.article.create']);
+            Route::post('/create', ['uses' => 'ArticleController@store', 'as' => 'admin.article.store']);
+            Route::get('/edit/{article}', ['uses' => 'ArticleController@edit', 'as' => 'admin.article.edit']);
+            Route::post('/edit/{article}', ['uses' => 'ArticleController@update', 'as' => 'admin.article.update']);
+            Route::get('/show/{article}', ['uses' => 'ArticleController@show', 'as' => 'admin.article.show']);
+            Route::get('/delete/{article}', ['uses' => 'ArticleController@delete', 'as' => 'admin.article.delete']);
+
+
+            Route::group(['prefix' => 'category'], function () {
+                Route::get('/', ['uses' => 'CategoryController@index', 'as' => 'admin.category.index']);
+                Route::get('/create', ['uses' => 'CategoryController@create', 'as' => 'admin.category.create']);
+                Route::post('/create', ['uses' => 'CategoryController@store', 'as' => 'admin.category.store']);
+                Route::get('/edit/{category}', ['uses' => 'CategoryController@edit', 'as' => 'admin.category.edit']);
+                Route::post('/edit/{category}', ['uses' => 'CategoryController@update', 'as' => 'admin.category.update']);
+                Route::get('/show/{category}', ['uses' => 'CategoryController@show', 'as' => 'admin.category.show']);
+                Route::get('/delete/{category}', ['uses' => 'CategoryController@delete', 'as' => 'admin.category.delete']);
+            });
         });
     });
 });

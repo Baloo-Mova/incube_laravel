@@ -70,7 +70,17 @@
                             </li>--}}
                         </ul>
                     </li>
-                    
+                    <li class="{{((Request::is('admin/blog') ||Request::is('admin/blog/*') )? 'active' : '') }}">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#users">Блог <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="users" class="{{((Request::is('admin/blog') ||Request::is('admin/blog/*') )? 'collapse in' : 'collapse') }}">
+                            <li>
+                                <a href="{{route("admin.article.index")}}">Список cтатей</a>
+                            </li>
+                           <li>
+                                <a href="{{route("admin.category.index")}}">Список категорій</a>
+                            </li>
+                        </ul>
+                    </li>
                     
                 </ul>
             </div>

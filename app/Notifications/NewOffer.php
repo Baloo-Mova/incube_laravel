@@ -45,11 +45,11 @@ class NewOffer extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('У вас новый отклик!')
+            ->subject('У Вас новий відгук!')
             ->greeting('Вас вітає платформа incube.zp.ua')
             ->line('На вашу заявку: ' . $this->form->name . ' новый отклик!')
-            ->line('Вы можете просмотреть его нажав на кнопку ниже.')
-            ->action('Посмотреть', route('project_viewer.show', ['material' => $this->offer->id]));
+            ->line('Ви можете продивитись її,  натиснувши на кнопку нижче.')
+            ->action('Продивитись', route('project_viewer.show', ['material' => $this->offer->id]));
     }
 
     /**

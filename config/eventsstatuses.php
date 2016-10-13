@@ -3,7 +3,7 @@
 return [
 
     'App\Notifications\RegisterSuccess' => 'Вдала реєстрація',
-    \App\Notifications\NewOffer::class => 'Новое предложение',
+    \App\Notifications\NewOffer::class => 'Нова пропозиція',
 
 
 ];
