@@ -18,7 +18,9 @@ html, body {
 .head-show-info{
     height: 400px;
 }
-#overlay {
+#overlay,
+#executor_overlay,
+#investor_overlay{
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 999;
     position: absolute;
