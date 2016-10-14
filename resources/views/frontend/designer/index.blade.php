@@ -65,6 +65,11 @@
                         </div>
                     @endforelse
                 </div>
+                <div class="row text-center all-questions">
+                    <a class="btn btn-success btn-lg margin-auto" href="{{ route('project_viewer.index', ['cat_id=1#Problem']) }}">
+                        Усі позиції
+                    </a>
+                </div>
             </div>
 
             <div id="project" class="tab-pane fade">
@@ -79,14 +84,15 @@
                         </div>
                     @endforelse
                 </div>
+                <div class="row text-center all-questions">
+                    <a class="btn btn-success btn-lg margin-auto" href="{{ route('project_viewer.index', ['cat_id=1#Investor']) }}">
+                        Усі проекти
+                    </a>
+                </div>
             </div>
         </div>
 
-        <div class="text-center all-questions">
-            <a class="btn btn-success btn-lg margin-auto" href="{{ route('project_viewer.index') }}">
-                Усі позиції
-            </a>
-        </div>
+
     </div>
 @stop
 @section('js')

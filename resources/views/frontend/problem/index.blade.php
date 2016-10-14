@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="text-center all-questions">
-            <a class="btn btn-success btn-lg margin-auto" href="{{ route('project_viewer.index') }}">
+            <a class="btn btn-success btn-lg margin-auto" href="{{ route('project_viewer.index', ['cat_id=1#Problem']) }}">
                 Усі позиції
             </a>
         </div>

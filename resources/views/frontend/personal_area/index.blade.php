@@ -12,7 +12,7 @@
                      
                         <img class="pic img-circle" src="{{ route('images.show', ['id'=> (empty($thisUser->logo)? 'empty' : $thisUser->logo),'height'=>'200','width'=>'200']) }}" alt="">
                         <div class="name">
-                            <small>{{$thisUser->name}}, {{ empty($thisUser->country_id)? '' : $thisUser->country->name}}</small>
+                            <small>{{$thisUser->name}} {{ empty($thisUser->country_id)? '' : ', '.$thisUser->country->name}}</small>
                         </div>
                         <a href="#" class="btn btn-xs btn-primary pull-right login" style="margin:10px;"><span class="glyphicon glyphicon-picture"></span> Змінити зображення</a>
                     </div>

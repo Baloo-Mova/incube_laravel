@@ -23,11 +23,11 @@
     <br>
     <div class="select-tabs">
         <ul class="nav nav-pills nav-stacked text-center" id="myTab">
-            <li class="active"><a href="#All" class="materials_button" data-toggle="tab">Усі пропозиції</a></li>
-            <li><a href="#Problem" class="materials_button"   data-toggle="tab">Проблеми</a></li>
-            <li><a href="#Investor" class="materials_button"   data-toggle="tab">Заявки на інвестування</a></li>
-            <li><a href="#Designer" class="materials_button"   data-toggle="tab">Проекти</a></li>
-            <li><a href="#Executor" class="materials_button"   data-toggle="tab">Резюме</a></li>
+            <li class="All active"><a href="#All" class="materials_button" data-toggle="tab">Усі пропозиції</a></li>
+            <li class="Problem" ><a href="#Problem" class="materials_button"   data-toggle="tab">Проблеми</a></li>
+            <li class="Investor"> <a href="#Investor" class="materials_button"   data-toggle="tab">Заявки на інвестування</a></li>
+            <li class="Designer" ><a href="#Designer" class="materials_button"   data-toggle="tab">Проекти</a></li>
+            <li class="Executor" ><a href="#Executor" class="materials_button"   data-toggle="tab">Резюме</a></li>
         </ul>
     </div>
     <div class="tab-content">
@@ -69,6 +69,16 @@
 @section('js')
     <script>
         $(function () {
+
+            if(window.location.hash != ""){
+                $('#preloader').fadeIn('slow');
+                $(".All").removeClass('active');
+                $("#All").removeClass('in active');
+                $("."+window.location.hash.replace('#',"")).addClass('active');
+                $(window.location.hash).addClass('active in');
+                $('.more_button').data('number', 0).attr('data-number', 0);
+                updateGrid($('li.active > .materials_button'), 1);
+            }
 
             $("select").on('change', function(){
                 $('.more_button').data('number', 0).attr('data-number', 0);
