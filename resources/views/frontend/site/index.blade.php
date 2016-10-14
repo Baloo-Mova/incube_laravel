@@ -78,7 +78,7 @@
                                             <i class="glyphicon glyphicon-send"></i>
                                         </a>
                                         <a href="#profile" data-toggle="tab"
-                                           class="btn btn-success btn-outline-rounded set-active-tab"> Дальше
+                                           class="btn btn-success btn-outline-rounded set-active-tab"> Далі
                                             <i class="glyphicon glyphicon-arrow-right"></i>
                                         </a>
                                     </p>
@@ -90,12 +90,12 @@
                                     </h4>
 
                                     <p class="text-center">
-                                        <a href="{{ url('/register') }}" target="_blank"
+                                        <a href="{{ Auth::check() ? url('/personal-area') : url('/register') }}" target="_blank"
                                            class="btn btn-success btn-outline-rounded green"> Створити свій аккаунт
                                             <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span>
                                         </a>
                                         <a href="#messages" data-toggle="tab"
-                                           class="btn btn-success btn-outline-rounded set-active-tab"> Дальше
+                                           class="btn btn-success btn-outline-rounded set-active-tab"> Далі
                                             <i class="glyphicon glyphicon-arrow-right"></i>
                                         </a>
                                     </p>
@@ -108,11 +108,11 @@
                                     </h4>
 
                                     <p class="text-center">
-                                        <a href="#" class="btn btn-success btn-outline-rounded green"> Подати заявку
+                                        <a href="{{ url('/designer/create') }}" class="btn btn-success btn-outline-rounded green"> Подати заявку
                                             <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span>
                                         </a>
                                         <a href="#settings" data-toggle="tab"
-                                           class="btn btn-success btn-outline-rounded set-active-tab"> Дальше
+                                           class="btn btn-success btn-outline-rounded set-active-tab"> Далі
                                             <i class="glyphicon glyphicon-arrow-right"></i>
                                         </a>
                                     </p>
@@ -126,7 +126,7 @@
 
                                     <p class="text-center">
                                         <a href="#doner" data-toggle="tab"
-                                           class="btn btn-success btn-outline-rounded set-active-tab"> Дальше
+                                           class="btn btn-success btn-outline-rounded set-active-tab"> Далі
                                             <i class="glyphicon glyphicon-arrow-right"></i>
                                         </a>
                                     </p>
@@ -200,7 +200,7 @@
             <!--sliders for problems -->
             <div class="materials">
                 <div class="page-title text-center wow bounceInUp" data-wow-duration="1s">
-                    <h2><span>10</span> нових матеріалів</h2>
+                    <h2><span>{{count($allMaterials)}}</span> нових матеріалів</h2>
                 </div>
                 <div class="carusel" id="materials">
                     @forelse($allMaterials as $item)
