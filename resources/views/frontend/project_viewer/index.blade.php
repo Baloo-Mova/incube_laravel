@@ -61,7 +61,7 @@
     </div>
     <div class="clearfix"></div>
     <div class="more_button_block text-center" style="">
-        <a class="btn btn-success btn-lg margin-auto more_button" data-number="1" href="#" {{$posts_number < config('posts.project_viewer_number') ? "disabled='disabled'" : ""}}>Завантажити ще...</a>
+        <a class="btn btn-success btn-lg margin-auto more_button" data-number="1" href="#" {{$posts_number < config('posts.project_viewer_number') ? "disabled" : ""}}>Завантажити ще...</a>
         <span class="hidden data_project_viewer_number" data-project-viewer-number="{{config('posts.project_viewer_number')}}"></span>
     </div>
 </div>

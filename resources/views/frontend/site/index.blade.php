@@ -215,7 +215,7 @@
             </div>
 
             <div class="row text-center">
-                <a class="btn btn-success btn-lg margin-auto" href="{{ route('material.index') }}">
+                <a class="btn btn-success btn-lg margin-auto" href="{{ route('project_viewer.index') }}">
                     Усі матеріали
                 </a>
             </div>
