@@ -103,9 +103,9 @@ Route::group(['namespace' => 'Frontend'], function () {
     });
 });
 
-Route::group(['namespace' => 'Admin'], function () {
+Route::group(['namespace' => 'Admin', 'middleware' => ['admin']], function () {
     Route::group(['prefix' => 'admin'], function () {
-        Route::get('/', ['uses' => 'SiteController@index', 'as' => 'admin.site.index']);
+        Route::get('/', ['middleware' => 'checkadmin', 'uses' => 'SiteController@index', 'as' => 'admin.site.index']);
 
 
         Route::group(['prefix' => 'problem'], function () {

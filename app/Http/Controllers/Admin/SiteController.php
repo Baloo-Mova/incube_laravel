@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
 {
+    public function __construct()
+    {
+       // dd($this);
+       // $this->middleware('checkadmin');
+    }
     public function index()
     {
         return view('admin.site.index');

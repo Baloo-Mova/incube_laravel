@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\AbortIfNotOwner;
+use App\Http\Middleware\RedirectIfNotAdmin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -37,6 +38,11 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+        'admin'=>[
+            RedirectIfNotAdmin::class,
+
+            
+        ],
     ];
 
     /**
@@ -54,5 +60,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'checkOwner' => AbortIfNotOwner::class,
+        'checkadmin' => RedirectIfNotAdmin::class,
     ];
 }
