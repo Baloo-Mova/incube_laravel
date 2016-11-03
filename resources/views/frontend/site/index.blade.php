@@ -157,7 +157,7 @@
                 </div>
                 <div class="row">
                     <div class="how-it-work text-center owl-carousel owl-theme" id="how-it-work">
-                        <a href="{{url('/customer')}}">
+                        <a href="{{url('/problem')}}">
                             <div class="single-work wow fadeInUp" data-wow-delay="0.3s">
                                 <img src="{{ url('img/how-work3.png')}}" alt="">
                                 <h3>Замовник</h3>
