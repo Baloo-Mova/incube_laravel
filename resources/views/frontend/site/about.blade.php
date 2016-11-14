@@ -6,6 +6,24 @@
         <div class="row page-title text-center">
             <h2>Про Нас</h2>
         </div>
+        <div class="product-info">
+
+            <p style="text-align: justify;">Відділ проектної діяльності – це структурний підрозділ ЗНУ, який забезпечує концентрацію зусиль факультетів та основних структурних підрозділів ЗНУ щодо комерціалізації результатів їх освітньої та наукової діяльності на єдиній платформі задля подальшого розвитку освітньої, наукової, інноваційної та міжнародної діяльності, залучення студентів, аспірантів і молодих учених до розробки та практичної реалізації інноваційних ідей та проектів.</p>
+            <p style="text-align: justify;">Відділ здійснює інформаційно-аналітичну, &nbsp;навчально-організаційну та фандрайзингову діяльність, зокрема:</p>
+            <ul style="text-align: justify;">
+                <li>здійснює моніторинг проектів та грантів, постійне поповнення банку інноваційних ідей; бази даних розроблених і реалізованих проектів; переліку вітчизняних та міжнародних фондів, організацій, що надають відповідну фінансову підтримку тощо;</li>
+                <li>займається організаційно-методичною допомогою виконавцям проектів на початковій стадії їх діяльності, проводить навчальні тренінги та семінари, сприяє практичному застосуванню та комерціалізації продуктів і послуг, створених у процесі реалізації проектів;</li>
+                <li>залучає науково-педагогічних працівників до роботи в проектних групах, а також у якості наукових керівників (консультантів) проектів;</li>
+                <li>співпрацює з міжнародними, національними, регіональними фондами і програмами, органами державної влади та місцевого самоврядування.</li>
+            </ul>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">Детальніше див. Концепцію проектної діяльності ЗНУ</p>
+
+
+
+        </div>
+
         <div id="slider1" data-name="Investor">
 
         </div>
@@ -19,22 +37,22 @@
 @stop
 
 @section('js')
-    <script>
-        $(document).ready(function() {
-            $("#slider1").owlCarousel({
-                jsonPath : '{{ url('api/json') }}/'+$("#slider1").data('name'),
-                jsonSuccess : customDataSuccess
-            });
-
-            function customDataSuccess(data){
-                var content = "";
-                console.log(data);
-                for(var i in data["items"]){
-                    content += "<img src=\"" +img+ "\" alt=\"" +alt+ "\">"
-                }
-                $("#slider1").html(content);
-            }
-
+<script>
+    $(document).ready(function () {
+        $("#slider1").owlCarousel({
+            jsonPath: '{{ url('api / json') }}/' + $("#slider1").data('name'),
+            jsonSuccess: customDataSuccess
         });
-    </script>
+
+        function customDataSuccess(data) {
+            var content = "";
+            console.log(data);
+            for (var i in data["items"]) {
+                content += "<img src=\"" + img + "\" alt=\"" + alt + "\">"
+            }
+            $("#slider1").html(content);
+        }
+
+    });
+</script>
 @stop
