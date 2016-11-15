@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row page-title text-center">
-        <h2>Заявка на вирішення питання(проблеми). Ідентифікаційний номер: {{ $problem->id }}</h2>
+        <h2>Заявка на вирішення проблеми(завдання). Ідентифікаційний номер: {{ $problem->id }}</h2>
     </div>
 
     <hr/>

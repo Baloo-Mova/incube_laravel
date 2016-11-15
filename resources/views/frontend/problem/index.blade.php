@@ -7,9 +7,9 @@
         </div>
         <hr/>
         <div class="text-center">
-            <p><b> Замовник </b> - це користувач, что подає питання(проблему) для вирішення.</p>
-            Замовниками можуть виступати Юридичні та Фізичні особи, які можуть вкладувати кошти у інноваційний проект
-            <p>Якщо ви хочете виступити Замовником - заповніть наступну форму: </p>
+            <p><b> Замовник </b> - це користувач, який подає проблему(завдання) для вирішення.</p>
+            Замовниками можуть виступати юридичні та фізичні особи, які хочуть отримати рішення у вигляді проекту для поданої проблеми(завдання).
+            <p>Якщо ви хочете виступити замовником - заповніть наступну форму: </p>
             <div class="text-center">
                 <a href="{{ route('problem.create') }}" class="btn btn-lg btn-danger center">Подати заявку
                     <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -17,7 +17,7 @@
         </div>
         <hr/>
         <div class="page-title text-center">
-            <h2>Дійсні проблеми</h2>
+            <h2>Подані проблеми проблеми(завдання)</h2>
         </div>
         <div id="problem" class="tab-pane fade in active">
             <div class="carusel" id="problems">
@@ -25,7 +25,7 @@
                     @include('frontend.partials.carusel_item',['item'=>$item])
             @empty
                 <div class="row text-center">
-                    <h3>Проблемы отсутствуют</h3>
+                    <h3>Проблеми відсутні</h3>
                 </div>
             @endforelse
             </div>
