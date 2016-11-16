@@ -79,7 +79,7 @@
             <div class="col-md-offset-2">
                 <div class="col-md-10">
                     <div class="form-group {{ $errors->has('country_id')?'has-error':'' }}">
-                        <label class="control-label" for="region">Країна інвестування <span
+                        <label class="control-label" for="region">Країна проекту <span
                                     class="form-required">*</span></label>
                         <select id="country_id" class="form-control" name="country_id">
                             @if(old('country_id')==null)
@@ -98,7 +98,7 @@
             <div class="col-md-offset-2">
                 <div class="col-md-10">
                     <div class="form-group {{ $errors->has('city_id')?'has-error':'' }}">
-                        <label class="control-label" for="region">Регіон інвестування</label>
+                        <label class="control-label" for="region">Регіон проекту</label>
                         <select id="city_id" class="form-control" name="city_id">
 
                         </select>

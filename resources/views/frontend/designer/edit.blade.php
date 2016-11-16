@@ -90,7 +90,7 @@
             <div class="col-md-offset-2">
                 <div class="col-md-10">
                     <div class="form-group {{ $errors->has('country_id')?'has-error':'' }}">
-                        <label class="control-label" for="region">Країна</label>
+                        <label class="control-label" for="region">Країна проекту</label>
                         <select id="country_id" class="form-control" name="country_id">
                             @foreach(\App\Models\Country::all() as $country)
                                 <option value="{{ $country->id }}" {{ $designer->country_id == $country->id ? "selected" : "" }}>{{ $country->name }}</option>
@@ -105,7 +105,7 @@
             <div class="col-md-offset-2">
                 <div class="col-md-10">
                     <div class="form-group {{ $errors->has('city_id')?'has-error':'' }}">
-                        <label class="control-label" for="region">Регіон</label>
+                        <label class="control-label" for="region">Регіон проекту</label>
                         <select id="city_id" class="form-control" name="city_id">
                             <option value="0"> Усi</option>
                             @foreach(\App\Models\City::where(['country_id'=>$designer->country_id])->get() as $city)
