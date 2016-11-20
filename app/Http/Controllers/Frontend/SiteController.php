@@ -6,7 +6,6 @@ use App\Notifications\RegisterSuccess;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
 use App\Models\Status;
 use App\Models\TableType;
 use App\Models\UserForm;
@@ -16,32 +15,36 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class SiteController extends Controller
-{
-    public function index()
-    {
-              $allMaterials = UserForm::withAll()->where([
+use App\Models\Article;
+use App\Models\Category;
+
+class SiteController extends Controller {
+
+    public function index() {
+        $allMaterials = UserForm::withAll()->where([
                     'status_id' => Status::PUBLISHED,
                 ])->orderBy('id', 'desc')->take(10)->get();
-
+        $articles = Article::where([
+                    'status_id' => Status::PUBLISHED,
+                    
+                ])->orderBy('id', 'desc')->take(config('posts.project_viewer_number'))->get();
+        $categories = Category::orderBy('id', 'desc')->get();
         return view('frontend.site.index')->with([
                     'allMaterials' => $allMaterials,
+                    'articles' => $articles,
         ]);
-     
     }
 
-    public function contacts()
-    {
+    public function contacts() {
         return view('frontend.site.contacts');
     }
 
-    public function about()
-    {
+    public function about() {
         return view('frontend.site.about');
     }
 
-    public function ourrules()
-    {
+    public function ourrules() {
         return view('frontend.site.rules');
     }
+
 }

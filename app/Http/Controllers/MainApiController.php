@@ -29,7 +29,7 @@ class MainApiController extends Controller
 
         if(!isset($offer)){
             return [
-                'NO GOOOD PLS NOOOOOO'
+                ''
             ];
         }
 

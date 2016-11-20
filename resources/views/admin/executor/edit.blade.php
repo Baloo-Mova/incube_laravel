@@ -59,16 +59,39 @@
             </div>
         </div>
         
-        <div class="col-md-offset-2">
+         <div class="col-md-offset-2">
             <div class="col-md-10">
-                <div class="form-group {{ $errors->has('name')?'has-error':'' }}">
-                    <label class="control-label" for="name">Прізвище, Ім'я, По-батькові:</label>
-                    
-                       <input type="text" value="{{ $executor->name }}" name="name" class="form-control" id="text">
+                <div class="form-group {{ $errors->has('second_name')?'has-error':'' }}">
+                    <label class="control-label" for="second_name">Прізвище: <span class="form-required">*</span></label>
 
-                    
-                    @if($errors->has('name'))
-                    <span class="control-label"> {{ $errors->first('name') }}</span>
+                    <input type="text" value="{{ $executor->second_name }}" class="form-control" name="second_name">
+
+
+                    @if($errors->has('second_name'))
+                        <span class="control-label"> {{ $errors->first('second_name') }}</span>
+                    @endif
+
+
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('first_name')?'has-error':'' }}">
+                    <label class="control-label" for="first_name">Ім'я: <span class="form-required">*</span></label>
+                    <input type="text" value="{{ $executor->first_name }}" class="form-control" name="first_name">
+                    @if($errors->has('first_name'))
+                        <span class="control-label"> {{ $errors->first('first_name') }}</span>
+                    @endif
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('last_name')?'has-error':'' }}">
+                    <label class="control-label" for="last_name">По-батькові: <span class="form-required">*</span></label>
+
+                    <input type="text" value="{{ $executor->last_name }}" class="form-control" name="last_name">
+
+
+                    @if($errors->has('last_name'))
+                        <span class="control-label"> {{ $errors->first('last_name') }}</span>
                     @endif
 
 

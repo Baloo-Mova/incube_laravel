@@ -15,20 +15,26 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use App\User;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $articles = Article::orderBy('id', 'desc')->get();
+        $cat_id = $request->get('cat_id');
+
+        $articles = Article::where([
+            'status_id' => Status::PUBLISHED
+            ])->orderBy('id', 'desc')->take(config('posts.project_viewer_number'))->get();
         $categories = Category::orderBy('id', 'desc')->get();
             
        
         return view('frontend.article.index')->with([
             'articles' => $articles,
             'categories' => $categories,
-            
+            'posts_number' => count($articles),
+            'catId' => $cat_id,
             
         ]);
     }

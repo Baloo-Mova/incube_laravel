@@ -1672,3 +1672,40 @@ img.carusel-block-img{
     } 
 
 }
+.news-content{
+   // background-color: #00ADEF;
+    
+}
+.news-badge{
+    position: absolute;
+    bottom: 0%;
+    right: 0;
+    padding: 2px 5px;
+    color: #fff;
+    font-size: 15px;
+    background-color: #D10073;
+}
+.news-content:hover h4{
+    color: #D10073
+    
+}
+.news-content:hover p{
+    color: #00ADEF
+    
+}
+.news-content:hover {
+   
+    
+}
+.post a:hover{
+   text-decoration: none;
+    
+}
+.post:hover{
+     display: block;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    box-shadow: 0 0 3px 0 rgba(35,31,32,.14),0 0 24px 0 rgba(35,31,32,.24);
+    
+    
+}
