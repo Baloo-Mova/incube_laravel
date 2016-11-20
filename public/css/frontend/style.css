@@ -1705,7 +1705,7 @@ img.carusel-block-img{
      display: block;
     transition: all 0.2s;
     -webkit-transition: all 0.2s;
-    box-shadow: 0 0 3px 0 rgba(35,31,32,.14),0 0 24px 0 rgba(35,31,32,.24);
+    box-shadow: 0 0 2px 0 rgba(35,31,32,.14),0 0 24px 0 rgba(35,31,32,.24);
     
     
 }

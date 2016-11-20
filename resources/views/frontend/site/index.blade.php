@@ -238,7 +238,7 @@
                                 
                             </h4>
                             <div class="carusel-block-content-description">
-                                {!! $article->description !!}
+                                 {!! str_limit($article->description,400) !!}
                             </div>
                             
                         </div>
