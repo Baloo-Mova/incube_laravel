@@ -32,7 +32,7 @@
 
 
                 @if(!empty($article->link))
-                <p>Для більш детальної інформації перейдтіть за постіланням:  <a href="{{ $article->link }}" class="btn-primary btn">Перейти</a></p>
+                <p>Для більш детальної інформації перейдтіть за посиланням:  <a href="{{ $article->link }}" class="btn-primary btn">Перейти</a></p>
                 @endif
             </div>
 

@@ -61,7 +61,7 @@
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="home">
                                 <h3 class="head text-center">Вас вітає</h3>
-                                <h3 class="text-center">Відкрита регіональна платформа науково виробничого
+                                <h3 class="text-center">Відкрита регіональна платформа науково-виробничого
                                     партнерства</h3>
                                 <h1 class="text-center">
                                     <span style='color: #D30072; font-weight: bold;'>In</span><span
@@ -238,7 +238,7 @@
                                 
                             </h4>
                             <div class="carusel-block-content-description">
-                                 {!! str_limit($article->description,400) !!}
+                                 {!! str_limit($article->description,150) !!}
                             </div>
                             
                         </div>

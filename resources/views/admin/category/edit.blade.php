@@ -42,7 +42,18 @@
                 </div>
             </div>
            
-            
+             <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label" for="parent">Головна Категорія:</label>
+                    @include('admin.partials.categories_select',
+                    ['categories'=> $categories,
+                    'categoriesAttributeName'=>'parent_id',
+                    'categoriesAttributeValueNow' => $category->parent_id
+                    ])
+                </div>
+            </div>
+        </div>
            
 
           

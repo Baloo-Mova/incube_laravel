@@ -32,7 +32,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        $categories = Category::orderBy('id', 'desc')->get();
+        
         return view('admin.category.create', compact('categories'));
     }
 
@@ -53,9 +53,9 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-               
+       $categories = Category::with('childrens')->where(['parent_id' => null])->get();
 
-        return view('admin.category.edit', compact('category'));
+        return view('admin.category.edit', compact('category','categories'));
     }
 
     public function update(UpdateRequest $request, Category $category)

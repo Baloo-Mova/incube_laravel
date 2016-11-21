@@ -22,7 +22,7 @@
                                     <th>Id</th>
                                     <th><a class="" href="#">Автор</a></th>
                                     <th><a class="" href="#">Назва статті</a></th>
-                                    <th><a class="" href="#">Категоріяя</a></th>
+                                    <th><a class="" href="#">Категорія</a></th>
                                     <th><a class="" href="#">Дата створення</a></th>
                                     <th><a class="" href="#">Статус</a></th>
                                     <th><a class="" href="#"></a></th>

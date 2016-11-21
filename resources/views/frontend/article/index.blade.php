@@ -19,11 +19,17 @@
 
         @foreach ($articles as $article)
         <h2 class=""><a href="{{route('article.show',[$article->id])}}" class="">{{str_limit($article->name,100)}}</a></h2>
-        <p>{!!str_limit($article->description,400)!!}  <a href="{{route('article.show',[$article->id])}}" class="btn btn-danger">Читати далі</a></p>
+        <p>{!!str_limit($article->description,300)!!}  <a href="{{route('article.show',[$article->id])}}" class="btn btn-danger">Читати далі</a></p>
         <div>
             <span class="badge badge-default">Опубліковано {{$article->created_at}} Автор: {{$article->author->name}}</span>
             <div class="pull-right">
-                <span class="badge badge-category">{{$article->category->name or ''}}</span>
+                @if(!$article->category->isChildren())
+                           <span class="badge badge-category">{{$article->category->name or ''}}</span>
+                        @else
+                        <span class="badge badge-category">{{$article->category->parent->name or ''}}</span>
+                        <span class="badge badge-category">{{$article->category->name or ''}}</span>
+                        @endif
+                
             </div>
         </div> 
         <hr>

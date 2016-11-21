@@ -43,14 +43,11 @@
                 <div class="col-md-10">
                     <div class="form-group {{ $errors->has('stage_id')?'has-error':'' }}">
                         <label class="control-label" for="category_id">Категорія <span class="form-required">*</span></label>
-                        <select id="stage_id" class="form-control" name="category_id">
-                            @if(old('category_id')==null)
-                                <option disabled selected>Оберіть категорію</option>
-                            @endif
-                            @foreach(\App\Models\Category::all() as $item)
-                                <option value="{{$item->id}}" {{ ( old('category_id') == $item->id ? "selected":"") }}> {{ $item->name }}</option>
-                            @endforeach
-                        </select>
+                        @include('admin.partials.categories_select',
+                        ['categories'=> $categories,
+                        'categoriesAttributeName'=>'category_id',
+                        'categoriesAttributeValueNow' => old('category_id')
+                        ])
                         @if($errors->has('category_id'))
                             <span class="control-label"> {{ $errors->first('category_id') }}</span>
                         @endif

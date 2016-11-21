@@ -37,7 +37,16 @@
                                     <i class="glyphicon glyphicon-plus"></i>
                                 </button>
                             </span>
-                            <input type="text" value="{{ old('name') }}" name="name" class="form-control" id="text" placeholder="Введіть назву категорії">
+                            <div class="col-md-6">
+                                <input type="text" value="{{ old('name') }}" name="name" class="form-control" id="text" placeholder="Введіть назву категорії">
+                            </div>
+                            <div class="col-md-6">
+                                @include('admin.partials.categories_select',
+                                    ['categories'=> $categories,
+                                     'categoriesAttributeName'=>'parent_id',
+                                     'categoriesAttributeValueNow' => old('parent_id')
+                                    ])
+                            </div>
                         </div>
 
                     </form>

@@ -16,7 +16,8 @@ class Category extends Model
 
     protected $table = 'categories';
     protected $fillable = [
-        'name'
+        'name',
+        'parent_id'
     ];
 
     protected $guarded = [];
@@ -25,4 +26,19 @@ class Category extends Model
     {
         return $this->belongsToMany('App\Models\Article');
     } 
+    public function parent(){
+        return $this->hasOne(Category::class,'id','parent_id');
+    }
+
+    public function childrens(){
+        return $this->hasMany(Category::class,'parent_id');
+    }
+
+    public function isParent(){
+        return  $this->parent_id == null; //count($this->childrens) > 0;
+    }
+
+    public function isChildren(){
+        return $this->parent_id != 0;
+    }
 }

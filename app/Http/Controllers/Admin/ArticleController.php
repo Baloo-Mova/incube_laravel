@@ -35,7 +35,7 @@ class ArticleController extends Controller
 
     public function create()
     {
-        $categories = Category::orderBy('id', 'desc')->get();
+        $categories = Category::with('childrens')->where(['parent_id' => null])->get();
         return view('admin.article.create', compact('categories'));
     }
 
@@ -61,8 +61,8 @@ class ArticleController extends Controller
 
     public function edit(Article $article)
     {
-        $categories = Category::orderBy('id', 'desc')->get();
-       
+        //$categories = Category::orderBy('id', 'desc')->get();
+       $categories = Category::with('childrens')->where(['parent_id' => null])->get();
         return view('admin.article.edit', compact('article', 'categories'));
     }
 
