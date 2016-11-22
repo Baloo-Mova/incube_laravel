@@ -40,7 +40,7 @@ class CategoryController extends Controller
     {
         $model = new Category();
         $model->fill($request->all());
-        
+        if($model->parent_id=="NULL"){$model->parent_id=null;}
         
         $model->save();
 
@@ -62,7 +62,7 @@ class CategoryController extends Controller
     {        
         $category->fill($request->all());
         //$category->status_id = Status::EDITED;
-            
+            if($category->parent_id=="NULL"){$category->parent_id=null;}
         
         $category->save();
 

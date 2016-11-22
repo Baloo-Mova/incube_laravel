@@ -1,5 +1,5 @@
 <select class="form-control" name="{{ $categoriesAttributeName }}">
-    <option value="">Не має</option>
+    <option value="NULL">Не має</option>
     @foreach($categories as $item)
         @if($item->isParent())
             <optgroup label="{{ $item->name }}">
