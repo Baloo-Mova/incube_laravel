@@ -124,7 +124,7 @@
                 var new_problem = "";
 
                 if(data.materials.length == 0 && printType != 2){
-                    $("#"+table_type).append("<h3 class='text-center'>Пропозицый не знайдено</h3>");
+                    $("#"+table_type).append("<h3 class='text-center'>Пропозицій не знайдено</h3>");
                 }else{
 
                     $.each( data.materials, function( key, val ) {
