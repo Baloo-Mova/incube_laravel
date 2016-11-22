@@ -20,10 +20,11 @@
         <div class="col-lg-3 col-md-3" id="col">
             <div class="affix-top" id="fix-div">
                 <ul class="nav nav-pills nav-stacked well">
-                    <li class="All active"> <a href="#All"  class="materials_button" data-toggle="tab"> Усе</a></li>
+                    <li class="All active"> <a href="#All"  class="materials_button" data-toggle="tab">Усе</a></li>
+                     
                     @foreach($categories as $item)
                     @if($item->isParent())
-                    <li class="{{$item->id}}}"> <a href="#{{$item->id}}"   data-toggle="tab"> {{$item->name}}</a> </li>
+                    <li class="{{$item->id}}"> <a href="#{{$item->id}}"   data-toggle="tab"> {{$item->name}}</a> </li>
                     @if(count($item->childrens)!=0)
 
                     @foreach($item->childrens as $children)
@@ -45,29 +46,58 @@
             <div class="tab-content">
                 <div id="All" class="tab-pane fade in active">
                     @foreach ($articles as $article)
-                    <h2 class=""><a href="{{route('article.show',[$article->id])}}" class="">{{str_limit($article->name,100)}}</a></h2>
-                    <p>{!!str_limit($article->description,300)!!}  <a href="{{route('article.show',[$article->id])}}" class="btn btn-danger">Читати далі</a></p>
                     <div>
-                        <span class="badge badge-default">Опубліковано {{$article->created_at}} Автор: {{$article->author->name}}</span>
-                        <div class="pull-right">
-                            @if(!$article->category->isChildren())
-                            <span class="badge badge-category">{{$article->category->name or ''}}</span>
-                            @else
-                            <span class="badge badge-category">{{$article->category->parent->name or ''}}</span>
-                            <span class="badge badge-category">{{$article->category->name or ''}}</span>
-                            @endif
+                        <h2 class=""><a href="{{route('article.show',[$article->id])}}" class="">{{str_limit($article->name,100)}}</a></h2>
+                        <p>{!!str_limit($article->description,300)!!}  <a href="{{route('article.show',[$article->id])}}" class="btn btn-danger">Читати далі</a></p>
+                        <div>
+                            <span class="badge badge-default">Опубліковано {{$article->created_at}} Автор: {{$article->author->name}}</span>
+                            <div class="pull-right">
+                                @if(!$article->category->isChildren())
+                                <span class="badge badge-category">{{$article->category->name or ''}}</span>
+                                @else
+                                <span class="badge badge-category">{{$article->category->parent->name or ''}}</span>
+                                <span class="badge badge-category">{{$article->category->name or ''}}</span>
+                                @endif
 
+                            </div>
                         </div>
                     </div> 
                     <hr>
                     @endforeach
                 </div>
+                <!-- Serega help -->
                 @foreach($categories as $item)
                 <div id="{{$item->id}}" class="tab-pane fade">
-                    
-                </div>
-                @endforeach
+                <!-- обновить тут -->
+                    @foreach ($articles as $article)
                 
+                @if($article->category->id==$item->id)
+                    <div>
+                        <h2 class=""><a href="{{route('article.show',[$article->id])}}" class="">{{str_limit($article->name,100)}}</a></h2>
+                        <p>{!!str_limit($article->description,300)!!}  <a href="{{route('article.show',[$article->id])}}" class="btn btn-danger">Читати далі</a></p>
+                        <div>
+                            <span class="badge badge-default">Опубліковано {{$article->created_at}} Автор: {{$article->author->name}}</span>
+                            <div class="pull-right">
+                                @if(!$article->category->isChildren())
+                                <span class="badge badge-category">{{$article->category->name or ''}}</span>
+                                @else
+                                <span class="badge badge-category">{{$article->category->parent->name or ''}}</span>
+                                <span class="badge badge-category">{{$article->category->name or ''}}</span>
+                                @endif
+
+                            </div>
+                        </div>
+                    </div> 
+                    <hr>
+                    @endif
+                    
+                    
+                    @endforeach
+                    <!--end obnov tyt -->
+                </div>
+                
+                @endforeach
+                <!--end serega help -->
 
             </div>
         </div>
