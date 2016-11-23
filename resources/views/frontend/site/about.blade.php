@@ -17,9 +17,10 @@
                 <li>співпрацює з міжнародними, національними, регіональними фондами і програмами, органами державної влади та місцевого самоврядування.</li>
             </ul>
             <p style="text-align: justify;">&nbsp;</p>
-            <p style="text-align: justify;">&nbsp;</p>
-            <p style="text-align: justify;">Детальніше див. Концепцію проектної діяльності ЗНУ</p>
-
+           
+            <p style="text-align: justify;">Детальніше див. <a href="{{ url('img/concept_project_work.pptx')}}" style="color:#00AEEF;">Концепцію проектної діяльності ЗНУ.</a></p>
+            <p style="text-align: justify;">Також пропонуємо ознайомитись з <a href="{{url('img/reportNMR221116.docx')}}" style="color:#00AEEF;">Доповіддю на науково-методичну раду ЗНУ "Концепція проектної діяльності Запорізького національного університету".</a>
+ </p>
 
 
         </div>
