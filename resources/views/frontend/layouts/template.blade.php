@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{{ "InCube открытая региональная платформа" }}</title>
+        <title>{{ "InCube відкрита регіональна платформа" }}</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <meta name="google-site-verification" content="fG32qWPLYapE1OwmX6ierrdlpnjcFo-rwDWLCR0OLkc" />
         @include('frontend.layouts.partials.head')

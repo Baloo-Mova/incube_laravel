@@ -26,7 +26,7 @@ class ArticleController extends Controller
 
         $articles = Article::where([
             'status_id' => Status::PUBLISHED
-            ])->orderBy('id', 'desc')->take(config('posts.project_viewer_number'))->get();
+            ])->orderBy('id', 'desc')->get();
         $categories = Category::orderBy('id', 'desc')->get();
             
        
