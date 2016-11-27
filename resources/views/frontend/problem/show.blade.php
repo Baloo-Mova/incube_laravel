@@ -69,7 +69,7 @@
                         <br>
                         <div class="text-center">
                             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#executor_modal">
-                                <span><i class="fa fa-user"></i> Запропонувати резюме</span>
+                                <span><i class="fa fa-check"></i> Запропонувати проект</span>
                             </a>
                         </div>
                         <br>
@@ -133,11 +133,11 @@
                             <div class="row-fluid user-row">
                                 <img src="{{url('/img/'.'logo.png')}}" class="img-responsive" alt="log">
                             </div>
-                            <h4 class="modal-title text-center title-border">Оберіть свій проект</h4>
+                            <h4 class="modal-title text-center title-border">Оберіть свою інвестиційну заявку</h4>
                         </div>
                         <div class="modal-body">
                             <h2 class="text-center">
-                                Ваші проекти
+                                Ваші інвестиційні заявки
                             </h2>
                             <div class="information alert" style="display: none"></div>
 
@@ -156,14 +156,14 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="2" class="text-center"> У вас немае опублiкованих проэктiв</td>
+                                        <td colspan="2" class="text-center"> У вас немае опублiкованих інвестиційних заявок</td>
                                     </tr>
                                 @endforelse
                                 </tbody>
                             </table>
                         </div>
                         <div class="modal-footer">
-                            <a href="{{ route('investor.create') }}" class="btn btn-success pull-left">Новий проект</a>
+                            <a href="{{ route('investor.create') }}" class="btn btn-success pull-left">Нова заявка</a>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
                         </div>
                     </div>
@@ -182,11 +182,11 @@
                             <div class="row-fluid user-row">
                                 <img src="{{url('/img/'.'logo.png')}}" class="img-responsive" alt="log">
                             </div>
-                            <h4 class="modal-title text-center title-border">Оберіть своє резюме</h4>
+                            <h4 class="modal-title text-center title-border">Оберіть свій проект</h4>
                         </div>
                         <div class="modal-body">
                             <h2 class="text-center">
-                                Ваше резюме
+                                Ваші проекти
                             </h2>
                             <div class="information alert" style="display: none"></div>
 
@@ -198,21 +198,21 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @forelse(Auth::user()->getAllExecutor() as $item)
+                                @forelse(Auth::user()->getAllDesigner() as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->name }}</td>
+                                </tr>
+                            @empty
                                     <tr>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->second_name." ".$item->first_name." ".$item->last_name }}</td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="2" class="text-center"> У вас немае опублiкованих резюме</td>
+                                        <td colspan="2" class="text-center"> У вас немае опублiкованих проектів</td>
                                     </tr>
                                 @endforelse
                                 </tbody>
                             </table>
                         </div>
                         <div class="modal-footer">
-                            <a href="{{ route('executor.create') }}" class="btn btn-success pull-left">Нове резюме</a>
+                            <a href="{{ route('designer.create') }}" class="btn btn-success pull-left">Новий проект</a>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
                         </div>
                     </div>

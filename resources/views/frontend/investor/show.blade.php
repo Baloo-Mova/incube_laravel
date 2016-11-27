@@ -160,7 +160,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="2" class="text-center"> У вас немае опублiкованих проэктiв</td>
+                                    <td colspan="2" class="text-center"> У вас немае опублiкованих проектiв</td>
                                 </tr>
                             @endforelse
                             </tbody>

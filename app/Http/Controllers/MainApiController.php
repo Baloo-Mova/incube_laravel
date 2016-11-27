@@ -45,7 +45,7 @@ class MainApiController extends Controller
 
         return [
             'status'=>'success',
-            'text' => "Ви успішно зробили пропозицію, зачекайте певний час і з Вами зв'яжуться."
+            'text' => "Ви успішно зробили пропозицію."
         ];
     }
 

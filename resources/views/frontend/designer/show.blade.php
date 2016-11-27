@@ -186,11 +186,11 @@
                                 <div class="row-fluid user-row">
                                     <img src="{{url('/img/'.'logo.png')}}" class="img-responsive" alt="log">
                                 </div>
-                                <h4 class="modal-title text-center title-border">Оберіть свій проект</h4>
+                                <h4 class="modal-title text-center title-border">Оберіть свою інвестиційну заявку</h4>
                             </div>
                             <div class="modal-body">
                                 <h2 class="text-center">
-                                    Ваші проекти
+                                    Ваші інвестиційні заявки
                                 </h2>
                                 <div class="information alert" style="display: none"></div>
 
@@ -209,7 +209,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="2" class="text-center"> У вас немае опублiкованих проэктiв</td>
+                                            <td colspan="2" class="text-center"> У вас немае опублiкованих інвестиційних заявок</td>
                                         </tr>
                                     @endforelse
                                     </tbody>
