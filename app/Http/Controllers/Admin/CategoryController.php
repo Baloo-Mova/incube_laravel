@@ -83,6 +83,13 @@ class CategoryController extends Controller
              $article->category_id=null;
              $article->save();
          }
+         if($category->isParent() && count($category->childrens)!=0){
+    
+         foreach($category->childrens as $child){
+             $child->parent_id=null;
+             $child->save();
+         }
+         } 
          $category->delete();
         return back()->with(['message' => 'deleted']);
     }

@@ -27,9 +27,9 @@
                     <li class="{{$item->id}}"> <a href="#{{$item->id}}"   data-toggle="tab"> {{$item->name}}</a> </li>
                     @if(count($item->childrens)!=0)
 
-                    @foreach($item->childrens as $children)
+                    @foreach($item->childrens as $child)
 
-                    <li class="{{$children->id}} lpadding"> <a href="#{{$children->id}}" class="materials_button" data-toggle="tab"> {{$children->name}}</a> </li>
+                    <li class="{{$child->id}} lpadding"> <a href="#{{$child->id}}" class="materials_button" data-toggle="tab"> {{$child->name}}</a> </li>
                     @endforeach
 
                     @endif
@@ -52,7 +52,7 @@
                         <div>
                             <span class="badge badge-default">Опубліковано {{$article->created_at}} Автор: {{$article->author->name}}</span>
                             <div class="pull-right">
-                                @if(!$article->category->isChildren())
+                                @if($article->category!=null && !$article->category->isChildren())
                                 <span class="badge badge-category">{{$article->category->name or ''}}</span>
                                 @else
                                 <span class="badge badge-category">{{$article->category->parent->name or ''}}</span>
@@ -71,7 +71,7 @@
                 <!-- обновить тут -->
                     @foreach ($articles as $article)
                 
-                @if($article->category->id==$item->id)
+                @if($article->category!=null && $article->category->id==$item->id)
                     <div>
                         <h2 class=""><a href="{{route('article.show',[$article->id])}}" class="">{{str_limit($article->name,100)}}</a></h2>
                         <p>{!!str_limit($article->description,300)!!}  <a href="{{route('article.show',[$article->id])}}" class="btn btn-danger">Читати далі</a></p>
@@ -95,11 +95,11 @@
                     @if($item->isParent()  )
                     @if(count($item->childrens)!=0)
 
-                    @foreach($item->childrens as $children)
+                    @foreach($item->childrens as $child)
 
                     @foreach ($articles as $article)
                 
-                @if($article->category->id==$children->id)
+                @if($article->category!=null && $article->category->id==$child->id)
                     <div>
                         <h2 class=""><a href="{{route('article.show',[$article->id])}}" class="">{{str_limit($article->name,100)}}</a></h2>
                         <p>{!!str_limit($article->description,300)!!}  <a href="{{route('article.show',[$article->id])}}" class="btn btn-danger">Читати далі</a></p>
