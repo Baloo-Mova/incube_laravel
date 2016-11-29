@@ -4,9 +4,9 @@
                     <li class="{{(Request::is('admin') ? 'active' : '') }}">
                         <a href="{{route('site.index')}}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                     <li class="{{((Request::is('admin/customer') ||Request::is('admin/customer/*') )? 'active' : '') }}">
+                     <li class="{{((Request::is('admin/problem') ||Request::is('admin/problem/*') )? 'active' : '') }}">
                         <a href="javascript:;" data-toggle="collapse" data-target="#customer">Замовник <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="customer" class="{{((Request::is('admin/customer') ||Request::is('admin/customer/*') )? 'collapse in' : 'collapse') }}">
+                        <ul id="customer" class="{{((Request::is('admin/problem') ||Request::is('admin/problem/*') )? 'collapse in' : 'collapse') }}">
                             <li>
                                 <a href="{{route("admin.problem.index")}}">Список питань(проблем)</a>
                             </li>
@@ -71,7 +71,7 @@
                         </ul>
                     </li>
                     <li class="{{((Request::is('admin/blog') ||Request::is('admin/blog/*') )? 'active' : '') }}">
-                        <a href="javascript:;" data-toggle="collapse" data-target="#blog">Блог <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#blog">Лента новин <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="blog" class="{{((Request::is('admin/blog') ||Request::is('admin/blog/*') )? 'collapse in' : 'collapse') }}">
                             <li>
                                 <a href="{{route("admin.article.index")}}">Список cтатей</a>

@@ -198,7 +198,7 @@
                         <li><a href="{{url('/contacts')}}">Контакти</a></li>
                         <li><a href="{{url('/about')}}">Про нас</a></li>
                         <li><a href="{{url('/rules')}}">Правила</a></li>
-                        <li><a href="{{url('/blog')}}">Блог</a></li>
+                        <li><a href="{{url('/blog')}}">Конкурси та гранти</a></li>
                     </ul>
                 </div>
             </div><!-- /.navbar-collapse -->

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="page-title text-center">
-        <h2>Блог</h2>
+        <h2>Конкурси та гранти</h2>
     </div>
     <hr/>
 
@@ -90,9 +90,40 @@
                     </div> 
                     <hr>
                     @endif
-                    
-                    
+                                       
                     @endforeach
+                    @if($item->isParent()  )
+                    @if(count($item->childrens)!=0)
+
+                    @foreach($item->childrens as $children)
+
+                    @foreach ($articles as $article)
+                
+                @if($article->category->id==$children->id)
+                    <div>
+                        <h2 class=""><a href="{{route('article.show',[$article->id])}}" class="">{{str_limit($article->name,100)}}</a></h2>
+                        <p>{!!str_limit($article->description,300)!!}  <a href="{{route('article.show',[$article->id])}}" class="btn btn-danger">Читати далі</a></p>
+                        <div>
+                            <span class="badge badge-default">Опубліковано {{$article->created_at}} Автор: {{$article->author->name}}</span>
+                            <div class="pull-right">
+                                @if(!$article->category->isChildren())
+                                <span class="badge badge-category">{{$article->category->name or ''}}</span>
+                                @else
+                                <span class="badge badge-category">{{$article->category->parent->name or ''}}</span>
+                                <span class="badge badge-category">{{$article->category->name or ''}}</span>
+                                @endif
+
+                            </div>
+                        </div>
+                    </div> 
+                    <hr>
+                    @endif
+                                       
+                    @endforeach
+                    @endforeach
+
+                    @endif
+                    @endif
                     <!--end obnov tyt -->
                 </div>
                 
