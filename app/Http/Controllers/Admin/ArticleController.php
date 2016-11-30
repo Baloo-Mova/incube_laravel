@@ -24,7 +24,7 @@ class ArticleController extends Controller
         $articles = Article::orderBy('id', 'desc')->get();
         $categories = Category::orderBy('id', 'desc')->get();
             
-        
+      
         return view('admin.article.index')->with([
             'articles' => $articles,
             'categories' => $categories,
