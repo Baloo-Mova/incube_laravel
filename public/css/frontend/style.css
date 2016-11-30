@@ -1689,7 +1689,7 @@ img.carusel-block-img{
     color: #D10073;
     
 }
-.news-content:hover p{
+.news-content:hover {
     color: #00ADEF;
     
 }
