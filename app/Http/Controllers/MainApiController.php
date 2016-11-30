@@ -7,6 +7,7 @@ use App\Models\ActivityRelationship;
 use App\Models\UserForm;
 use App\Models\TableType;
 use App\Notifications\NewOffer;
+use App\Models\ProposalForms;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -73,5 +74,27 @@ class MainApiController extends Controller
         return [
             'materials' => $materials,
         ];
+    }
+    public function deleteOffer(UserForm $send, UserForm $rec){
+       // dd($rec);
+        
+       // dd($send);
+       // sender_table_id',
+       // 'receiver_table_id',
+       
+        if(\Illuminate\Support\Facades\Auth::check() &&  ((\Illuminate\Support\Facades\Auth::user()->can('edit', $send) ||  \Illuminate\Support\Facades\Auth::user()->can('edit', $rec))|| \Illuminate\Support\Facades\Auth::user()->user_type_id==1) ){
+        $prForms = ProposalForms::where([
+           'sender_table_id'=> $send->id, 'receiver_table_id' => $rec->id])
+              
+        ->orderBy('id', 'desc')->delete(); 
+        //$prForms->delete();
+        //dd($prForms);
+        }
+//
+//         foreach($prForms as $pr){
+//             $pr->delete();
+//         }
+//        
+        return redirect()->back();
     }
 }

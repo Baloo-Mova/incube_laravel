@@ -143,6 +143,52 @@
         </div>
 
     </div>
+    <div class="row">
+                <h2 class="text-center">Пропозицii</h2>
+                <table class="table table-hover" id="offers">
+                    <thead>
+                    <tr>
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Назва проекту</th>
+                        <th class="text-center">Дата</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse($investor->offers as $item)
+                        <tr>
+                            <td class="text-center">
+                                {{$item->id}}
+                            </td>
+                            <td class="text-center">
+                                {{ $item->name }}
+                            </td>
+                            <td class="text-center">
+                                {{ $item->pivot->created_at }}
+                            </td>
+                            <td>
+                                <a href="{{route('project_viewer.show',['material'=>$item->id])}}" title="View"
+                                   aria-label="View"
+                                   data-pjax="0">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                </a>
+                                <a href="{{route('delete.offer',['rec'=>$item->id, 'send'=>$investor->id])}}" title="receiver_table_id"
+                                       aria-label="Receiver_table_id{{$item->id}}-{{$investor->id}}"
+                                       data-pjax="0">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="3" class="text-center">
+                                Пропозицiй нема
+                            </td>
+                        </tr>
+                    @endforelse
+                    </tbody>
+                </table>
+            </div>
 </div>
 
 <div id="myModal" class="modal fade" role="dialog">

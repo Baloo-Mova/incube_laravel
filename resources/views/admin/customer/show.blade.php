@@ -40,16 +40,7 @@
         <p>{{ $problem->created_at}} </p>
         <h4 class="title-border">Дата оновлення: </h4>
         <p>{{ $problem->updated_at}} </p>
-        <h4 class="title-border">Запропоновані інвестиції: </h4>
-        <ul> 
-            <li><a href="#">d</a></li>
-            <li><a href="#">d</a></li>
-        </ul>
-        <h4 class="title-border">Запропоновані проекти: </h4>
-        <ul> 
-            <li><a href="#">d</a></li>
-            <li><a href="#">d</a></li>
-        </ul>
+        
 
         <hr/>
         <div class="btn-toolbar">
@@ -83,7 +74,52 @@
 
 
     </div>
-
+  <div class="row">
+                <h2 class="text-center">Пропозицii</h2>
+                <table class="table table-hover" id="offers">
+                    <thead>
+                    <tr>
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Назва проекту</th>
+                        <th class="text-center">Дата</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse($problem->offers as $item)
+                        <tr>
+                            <td class="text-center">
+                                {{$item->id}}
+                            </td>
+                            <td class="text-center">
+                                {{ $item->form_type_id == 5 ? $item->second_name." ".$item->first_name." ".$item->last_name : $item->name }}
+                            </td>
+                            <td class="text-center">
+                                {{ $item->pivot->created_at }}
+                            </td>
+                            <td>
+                                <a href="{{route('project_viewer.show',['material'=>$item->id])}}" title="View"
+                                   aria-label="View"
+                                   data-pjax="0">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                </a>
+                                <a href="{{route('delete.offer',['rec'=>$item->id, 'send'=>$problem->id])}}" title="receiver_table_id"
+                                       aria-label="Receiver_table_id{{$item->id}}-{{$problem->id}}"
+                                       data-pjax="0">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="3" class="text-center">
+                                Пропозицiй нема
+                            </td>
+                        </tr>
+                    @endforelse
+                    </tbody>
+                </table>
+            </div>
 
 
 

@@ -68,7 +68,7 @@
 
                             </table>
                         </div>
-        
+        {!! $problems->links() !!}
     </div>
 </div>
 @stop

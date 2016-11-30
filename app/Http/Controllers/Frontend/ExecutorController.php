@@ -10,7 +10,7 @@ use App\Models\Status;
 use App\Notifications\RegisterSuccess;
 use App\Models\TableType;
 use App\Models\UserForm;
-
+use App\Models\ProposalForms;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use App\User;
@@ -54,6 +54,7 @@ class ExecutorController extends Controller {
      
         $model = new UserForm();
         $model->fill($request->all());
+        $model->name = implode(" ",[$request->get("second_name"),$request->get("first_name"),$request->get("last_name")] );
         $model->form_type_id = TableType::Executor;
         $email = $request->get('email');
         $pass = str_random(10);
@@ -93,6 +94,7 @@ class ExecutorController extends Controller {
     public function update(UpdateRequest $request, UserForm $executor) {
 
        $executor->fill($request->all());
+       $executor->name = implode(" ",[$request->get("second_name"),$request->get("first_name"),$request->get("last_name")] );
        $executor->status_id = Status::EDITED;
 
         if ($request->hasFile('logo_img_file')) {
@@ -112,6 +114,14 @@ class ExecutorController extends Controller {
     
      public function delete(UserForm $executor)
     {
+          $prForms = ProposalForms::where([
+           'sender_table_id'=> $executor->id,])
+            ->orWhere(['receiver_table_id' => $executor->id,  
+        ])->orderBy('id', 'desc')->get();        
+
+         foreach($prForms as $pr){
+             $pr->delete();
+         }
         $executor->delete();
 
         return redirect(route('executor.index'));

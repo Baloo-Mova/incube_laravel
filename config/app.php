@@ -227,5 +227,6 @@ return [
      * Number of post on page
      * */
     'post_per_page' => 5,
+    'post_per_page20' => 20,
 
 ];

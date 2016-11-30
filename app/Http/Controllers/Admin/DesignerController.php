@@ -11,6 +11,7 @@ use App\Models\Document;
 use App\Models\Status;
 use App\Models\TableType;
 use App\Models\UserForm;
+Use App\Models\ProposalForms;
 use App\Notifications\RegisterSuccess;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -25,7 +26,7 @@ class DesignerController extends Controller
     {
         $designerProjects = UserForm::withAll()->where([
            'form_type_id'=> TableType::Designer
-        ])->orderBy('id', 'desc')->get();
+        ])->orderBy('id', 'desc')->paginate(config('app.post_per_page20'));
         
             
         
@@ -144,8 +145,15 @@ class DesignerController extends Controller
     
      public function delete(UserForm $designer)
     {
-                 
+         $prForms = ProposalForms::where([
+           'sender_table_id'=> $designer->id,])
+            ->orWhere(['receiver_table_id' => $designer->id,  
+        ])->orderBy('id', 'desc')->get();        
 
+         foreach($prForms as $pr){
+             $pr->delete();
+         }         
+        $designer->delete();
         return redirect(route('designer.index'));
     }
 }

@@ -68,7 +68,7 @@
 
                             </table>
                         </div>
-        
+         {!! $projects->links() !!}
     </div>
 </div>
 @stop

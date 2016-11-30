@@ -21,7 +21,7 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = Article::orderBy('id', 'desc')->get();
+        $articles = Article::orderBy('id', 'desc')->paginate(config('app.post_per_page20'));
         $categories = Category::orderBy('id', 'desc')->get();
             
       

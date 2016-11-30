@@ -11,6 +11,7 @@ use App\Models\EconomicActivity;
 use App\Models\Status;
 use App\Models\TableType;
 use App\Models\UserForm;
+use App\Models\ProposalForms;
 use App\Notifications\RegisterSuccess;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -162,6 +163,15 @@ class DesignerController extends Controller
 
     public function delete(UserForm $designer)
     {
+        
+         $prForms = ProposalForms::where([
+           'sender_table_id'=> $designer->id,])
+            ->orWhere(['receiver_table_id' => $designer->id,  
+        ])->orderBy('id', 'desc')->get();        
+
+         foreach($prForms as $pr){
+             $pr->delete();
+         }
         $designer->delete();
 
         return redirect(route('designer.index'));

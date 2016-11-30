@@ -11,6 +11,7 @@ use App\Models\EconomicActivity;
 use App\Models\Status;
 use App\Models\TableType;
 use App\Models\UserForm;
+use App\Models\ProposalForms;
 use App\Notifications\RegisterSuccess;
 use Doctrine\DBAL\Schema\Table;
 use Illuminate\Support\Facades\Auth;
@@ -98,6 +99,14 @@ class InvestorController extends Controller
 
     public function delete(UserForm $investor)
     {
+        $prForms = ProposalForms::where([
+           'sender_table_id'=> $investor->id,])
+            ->orWhere(['receiver_table_id' => $investor->id,  
+        ])->orderBy('id', 'desc')->get();        
+
+         foreach($prForms as $pr){
+             $pr->delete();
+         }
         $investor->delete();
 
         return redirect(route('investor.index'));

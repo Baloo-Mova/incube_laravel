@@ -33,7 +33,7 @@ class PersonalAreaController extends Controller {
     public function index() {
 
 
-        $ListUsers = User::orderBy('id', 'desc')->get();
+        $ListUsers = User::orderBy('id', 'desc')->paginate(config('app.post_per_page20'));
 
         return view('admin.users.index')->with([
                     'ListUsers' => $ListUsers,

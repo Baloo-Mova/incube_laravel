@@ -68,7 +68,7 @@
 
                             </table>
                         </div>
-        
+         {!! $ListUsers->links() !!}
     </div>
 </div>
 @stop

@@ -11,6 +11,7 @@ use App\Models\ProblemForm;
 use App\Models\Status;
 use App\Models\TableType;
 use App\Models\UserForm;
+use App\Models\ProposalForms;
 use App\Notifications\RegisterSuccess;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -27,7 +28,7 @@ class ProblemController extends Controller
     {
         $problems = UserForm::withAll()->where([
            'form_type_id' => TableType::Problem
-        ])->orderBy('id', 'desc')->get();
+        ])->orderBy('id', 'desc')->paginate(config('app.post_per_page20'));
 
         return view('admin.customer.index')->with([
             'problems' => $problems,
@@ -106,6 +107,14 @@ class ProblemController extends Controller
 
     public function delete(UserForm $problem)
     {
+         $prForms = ProposalForms::where([
+           'sender_table_id'=> $problem->id,])
+            ->orWhere(['receiver_table_id' => $problem->id,  
+        ])->orderBy('id', 'desc')->get();        
+
+         foreach($prForms as $pr){
+             $pr->delete();
+         }
         $problem->delete();
 
         return redirect(route('admin.problem.index'));

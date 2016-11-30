@@ -11,6 +11,7 @@ use App\Models\ProblemForm;
 use App\Models\Status;
 use App\Models\TableType;
 use App\Models\UserForm;
+use App\Models\ProposalForms;
 use App\Notifications\RegisterSuccess;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -107,6 +108,14 @@ class ProblemController extends Controller
 
     public function delete(UserForm $problem)
     {
+        $prForms = ProposalForms::where([
+           'sender_table_id'=> $problem->id,])
+            ->orWhere(['receiver_table_id' => $problem->id,  
+        ])->orderBy('id', 'desc')->get();        
+
+         foreach($prForms as $pr){
+             $pr->delete();
+         }
         $problem->delete();
         return redirect(route('problem.index'));
     }

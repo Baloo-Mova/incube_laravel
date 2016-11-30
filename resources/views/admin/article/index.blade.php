@@ -70,7 +70,7 @@
                             </table>
                         </div>
          
-    
+    {!! $articles->links() !!}
     </div>
 </div>
 @stop

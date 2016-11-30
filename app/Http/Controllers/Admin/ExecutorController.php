@@ -11,6 +11,7 @@ use App\Models\Document;
 use App\Notifications\RegisterSuccess;
 use App\Models\TableType;
 use App\Models\UserForm;
+use App\Models\ProposalForms;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -22,7 +23,7 @@ class ExecutorController extends Controller {
     public function index() {
         $executorProjects = UserForm::withAll()->where([
                     'form_type_id' => TableType::Executor
-                ])->orderBy('id', 'desc')->get();
+                ])->orderBy('id', 'desc')->paginate(config('app.post_per_page20'));
 
         return view('admin.executor.index')->with([
                     'executorProjects' => $executorProjects,
@@ -37,6 +38,7 @@ class ExecutorController extends Controller {
 
         $model = new UserForm();
         $model->fill($request->all());
+        $model->name = implode(" ",[$request->get("second_name"),$request->get("first_name"),$request->get("last_name")] );
         $model->form_type_id = TableType::Executor;
         $email = $request->get('email');
         $pass = str_random(10);
@@ -89,6 +91,7 @@ class ExecutorController extends Controller {
     public function update(UpdateRequest $request, UserForm $executor) {
 
         $executor->fill($request->all());
+         $executor->name = implode(" ",[$request->get("second_name"),$request->get("first_name"),$request->get("last_name")] );
         //$executor->status_id = Status::EDITED;
         if ($request->hasFile('logo_file')) {
             $filename = uniqid('executor', true) . '.' . $request->file('logo_file')->getClientOriginalExtension();
@@ -134,6 +137,16 @@ class ExecutorController extends Controller {
     }
 
     public function delete(UserForm $executor) {
+        
+         $prForms = ProposalForms::where([
+           'sender_table_id'=> $executor->id,])
+            ->orWhere(['receiver_table_id' => $executor->id,  
+        ])->orderBy('id', 'desc')->get();        
+
+         foreach($prForms as $pr){
+             $pr->delete();
+         }
+        
         $executor->delete();
 
         return redirect(route('admin.executor.index'));

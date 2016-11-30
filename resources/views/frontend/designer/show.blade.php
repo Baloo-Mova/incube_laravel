@@ -160,6 +160,11 @@
                                        data-pjax="0">
                                         <span class="glyphicon glyphicon-eye-open"></span>
                                     </a>
+                                    <a href="{{route('delete.offer',['rec'=>$item->id, 'send'=>$designer->id])}}" title="receiver_table_id"
+                                       aria-label="Receiver_table_id{{$item->id}}-{{$designer->id}}"
+                                       data-pjax="0">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
                                 </td>
                             </tr>
                         @empty
