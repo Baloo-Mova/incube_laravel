@@ -28,7 +28,7 @@ class SiteController extends Controller {
         $articles = Article::where([
                     'status_id' => Status::PUBLISHED,
                     
-                ])->orderBy('id', 'desc')->get();
+                ])->orderBy('id', 'desc')->get();//paginate(config('app.post_per_page20'));
         $categories = Category::orderBy('id', 'desc')->get();
         foreach ($articles as $article) {
             $crawler = new Crawler();

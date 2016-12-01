@@ -38,7 +38,7 @@
                                 @foreach($employerProjects as $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
-                                        <td><a href="#">{{$item->author_id}}</a></td>
+                                        <td><a href="{{route('admin.users.show', [$item->author_id])}}">{{$item->author_id}}</a></td>
                                         <td>{{$item->name}}</td>
                                         <td>{{$item->created_at}}</td>
                                         <td> {{ $item->status->name }}
