@@ -71,7 +71,7 @@
                         </ul>
                     </li>
                     <li class="{{((Request::is('admin/blog') ||Request::is('admin/blog/*') )? 'active' : '') }}">
-                        <a href="javascript:;" data-toggle="collapse" data-target="#blog">Лента новин <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#blog">Блог <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="blog" class="{{((Request::is('admin/blog') ||Request::is('admin/blog/*') )? 'collapse in' : 'collapse') }}">
                             <li>
                                 <a href="{{route("admin.article.index")}}">Список cтатей</a>

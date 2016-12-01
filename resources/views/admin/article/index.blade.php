@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="page-title text-center">
-        <h2>Лента новин. Список поданних статей</h2>
+        <h2>Блог. Список поданних статей</h2>
     </div>
     <hr/>
     <div class="row">
