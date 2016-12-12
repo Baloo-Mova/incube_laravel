@@ -39,7 +39,7 @@ class ArticleController extends Controller {
             $article->description = implode($nodeValues, "<p>");
         }
 
-        $categories = Category::orderBy('id', 'desc')->get();
+        $categories = Category::where(['publish'=>'1'])->orderBy('id', 'desc')->get();
 
 
         return view('frontend.article.index')->with([

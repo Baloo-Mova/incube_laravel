@@ -17,7 +17,8 @@ class Category extends Model
     protected $table = 'categories';
     protected $fillable = [
         'name',
-        'parent_id'
+        'parent_id',
+        'publish'
     ];
 
     protected $guarded = [];

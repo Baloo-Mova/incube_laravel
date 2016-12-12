@@ -26,7 +26,8 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/about', ['uses' => 'SiteController@about', 'as' => 'site.about']);
     Route::get('/contacts', ['uses' => 'SiteController@contacts', 'as' => 'site.contacts']);
     Route::get('/rules', ['uses' => 'SiteController@ourrules', 'as' => 'site.ourrules']);
-
+    Route::get('/news', ['uses' => 'SiteController@news', 'as' => 'site.news']);     
+    
     Route::group(['prefix' => 'materials'], function() {
         Route::get('/', ['uses' => 'MaterialsViewerController@index', 'as' => 'material.index']);
         Route::post('/search', ['uses' => 'MaterialsViewerController@search', 'as' => 'material.search']);

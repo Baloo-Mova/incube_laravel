@@ -14,7 +14,7 @@
                         <ul class="list-inline">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-vine"></i></a></li>
+                            <li><a href="https://vk.com/projectznu"><i class="fa fa-vk"></i></a></li>
                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                             <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                             <li><a href="#"><i class="fa fa-instagram"></i></a></li>
@@ -195,10 +195,11 @@
                             </ul>
 
                         </li>
-                        <li><a href="{{url('/contacts')}}">Контакти</a></li>
-                        <li><a href="{{url('/about')}}">Про нас</a></li>
-                        <li><a href="{{url('/rules')}}">Правила</a></li>
-                        <li><a href="{{url('/blog')}}">Конкурси та гранти</a></li>
+                        <li><a href="{{url('/contacts')}}" class="{{ (Request::is('contacts') ? 'active' : '') }}">Контакти</a></li>
+                        <li><a href="{{url('/about')}}" class="{{ (Request::is('about') ? 'active' : '') }}">Про нас</a></li>
+                        <li><a href="{{url('/rules')}}" class="{{ (Request::is('rules') ? 'active' : '') }}">Правила</a></li>
+                        <li><a href="{{url('/blog')}}" class="{{ (Request::is('blog') ? 'active' : '') }}">Конкурси та гранти</a></li>
+                        <li><a href="{{url('/news')}}" class="{{ (Request::is('news') ? 'active' : '') }}">Новини</a></li>
                     </ul>
                 </div>
             </div><!-- /.navbar-collapse -->

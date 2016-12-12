@@ -25,24 +25,24 @@
         </ul>
     </div>
     @endif
-    
+
     <form method="POST" enctype="multipart/form-data" class="form-horizontal">
         {{ csrf_field() }}
-       
-            <div class="col-md-offset-2">
-                <div class="col-md-10">
-                    <div class="form-group {{ $errors->has('name')?'has-error':'' }}">
-                        <label class="control-label" for="name">Назва:<span class="form-required">*</span></label>
-                        <input type="text" value="{{ $category->name }}" name="name" class="form-control" id="text">
 
-                        @if($errors->has('name'))
-                            <span class="control-label"> {{ $errors->first('name') }}</span>
-                        @endif
-                    </div>
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('name')?'has-error':'' }}">
+                    <label class="control-label" for="name">Назва:<span class="form-required">*</span></label>
+                    <input type="text" value="{{ $category->name }}" name="name" class="form-control" id="text">
+
+                    @if($errors->has('name'))
+                    <span class="control-label"> {{ $errors->first('name') }}</span>
+                    @endif
                 </div>
             </div>
-           
-             <div class="col-md-offset-2">
+        </div>
+
+        <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group">
                     <label class="control-label" for="parent">Головна Категорія:</label>
@@ -54,9 +54,20 @@
                 </div>
             </div>
         </div>
-           
 
-          
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('publish')?'has-error':'' }}">
+                    <label class="control-label" for="publish">Опублікована (0 - ні; 1 -  так):<span class="form-required">*</span></label>
+                    <input type="number" value="{{ $category->publish }}" name="publish" class="form-control" id="publish">
+
+                    @if($errors->has('publish'))
+                    <span class="control-label"> {{ $errors->first('publish') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+
 
         <div class="col-md-offset-2">
             <div class="col-md-10">
