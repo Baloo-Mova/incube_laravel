@@ -36,7 +36,7 @@
                     <hr>
                     @endforeach
                 </div>
-                
+                {!! $articles->links() !!}
 
             
         </div>
