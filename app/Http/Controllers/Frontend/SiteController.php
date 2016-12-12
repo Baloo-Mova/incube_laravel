@@ -63,7 +63,7 @@ class SiteController extends Controller {
 
         $articles = Article::join('categories', 'categories.id', '=', 'articles.category_id')
                 -> where(['articles.status_id' => Status::PUBLISHED])
-                ->where(['categories.publish' => 0])->select('articles.*')->paginate(config('app.post_per_page20'));
+                ->where(['categories.publish' => 0])->select('articles.*')->orderBy('id','desc')->paginate(config('app.post_per_page20'));
        // dd($articles);
         $categories = Category::orderBy('id', 'desc')->get();
         foreach ($articles as $article) {
