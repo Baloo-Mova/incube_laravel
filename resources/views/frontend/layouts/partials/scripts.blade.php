@@ -11,5 +11,33 @@
 <script src="{{ asset("js/fileinput.min.js") }}" type="text/javascript"></script>
 <script src="{{ asset('tinymce/js/tinymce/tinymce.min.js')}}"></script>
 <script src="{{ asset("js/frontend/main.js") }}" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+
+$(function(){
+ 
+    $(document).on( 'scroll', function(){
+ 
+    	if ($(window).scrollTop() > 100) {
+			$('.scroll-top-wrapper').addClass('show');
+		} else {
+			$('.scroll-top-wrapper').removeClass('show');
+		}
+	});
+ 
+	$('.scroll-top-wrapper').on('click', scrollToTop);
+});
+ 
+function scrollToTop() {
+	verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+	element = $('body');
+	offset = element.offset();
+	offsetTop = offset.top;
+	$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+}
+
+});
+
+</script>
 {!! Toastr::render() !!}
 @yield('js')

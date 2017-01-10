@@ -68,7 +68,42 @@
             </div>
         </div>
 
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('to_index')?'has-error':'' }}">
+                    <label class="control-label" for="to_index">Публікувати на головній сторінці? (0 - ні; 1 -  так):<span class="form-required">*</span></label>
+                    <input type="number" value="{{ $category->to_index }}" name="to_index" class="form-control" id="to_index">
 
+                    @if($errors->has('to_index'))
+                    <span class="control-label"> {{ $errors->first('to_index') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('weight')?'has-error':'' }}">
+                    <label class="control-label" for="weight">Вага категорії:<span class="form-required">*</span></label>
+                    <input type="number" value="{{ $category->weight }}" name="weight" class="form-control" id="to_index">
+
+                    @if($errors->has('weight'))
+                    <span class="control-label"> {{ $errors->first('weight') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('description')?'has-error':'' }}">
+                    <label class="control-label" for="discription">Опис категорії:</label>
+                    <textarea rows="12" type="text" name="description" class="form-control" id="text">{{ $category->description }}</textarea>
+                    @if($errors->has('description'))
+                    <span class="control-label"> {{ $errors->first('description') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
         <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group">
@@ -80,5 +115,16 @@
 </div>
 @stop
 @section('js')
-
+<script>
+    tinymce.init({
+        selector: "textarea",
+        language: 'uk_UA',
+        plugins: [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table contextmenu paste"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+    });
+</script>
 @stop

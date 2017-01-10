@@ -225,31 +225,43 @@
                 </div>
 
 
-                @foreach ($articles as $article)
+                @for($i=0;$i< count($absolute_categories);$i++)
 
 
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 post">
-                    <a href="{{ route('article.show', [$article->id]) }}">
-                        <div class="news-content">
-                           
-                            <h4 class="carusel-block-content-title">
-                                
-                                {!! $article->name !!}
-                                
-                            </h4>
-                            <div class="carusel-block-content-description">
-                                 {!! str_limit($article->description,150) !!}
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <h4 class="carusel-block-content-title" style="color:#00AEEF">
+
+                        {!! $absolute_categories[$i]->name !!}
+
+                    </h4>
+                    @foreach ($tmp_all_articles[$i+1] as $article) 
+                    <div class="col-md-12 post">
+                        <a href="{{ route('article.show', [$article->id]) }}">
+                            <div class="news-content">
+
+                                <h4 class="carusel-block-content-title">
+
+                                    {!! $article->name !!}
+
+                                </h4>
+                                <div class="carusel-block-content-description">
+                                    {!! str_limit($article->description,150) !!}
+                                </div>
+
                             </div>
-                            
-                        </div>
-                        <span class="news-badge">{{ $article->created_at }}</span>
-                        
-                        
-                        
-                    </a>
+                            <span class="news-badge">{{ $article->created_at }}</span>
+
+
+
+                        </a>
+                    </div>   
+                    @endforeach  
+
+                    <hr/>
                 </div>
 
-                @endforeach 
+
+                @endfor 
             </div>
         </div>
 

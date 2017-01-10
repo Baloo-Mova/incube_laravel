@@ -41,6 +41,7 @@ $(window).scroll(function () {
 
 $(window).on('resize', function () {
     $('#fix-div').width($('#col').width());
+     
 });
 
 function initialize_owl(el, options) {

@@ -18,7 +18,10 @@ class Category extends Model
     protected $fillable = [
         'name',
         'parent_id',
-        'publish'
+        'publish',
+        'weight',
+        'to_index',
+        'description'
     ];
 
     protected $guarded = [];
@@ -37,6 +40,10 @@ class Category extends Model
 
     public function isParent(){
         return  $this->parent_id == null; //count($this->childrens) > 0;
+    }
+    public function isParent2(){
+        
+        return  count($this->childrens) > 0;
     }
 
     public function isChildren(){

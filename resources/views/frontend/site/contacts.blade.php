@@ -19,7 +19,8 @@
                 <div class=" col-md-9 col-lg-9 col-sm-9 col-xs-9">
                     <h4>Коваленко Наталія Миколаївна</h4> 
                     <h5><b>тел. </b>(061) 228-75-82</h5>
-                    <h5><b>Е-mail:</b> vpd@znu.edu.ua</h5>
+                   {{--<h5><b>Е-mail:</b> vpd@znu.edu.ua</h5>--}}
+                   <b>Е-mail:</b> kovalenko_znu@mail.ru</h5>
                 </div>
             </div>
             <hr/>

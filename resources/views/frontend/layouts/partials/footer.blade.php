@@ -1,4 +1,8 @@
-
+   <div class="scroll-top-wrapper ">
+  <span class="scroll-top-inner">
+    <i class="fa fa-2x fa-arrow-circle-up"></i>
+  </span>
+</div>
         <div class="footer-area" id="footer">
             <div class="container">
                 <div class="row footer ">
