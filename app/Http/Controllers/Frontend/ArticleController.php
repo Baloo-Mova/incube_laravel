@@ -21,10 +21,20 @@ class ArticleController extends Controller {
 
     public function index(Request $request) {
         $cat_id = $request->get('cat_id');
-
-        $articles = Article::where([
+$categories = Category::where(['publish'=>'1'])->get();
+if(!empty($categories)){
+$arr_cat[] = $categories[0]->id;
+//dd($arr_cat);
+foreach ($categories as $category){
+   array_push($arr_cat,$category->id); 
+    
+}       
+}
+$articles = Article::where([
                     'status_id' => Status::PUBLISHED
-                ])->orderBy('id', 'desc')->get();
+                ])
+        ->whereIn('category_id',$arr_cat)
+        ->orderBy('id', 'desc')->get();
 
         foreach ($articles as $article) {
             $crawler = new Crawler();
@@ -39,7 +49,7 @@ class ArticleController extends Controller {
             $article->description = implode($nodeValues, "<p>");
         }
 
-        $categories = Category::where(['publish'=>'1'])->orderBy('id', 'desc')->get();
+        
 
 
         return view('frontend.article.index')->with([
