@@ -16,16 +16,20 @@
                 <div class="panel-body">
                     <ul class="list-group">
                         @foreach ($categories as $category)
-                        <li class="list-group-item">
-                            <a href="{{ route('admin.category.edit', [$category->id]) }}">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </a>
-                            {{ $category->name }} ()
-                            <span class="pull-right text-muted">
-                                <a href="{{ route('admin.category.delete', ['id'=>$category->id]) }}" class="confirm-delete">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </span>
+                        <li class="list-group-item {{($category->publish==0 ? 'list-group-item-danger' : '')}}">
+                           
+                                    <span class="pull-left badge badge-default badge-default"> {{ $category->weight_global }}</span>
+                                    <a href="{{ route('admin.category.edit', [$category->id]) }}">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a>
+                                    <span class=""> {{ $category->name }} ()</span>
+
+                                    <span class="pull-right text-muted">
+                                        <a href="{{ route('admin.category.delete', ['id'=>$category->id]) }}" class="confirm-delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </span>
+                                  
                         </li>
                         @endforeach
                     </ul>
@@ -42,10 +46,10 @@
                             </div>
                             <div class="col-md-6">
                                 @include('admin.partials.categories_select',
-                                    ['categories'=> $categories,
-                                     'categoriesAttributeName'=>'parent_id',
-                                     'categoriesAttributeValueNow' => old('parent_id')
-                                    ])
+                                ['categories'=> $categories,
+                                'categoriesAttributeName'=>'parent_id',
+                                'categoriesAttributeValueNow' => old('parent_id')
+                                ])
                             </div>
                         </div>
 

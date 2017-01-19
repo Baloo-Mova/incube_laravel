@@ -21,7 +21,9 @@ class ArticleController extends Controller {
 
     public function index(Request $request) {
         $cat_id = $request->get('cat_id');
-        $categories = Category::where(['publish' => '1'])->get();
+        $categories = Category::where(['publish' => '1'])
+                ->orderBy('weight_global', 'id')
+                ->get();
         if (!empty($categories)) {
             $arr_cat[] = $categories[0]->id;
 //dd($arr_cat);

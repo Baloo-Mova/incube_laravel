@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
        
-        $categories = Category::orderBy('id', 'desc')->get();
+        $categories = Category::orderBy('weight_global', 'id')->get();
             
         
         return view('admin.category.index')->with([

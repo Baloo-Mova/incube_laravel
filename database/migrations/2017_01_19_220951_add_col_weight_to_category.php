@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColOnTableCategories extends Migration
+class AddColWeightToCategory extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,8 @@ class AddColOnTableCategories extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table){
-            $table->integer('weight')->default(0);
-            $table->integer('to_index')->default(0);
-            $table->text('description')->nullable();
+            $table->integer('weight_global')->default(0); ///for conkurses and grands page 
+            
         
         });
             
@@ -31,9 +30,8 @@ class AddColOnTableCategories extends Migration
     public function down()
     {
          Schema::table('categories', function ($table) {
-            $table->dropColumn('weight');
-            $table->dropColumn('to_index');
-            $table->dropColumn('description');
+            $table->dropColumn('weight_global');
+           
          
          });
     }

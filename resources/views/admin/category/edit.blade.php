@@ -83,7 +83,7 @@
         <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group {{ $errors->has('weight')?'has-error':'' }}">
-                    <label class="control-label" for="weight">Вага категорії:<span class="form-required">*</span></label>
+                    <label class="control-label" for="weight">Вага категорії на головній сторінці:<span class="form-required">*</span></label>
                     <input type="number" value="{{ $category->weight }}" name="weight" class="form-control" id="to_index">
 
                     @if($errors->has('weight'))
@@ -92,7 +92,18 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-offset-2">
+            <div class="col-md-10">
+                <div class="form-group {{ $errors->has('weight_global')?'has-error':'' }}">
+                    <label class="control-label" for="weight_global">Вага категорії(визначення порядку на інших сторінках сайту):<span class="form-required">*</span></label>
+                    <input type="number" value="{{ $category->weight_global }}" name="weight_global" class="form-control" id="to_index">
 
+                    @if($errors->has('weight_global'))
+                    <span class="control-label"> {{ $errors->first('weight_global') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
         <div class="col-md-offset-2">
             <div class="col-md-10">
                 <div class="form-group {{ $errors->has('description')?'has-error':'' }}">

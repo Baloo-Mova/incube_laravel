@@ -21,7 +21,8 @@ class Category extends Model
         'publish',
         'weight',
         'to_index',
-        'description'
+        'description',
+        'weight_global'
     ];
 
     protected $guarded = [];
