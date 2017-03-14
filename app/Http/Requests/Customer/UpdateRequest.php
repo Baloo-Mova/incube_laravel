@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:100',
+            'name' => 'required|max:255',
             'country_id' => 'required',
             //'description' =>'reguired|min:100',
         ];
@@ -34,7 +34,7 @@ class UpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.max' => 'Максимальна довжина назви 100 символів',
+            'name.max' => 'Максимальна довжина назви 255 символів',
             'name.required' => "Поле Назва інвестування  обов'язкове для заповнення",
             'country_id.required' => "Поле Країна інвестування обов'язкове для заповнення;",
             //'description.required' => "Поле Опис проблеми обов'язкове для заповнення",

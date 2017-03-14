@@ -25,7 +25,7 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:100',
+            'name' => 'required|max:255',
             'country_id' => 'required',
             'description' =>'required|min:20',
             'email' => Auth::check() ? '' : 'required|email|unique:users',
@@ -35,7 +35,7 @@ class CreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.max' => 'Максимальна довжина назви 100 символів',
+            'name.max' => 'Максимальна довжина назви 255 символів',
             'name.required' => "Поле Назва інвестування  обов'язкове для заповнення",
             'country_id.required' => "Поле Країна інвестування обов'язкове для заповнення",
             'description.min' => 'Ви маєте надати більше інформації',

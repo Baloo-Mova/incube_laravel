@@ -30,7 +30,7 @@ class UpdateRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'name' => 'required|max:100',
+            'name' => 'required|max:255',
                 // 'country_id' => 'required',
                 //  'stage_id' => 'required',
                 //  'money' => 'required|numeric',
@@ -42,7 +42,7 @@ class UpdateRequest extends FormRequest {
     public function messages() {
         return [
             'plan_rent.numeric' => 'Поле рентабельностi інвестицій повинно бути число',
-            'name.max' => 'Максимальна довжина імені 100 символів',
+            'name.max' => 'Максимальна довжина імені 255 символів',
             'name.required' => "Поле Назва інвестування  обов'язкове для заповнення",
             'stage_id.required' => "Поле етап проекту обов'язкове для заповнення",
             'country_id.required' => "Поле Країна інвестування обов'язкове для заповнення;",

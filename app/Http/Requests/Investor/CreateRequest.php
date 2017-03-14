@@ -25,7 +25,7 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:100',
+            'name' => 'required|max:255',
             'country_id' => 'required',
             'stage_id' => 'required',
             'email' => Auth::check() ? '' : 'required|email|unique:users',

@@ -25,7 +25,7 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:500',
+            'name' => 'required|max:255',
             'country_id' => 'required',
             'stage_id' => 'required',
             'email' => Auth::check() ? '' : 'required|email|unique:users',
@@ -39,7 +39,7 @@ class CreateRequest extends FormRequest
     {
         return [
             
-            'name.max' => 'Максимальна довжина імені 100 символів',
+            'name.max' => 'Максимальна довжина імені 255 символів',
             'name.required' => "Поле Назва  обов'язкове для заповнення",
             'stage_id.required' => "Поле етап проекту обов'язкове для заповнення",
             'country_id.required' => "Поле Країна інвестування обов'язкове для заповнення;",
