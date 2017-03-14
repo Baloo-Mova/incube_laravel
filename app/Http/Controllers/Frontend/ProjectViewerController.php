@@ -45,7 +45,7 @@ class ProjectViewerController extends Controller {
         $documents = $material->documents;
         $allowedMimeTypes = ['image/jpeg', 'image/gif', 'image/png'];
         foreach ($documents as $item) {
-            $contentType = mime_content_type(storage_path('app/documents') . '\/' . $item->name);
+            $contentType = mime_content_type(storage_path('app/documents') . '//' . $item->name);
             if (in_array($contentType, $allowedMimeTypes)) {
                 $files[] = $item->name;
             }
