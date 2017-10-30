@@ -33,7 +33,8 @@ class Article extends Model
         'logo',
         'name',
         'description',
-        'link'
+        'link',
+        'country',
     ];
 
     
