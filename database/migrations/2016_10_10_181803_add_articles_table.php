@@ -22,6 +22,7 @@ class AddArticlesTable extends Migration {
             $table->text('description')->nullable();
             $table->string('logo')->nullable();
             $table->string('link')->nullable();
+            $table->string('country')->nullable();
             $table->timestamps();
         });
     }
